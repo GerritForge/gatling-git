@@ -21,9 +21,9 @@ import org.eclipse.jgit.transport.SshTransport
 sealed trait Request {
   def name: String
   def send: Unit
-  def url: String
+  def url: URIish
   def user: String
-  private val repoName = url.split("/").last
+  private val repoName = url.getPath.split("/").last
   val workTreeDirectory: File = new File(s"/tmp/test-$user-$repoName")
   private val builder = new FileRepositoryBuilder
   val repository: Repository = builder.setWorkTree(workTreeDirectory).build()
@@ -56,15 +56,15 @@ object Request {
   }
 }
 
-case class Clone(url: String, user: String) extends Request {
+case class Clone(url: URIish, user: String) extends Request {
 
   val name = s"Clone: $url"
   def send: Unit = {
-    Git.cloneRepository.setTransportConfigCallback(cb).setURI(url).setDirectory(workTreeDirectory).call()
+    Git.cloneRepository.setTransportConfigCallback(cb).setURI(url.toString).setDirectory(workTreeDirectory).call()
   }
 }
 
-case class Pull(url: String, user: String) extends Request {
+case class Pull(url: URIish, user: String) extends Request {
   override def name: String = s"Pull: $url"
 
   override def send: Unit = {
@@ -72,7 +72,7 @@ case class Pull(url: String, user: String) extends Request {
   }
 }
 
-case class Push(url: String, user: String) extends Request {
+case class Push(url: URIish, user: String) extends Request {
   override def name: String = s"Push: $url"
   val uniqueSuffix = s"$user - ${LocalDateTime.now}"
 
@@ -92,7 +92,7 @@ case class Push(url: String, user: String) extends Request {
   }
 }
 
-case class InvalidRequest(url: String, user: String) extends Request {
+case class InvalidRequest(url: URIish, user: String) extends Request {
   override def name: String = "Invalid Request"
 
   override def send: Unit = {

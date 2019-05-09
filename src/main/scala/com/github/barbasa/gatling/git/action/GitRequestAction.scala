@@ -27,16 +27,18 @@ class GitRequestAction(coreComponents: CoreComponents,
     //XXX Mark session as failed this way if validation fails:
     // statsEngine.reportUnbuildableRequest(...)
     // next ! session.markAsFailed
-    val gitRequest = reqBuilder.buildWithSession(session)
+    val (response, reqName, message) = reqBuilder.buildWithSession(session).map { req =>
+      try {
+        req.send
+        (Response(OK), req.name, None)
+      } catch {
+        case e: Exception => (Response(Fail), req.name, Some(e.getMessage))
+      }
+    }.getOrElse((Response(Fail), "Unknown", Some("Cannot build Request")))
 
-    val (response, message) = try {
-      gitRequest.send
-      (Response(OK), None)
-    } catch {
-      case e: Exception => (Response(Fail), Some(e.getMessage))
-    }
+
     statsEngine.logResponse(session,
-                            gitRequest.name,
+                            reqName,
                             start,
                             clock.nowMillis,
                             Request.gatlingStatusFromGit(response),

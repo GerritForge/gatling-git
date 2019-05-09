@@ -1,15 +1,4 @@
-repo,user,cmd,pause
-test,user1,clone,"7 ms"
-test,user1,clone,"5 ms"
-test,user1,pull,"5 ms"
-test,user1,clone,5 ms
-test,user1,pull,4 ms
-test,user1,clone,5 ms
-test,user1,clone,12 ms
-test,user1,pull,5 ms
-test,user1,clone,5 ms
-test2,user1,clone,56 ms
-test2,user1,clone,5 ms
-test2,user1,invalid,5 ms
-test2,user1,clone,3 s
-test2,user1,clone,5 ms
+url,user,cmd,pause
+ssh://admin@localhost:29418/loadtest-repo,user3,clone,"7 ms"
+ssh://admin@localhost:29418/loadtest-repo,user3,pull,"7 ms"
+ssh://admin@localhost:29418/loadtest-repo,user3,push,"7 ms"

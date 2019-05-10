@@ -1,0 +1,4 @@
+basicAuth {
+  username = "testuser"
+  password = "password"
+}

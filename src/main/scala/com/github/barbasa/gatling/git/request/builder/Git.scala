@@ -14,21 +14,25 @@
 
 package com.github.barbasa.gatling.git.request.builder
 
+import com.typesafe.config.Config
 import io.gatling.core.session.{Expression, StaticStringExpression}
 
 case object Git {
-  def clone(url: Expression[String]): GitRequestBuilder =
+  def clone(url: Expression[String], config: Config): GitRequestBuilder =
     new GitRequestBuilder(StaticStringExpression("clone"),
                           url,
-                          StaticStringExpression("anyUser"))
+                          StaticStringExpression("anyUser"),
+                          config)
 
-  def pull(url: Expression[String]): GitRequestBuilder =
+  def pull(url: Expression[String], config: Config): GitRequestBuilder =
     new GitRequestBuilder(StaticStringExpression("pull"),
                           url,
-                          StaticStringExpression("anyUser"))
+                          StaticStringExpression("anyUser"),
+                          config)
 
-  def push(url: Expression[String]): GitRequestBuilder =
+  def push(url: Expression[String], config: Config): GitRequestBuilder =
     new GitRequestBuilder(StaticStringExpression("push"),
                           url,
-                          StaticStringExpression("anyUser"))
+                          StaticStringExpression("anyUser"),
+                          config)
 }

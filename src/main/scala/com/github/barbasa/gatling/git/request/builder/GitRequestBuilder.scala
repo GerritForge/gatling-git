@@ -16,6 +16,7 @@ package com.github.barbasa.gatling.git.request.builder
 
 import com.github.barbasa.gatling.git.action.GitRequestActionBuilder
 import com.github.barbasa.gatling.git.request._
+import com.typesafe.config.Config
 import io.gatling.core.session.{Expression, Session}
 import org.eclipse.jgit.transport.URIish
 
@@ -29,7 +30,8 @@ object GitRequestBuilder {
 
 case class GitRequestBuilder(commandName: Expression[String],
                              url: Expression[String],
-                             userExpr: Expression[String]) {
+                             userExpr: Expression[String],
+                             config: Config) {
 
   def buildWithSession(session: Session): Option[Request] = {
     val command = commandName(session).toOption.get.toLowerCase
@@ -37,10 +39,10 @@ case class GitRequestBuilder(commandName: Expression[String],
 
     validateUrl(url(session).toOption.get).map { u =>
       command match {
-        case "clone" => Clone(u, user)
-        case "pull" => Pull(u, user)
-        case "push" => Push(u, user)
-        case _ => InvalidRequest(u, user)
+        case "clone" => Clone(u, user, config)
+        case "pull"  => Pull(u, user, config)
+        case "push"  => Push(u, user, config)
+        case _       => InvalidRequest(u, user, config)
       }
     }
   }
@@ -49,10 +51,10 @@ case class GitRequestBuilder(commandName: Expression[String],
     try {
       Some(new URIish(stringUrl))
     } catch {
-        case e: Exception => {
-          println(s"Invalid url: $stringUrl. ${e.getMessage}")
-          None
-        }
+      case e: Exception => {
+        println(s"Invalid url: $stringUrl. ${e.getMessage}")
+        None
       }
+    }
   }
 }

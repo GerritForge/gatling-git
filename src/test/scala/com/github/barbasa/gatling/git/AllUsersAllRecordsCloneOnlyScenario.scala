@@ -16,10 +16,16 @@ package com.github.barbasa.gatling.git
 
 import com.github.barbasa.gatling.git.protocol.GitProtocol
 import com.github.barbasa.gatling.git.request.builder.Git
+import com.typesafe.config.{Config, ConfigFactory}
 import io.gatling.core.Predef.{exec, _}
 import io.gatling.core.structure.ScenarioBuilder
 
 class AllUsersAllRecordsCloneOnlyScenario extends Simulation {
+
+  private val GatlingGitConfigFile = "git.conf"
+
+  val gitConfig: Config =
+    ConfigFactory.parseResources(getClass.getClassLoader, GatlingGitConfigFile)
 
   val gitProtocol = GitProtocol()
 
@@ -32,7 +38,7 @@ class AllUsersAllRecordsCloneOnlyScenario extends Simulation {
   val allUsersAllCallsScenario: ScenarioBuilder =
     scenario("Git Clone").foreach(feeder, "record") {
       exec(flattenMapIntoAttributes("${record}"))
-        .exec(Git.clone("http://localhost:8081/${repo}"))
+        .exec(Git.clone("http://localhost:8081/${repo}", gitConfig))
     }
 
   setUp(allUsersAllCallsScenario.inject(atOnceUsers(3)))

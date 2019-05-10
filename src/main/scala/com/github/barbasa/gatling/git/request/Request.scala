@@ -18,6 +18,7 @@ import java.time.LocalDateTime
 
 import com.jcraft.jsch.JSch
 import com.jcraft.jsch.{Session => SSHSession}
+import com.typesafe.config.Config
 import io.gatling.commons.stats.{OK => GatlingOK}
 import io.gatling.commons.stats.{KO => GatlingFail}
 import io.gatling.commons.stats.Status
@@ -37,13 +38,15 @@ sealed trait Request {
   def send: Unit
   def url: URIish
   def user: String
+  def config: Config
   private val repoName = url.getPath.split("/").last
   val workTreeDirectory: File = new File(s"/tmp/test-$user-$repoName")
   private val builder = new FileRepositoryBuilder
   val repository: Repository = builder.setWorkTree(workTreeDirectory).build()
 
   val sshSessionFactory: SshSessionFactory = new JschConfigSessionFactory() {
-    protected def configure(host: OpenSshConfig.Host, session: SSHSession): Unit = {}
+    protected def configure(host: OpenSshConfig.Host,
+                            session: SSHSession): Unit = {}
 
     override protected def createDefaultJSch(fs: FS): JSch = {
       val defaultJSch = super.createDefaultJSch(fs)
@@ -59,6 +62,11 @@ sealed trait Request {
     }
   }
 
+  val usernamePasswordCredentialsProvider =
+    new UsernamePasswordCredentialsProvider(
+      config.getConfig("basicAuth").getString("username"),
+      config.getConfig("basicAuth").getString("password"))
+
 }
 
 object Request {
@@ -70,38 +78,52 @@ object Request {
   }
 }
 
-class PimpedGitTransportCommand[C <: GitCommand[_],T](val c: TransportCommand[C,T]) {
-  def setAuthenticationMethod(url: URIish, cb: TransportConfigCallback): C = {
+class PimpedGitTransportCommand[C <: GitCommand[_], T](
+    val c: TransportCommand[C, T]) {
+  def setAuthenticationMethod(
+      url: URIish,
+      cb: TransportConfigCallback,
+      usernamePasswordCredentialsProvider: UsernamePasswordCredentialsProvider)
+    : C = {
     url.getScheme match {
       case "ssh" => c.setTransportConfigCallback(cb)
-      case "http" => c.setCredentialsProvider(new UsernamePasswordCredentialsProvider("user", "password"))
+      case "http" =>
+        c.setCredentialsProvider(usernamePasswordCredentialsProvider)
     }
   }
 }
 
 object PimpedGitTransportCommand {
-  implicit def toPimpedTransportCommand[C <: GitCommand[_],T](s: TransportCommand[C,T]) = new PimpedGitTransportCommand[C,T](s)
+  implicit def toPimpedTransportCommand[C <: GitCommand[_], T](
+      s: TransportCommand[C, T]) = new PimpedGitTransportCommand[C, T](s)
 }
 
-case class Clone(url: URIish, user: String) extends Request {
+case class Clone(url: URIish, user: String, config: Config) extends Request {
 
   val name = s"Clone: $url"
   def send: Unit = {
     import PimpedGitTransportCommand._
-    Git.cloneRepository.setAuthenticationMethod(url, cb).setURI(url.toString).setDirectory(workTreeDirectory).call()
+    Git.cloneRepository
+      .setAuthenticationMethod(url, cb, usernamePasswordCredentialsProvider)
+      .setURI(url.toString)
+      .setDirectory(workTreeDirectory)
+      .call()
   }
 }
 
-case class Pull(url: URIish, user: String) extends Request {
+case class Pull(url: URIish, user: String, config: Config) extends Request {
   override def name: String = s"Pull: $url"
 
   override def send: Unit = {
     import PimpedGitTransportCommand._
-    new Git(repository).pull().setAuthenticationMethod(url, cb).call()
+    new Git(repository)
+      .pull()
+      .setAuthenticationMethod(url, cb, usernamePasswordCredentialsProvider)
+      .call()
   }
 }
 
-case class Push(url: URIish, user: String) extends Request {
+case class Push(url: URIish, user: String, config: Config) extends Request {
   override def name: String = s"Push: $url"
   val uniqueSuffix = s"$user - ${LocalDateTime.now}"
 
@@ -116,13 +138,14 @@ case class Push(url: URIish, user: String) extends Request {
     // XXX Make branch configurable
     // XXX Make credential configurable
     git.push
-      .setAuthenticationMethod(url, cb)
+      .setAuthenticationMethod(url, cb, usernamePasswordCredentialsProvider)
       .add("HEAD:refs/for/master")
       .call()
   }
 }
 
-case class InvalidRequest(url: URIish, user: String) extends Request {
+case class InvalidRequest(url: URIish, user: String, config: Config)
+    extends Request {
   override def name: String = "Invalid Request"
 
   override def send: Unit = {

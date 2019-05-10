@@ -16,11 +16,18 @@ package com.github.barbasa.gatling.git
 
 import com.github.barbasa.gatling.git.protocol.GitProtocol
 import com.github.barbasa.gatling.git.request.builder.GitRequestBuilder
+import com.typesafe.config.{Config, ConfigFactory}
 import io.gatling.core.Predef._
 import io.gatling.core.structure.ScenarioBuilder
+
 import scala.concurrent.duration._
 
 class ReplayRecordsScenario extends Simulation {
+
+  private val GatlingGitConfigFile = "git.conf"
+
+  val gitConfig: Config =
+    ConfigFactory.parseResources(getClass.getClassLoader, GatlingGitConfigFile)
 
   val gitProtocol = GitProtocol()
 
@@ -30,10 +37,7 @@ class ReplayRecordsScenario extends Simulation {
     scenario("Git commands")
       .repeat(10000) {
         feed(feeder)
-          .exec(
-            new GitRequestBuilder("${cmd}",
-                                  "${url}",
-                                  "${user}"))
+          .exec(new GitRequestBuilder("${cmd}", "${url}", "${user}", gitConfig))
       }
 //      .pause("${pause}")
 

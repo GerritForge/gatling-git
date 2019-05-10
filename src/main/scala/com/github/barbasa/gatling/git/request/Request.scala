@@ -92,6 +92,18 @@ case class Clone(url: URIish, user: String) extends Request {
   }
 }
 
+case class Fetch(url: URIish, user: String) extends Request {
+
+  val name = s"Fetch: $url"
+  def send: Unit = {
+    import PimpedGitTransportCommand._
+    new Git(repository)
+      .fetch()
+      .setRemote("origin")
+      .call()
+  }
+}
+
 case class Pull(url: URIish, user: String) extends Request {
   override def name: String = s"Pull: $url"
 

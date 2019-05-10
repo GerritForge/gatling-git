@@ -38,6 +38,7 @@ case class GitRequestBuilder(commandName: Expression[String],
     validateUrl(url(session).toOption.get).map { u =>
       command match {
         case "clone" => Clone(u, user)
+        case "fetch" => Fetch(u, user)
         case "pull" => Pull(u, user)
         case "push" => Push(u, user)
         case _ => InvalidRequest(u, user)

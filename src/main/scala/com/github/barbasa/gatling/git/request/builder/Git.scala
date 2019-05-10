@@ -22,6 +22,11 @@ case object Git {
                           url,
                           StaticStringExpression("anyUser"))
 
+  def fetch(url: Expression[String]): GitRequestBuilder =
+    new GitRequestBuilder(StaticStringExpression("fetch"),
+                          url,
+                          StaticStringExpression("anyUser"))
+
   def pull(url: Expression[String]): GitRequestBuilder =
     new GitRequestBuilder(StaticStringExpression("pull"),
                           url,

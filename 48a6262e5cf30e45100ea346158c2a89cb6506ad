@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31013947_3b207942",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-05-10T14:41:50Z",
+      "side": 1,
+      "message": "You missed the \"setAuthenticationMethod(url, cb)\" after the fetch().\n\nIt allows authentication of the command if needed.\n\nI was planning in abstracting it a bit more to avoid repeating it all the time but I didn\u0027t get to it yet.",
+      "range": {
+        "startLine": 101,
+        "startChar": 7,
+        "endLine": 101,
+        "endChar": 14
+      },
+      "revId": "48a6262e5cf30e45100ea346158c2a89cb6506ad",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

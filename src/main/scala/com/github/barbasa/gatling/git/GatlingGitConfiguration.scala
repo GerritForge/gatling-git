@@ -18,7 +18,10 @@ import com.google.inject.Singleton
 import com.typesafe.config.ConfigFactory
 
 @Singleton
-case class GatlingGitConfiguration private(httpUserName: String, httpPassword: String)
+case class GatlingGitConfiguration private(
+  httpUserName: String,
+  httpPassword: String,
+  tmpBasePath: String)
 
 object GatlingGitConfiguration {
   private val config = ConfigFactory.load()
@@ -26,7 +29,10 @@ object GatlingGitConfiguration {
   def apply(): GatlingGitConfiguration = {
     val httpUserName = config.getString("http.username")
     val httpPassword = config.getString("http.password")
-    GatlingGitConfiguration(httpUserName, httpPassword)
+    val tmpBasePath = "/%s/gatling-%d".format(
+      config.getString("tmpFiles.basePath"),
+      System.currentTimeMillis)
+    GatlingGitConfiguration(httpUserName, httpPassword, tmpBasePath)
   }
 
 }

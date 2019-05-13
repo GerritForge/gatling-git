@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "b894d327_ca343fde",
+        "filename": "CONFIG.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-05-13T16:34:57Z",
+      "side": 1,
+      "message": "Shall we maybe call it application.git.conf or something similar? Non-HTTP protocols don\u0027t have a standard way of reading config, hence, if you were to have a scenario with more than one protocol, you might clash on the configuration file.",
+      "range": {
+        "startLine": 3,
+        "startChar": 34,
+        "endLine": 3,
+        "endChar": 50
+      },
+      "revId": "9f24e6d55ca78c8532191c3585be1f439b660534",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ca3359c_2df02865",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-05-13T16:34:57Z",
+      "side": 1,
+      "message": "Identity path should also be configurable. Shall we include it in this change or in a separate one?",
+      "range": {
+        "startLine": 52,
+        "startChar": 31,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "9f24e6d55ca78c8532191c3585be1f439b660534",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37789eaa_779c1080",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
         "patchSetId": 2
@@ -13,6 +59,24 @@
       "writtenOn": "2019-05-13T14:56:10Z",
       "side": 1,
       "message": "We now basically have two types of users: 1) the user used to do http authentication; 2) the user read from the csv, which is currently not really used, except in the commit message, if I get the code right. I think, we should align those. That would potentially mean that we would have to configure multiple user credentials. Do we want that? Otherwise, I would remove the user parsed from the CSV.",
+      "revId": "9f24e6d55ca78c8532191c3585be1f439b660534",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dfdb043_65f3be01",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-05-13T16:34:57Z",
+      "side": 1,
+      "message": "The way I see the 2 different users is the following:\n- authentication user (the one in the config): you might only want to have a single test user authenticating in your system\n- \"state user\" (the one in CSV): used to build a sort of state of the requests, mimicking the user journey. Instead of the one in the CSV, we could use the one provided by Gatling, in which case this one could become redundant.",
+      "parentUuid": "37789eaa_779c1080",
       "revId": "9f24e6d55ca78c8532191c3585be1f439b660534",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true

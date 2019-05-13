@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37789eaa_779c1080",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-13T14:56:10Z",
+      "side": 1,
+      "message": "We now basically have two types of users: 1) the user used to do http authentication; 2) the user read from the csv, which is currently not really used, except in the commit message, if I get the code right. I think, we should align those. That would potentially mean that we would have to configure multiple user credentials. Do we want that? Otherwise, I would remove the user parsed from the CSV.",
+      "revId": "9f24e6d55ca78c8532191c3585be1f439b660534",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

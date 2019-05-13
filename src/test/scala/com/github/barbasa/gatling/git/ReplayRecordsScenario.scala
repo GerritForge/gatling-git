@@ -23,6 +23,7 @@ import scala.concurrent.duration._
 class ReplayRecordsScenario extends Simulation {
 
   val gitProtocol = GitProtocol()
+  implicit val conf = GatlingGitConfiguration()
 
   val feeder = csv("data/requests.csv").circular
 

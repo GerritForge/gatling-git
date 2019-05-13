@@ -14,9 +14,13 @@
 
 package com.github.barbasa.gatling.git.request.builder
 
+import com.github.barbasa.gatling.git.GatlingGitConfiguration
 import io.gatling.core.session.{Expression, StaticStringExpression}
 
 case object Git {
+
+  implicit lazy val conf: GatlingGitConfiguration = GatlingGitConfiguration()
+
   def clone(url: Expression[String]): GitRequestBuilder =
     new GitRequestBuilder(StaticStringExpression("clone"),
                           url,

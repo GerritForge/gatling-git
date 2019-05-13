@@ -40,7 +40,7 @@ sealed trait Request {
   def url: URIish
   def user: String
   private val repoName = url.getPath.split("/").last
-  val workTreeDirectory: File = new File(s"/tmp/test-$user-$repoName")
+  val workTreeDirectory: File = new File(conf.tmpBasePath + s"/$user/$repoName")
   private val builder = new FileRepositoryBuilder
   val repository: Repository = builder.setWorkTree(workTreeDirectory).build()
 

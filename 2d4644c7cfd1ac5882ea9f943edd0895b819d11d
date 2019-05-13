@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "409ae9a4_0274e6e2",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/ReplayRecordsScenario.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-05-13T16:20:35Z",
+      "side": 1,
+      "message": "Shall we add a README in the scenario directory to explain the parameters that can be set in the config file?",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "2d4644c7cfd1ac5882ea9f943edd0895b819d11d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

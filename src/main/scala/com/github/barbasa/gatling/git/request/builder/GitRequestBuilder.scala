@@ -27,7 +27,8 @@ object GitRequestBuilder {
 
 }
 
-case class GitRequestBuilder(commandName: Expression[String],
+case class GitRequestBuilder(tmpPath: String,
+                             commandName: Expression[String],
                              url: Expression[String],
                              userExpr: Expression[String]) {
 
@@ -37,11 +38,11 @@ case class GitRequestBuilder(commandName: Expression[String],
 
     validateUrl(url(session).toOption.get).map { u =>
       command match {
-        case "clone" => Clone(u, user)
-        case "fetch" => Fetch(u, user)
-        case "pull" => Pull(u, user)
-        case "push" => Push(u, user)
-        case _ => InvalidRequest(u, user)
+        case "clone" => Clone(u, user, tmpPath)
+        case "fetch" => Fetch(u, user, tmpPath)
+        case "pull" => Pull(u, user, tmpPath)
+        case "push" => Push(u, user, tmpPath)
+        case _ => InvalidRequest(u, user, tmpPath)
       }
     }
   }

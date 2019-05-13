@@ -17,23 +17,27 @@ package com.github.barbasa.gatling.git.request.builder
 import io.gatling.core.session.{Expression, StaticStringExpression}
 
 case object Git {
-  def clone(url: Expression[String]): GitRequestBuilder =
-    new GitRequestBuilder(StaticStringExpression("clone"),
+  def clone(tmpPath: String, url: Expression[String]): GitRequestBuilder =
+    new GitRequestBuilder(tmpPath,
+                          StaticStringExpression("clone"),
                           url,
                           StaticStringExpression("anyUser"))
 
-  def fetch(url: Expression[String]): GitRequestBuilder =
-    new GitRequestBuilder(StaticStringExpression("fetch"),
+  def fetch(tmpPath: String, url: Expression[String]): GitRequestBuilder =
+    new GitRequestBuilder(tmpPath,
+                          StaticStringExpression("fetch"),
                           url,
                           StaticStringExpression("anyUser"))
 
-  def pull(url: Expression[String]): GitRequestBuilder =
-    new GitRequestBuilder(StaticStringExpression("pull"),
+  def pull(tmpPath: String, url: Expression[String]): GitRequestBuilder =
+    new GitRequestBuilder(tmpPath,
+                          StaticStringExpression("pull"),
                           url,
                           StaticStringExpression("anyUser"))
 
-  def push(url: Expression[String]): GitRequestBuilder =
-    new GitRequestBuilder(StaticStringExpression("push"),
+  def push(tmpPath: String, url: Expression[String]): GitRequestBuilder =
+    new GitRequestBuilder(tmpPath,
+                          StaticStringExpression("push"),
                           url,
                           StaticStringExpression("anyUser"))
 }

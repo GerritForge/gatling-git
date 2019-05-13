@@ -4,7 +4,10 @@ Configuration is provided by the [application.conf](src/test/resources/applicati
 You can also override configuration values by making the relevant environment variable available.
 
 ```bash
-GIT_HTTP_PASSWORD="foo" GIT_HTTP_USERNAME="bar" sbt "gatling:test"
+GIT_HTTP_PASSWORD="foo" \
+GIT_HTTP_USERNAME="bar" \
+TMP_BASE_PATH="/tmp" \
+sbt "gatling:test"
 ```
 
 ## Configurable properties
@@ -18,3 +21,9 @@ Default: `default_password`
 user to be used when performing git operations over HTTP
 
 Default: `default_username`
+
+
+### tmpFiles.basePath [TMP_BASE_PATH]
+base path where to persist work on disk (i.e. clones)
+
+Default: `/tmp`

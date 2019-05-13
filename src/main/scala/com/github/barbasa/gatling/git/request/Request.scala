@@ -33,12 +33,13 @@ import org.eclipse.jgit.transport.SshTransport
 
 sealed trait Request {
 
+  def tmpPath: String
   def name: String
   def send: Unit
   def url: URIish
   def user: String
   private val repoName = url.getPath.split("/").last
-  val workTreeDirectory: File = new File(s"/tmp/test-$user-$repoName")
+  val workTreeDirectory: File = new File(s"$tmpPath/$user/$repoName")
   private val builder = new FileRepositoryBuilder
   val repository: Repository = builder.setWorkTree(workTreeDirectory).build()
 
@@ -83,7 +84,7 @@ object PimpedGitTransportCommand {
   implicit def toPimpedTransportCommand[C <: GitCommand[_],T](s: TransportCommand[C,T]) = new PimpedGitTransportCommand[C,T](s)
 }
 
-case class Clone(url: URIish, user: String) extends Request {
+case class Clone(url: URIish, user: String, tmpPath: String) extends Request {
 
   val name = s"Clone: $url"
   def send: Unit = {
@@ -92,7 +93,7 @@ case class Clone(url: URIish, user: String) extends Request {
   }
 }
 
-case class Pull(url: URIish, user: String) extends Request {
+case class Pull(url: URIish, user: String, tmpPath: String) extends Request {
   override def name: String = s"Pull: $url"
 
   override def send: Unit = {
@@ -101,7 +102,7 @@ case class Pull(url: URIish, user: String) extends Request {
   }
 }
 
-case class Push(url: URIish, user: String) extends Request {
+case class Push(url: URIish, user: String, tmpPath: String) extends Request {
   override def name: String = s"Push: $url"
   val uniqueSuffix = s"$user - ${LocalDateTime.now}"
 
@@ -122,7 +123,7 @@ case class Push(url: URIish, user: String) extends Request {
   }
 }
 
-case class InvalidRequest(url: URIish, user: String) extends Request {
+case class InvalidRequest(url: URIish, user: String, tmpPath: String) extends Request {
   override def name: String = "Invalid Request"
 
   override def send: Unit = {

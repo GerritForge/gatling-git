@@ -16,6 +16,7 @@ package com.github.barbasa.gatling.git.request
 import java.io.File
 import java.time.LocalDateTime
 
+import com.github.barbasa.gatling.git.GatlingGitConfiguration
 import com.jcraft.jsch.JSch
 import com.jcraft.jsch.{Session => SSHSession}
 import io.gatling.commons.stats.{OK => GatlingOK}
@@ -33,6 +34,7 @@ import org.eclipse.jgit.transport.SshTransport
 
 sealed trait Request {
 
+  def conf: GatlingGitConfiguration
   def name: String
   def send: Unit
   def url: URIish
@@ -59,6 +61,19 @@ sealed trait Request {
     }
   }
 
+  class PimpedGitTransportCommand[C <: GitCommand[_],T](val c: TransportCommand[C,T]) {
+    def setAuthenticationMethod(url: URIish, cb: TransportConfigCallback): C = {
+      url.getScheme match {
+        case "ssh" => c.setTransportConfigCallback(cb)
+        case "http" => c.setCredentialsProvider(new UsernamePasswordCredentialsProvider(conf.httpUserName, conf.httpPassword))
+      }
+    }
+  }
+
+  object PimpedGitTransportCommand {
+    implicit def toPimpedTransportCommand[C <: GitCommand[_],T](s: TransportCommand[C,T]) = new PimpedGitTransportCommand[C,T](s)
+  }
+
 }
 
 object Request {
@@ -70,20 +85,7 @@ object Request {
   }
 }
 
-class PimpedGitTransportCommand[C <: GitCommand[_],T](val c: TransportCommand[C,T]) {
-  def setAuthenticationMethod(url: URIish, cb: TransportConfigCallback): C = {
-    url.getScheme match {
-      case "ssh" => c.setTransportConfigCallback(cb)
-      case "http" => c.setCredentialsProvider(new UsernamePasswordCredentialsProvider("user", "password"))
-    }
-  }
-}
-
-object PimpedGitTransportCommand {
-  implicit def toPimpedTransportCommand[C <: GitCommand[_],T](s: TransportCommand[C,T]) = new PimpedGitTransportCommand[C,T](s)
-}
-
-case class Clone(url: URIish, user: String) extends Request {
+case class Clone(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration) extends Request {
 
   val name = s"Clone: $url"
   def send: Unit = {
@@ -92,7 +94,7 @@ case class Clone(url: URIish, user: String) extends Request {
   }
 }
 
-case class Pull(url: URIish, user: String) extends Request {
+case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration) extends Request {
   override def name: String = s"Pull: $url"
 
   override def send: Unit = {
@@ -101,7 +103,7 @@ case class Pull(url: URIish, user: String) extends Request {
   }
 }
 
-case class Push(url: URIish, user: String) extends Request {
+case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration) extends Request {
   override def name: String = s"Push: $url"
   val uniqueSuffix = s"$user - ${LocalDateTime.now}"
 
@@ -122,7 +124,7 @@ case class Push(url: URIish, user: String) extends Request {
   }
 }
 
-case class InvalidRequest(url: URIish, user: String) extends Request {
+case class InvalidRequest(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration) extends Request {
   override def name: String = "Invalid Request"
 
   override def send: Unit = {

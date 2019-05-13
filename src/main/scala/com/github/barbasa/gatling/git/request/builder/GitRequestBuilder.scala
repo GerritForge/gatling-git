@@ -14,6 +14,7 @@
 
 package com.github.barbasa.gatling.git.request.builder
 
+import com.github.barbasa.gatling.git.GatlingGitConfiguration
 import com.github.barbasa.gatling.git.action.GitRequestActionBuilder
 import com.github.barbasa.gatling.git.request._
 import io.gatling.core.session.{Expression, Session}
@@ -29,7 +30,7 @@ object GitRequestBuilder {
 
 case class GitRequestBuilder(commandName: Expression[String],
                              url: Expression[String],
-                             userExpr: Expression[String]) {
+                             userExpr: Expression[String])(implicit conf: GatlingGitConfiguration) {
 
   def buildWithSession(session: Session): Option[Request] = {
     val command = commandName(session).toOption.get.toLowerCase

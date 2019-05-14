@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3614748e_79d01a5a",
+        "filename": "CONFIG.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-14T15:47:25Z",
+      "side": 1,
+      "message": "should we not just have a com bined user for http and ssh, which can be configured here?",
+      "range": {
+        "startLine": 11,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "c8b3f56d3c778360ff9164eb0ee1671c4e4c4493",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b064648f_e70042bb",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/Git.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-14T15:47:25Z",
+      "side": 1,
+      "message": "Should we create something like a SimulationRequest-object to reduce the (increasing) number of parameters, which are anyway the same for each request type?",
+      "range": {
+        "startLine": 33,
+        "startChar": 6,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "c8b3f56d3c778360ff9164eb0ee1671c4e4c4493",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7337fa2_01cf2edd",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-14T15:47:25Z",
+      "side": 1,
+      "message": "Do we need both imports here?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 63
+      },
+      "revId": "c8b3f56d3c778360ff9164eb0ee1671c4e4c4493",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "010d7800_4d351b23",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/AllUsersAllRecordsCloneOnlyScenario.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-14T15:47:25Z",
+      "side": 1,
+      "message": "nit: No empty line at the end of file anymore.",
+      "revId": "c8b3f56d3c778360ff9164eb0ee1671c4e4c4493",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9f1ec53_cb2085cc",
+        "filename": "src/test/resources/data/requests.csv",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-05-14T16:43:31Z",
+      "side": 0,
+      "message": "The only issue I have with this approach is that it wouldn\u0027t cover a use case I was keen to use the load test for. Maybe it is a misuse of the tool, but it would be very handy for me.\n\nMy use case if the following: I want to run the same load test *at the same time* on 2 instances with different Gerrit versions, so I can compare the results on the same graph. The instances, of course, will have different urls. How can I inject them?",
+      "range": {
+        "startLine": 2,
+        "startChar": 6,
+        "endLine": 2,
+        "endChar": 28
+      },
+      "revId": "2a514f5eb296021ad4aef0b848deae1ee064cc47",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

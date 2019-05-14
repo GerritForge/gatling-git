@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f001c17_e1ea096a",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-14T07:17:31Z",
+      "side": 1,
+      "message": "nit: Unrelated change.\n\nIMHO, aligning the statements will break apart in the future, if other changes don\u0027t follow the example and it does not add much to the readability, so I would leave it as it is.",
+      "revId": "e2ecb009bc31f2d17a85eba5736a049af676650c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

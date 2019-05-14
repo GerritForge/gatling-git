@@ -49,7 +49,7 @@ sealed trait Request {
 
     override protected def createDefaultJSch(fs: FS): JSch = {
       val defaultJSch = super.createDefaultJSch(fs)
-      defaultJSch.addIdentity("/tmp/ssh-keys/id_rsa")
+      defaultJSch.addIdentity(conf.sshConfiguration.private_key_path)
       defaultJSch
     }
   }
@@ -65,7 +65,7 @@ sealed trait Request {
     def setAuthenticationMethod(url: URIish, cb: TransportConfigCallback): C = {
       url.getScheme match {
         case "ssh" => c.setTransportConfigCallback(cb)
-        case "http" => c.setCredentialsProvider(new UsernamePasswordCredentialsProvider(conf.httpUserName, conf.httpPassword))
+        case "http" => c.setCredentialsProvider(new UsernamePasswordCredentialsProvider(conf.httpConfiguration.userName, conf.httpConfiguration.password))
       }
     }
   }

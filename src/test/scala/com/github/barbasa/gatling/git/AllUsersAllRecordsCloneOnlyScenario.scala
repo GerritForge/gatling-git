@@ -16,8 +16,8 @@ package com.github.barbasa.gatling.git
 
 import com.github.barbasa.gatling.git.protocol.GitProtocol
 import com.github.barbasa.gatling.git.request.builder.Git
-import com.github.barbasa.gatling.git.request.builder.GitRequestBuilder
 import io.gatling.core.Predef.{exec, _}
+import io.gatling.core.session.StaticStringExpression
 import io.gatling.core.structure.ScenarioBuilder
 import java.io._
 import org.apache.commons.io.FileUtils
@@ -36,7 +36,7 @@ class AllUsersAllRecordsCloneOnlyScenario extends Simulation {
   val allUsersAllCallsScenario: ScenarioBuilder =
     scenario("Git Clone").foreach(feeder, "record") {
       exec(flattenMapIntoAttributes("${record}"))
-        .exec(new GitRequestBuilder("clone", "http://localhost:8081/${repo}", "user"))
+        .exec(Git.clone("${repo}", StaticStringExpression("http")))
     }
 
   setUp(allUsersAllCallsScenario.inject(atOnceUsers(3)))
@@ -46,3 +46,4 @@ class AllUsersAllRecordsCloneOnlyScenario extends Simulation {
     FileUtils.deleteDirectory(new File(conf.tmpBasePath));
   }
 }
+

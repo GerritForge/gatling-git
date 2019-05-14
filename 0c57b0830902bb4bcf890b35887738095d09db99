@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86258c3f_8a6a93cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-05-14T10:35:34Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 56,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "0c57b0830902bb4bcf890b35887738095d09db99",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

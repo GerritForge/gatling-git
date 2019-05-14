@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "95b56224_c2c60d53",
+        "filename": "CONFIG.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-14T13:23:17Z",
+      "side": 1,
+      "message": "I would suggest to make an entry for every possible entry in the config file, like it is done for gerrit.config in the Gerrit-project.",
+      "revId": "9f24e6d55ca78c8532191c3585be1f439b660534",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1ca3359c_2df02865",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
         "patchSetId": 2

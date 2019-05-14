@@ -70,6 +70,30 @@
       "revId": "2d4644c7cfd1ac5882ea9f943edd0895b819d11d",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a067299_daf8968b",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/ReplayRecordsScenario.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-14T15:36:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30cc1fe5_bdd79185",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "2d4644c7cfd1ac5882ea9f943edd0895b819d11d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }

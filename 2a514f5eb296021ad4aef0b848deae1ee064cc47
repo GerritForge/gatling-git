@@ -22,6 +22,30 @@
       "revId": "2a514f5eb296021ad4aef0b848deae1ee064cc47",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5146fe47_456110f2",
+        "filename": "src/test/resources/data/requests.csv",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-14T19:15:40Z",
+      "side": 0,
+      "message": "I don\u0027t think it would be a good solution of just using one client to test multiple instances. The network bandwidth etc., when just using one client/computer might be a significant bottle neck, when testing high loads.\nI would rather suggest to run two clients in parallel on separate machines in that case, to make sure that this bottle neck is not that relevant and that the two separate runs do not interfere. I was anyway planning to dockerize these tests ands create a Kubernetes deployment for exactly such scenarios and then each client would get its own URL configured.",
+      "parentUuid": "f9f1ec53_cb2085cc",
+      "range": {
+        "startLine": 2,
+        "startChar": 6,
+        "endLine": 2,
+        "endChar": 28
+      },
+      "revId": "2a514f5eb296021ad4aef0b848deae1ee064cc47",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }

@@ -22,22 +22,14 @@ case object Git {
   implicit lazy val conf: GatlingGitConfiguration = GatlingGitConfiguration()
 
   def clone(url: Expression[String]): GitRequestBuilder =
-    new GitRequestBuilder(StaticStringExpression("clone"),
-                          url,
-                          StaticStringExpression("anyUser"))
+    new GitRequestBuilder(StaticStringExpression("clone"), url)
 
   def fetch(url: Expression[String]): GitRequestBuilder =
-    new GitRequestBuilder(StaticStringExpression("fetch"),
-                          url,
-                          StaticStringExpression("anyUser"))
+    new GitRequestBuilder(StaticStringExpression("fetch"), url)
 
   def pull(url: Expression[String]): GitRequestBuilder =
-    new GitRequestBuilder(StaticStringExpression("pull"),
-                          url,
-                          StaticStringExpression("anyUser"))
+    new GitRequestBuilder(StaticStringExpression("pull"), url)
 
   def push(url: Expression[String]): GitRequestBuilder =
-    new GitRequestBuilder(StaticStringExpression("push"),
-                          url,
-                          StaticStringExpression("anyUser"))
+    new GitRequestBuilder(StaticStringExpression("push"), url)
 }

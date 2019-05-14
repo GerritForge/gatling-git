@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86cba7aa_41e8dfdc",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/Git.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-05-14T15:23:42Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to pass this as a parameter.\nIt is not dependent on the session and configuration can be accessed directly by the Request.\nor am I missing something?",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "c8122435d09a5c46e9c4fba9628a26fc111c4998",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

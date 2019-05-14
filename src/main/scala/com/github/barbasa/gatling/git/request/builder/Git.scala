@@ -21,23 +21,31 @@ case object Git {
 
   implicit lazy val conf: GatlingGitConfiguration = GatlingGitConfiguration()
 
-  def clone(url: Expression[String]): GitRequestBuilder =
-    new GitRequestBuilder(StaticStringExpression("clone"),
-                          url,
-                          StaticStringExpression("anyUser"))
+  def clone(repo: Expression[String], schema: Expression[String]): GitRequestBuilder =
+    new GitRequestBuilder(
+      StaticStringExpression("clone"),
+      repo,
+      schema,
+      StaticStringExpression("anyUser"))
 
-  def fetch(url: Expression[String]): GitRequestBuilder =
-    new GitRequestBuilder(StaticStringExpression("fetch"),
-                          url,
-                          StaticStringExpression("anyUser"))
+  def fetch(repo: Expression[String], schema: Expression[String]): GitRequestBuilder =
+    new GitRequestBuilder(
+      StaticStringExpression("clone"),
+      repo,
+      schema,
+      StaticStringExpression("anyUser"))
 
-  def pull(url: Expression[String]): GitRequestBuilder =
-    new GitRequestBuilder(StaticStringExpression("pull"),
-                          url,
-                          StaticStringExpression("anyUser"))
+  def pull(repo: Expression[String], schema: Expression[String]): GitRequestBuilder =
+    new GitRequestBuilder(
+      StaticStringExpression("clone"),
+      repo,
+      schema,
+      StaticStringExpression("anyUser"))
 
-  def push(url: Expression[String]): GitRequestBuilder =
-    new GitRequestBuilder(StaticStringExpression("push"),
-                          url,
-                          StaticStringExpression("anyUser"))
+  def push(repo: Expression[String], schema: Expression[String]): GitRequestBuilder =
+    new GitRequestBuilder(
+      StaticStringExpression("clone"),
+      repo,
+      schema,
+      StaticStringExpression("anyUser"))
 }

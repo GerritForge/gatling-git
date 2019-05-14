@@ -28,20 +28,20 @@ object GitRequestBuilder {
 }
 
 case class GitRequestBuilder(commandName: Expression[String],
-                             url: Expression[String],
-                             userExpr: Expression[String]) {
+                             url: Expression[String]) {
 
   def buildWithSession(session: Session): Option[Request] = {
     val command = commandName(session).toOption.get.toLowerCase
-    val user = userExpr(session).toOption.get.toLowerCase
+
+    val user = session.userId.toString
 
     validateUrl(url(session).toOption.get).map { u =>
       command match {
         case "clone" => Clone(u, user)
         case "fetch" => Fetch(u, user)
-        case "pull" => Pull(u, user)
-        case "push" => Push(u, user)
-        case _ => InvalidRequest(u, user)
+        case "pull"  => Pull(u, user)
+        case "push"  => Push(u, user)
+        case _       => InvalidRequest(u, user)
       }
     }
   }

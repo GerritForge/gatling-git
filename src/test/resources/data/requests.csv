@@ -1,7 +1,7 @@
-url,user,cmd,pause
-ssh://admin@localhost:29418/loadtest-repo,user5,clone,"7 ms"
-ssh://admin@localhost:29418/loadtest-repo,user5,pull,"7 ms"
-ssh://admin@localhost:29418/loadtest-repo,user5,push,"7 ms"
-http://localhost:8080/loadtest-repo,user4,clone,"7 ms"
-http://localhost:8080/loadtest-repo,user4,pull,"7 ms"
-http://localhost:8080/loadtest-repo,user4,push,"7 ms"
+url,cmd,pause
+ssh://admin@localhost:29418/loadtest-repo,clone,"7 ms"
+ssh://admin@localhost:29418/loadtest-repo,pull,"7 ms"
+ssh://admin@localhost:29418/loadtest-repo,push,"7 ms"
+http://localhost:8080/loadtest-repo,clone,"7 ms"
+http://localhost:8080/loadtest-repo,pull,"7 ms"
+http://localhost:8080/loadtest-repo,push,"7 ms"

@@ -28,12 +28,12 @@ object GitRequestBuilder {
 }
 
 case class GitRequestBuilder(commandName: Expression[String],
-                             url: Expression[String],
-                             userExpr: Expression[String]) {
+                             url: Expression[String]) {
 
   def buildWithSession(session: Session): Option[Request] = {
     val command = commandName(session).toOption.get.toLowerCase
-    val user = userExpr(session).toOption.get.toLowerCase
+
+    val user = session.userId.toString
 
     validateUrl(url(session).toOption.get).map { u =>
       command match {

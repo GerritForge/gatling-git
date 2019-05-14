@@ -19,9 +19,13 @@ import com.typesafe.config.ConfigFactory
 
 @Singleton
 case class GatlingGitConfiguration private(
-  httpUserName: String,
-  httpPassword: String,
-  tmpBasePath: String)
+  httpConfiguration: HttpConfiguration,
+  sshConfiguration: SshConfiguration,
+  tmpBasePath: String
+)
+
+case class HttpConfiguration(userName: String, password: String)
+case class SshConfiguration(private_key_path: String)
 
 object GatlingGitConfiguration {
   private val config = ConfigFactory.load()
@@ -32,7 +36,13 @@ object GatlingGitConfiguration {
     val tmpBasePath = "/%s/gatling-%d".format(
       config.getString("tmpFiles.basePath"),
       System.currentTimeMillis)
-    GatlingGitConfiguration(httpUserName, httpPassword, tmpBasePath)
-  }
 
+    val sshPrivateKeyPath = config.getString("ssh.private_key_path")
+
+    GatlingGitConfiguration(
+      HttpConfiguration(httpUserName, httpPassword),
+      SshConfiguration(sshPrivateKeyPath),
+      tmpBasePath
+    )
+  }
 }

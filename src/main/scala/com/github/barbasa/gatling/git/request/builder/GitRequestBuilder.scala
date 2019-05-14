@@ -15,10 +15,10 @@
 package com.github.barbasa.gatling.git.request.builder
 
 import com.github.barbasa.gatling.git.GatlingGitConfiguration
+import com.github.barbasa.gatling.git.GatlingGitConfiguration._
 import com.github.barbasa.gatling.git.action.GitRequestActionBuilder
 import com.github.barbasa.gatling.git.request._
 import io.gatling.core.session.{Expression, Session}
-import org.eclipse.jgit.transport.URIish
 
 object GitRequestBuilder {
 
@@ -28,33 +28,32 @@ object GitRequestBuilder {
 
 }
 
-case class GitRequestBuilder(commandName: Expression[String],
-                             url: Expression[String],
-                             userExpr: Expression[String])(implicit conf: GatlingGitConfiguration) {
+case class GitRequestBuilder(
+  commandName: Expression[String],
+  repo: Expression[String],
+  schema: Expression[String],
+  userExpr: Expression[String])(implicit conf: GatlingGitConfiguration) {
 
   def buildWithSession(session: Session): Option[Request] = {
-    val command = commandName(session).toOption.get.toLowerCase
-    val user = userExpr(session).toOption.get.toLowerCase
+    (for {
+      schema <- schema(session)
+      repo <- repo(session)
+      command <- commandName(session)
+      user <- userExpr(session)
+    } yield {
+      val uri = schema match {
+        case SSH_SCHEME => conf.sshConfiguration.uri
+        case HTTP_SCHEME | HTTPS_SCHEME => conf.httpConfiguration.uri
+      }
 
-    validateUrl(url(session).toOption.get).map { u =>
-      command match {
+      val u = uri.setPath(repo)
+      command.toLowerCase match {
         case "clone" => Clone(u, user)
         case "fetch" => Fetch(u, user)
         case "pull" => Pull(u, user)
         case "push" => Push(u, user)
         case _ => InvalidRequest(u, user)
       }
-    }
-  }
-
-  private def validateUrl(stringUrl: String): Option[URIish] = {
-    try {
-      Some(new URIish(stringUrl))
-    } catch {
-        case e: Exception => {
-          println(s"Invalid url: $stringUrl. ${e.getMessage}")
-          None
-        }
-      }
+    }).toOption
   }
 }

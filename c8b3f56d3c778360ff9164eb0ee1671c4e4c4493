@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9ab7fd39_b53f0d9d",
+        "filename": "CONFIG.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-05-15T10:36:05Z",
+      "side": 1,
+      "message": "I think it might be useful to be able to have the HTTP and SSH user as two separate identities.",
+      "parentUuid": "3614748e_79d01a5a",
+      "range": {
+        "startLine": 11,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "c8b3f56d3c778360ff9164eb0ee1671c4e4c4493",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b064648f_e70042bb",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/Git.scala",
         "patchSetId": 1
@@ -68,6 +92,30 @@
       "revId": "c8b3f56d3c778360ff9164eb0ee1671c4e4c4493",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6034efcf_12c2d04a",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-05-15T10:36:05Z",
+      "side": 1,
+      "message": "I think so.\nThe first one imports the GatlinGitConfiguration case class\nand the second imports the public attribute of its companion object.",
+      "parentUuid": "a7337fa2_01cf2edd",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 63
+      },
+      "revId": "c8b3f56d3c778360ff9164eb0ee1671c4e4c4493",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {

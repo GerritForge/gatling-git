@@ -70,6 +70,30 @@
       "revId": "2a514f5eb296021ad4aef0b848deae1ee064cc47",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc87dd8a_f69e2e08",
+        "filename": "src/test/resources/data/requests.csv",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-15T08:13:49Z",
+      "side": 0,
+      "message": "The reports can be combined to one: https://gatling.io/docs/current/cookbook/scaling_out/ . So if I get this correctly, you will be able to see both on the same graph.\n\nAlternatives could be:\n- allow to configure a list of URLs and let gatling run the scenario for all URLs in the list\n- allow to configure a default URL, which can optionally be overwritten by data in the CSV (CSV is probably not the best format for that)",
+      "parentUuid": "c1d946e1_3f88389d",
+      "range": {
+        "startLine": 2,
+        "startChar": 6,
+        "endLine": 2,
+        "endChar": 28
+      },
+      "revId": "2a514f5eb296021ad4aef0b848deae1ee064cc47",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }

@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "e2e575b3_d8f02b4f",
+        "filename": "CONFIG.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-05-15T08:18:04Z",
+      "side": 1,
+      "message": "Sorry my previous comment is a non-sense, time to go to bed probably :P",
+      "parentUuid": "d41b008b_78b9707a",
+      "range": {
+        "startLine": 3,
+        "startChar": 34,
+        "endLine": 3,
+        "endChar": 50
+      },
+      "revId": "9f24e6d55ca78c8532191c3585be1f439b660534",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95b56224_c2c60d53",
         "filename": "CONFIG.md",
         "patchSetId": 2
@@ -143,6 +167,30 @@
       "side": 1,
       "message": "yep this will be introduced by one of the subsequent changes in this chain",
       "parentUuid": "1ca3359c_2df02865",
+      "range": {
+        "startLine": 52,
+        "startChar": 31,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "9f24e6d55ca78c8532191c3585be1f439b660534",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1909cd1d_d36d690f",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-05-15T08:18:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9259dbd6_aa301062",
       "range": {
         "startLine": 52,
         "startChar": 31,

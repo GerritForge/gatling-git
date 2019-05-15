@@ -14,6 +14,7 @@
 
 package com.github.barbasa.gatling.git.request.builder
 
+import java.nio.file.Path
 import com.github.barbasa.gatling.git.action.GitRequestActionBuilder
 import com.github.barbasa.gatling.git.request._
 import io.gatling.core.session.{Expression, Session}
@@ -27,8 +28,9 @@ object GitRequestBuilder {
 
 }
 
-case class GitRequestBuilder(commandName: Expression[String],
-                             url: Expression[String]) {
+case class GitRequestBuilder(
+    commandName: Expression[String],
+    url: Expression[String])(implicit val postMsgHook: Option[Path] = None) {
 
   def buildWithSession(session: Session): Option[Request] = {
     val command = commandName(session).toOption.get.toLowerCase

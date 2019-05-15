@@ -14,16 +14,23 @@
 
 package com.github.barbasa.gatling.git
 
+import java.io.File
+import java.nio.file.Path
 import com.github.barbasa.gatling.git.protocol.GitProtocol
 import com.github.barbasa.gatling.git.request.builder.GitRequestBuilder
 import io.gatling.core.Predef._
 import io.gatling.core.structure.ScenarioBuilder
+
 import scala.concurrent.duration._
 
 class ReplayRecordsScenario extends Simulation {
 
   val gitProtocol = GitProtocol()
 
+  implicit val postMessageHook: Option[Path] = {
+    val classLoader: ClassLoader = getClass.getClassLoader
+    Some(new File(classLoader.getResource("hooks/commit-msg").getPath).toPath)
+  }
   val feeder = csv("data/requests.csv").circular
 
   val replayCallsScenario: ScenarioBuilder =

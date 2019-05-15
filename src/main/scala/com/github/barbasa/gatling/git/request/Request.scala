@@ -14,6 +14,7 @@
 
 package com.github.barbasa.gatling.git.request
 import java.io.File
+import java.nio.file.{Files, Path, Paths}
 import java.time.LocalDateTime
 
 import com.jcraft.jsch.JSch
@@ -83,12 +84,23 @@ object PimpedGitTransportCommand {
   implicit def toPimpedTransportCommand[C <: GitCommand[_],T](s: TransportCommand[C,T]) = new PimpedGitTransportCommand[C,T](s)
 }
 
-case class Clone(url: URIish, user: String) extends Request {
+case class Clone(url: URIish, user: String)(
+    implicit val postMsgHook: Option[Path] = None)
+    extends Request {
 
   val name = s"Clone: $url"
   def send: Unit = {
     import PimpedGitTransportCommand._
     Git.cloneRepository.setAuthenticationMethod(url, cb).setURI(url.toString).setDirectory(workTreeDirectory).call()
+
+    postMsgHook.foreach { sourceCommitMsgPath =>
+      val destinationCommitMsgPath =
+        Paths.get(workTreeDirectory.getAbsolutePath, ".git/hooks/commit-msg")
+      new File(
+        Files.copy(sourceCommitMsgPath, destinationCommitMsgPath).toString)
+        .setExecutable(true)
+    }
+
   }
 }
 
@@ -124,7 +136,8 @@ case class Push(url: URIish, user: String) extends Request {
     git.add.addFilepattern(s"testfile-$uniqueSuffix").call
     git
       .commit()
-      .setMessage(s"Test commit - $uniqueSuffix")
+      .setMessage(
+        s"Test commit header - $uniqueSuffix\n\nTest commit body - $uniqueSuffix\n")
       .call()
     // XXX Make branch configurable
     // XXX Make credential configurable

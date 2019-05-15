@@ -54,7 +54,6 @@ class ReplayRecordsScenario extends Simulation {
       //After is often called too early. Some retries should be implemented.
       Thread.sleep(5000)
       FileUtils.deleteDirectory(new File(conf.tmpBasePath))
-      throw new IOException("test")
     } catch {
       case e: IOException => {
         System.err.println("Unable to delete temporary directory: " + conf.tmpBasePath)

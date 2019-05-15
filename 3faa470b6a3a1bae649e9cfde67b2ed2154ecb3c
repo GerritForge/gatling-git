@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d79a929_102e7d88",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/AllUsersAllRecordsCloneOnlyScenario.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-05-15T08:54:01Z",
+      "side": 1,
+      "message": "no semicolon",
+      "range": {
+        "startLine": 45,
+        "startChar": 57,
+        "endLine": 45,
+        "endChar": 58
+      },
+      "revId": "3faa470b6a3a1bae649e9cfde67b2ed2154ecb3c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdf5794b_a1cbf0e5",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/ReplayRecordsScenario.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-05-15T08:54:01Z",
+      "side": 1,
+      "message": "too",
+      "range": {
+        "startLine": 57,
+        "startChar": 30,
+        "endLine": 57,
+        "endChar": 32
+      },
+      "revId": "3faa470b6a3a1bae649e9cfde67b2ed2154ecb3c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99d15253_3d16c415",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/ReplayRecordsScenario.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-05-15T08:54:01Z",
+      "side": 1,
+      "message": "can you print `which` directory?\nShould we also print on STDERR instead?",
+      "revId": "3faa470b6a3a1bae649e9cfde67b2ed2154ecb3c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

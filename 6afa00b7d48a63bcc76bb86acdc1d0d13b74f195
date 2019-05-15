@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "195c76ca_2eb7ae08",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/ReplayRecordsScenario.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-15T07:50:18Z",
+      "side": 1,
+      "message": "Can we move this logic out of the scenario into the plugin\u0027s code, so that it is easier for users to build their scenarios? Then we would just expect a path to a hook.",
+      "revId": "6afa00b7d48a63bcc76bb86acdc1d0d13b74f195",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

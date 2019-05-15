@@ -55,6 +55,16 @@ sealed trait Request {
     }
   }
 
+  def initRepo() = {
+    Git.init
+      .setDirectory(workTreeDirectory)
+      .call()
+      .remoteAdd()
+      .setName("origin")
+      .setUri(url)
+      .call()
+  }
+
   val cb = new TransportConfigCallback() {
     def configure(transport: Transport): Unit = {
       val sshTransport = transport.asInstanceOf[SshTransport]
@@ -106,8 +116,10 @@ case class Clone(url: URIish, user: String)(implicit val conf: GatlingGitConfigu
 }
 
 case class Fetch(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration) extends Request {
+  initRepo()
 
   val name = s"Fetch: $url"
+
   def send: Unit = {
     import PimpedGitTransportCommand._
     new Git(repository)
@@ -119,6 +131,8 @@ case class Fetch(url: URIish, user: String)(implicit val conf: GatlingGitConfigu
 }
 
 case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration) extends Request {
+  initRepo()
+
   override def name: String = s"Pull: $url"
 
   override def send: Unit = {
@@ -128,6 +142,8 @@ case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
 }
 
 case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration) extends Request {
+  initRepo()
+
   override def name: String = s"Push: $url"
   val uniqueSuffix = s"$user - ${LocalDateTime.now}"
 

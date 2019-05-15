@@ -46,6 +46,30 @@
       "revId": "2a514f5eb296021ad4aef0b848deae1ee064cc47",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1d946e1_3f88389d",
+        "filename": "src/test/resources/data/requests.csv",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-05-15T08:03:17Z",
+      "side": 0,
+      "message": "The problem would be comparing the metrics...it would be nice comparing the metrics on the same graphs. Also, I think we would have more flexibility if we allow the user to specify different urls. I believe it will be up to the user to choose what to do.\n\nIn my case, for example, I will have to run some tests, without massive traffic, but really frequently and compare the results coming from 2 different environments (hence 2 different urls).",
+      "parentUuid": "5146fe47_456110f2",
+      "range": {
+        "startLine": 2,
+        "startChar": 6,
+        "endLine": 2,
+        "endChar": 28
+      },
+      "revId": "2a514f5eb296021ad4aef0b848deae1ee064cc47",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }

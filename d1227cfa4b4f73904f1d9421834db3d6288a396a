@@ -22,6 +22,30 @@
       "revId": "d1227cfa4b4f73904f1d9421834db3d6288a396a",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66def42a_3fd2167f",
+        "filename": "build.sbt",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-15T08:01:56Z",
+      "side": 1,
+      "message": "I used it in the scenario to delete the whole directory structure. java.nio.file does not provide a convenient method to do that afaik. But I am happy to change that.",
+      "parentUuid": "c0b66ed9_abfb570a",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
+        "endLine": 19,
+        "endChar": 46
+      },
+      "revId": "d1227cfa4b4f73904f1d9421834db3d6288a396a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }

@@ -14,13 +14,14 @@
 
 package com.github.barbasa.gatling.git
 
+import java.io.File
 import com.github.barbasa.gatling.git.protocol.GitProtocol
 import com.github.barbasa.gatling.git.request.builder.GitRequestBuilder
-import com.typesafe.config._
 import io.gatling.core.Predef._
 import io.gatling.core.structure.ScenarioBuilder
 import java.io._
 import org.apache.commons.io.FileUtils
+
 import scala.concurrent.duration._
 
 class ReplayRecordsScenario extends Simulation {
@@ -28,6 +29,7 @@ class ReplayRecordsScenario extends Simulation {
   val gitProtocol = GitProtocol()
   implicit val conf = GatlingGitConfiguration()
 
+  implicit val postMessageHook: Option[String] = Some("hooks/commit-msg")
   val feeder = csv("data/requests.csv").circular
 
   val replayCallsScenario: ScenarioBuilder =

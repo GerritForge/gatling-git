@@ -28,9 +28,10 @@ object GitRequestBuilder {
 
 }
 
-case class GitRequestBuilder(
-    commandName: Expression[String],
-    url: Expression[String])(implicit conf: GatlingGitConfiguration) {
+case class GitRequestBuilder(commandName: Expression[String],
+                             url: Expression[String])(
+    implicit conf: GatlingGitConfiguration,
+    val postMsgHook: Option[String] = None) {
 
   def buildWithSession(session: Session): Option[Request] = {
     val command = commandName(session).toOption.get.toLowerCase
@@ -52,10 +53,10 @@ case class GitRequestBuilder(
     try {
       Some(new URIish(stringUrl))
     } catch {
-        case e: Exception => {
-          println(s"Invalid url: $stringUrl. ${e.getMessage}")
-          None
-        }
+      case e: Exception => {
+        println(s"Invalid url: $stringUrl. ${e.getMessage}")
+        None
+      }
     }
   }
 }

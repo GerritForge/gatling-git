@@ -16,6 +16,24 @@
       "revId": "2a514f5eb296021ad4aef0b848deae1ee064cc47",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edc64ef6_dccb090a",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/AllUsersAllRecordsCloneOnlyScenario.scala",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-15T08:36:09Z",
+      "side": 1,
+      "message": "For some reason this test was not compiling. Now it works without this change, as it should be. Removed this change.",
+      "parentUuid": "97d392ce_85232add",
+      "revId": "2a514f5eb296021ad4aef0b848deae1ee064cc47",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }

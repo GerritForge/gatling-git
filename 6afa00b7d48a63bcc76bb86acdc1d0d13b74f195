@@ -16,6 +16,24 @@
       "revId": "6afa00b7d48a63bcc76bb86acdc1d0d13b74f195",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01ffd293_a3c2c9d4",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/ReplayRecordsScenario.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-05-15T08:35:03Z",
+      "side": 1,
+      "message": "Yep, sounds good. I will amend it. I will also add a note on the README.",
+      "parentUuid": "195c76ca_2eb7ae08",
+      "revId": "6afa00b7d48a63bcc76bb86acdc1d0d13b74f195",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }

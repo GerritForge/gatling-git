@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d41b008b_78b9707a",
+        "filename": "CONFIG.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-05-15T08:12:38Z",
+      "side": 1,
+      "message": "The issue that might come up is that the gatling extensions are written without any standard ..all the one I have checked are different one from another. So I was thinking that if we were to use more than one protocol extension we might have a clash with the `application.conf`...but maybe it is just a paranoia.\n\nMaybe we can leave it as it is for the time being.",
+      "parentUuid": "d169e112_0191d129",
+      "range": {
+        "startLine": 3,
+        "startChar": 34,
+        "endLine": 3,
+        "endChar": 50
+      },
+      "revId": "9f24e6d55ca78c8532191c3585be1f439b660534",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95b56224_c2c60d53",
         "filename": "CONFIG.md",
         "patchSetId": 2

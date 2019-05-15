@@ -118,6 +118,30 @@
       "revId": "2a514f5eb296021ad4aef0b848deae1ee064cc47",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "306362de_f76e723a",
+        "filename": "src/test/resources/data/requests.csv",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-05-15T20:56:35Z",
+      "side": 0,
+      "message": "ok..I will figure out a way of combining the reports. Maybe combining 2 scenarios with different config or something like that.",
+      "parentUuid": "bcca0d93_8858de0c",
+      "range": {
+        "startLine": 2,
+        "startChar": 6,
+        "endLine": 2,
+        "endChar": 28
+      },
+      "revId": "2a514f5eb296021ad4aef0b848deae1ee064cc47",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }

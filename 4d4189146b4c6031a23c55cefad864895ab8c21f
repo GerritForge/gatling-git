@@ -213,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "e1a0dd0c_fc2ce489",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-05-16T14:30:10Z",
+      "side": 1,
+      "message": "Not really...I think the only advantages of this approach are that:\n- is more idiomatic\n- you don\u0027t need the additional traversal performed by mkString",
+      "parentUuid": "b53c75b8_39c3458c",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 12
+      },
+      "revId": "4d4189146b4c6031a23c55cefad864895ab8c21f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67d87c24_19c2e809",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
         "patchSetId": 1
@@ -445,6 +469,30 @@
       "revId": "4d4189146b4c6031a23c55cefad864895ab8c21f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "793514b9_7eba17fd",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-05-16T14:30:10Z",
+      "side": 1,
+      "message": "No I think you have a point, let\u0027s leave it as it is",
+      "parentUuid": "329d2262_a7d6c623",
+      "range": {
+        "startLine": 64,
+        "startChar": 31,
+        "endLine": 64,
+        "endChar": 44
+      },
+      "revId": "4d4189146b4c6031a23c55cefad864895ab8c21f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {

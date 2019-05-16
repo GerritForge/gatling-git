@@ -22,6 +22,30 @@
       "revId": "34a05bfcded9c6b31a2b4d8ad8972dce4e55d3b0",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dd0241a_05af0b13",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-16T04:37:27Z",
+      "side": 1,
+      "message": "That was also my first idea. But what, if the clone then fails? Then we don\u0027t have a repository anymore.\n\nHowever, now with Tony\u0027s change to do an init before other commands, that wouldn\u0027t be too much of an issue. So we could do that.",
+      "parentUuid": "376764ba_4e305407",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 5
+      },
+      "revId": "34a05bfcded9c6b31a2b4d8ad8972dce4e55d3b0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }

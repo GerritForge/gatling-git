@@ -17,6 +17,7 @@ import java.io.File
 import java.time.LocalDateTime
 
 import com.github.barbasa.gatling.git.GatlingGitConfiguration
+import com.github.barbasa.gatling.git.helper.CommitBuilder
 import com.jcraft.jsch.JSch
 import com.jcraft.jsch.{Session => SSHSession}
 import io.gatling.commons.stats.{OK => GatlingOK}
@@ -143,11 +144,12 @@ case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
   override def send: Unit = {
     import PimpedGitTransportCommand._
     val git = new Git(repository)
-    git.add.addFilepattern(s"testfile-$uniqueSuffix").call
-    git
-      .commit()
-      .setMessage(s"Test commit - $uniqueSuffix")
-      .call()
+
+    val commitBuilder = new CommitBuilder(repository)
+    // TODO: Make commit size configurable
+    // TODO: Create multiple commits per push
+    commitBuilder.createCommit(4, 100, 10000)
+
     // XXX Make branch configurable
     // XXX Make credential configurable
     git.push

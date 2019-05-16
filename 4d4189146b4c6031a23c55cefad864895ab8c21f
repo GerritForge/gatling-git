@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9c6e236f_8c8ca5e1",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-16T14:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7630e841_b1e2ceef",
+      "revId": "4d4189146b4c6031a23c55cefad864895ab8c21f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5132fa24_bf7dec1c",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "4d4189146b4c6031a23c55cefad864895ab8c21f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3392326b_f4af5649",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-16T14:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5132fa24_bf7dec1c",
+      "revId": "4d4189146b4c6031a23c55cefad864895ab8c21f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "0471248c_26423a9d",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-16T14:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cf15295_d664ea87",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "4d4189146b4c6031a23c55cefad864895ab8c21f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f670600a_f3b69744",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
         "patchSetId": 1
@@ -79,6 +139,30 @@
       "revId": "4d4189146b4c6031a23c55cefad864895ab8c21f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0819023b_0a53c0c7",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-16T14:09:56Z",
+      "side": 1,
+      "message": "Done\nScala is strange ...",
+      "parentUuid": "f670600a_f3b69744",
+      "range": {
+        "startLine": 32,
+        "startChar": 39,
+        "endLine": 32,
+        "endChar": 74
+      },
+      "revId": "4d4189146b4c6031a23c55cefad864895ab8c21f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "b53c75b8_39c3458c",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-16T14:09:56Z",
+      "side": 1,
+      "message": "Done\nBut does recursively doing this actually provide a better performance?",
+      "parentUuid": "04fc4b61_a6e2a006",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 12
+      },
+      "revId": "4d4189146b4c6031a23c55cefad864895ab8c21f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67d87c24_19c2e809",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
         "patchSetId": 1
@@ -125,6 +233,30 @@
       "revId": "4d4189146b4c6031a23c55cefad864895ab8c21f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47e5db76_092cc661",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-16T14:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67d87c24_19c2e809",
+      "range": {
+        "startLine": 46,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "4d4189146b4c6031a23c55cefad864895ab8c21f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "633c5be0_f31fca77",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-16T14:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0263f169_2609b1b6",
+      "range": {
+        "startLine": 50,
+        "startChar": 55,
+        "endLine": 50,
+        "endChar": 59
+      },
+      "revId": "4d4189146b4c6031a23c55cefad864895ab8c21f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aeb7dca_08c7b7d0",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
         "patchSetId": 1
@@ -171,6 +327,30 @@
       "revId": "4d4189146b4c6031a23c55cefad864895ab8c21f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db3bfe7a_1900e071",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-16T14:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aeb7dca_08c7b7d0",
+      "range": {
+        "startLine": 53,
+        "startChar": 19,
+        "endLine": 53,
+        "endChar": 23
+      },
+      "revId": "4d4189146b4c6031a23c55cefad864895ab8c21f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "4b895dfa_dbe9cc06",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-16T14:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a603e077_7a2dcd98",
+      "range": {
+        "startLine": 56,
+        "startChar": 6,
+        "endLine": 56,
+        "endChar": 12
+      },
+      "revId": "4d4189146b4c6031a23c55cefad864895ab8c21f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba9bbd12_16348dfe",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
         "patchSetId": 1
@@ -208,6 +412,30 @@
       "writtenOn": "2019-05-16T12:51:00Z",
       "side": 1,
       "message": "is this bytes? Shall we make this more explicit?",
+      "range": {
+        "startLine": 64,
+        "startChar": 31,
+        "endLine": 64,
+        "endChar": 44
+      },
+      "revId": "4d4189146b4c6031a23c55cefad864895ab8c21f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "329d2262_a7d6c623",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-16T14:09:56Z",
+      "side": 1,
+      "message": "I explicitely did not make it explicit yet. For text files I currently use it as number of chars, but for binary or other files, this won\u0027t make a lot of sense. Maybe we should make it bytes...",
+      "parentUuid": "ba9bbd12_16348dfe",
       "range": {
         "startLine": 64,
         "startChar": 31,
@@ -240,6 +468,30 @@
       "revId": "4d4189146b4c6031a23c55cefad864895ab8c21f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4a39618_374b4c26",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-16T14:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dada5a0_41360e85",
+      "range": {
+        "startLine": 67,
+        "startChar": 37,
+        "endLine": 67,
+        "endChar": 56
+      },
+      "revId": "4d4189146b4c6031a23c55cefad864895ab8c21f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }

@@ -1,7 +1,0 @@
-url,cmd,pause
-ssh://admin@localhost:29418/loadtest-repo,clone,"7 ms"
-ssh://admin@localhost:29418/loadtest-repo,pull,"7 ms"
-ssh://admin@localhost:29418/loadtest-repo,push,"7 ms"
-http://localhost:8080/loadtest-repo,clone,"7 ms"
-http://localhost:8080/loadtest-repo,pull,"7 ms"
-http://localhost:8080/loadtest-repo,push,"7 ms"

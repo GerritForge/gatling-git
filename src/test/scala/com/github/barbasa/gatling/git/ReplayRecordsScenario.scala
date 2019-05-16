@@ -16,7 +16,6 @@ package com.github.barbasa.gatling.git
 
 import com.github.barbasa.gatling.git.protocol.GitProtocol
 import com.github.barbasa.gatling.git.request.builder.GitRequestBuilder
-import com.typesafe.config._
 import io.gatling.core.Predef._
 import io.gatling.core.structure.ScenarioBuilder
 import java.io._
@@ -28,7 +27,7 @@ class ReplayRecordsScenario extends Simulation {
   val gitProtocol = GitProtocol()
   implicit val conf = GatlingGitConfiguration()
 
-  val feeder = csv("data/requests.csv").circular
+  val feeder = jsonFile("data/requests.json").circular
 
   val replayCallsScenario: ScenarioBuilder =
     scenario("Git commands")

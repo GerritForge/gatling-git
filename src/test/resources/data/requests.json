@@ -1,0 +1,32 @@
+[
+  {
+    "url": "ssh://admin@localhost:29777/gerrit.git",
+    "cmd": "clone",
+    "pause": "7 ms"
+  },
+  {
+    "url": "ssh://admin@localhost:29777/gerrit.git",
+    "cmd": "pull",
+    "pause": "7 ms"
+  },
+  {
+    "url": "ssh://admin@localhost:29777/gerrit.git",
+    "cmd": "push",
+    "pause": "7 ms"
+  },
+  {
+    "url": "http://localhost:9090/gerrit.git",
+    "cmd": "clone",
+    "pause": "7 ms"
+  },
+  {
+    "url": "http://localhost:9090/gerrit.git",
+    "cmd": "pull",
+    "pause": "7 ms"
+  },
+  {
+    "url": "http://localhost:9090/gerrit.git",
+    "cmd": "push",
+    "pause": "7 ms"
+  }
+]

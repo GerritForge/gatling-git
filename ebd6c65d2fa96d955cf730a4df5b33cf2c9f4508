@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "413b3818_3c617ad6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-05-16T04:47:45Z",
+      "side": 1,
+      "message": "Super cool idea!\n\nBut not sure I understand it all, probably my limit git knowledge is surfacing :/\n\nI understand the FETCH and the PULL, but in the case of a PUSH, can you push something without checking out the repo? How does it work?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "ebd6c65d2fa96d955cf730a4df5b33cf2c9f4508",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

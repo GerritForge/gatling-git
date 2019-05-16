@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22d27be9_092268ec",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-05-16T07:42:20Z",
+      "side": 1,
+      "message": "Any reason why these lines changed?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 3
+      },
+      "revId": "fdfcd78729bc0c5721b059c44ebec9f92b205e0c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8bb00d1_c5744ea3",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-05-16T07:42:20Z",
+      "side": 1,
+      "message": "I think we could just do:\nSource.fromResource(...) and not have the classLoader at all.\n@Ponch, wanna give it a try?",
+      "revId": "fdfcd78729bc0c5721b059c44ebec9f92b205e0c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0cf4b3e_7bf7893e",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-05-16T07:42:20Z",
+      "side": 1,
+      "message": "do we need this change?",
+      "revId": "fdfcd78729bc0c5721b059c44ebec9f92b205e0c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edf3fdbb_a9662270",
+        "filename": "src/test/resources/hooks/commit-msg",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-05-16T07:42:20Z",
+      "side": 1,
+      "message": "This is gerrit-spiecific so perhaps it shouldn\u0027t be in this repo.\nLet\u0027s remember to move this away to the gerrit-load-tests-scenarios repo",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 49
+      },
+      "revId": "fdfcd78729bc0c5721b059c44ebec9f92b205e0c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fac3243d_b83671d9",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/ReplayRecordsScenario.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-05-16T07:42:20Z",
+      "side": 1,
+      "message": "I think you can use: org.eclipse.jgit.hooks.CommitMsgHook.NAME for this",
+      "range": {
+        "startLine": 32,
+        "startChar": 55,
+        "endLine": 32,
+        "endChar": 71
+      },
+      "revId": "fdfcd78729bc0c5721b059c44ebec9f92b205e0c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

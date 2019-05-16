@@ -14,22 +14,22 @@
 
 package com.github.barbasa.gatling.git.request.builder
 
-import com.github.barbasa.gatling.git.GatlingGitConfiguration
-import io.gatling.core.session.{Expression, StaticStringExpression}
+import com.github.barbasa.gatling.git.{GatlingGitConfiguration, GitRequestSession}
+import io.gatling.core.session.Expression
 
 case object Git {
 
   implicit lazy val conf: GatlingGitConfiguration = GatlingGitConfiguration()
 
   def clone(url: Expression[String]): GitRequestBuilder =
-    new GitRequestBuilder(StaticStringExpression("clone"), url)
+    new GitRequestBuilder(GitRequestSession.cmd("clone", url))
 
   def fetch(url: Expression[String]): GitRequestBuilder =
-    new GitRequestBuilder(StaticStringExpression("fetch"), url)
+    new GitRequestBuilder(GitRequestSession.cmd("fetch", url))
 
   def pull(url: Expression[String]): GitRequestBuilder =
-    new GitRequestBuilder(StaticStringExpression("pull"), url)
+    new GitRequestBuilder(GitRequestSession.cmd("pull", url))
 
   def push(url: Expression[String]): GitRequestBuilder =
-    new GitRequestBuilder(StaticStringExpression("push"), url)
+    new GitRequestBuilder(GitRequestSession.cmd("push", url))
 }

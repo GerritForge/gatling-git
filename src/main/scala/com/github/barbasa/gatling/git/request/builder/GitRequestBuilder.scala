@@ -14,10 +14,11 @@
 
 package com.github.barbasa.gatling.git.request.builder
 
-import com.github.barbasa.gatling.git.GatlingGitConfiguration
+import com.github.barbasa.gatling.git.{GatlingGitConfiguration, GitRequestSession}
 import com.github.barbasa.gatling.git.action.GitRequestActionBuilder
 import com.github.barbasa.gatling.git.request._
-import io.gatling.core.session.{Expression, Session}
+import io.gatling.commons.validation.{Failure, Success, Validation}
+import io.gatling.core.session.Session
 import org.eclipse.jgit.transport.URIish
 
 object GitRequestBuilder {
@@ -28,33 +29,34 @@ object GitRequestBuilder {
 
 }
 
-case class GitRequestBuilder(
-    commandName: Expression[String],
-    url: Expression[String])(implicit conf: GatlingGitConfiguration) {
+case class GitRequestBuilder(request: GitRequestSession)(implicit conf: GatlingGitConfiguration) {
 
-  def buildWithSession(session: Session): Option[Request] = {
-    val command = commandName(session).toOption.get.toLowerCase
+  def buildWithSession(session: Session): Validation[Request] = {
 
-    val user = session.userId.toString
-
-    validateUrl(url(session).toOption.get).map { u =>
-      command match {
-        case "clone" => Clone(u, user)
-        case "fetch" => Fetch(u, user)
-        case "pull" => Pull(u, user)
-        case "push" => Push(u, user)
-        case _ => InvalidRequest(u, user)
+    for {
+      command   <- request.commandName(session)
+      urlString <- request.url(session)
+      url       <- validateUrl(urlString)
+    } yield {
+      val user = session.userId.toString
+      command.toLowerCase match {
+        case "clone" => Clone(url, user)
+        case "fetch" => Fetch(url, user)
+        case "pull" => Pull(url, user)
+        case "push" => Push(url, user)
+        case _ => InvalidRequest(url, user)
       }
     }
   }
 
-  private def validateUrl(stringUrl: String): Option[URIish] = {
+  private def validateUrl(stringUrl: String): Validation[URIish] = {
     try {
-      Some(new URIish(stringUrl))
+      Success(new URIish(stringUrl))
     } catch {
         case e: Exception => {
-          println(s"Invalid url: $stringUrl. ${e.getMessage}")
-          None
+          val errorMsg = s"Invalid url: $stringUrl. ${e.getMessage}"
+          println(errorMsg)
+          Failure(errorMsg)
         }
     }
   }

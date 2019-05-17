@@ -63,3 +63,26 @@ Generate report:
 ```
 sbt "gatling:lastReport"
 ```
+
+### How to use docker
+
+To build the docker container run:
+
+```
+docker build -t gatling-git .
+```
+
+To execute tests from the docker container run:
+
+```
+docker run -it \
+  -e GIT_HTTP_PASSWORD="foo" \
+  -e GIT_HTTP_USERNAME="bar" \
+  -v $DATA_DIR:/data \
+  -v $SCENARIO_DIR:/scenarios \
+  gatling-git
+```
+
+`$DATA_DIR` refers to a directory containing the data-files fed to the feeder
+used in a scenario. `$SCENARIO_DIR` is a directory containing all the scenarios
+that should be run.

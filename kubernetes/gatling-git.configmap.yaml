@@ -1,0 +1,119 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gatling-git-config
+data:
+  basicAuthUser: foo
+  requests.json: |
+    [
+      {
+        "url": "ssh://admin@localhost:29418/loadtest-repo",
+        "cmd": "clone",
+        "pause": "7 ms"
+      },
+      {
+        "url": "ssh://admin@localhost:29418/loadtest-repo",
+        "cmd": "pull",
+        "pause": "7 ms"
+      },
+      {
+        "url": "ssh://admin@localhost:29418/loadtest-repo",
+        "cmd": "push",
+        "pause": "7 ms"
+      },
+      {
+        "url": "http://localhost:8080/loadtest-repo",
+        "cmd": "clone",
+        "pause": "7 ms"
+      },
+      {
+        "url": "http://localhost:8080/loadtest-repo",
+        "cmd": "pull",
+        "pause": "7 ms"
+      },
+      {
+        "url": "http://localhost:8080/loadtest-repo",
+        "cmd": "push",
+        "pause": "7 ms"
+      }
+    ]
+  http-requests.csv: |
+    url
+    http://localhost:8080/a/projects/?d
+  scenario.scala: |
+    package com.github.barbasa.gatling.git
+
+    import com.github.barbasa.gatling.git.protocol.GitProtocol
+    import com.github.barbasa.gatling.git.request.builder.GitRequestBuilder
+    import io.gatling.core.Predef._
+    import io.gatling.core.structure.ScenarioBuilder
+    import java.io._
+
+    import io.gatling.http.Predef.http
+    import org.apache.commons.io.FileUtils
+
+    import scala.concurrent.duration._
+    import org.eclipse.jgit.hooks._
+
+
+
+    class ReplayRecordsScenario extends Simulation {
+      implicit val conf = GatlingGitConfiguration()
+
+      // HTTP Scenario
+      val httpConf = http
+        .baseUrl("http://localhost:8080")
+
+      val feederHttp = csv("data/http-requests.csv").circular
+
+      private val scnHttp =
+        scenario("HTTP scenario")
+          .repeat(10000) {
+            feed(feederHttp)
+              .exec(
+                http("get change ${url}")
+                  .httpRequest("GET", "${url}")
+                  .basicAuth(conf.httpConfiguration.userName, conf.httpConfiguration.password))
+              .pause(5.seconds)
+          }
+
+      // Git Scenario
+      val gitProtocol = GitProtocol()
+      implicit val postMessageHook: Option[String] = Some(
+        s"hooks/${CommitMsgHook.NAME}")
+
+      val feeder = jsonFile("data/requests.json").circular
+
+      val replayCallsScenario: ScenarioBuilder =
+        scenario("Git scenario")
+          .repeat(10000) {
+            feed(feeder)
+              .exec(new GitRequestBuilder(GitRequestSession("${cmd}", "${url}")))
+          }
+
+      setUp(
+        replayCallsScenario.inject(
+          atOnceUsers(10),
+          rampUsers(10) during (5 seconds),
+          constantUsersPerSec(20) during (15 seconds),
+          constantUsersPerSec(20) during (15 seconds) randomized),
+        scnHttp.inject(atOnceUsers(5),
+                      rampUsers(10) during (4 seconds),
+                      constantUsersPerSec(20) during (20 seconds))
+      ).protocols(gitProtocol, httpConf)
+        .maxDuration(5 minutes)
+
+      after {
+        try {
+          //After is often called too early. Some retries should be implemented.
+          Thread.sleep(5000)
+          FileUtils.deleteDirectory(new File(conf.tmpBasePath))
+        } catch {
+          case e: IOException => {
+            System.err.println(
+              "Unable to delete temporary directory: " + conf.tmpBasePath)
+            e.printStackTrace
+          }
+        }
+      }
+    }

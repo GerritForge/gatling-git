@@ -1,0 +1,46 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: gatling-git
+spec:
+  parallelism: 1
+  template:
+    metadata:
+      labels:
+        app: gatling-git
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: gatling-git
+        image: #docker image
+        env:
+        - name: GIT_HTTP_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: gatling-git-config
+              key: basicAuthUser
+        - name: GIT_HTTP_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: gatling-git-secret
+              key: basicAuthPwd
+        - name: SBT_OPTS
+          value: "-Xmx2G" # max. heap has to be lower then memory limit
+        resources:
+          limits:
+            memory: "3Gi"
+            cpu: "2"
+        volumeMounts:
+        - name: gatling-config
+          mountPath: "/data/requests.json"
+          subPath: requests.json
+        - name: gatling-config
+          mountPath: "/data/http-requests.csv"
+          subPath: http-requests.csv
+        - name: gatling-config
+          mountPath: "/scenarios/scenario.scala"
+          subPath: scenario.scala
+      volumes:
+      - name: gatling-config
+        configMap:
+          name: gatling-git-config

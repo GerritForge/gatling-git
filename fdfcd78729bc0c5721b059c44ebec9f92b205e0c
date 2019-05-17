@@ -162,6 +162,30 @@
       "revId": "fdfcd78729bc0c5721b059c44ebec9f92b205e0c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2b0de84_4ca61910",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/ReplayRecordsScenario.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-05-17T04:48:07Z",
+      "side": 1,
+      "message": "wow...cool! I didn\u0027t know it exists",
+      "parentUuid": "fac3243d_b83671d9",
+      "range": {
+        "startLine": 32,
+        "startChar": 55,
+        "endLine": 32,
+        "endChar": 71
+      },
+      "revId": "fdfcd78729bc0c5721b059c44ebec9f92b205e0c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }

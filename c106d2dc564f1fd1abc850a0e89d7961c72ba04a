@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd1aeee8_d30cf826",
+        "filename": "Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-17T09:11:05Z",
+      "side": 1,
+      "message": "not using this user",
+      "revId": "c106d2dc564f1fd1abc850a0e89d7961c72ba04a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

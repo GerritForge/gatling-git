@@ -21,11 +21,14 @@ import io.gatling.core.structure.ScenarioBuilder
 import java.io._
 import org.apache.commons.io.FileUtils
 import scala.concurrent.duration._
+import org.eclipse.jgit.hooks._
 
 class ReplayRecordsScenario extends Simulation {
 
   val gitProtocol = GitProtocol()
   implicit val conf = GatlingGitConfiguration()
+  implicit val postMessageHook: Option[String] = Some(
+    s"hooks/${CommitMsgHook.NAME}")
 
   val feeder = jsonFile("data/requests.json").circular
 

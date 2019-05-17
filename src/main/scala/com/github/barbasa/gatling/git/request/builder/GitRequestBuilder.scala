@@ -29,7 +29,7 @@ object GitRequestBuilder {
 
 }
 
-case class GitRequestBuilder(request: GitRequestSession)(implicit conf: GatlingGitConfiguration) {
+case class GitRequestBuilder(request: GitRequestSession)(implicit conf: GatlingGitConfiguration, val postMsgHook: Option[String] = None) {
 
   def buildWithSession(session: Session): Validation[Request] = {
 

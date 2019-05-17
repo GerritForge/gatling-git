@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa82101_41f5fd7c",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-17T12:07:19Z",
+      "side": 1,
+      "message": "in the end we should maybe find a way to make the way of file generation configurable or if we decide to be fully opinionated to remove the other methods.",
+      "revId": "ba2dcde89232029abc742e514d188bd216fd4b46",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32cface8_8a08e6f1",
+        "filename": "src/test/resources/files/file1.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-17T12:07:19Z",
+      "side": 1,
+      "message": "Rather than providing files, we should let the user configure a directory with files from which to pick files.",
+      "revId": "ba2dcde89232029abc742e514d188bd216fd4b46",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

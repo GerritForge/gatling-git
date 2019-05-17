@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "61dcef66_d7fab013",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-05-17T04:16:14Z",
+      "side": 1,
+      "message": "mmm...just formatting",
+      "parentUuid": "22d27be9_092268ec",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 3
+      },
+      "revId": "fdfcd78729bc0c5721b059c44ebec9f92b205e0c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8bb00d1_c5744ea3",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "85877125_647f1e02",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-05-17T04:16:14Z",
+      "side": 1,
+      "message": "I did start using the Source... but I got stacked somehow (I cannot recall how tbh), hence I used the class loader. I can give another try/",
+      "parentUuid": "a8bb00d1_c5744ea3",
+      "revId": "fdfcd78729bc0c5721b059c44ebec9f92b205e0c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0cf4b3e_7bf7893e",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2019-05-16T07:42:20Z",
       "side": 1,
       "message": "do we need this change?",
+      "revId": "fdfcd78729bc0c5721b059c44ebec9f92b205e0c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a87710d_fa7033f0",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-05-17T04:16:14Z",
+      "side": 1,
+      "message": "I sneak it in since it is the visible result of the usage of the post commit msg.\n\nA commit done this way will properly appear in Gerrit.",
+      "parentUuid": "f0cf4b3e_7bf7893e",
       "revId": "fdfcd78729bc0c5721b059c44ebec9f92b205e0c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true

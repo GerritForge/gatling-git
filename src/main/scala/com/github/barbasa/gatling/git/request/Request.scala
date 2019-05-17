@@ -159,10 +159,8 @@ case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
     import PimpedGitTransportCommand._
     val git = new Git(repository)
 
-    val commitBuilder = new CommitBuilder(repository)
-    // TODO: Make commit size configurable
-    // TODO: Create multiple commits per push
-    commitBuilder.createCommit(4, 100, 10000)
+  val commitBuilder = new CommitBuilder(repository, classLoader)
+  commitBuilder.commitFromPool(4)
 
     // XXX Make branch configurable
     // XXX Make credential configurable

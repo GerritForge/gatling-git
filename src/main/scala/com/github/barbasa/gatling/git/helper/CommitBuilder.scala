@@ -14,13 +14,16 @@
 
 package com.github.barbasa.gatling.git.helper
 
+import java.nio.file.{Files, Paths, StandardCopyOption}
+
 import com.github.barbasa.gatling.git.helper.MockFiles._
 import org.eclipse.jgit.api._
 import org.eclipse.jgit.lib.Repository
 import java.time.LocalDateTime
+
 import scala.util.Random
 
-class CommitBuilder(repository: Repository) {
+class CommitBuilder(repository: Repository, classLoader: ClassLoader) {
 
   val git = new Git(repository)
   val random = new Random()
@@ -31,8 +34,22 @@ class CommitBuilder(repository: Repository) {
       val file: MockFile = MockFileFactory.create("text", contentLength)
       val fileName: String = file.save(repository.getWorkTree.toString)
     }
+    addDir(".")
+  }
 
-    git.add.addFilepattern(".").call()
+
+  def commitFromPool(numFiles: Int): Unit = {
+    Vector.range(1, numFiles).par.foreach { e =>
+      Files.createLink(Paths.get(
+        s"${repository.getWorkTree}/file$e.txt"),
+        Paths.get(classLoader.getResource(s"files/file$e.txt").getPath)
+      )
+    }
+    addDir(".")
+  }
+
+  private def addDir(dir: String) = {
+    git.add.addFilepattern(dir).call()
 
     val uniqueSuffix = s"${LocalDateTime.now}"
     git

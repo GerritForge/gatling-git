@@ -10,6 +10,7 @@ lazy val root = (project in file("."))
       version := "0.1.0-SNAPSHOT"
     )),
     name := "gerrit",
+    javaOptions := Seq("-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"),
     libraryDependencies ++=
       gatling ++
         Seq("io.gatling" % "gatling-core" % "3.1.1" ) ++

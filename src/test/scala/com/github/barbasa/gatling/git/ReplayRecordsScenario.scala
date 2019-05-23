@@ -45,11 +45,11 @@ class ReplayRecordsScenario extends Simulation {
       nothingFor(4 seconds),
       atOnceUsers(10),
       rampUsers(10) during (5 seconds),
-      constantUsersPerSec(20) during (15 seconds),
-      constantUsersPerSec(20) during (15 seconds) randomized
+      constantUsersPerSec(50) during (15 seconds),
+      constantUsersPerSec(50) during (15 seconds) randomized
     ))
     .protocols(gitProtocol)
-    .maxDuration(60 seconds)
+    .maxDuration(60 minutes)
 
   after {
     try {

@@ -1,32 +1,34 @@
 [
   {
-    "url": "ssh://admin@localhost:29418/loadtest-repo",
-    "cmd": "clone",
-    "pause": "7 ms"
+    "url": "ssh://admin@95.216.78.153:29418/dummyproject",
+    "cmd": "clone"
   },
   {
-    "url": "ssh://admin@localhost:29418/loadtest-repo",
-    "cmd": "pull",
-    "pause": "7 ms"
+    "url": "ssh://admin@95.216.78.153:29418/dummyproject",
+    "cmd": "fetch"
   },
   {
-    "url": "ssh://admin@localhost:29418/loadtest-repo",
-    "cmd": "push",
-    "pause": "7 ms"
+    "url": "ssh://admin@95.216.78.153:29418/dummyproject",
+    "cmd": "pull"
   },
   {
-    "url": "http://localhost:8080/loadtest-repo",
-    "cmd": "clone",
-    "pause": "7 ms"
+    "url": "ssh://admin@95.216.78.153:29418/dummyproject",
+    "cmd": "push"
   },
   {
-    "url": "http://localhost:8080/loadtest-repo",
-    "cmd": "pull",
-    "pause": "7 ms"
+    "url": "http://95.216.78.153:8080/dummyproject",
+    "cmd": "clone"
   },
   {
-    "url": "http://localhost:8080/loadtest-repo",
-    "cmd": "push",
-    "pause": "7 ms"
+    "url": "http://95.216.78.153:8080/dummyproject",
+    "cmd": "fetch"
+  },
+  {
+    "url": "http://95.216.78.153:8080/dummyproject",
+    "cmd": "pull"
+  },
+  {
+    "url": "http://95.216.78.153:8080/dummyproject",
+    "cmd": "push"
   }
 ]

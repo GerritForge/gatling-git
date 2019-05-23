@@ -67,6 +67,7 @@ sealed trait Request {
       .setName("origin")
       .setUri(url)
       .call()
+
   }
 
   val cb = new TransportConfigCallback() {
@@ -149,8 +150,19 @@ case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
   }
 }
 
-case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration) extends Request {
+case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration, val postMsgHook: Option[String] = None) extends Request {
   initRepo()
+
+  postMsgHook.foreach { sourceCommitMsgFile =>
+    val sourceCommitMsgPath =
+      new File(classLoader.getResource(sourceCommitMsgFile).getPath).toPath
+
+    val destinationCommitMsgPath =
+      Paths.get(workTreeDirectory.getAbsolutePath, s".git/hooks/${CommitMsgHook.NAME}")
+    new File(
+      Files.copy(sourceCommitMsgPath, destinationCommitMsgPath).toString)
+      .setExecutable(true)
+  }
 
   override def name: String = s"Push: $url"
   val uniqueSuffix = s"$user - ${LocalDateTime.now}"
@@ -158,6 +170,9 @@ case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
   override def send: Unit = {
     import PimpedGitTransportCommand._
     val git = new Git(repository)
+
+    git.fetch().setRemote("origin").call()
+    git.checkout().setName("remotes/origin/master").call()
 
     val commitBuilder = new CommitBuilder(repository)
     // TODO: Make commit size configurable

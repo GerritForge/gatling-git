@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e8ab3ab_9a8c9669",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/AllUsersAllRecordsCloneOnlyScenario.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-05-27T22:24:48Z",
+      "side": 0,
+      "message": "Ops..deleted by mistake",
+      "revId": "55a95cc388e58db1b0a2846ae4970aaee743aced",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b174823d_5c9b6410",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/GatlingRunner.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-05-27T22:24:48Z",
+      "side": 0,
+      "message": "Ops..deleted by mistake",
+      "revId": "55a95cc388e58db1b0a2846ae4970aaee743aced",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

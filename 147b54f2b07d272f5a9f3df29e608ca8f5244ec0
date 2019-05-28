@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0806143_b5c70673",
+        "filename": "build.sbt",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-05-28T07:21:08Z",
+      "side": 1,
+      "message": "This should be updated.",
+      "range": {
+        "startLine": 8,
+        "startChar": 23,
+        "endLine": 8,
+        "endChar": 34
+      },
+      "revId": "147b54f2b07d272f5a9f3df29e608ca8f5244ec0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

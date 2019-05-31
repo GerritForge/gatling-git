@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dab4239e_6d41f42c",
+        "filename": "BENCHMARK.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-05-31T08:44:19Z",
+      "side": 1,
+      "message": "Do we have any idea how this might be the case?\nDoes gatling utilizes all possible resources when executed from the host machine? as opposed to a docker instance?\n\nPerhaps there\u0027s some configuration that can be tweaked to control this?\n\nIf we could get to a point where the client _doesn\u0027t have_ to use docker necessarily to produce a considerable throughput, that\u0027d be a plus.\n\nI think we should create an issue to do some additional investigation on this, what do you think?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 113
+      },
+      "revId": "5aba8bb86ece768da7f5e323702186c87a6cf444",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

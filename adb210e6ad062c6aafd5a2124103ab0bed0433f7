@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "675dfebd_565a3cd4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-06-04T14:04:03Z",
+      "side": 1,
+      "message": "True, if it is done outside, this should be fine.\n\nThe deletion most of the time does not delete everything. My guess is that some process is still running, when Gatling is calling after(). My suspicion is git-gc. Java will then not delete the respective files, even if forced deletion is used.",
+      "parentUuid": "8555a3c6_951db97a",
+      "revId": "adb210e6ad062c6aafd5a2124103ab0bed0433f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1c0d7b1_6ec12ca3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "It will be really difficult to simulate the exact journey of a user when loading data from a feeder. However, this limitation exists and is not accentuate when reusing the starting data. Of course, you have to be mindful when running your scenarios, you need to know the status of your data of the previous run if you want to use this optimization/trick/feature.\n\nIn my use case, for example, my test will mostly run against a 10GB repo and I don\u0027t always want to close the repo X times to perform, for example, a scenario with a majority of receive-pack.",
       "parentUuid": "c1c0d7b1_6ec12ca3",
+      "revId": "adb210e6ad062c6aafd5a2124103ab0bed0433f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c87fb758_7feb1270",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-06-04T14:04:03Z",
+      "side": 1,
+      "message": "Understandable.\nThis was also just meant as a general remark. Simulating the exact user journey will probably be near to impossible and should not be our aim for the near future.",
+      "parentUuid": "2ef4d1bc_7eef941b",
       "revId": "adb210e6ad062c6aafd5a2124103ab0bed0433f7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false

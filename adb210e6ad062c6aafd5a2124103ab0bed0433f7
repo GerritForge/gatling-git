@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8555a3c6_951db97a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-06-04T13:34:32Z",
+      "side": 1,
+      "message": "I forgot about the data deletion :/ Anyway, the data deletion at the moment is done outside the git extension itself, so it is a different problem I believe to address separately. Why do you think it is not working? I did try it, what was the issue you encountered?",
+      "parentUuid": "31693fbf_6674dcac",
+      "revId": "adb210e6ad062c6aafd5a2124103ab0bed0433f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1c0d7b1_6ec12ca3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-06-04T07:07:46Z",
       "side": 1,
       "message": "While the user-ids set by Gatling always start with 0 (or 1) and thus the directories will be really reused, we still cannot know which state the user will get when starting. While this is also the case within one run, we should keep this limitation in mind.",
+      "revId": "adb210e6ad062c6aafd5a2124103ab0bed0433f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ef4d1bc_7eef941b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-06-04T13:34:32Z",
+      "side": 1,
+      "message": "It will be really difficult to simulate the exact journey of a user when loading data from a feeder. However, this limitation exists and is not accentuate when reusing the starting data. Of course, you have to be mindful when running your scenarios, you need to know the status of your data of the previous run if you want to use this optimization/trick/feature.\n\nIn my use case, for example, my test will mostly run against a 10GB repo and I don\u0027t always want to close the repo X times to perform, for example, a scenario with a majority of receive-pack.",
+      "parentUuid": "c1c0d7b1_6ec12ca3",
       "revId": "adb210e6ad062c6aafd5a2124103ab0bed0433f7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false

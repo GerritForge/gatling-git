@@ -24,9 +24,16 @@ user to be used when performing git operations over HTTP
 Default: `default_username`
 
 ### tmpFiles.basePath [TMP_BASE_PATH]
-base path where to persist work on disk (i.e. clones)
+test data (i.e. clones) used by the running scenario is stored in `TMP_BASE_PATH/TEST_DATA_DIRECTORY`.
+`TMP_BASE_PATH` defines the base path of the location on filesystem
 
 Default: `/tmp`
+
+### tmpFiles.testDataDirectory [TEST_DATA_DIRECTORY]
+test data (i.e. clones) used by the running scenario is stored in `TMP_BASE_PATH/TEST_DATA_DIRECTORY`.
+`TEST_DATA_DIRECTORY` defines the directory of the location on filesystem
+
+Default: `System.currentTimeMillis`
 
 ### ssh.private_key_path [GIT_SSH_PRIVATE_KEY_PATH]
 Path to the ssh private key to be used for git operations over SSH

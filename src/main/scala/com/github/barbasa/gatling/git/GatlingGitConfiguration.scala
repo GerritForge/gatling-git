@@ -33,9 +33,15 @@ object GatlingGitConfiguration {
   def apply(): GatlingGitConfiguration = {
     val httpUserName = config.getString("http.username")
     val httpPassword = config.getString("http.password")
-    val tmpBasePath = "/%s/gatling-%d".format(
+    val testDataDirectory: String =
+      if (config.hasPath("tmpFiles.testDataDirectory")) {
+        config.getString("tmpFiles.testDataDirectory")
+      } else {
+        System.currentTimeMillis.toString
+      }
+    val tmpBasePath = "/%s/gatling-%s".format(
       config.getString("tmpFiles.basePath"),
-      System.currentTimeMillis)
+      testDataDirectory)
 
     val sshPrivateKeyPath = config.getString("ssh.private_key_path")
 

@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c37d972_f6f72ea7",
+        "filename": "CONFIG.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-06-05T09:27:23Z",
+      "side": 1,
+      "message": "Can we somehow combine these two options to avoid the copied description?",
+      "revId": "534879448ccd5cc83b84f04148d6d98ce72098d8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c777959f_8a8ff199",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/GatlingGitConfiguration.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-06-05T09:27:23Z",
+      "side": 1,
+      "message": "nit: changed indentation isn\u0027t consistent with the rest of the file.",
+      "revId": "534879448ccd5cc83b84f04148d6d98ce72098d8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e679958_8b025316",
+        "filename": "src/test/resources/application.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-06-05T09:27:23Z",
+      "side": 1,
+      "message": "As done for the other options, I would give the defaults here as well.",
+      "revId": "534879448ccd5cc83b84f04148d6d98ce72098d8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

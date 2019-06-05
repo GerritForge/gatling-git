@@ -39,3 +39,20 @@ Default: `System.currentTimeMillis`
 Path to the ssh private key to be used for git operations over SSH
 
 Default: `/tmp/ssh-keys/id_rsa`
+
+### commands.push.numFiles [NUM_FILES]
+Number of files included in each push
+
+Default: `4`
+
+### commands.push.minContentLength [MIN_CONTENT_LENGTH]
+Minimum content length in bytes of each file contained in the push.
+The code will synthesize commits with `NUM_FILES` and dimension randomly included between `MIN_CONTENT_LENGTH` and `MAX_CONTENT_LENGTH`
+
+Default: `100`
+
+### commands.push.minContentLength [MAX_CONTENT_LENGTH]
+Maximum content length in bytes of each file contained in the push
+The code will synthesize commits with `NUM_FILES` and dimension randomly included between `MIN_CONTENT_LENGTH` and `MAX_CONTENT_LENGTH`
+
+Default: `10000`

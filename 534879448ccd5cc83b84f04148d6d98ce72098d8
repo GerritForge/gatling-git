@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "aee7dafc_a67dbcdc",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/GatlingGitConfiguration.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-06-05T13:16:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c777959f_8a8ff199",
+      "revId": "534879448ccd5cc83b84f04148d6d98ce72098d8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e679958_8b025316",
         "filename": "src/test/resources/application.conf",
         "patchSetId": 1

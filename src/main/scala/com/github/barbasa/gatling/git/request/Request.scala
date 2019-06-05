@@ -160,9 +160,10 @@ case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
     val git = new Git(repository)
 
     val commitBuilder = new CommitBuilder(repository)
-    // TODO: Make commit size configurable
     // TODO: Create multiple commits per push
-    commitBuilder.createCommit(4, 100, 10000)
+    commitBuilder.createCommit(conf.commands.pushConfig.numFiles,
+                               conf.commands.pushConfig.minContentLength,
+                               conf.commands.pushConfig.maxContentLength)
 
     // XXX Make branch configurable
     // XXX Make credential configurable

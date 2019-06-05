@@ -15,20 +15,41 @@
 package com.github.barbasa.gatling.git
 
 import com.google.inject.Singleton
-import com.typesafe.config.ConfigFactory
+import com.typesafe.config.{Config, ConfigFactory}
 
 @Singleton
-case class GatlingGitConfiguration private(
-  httpConfiguration: HttpConfiguration,
-  sshConfiguration: SshConfiguration,
-  tmpBasePath: String
+case class GatlingGitConfiguration private (
+    httpConfiguration: HttpConfiguration,
+    sshConfiguration: SshConfiguration,
+    tmpBasePath: String,
+    commands: CommandsConfiguration
 )
 
 case class HttpConfiguration(userName: String, password: String)
 case class SshConfiguration(private_key_path: String)
+case class PushConfiguration(numFiles: Int,
+                             minContentLength: Int,
+                             maxContentLength: Int)
+object PushConfiguration {
+  val DEFAULT_NUM_FILES = 4
+  val DEFAULT_MIN_CONTENT_LENGTH = 100
+  val DEFAULT_MAX_CONTENT_LENGTH = 10000
+}
+
+case class CommandsConfiguration(pushConfig: PushConfiguration)
 
 object GatlingGitConfiguration {
   private val config = ConfigFactory.load()
+
+  implicit class RichConfig(val config: Config) extends AnyVal {
+    def optionalInt(path: String): Option[Int] =
+      if (config.hasPath(path)) {
+        Some(config.getInt(path))
+      } else {
+        None
+      }
+
+  }
 
   def apply(): GatlingGitConfiguration = {
     val httpUserName = config.getString("http.username")
@@ -45,10 +66,23 @@ object GatlingGitConfiguration {
 
     val sshPrivateKeyPath = config.getString("ssh.private_key_path")
 
+    val numFiles = config
+      .optionalInt("commands.push.numFiles")
+      .getOrElse(PushConfiguration.DEFAULT_NUM_FILES)
+    val minContentLength = config
+      .optionalInt("commands.push.minContentLength")
+      .getOrElse(PushConfiguration.DEFAULT_MIN_CONTENT_LENGTH)
+    val maxContentLength = config
+      .optionalInt("commands.push.maxContentLength")
+      .getOrElse(PushConfiguration.DEFAULT_MAX_CONTENT_LENGTH)
+    //XXX: Missing validation on parameters, i.e.: values >0. max > min
+
     GatlingGitConfiguration(
       HttpConfiguration(httpUserName, httpPassword),
       SshConfiguration(sshPrivateKeyPath),
-      tmpBasePath
+      tmpBasePath,
+      CommandsConfiguration(
+        PushConfiguration(numFiles, minContentLength, maxContentLength))
     )
   }
 }

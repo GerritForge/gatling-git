@@ -3,12 +3,13 @@ import Dependencies._
 enablePlugins(GatlingPlugin)
 
 lazy val root = (project in file("."))
+  .enablePlugins(GitVersioning)
   .settings(
     inThisBuild(List(
       organization := "gerritforge",
-      scalaVersion := "2.12.8",
-      version := "0.1.0"
+      scalaVersion := "2.12.8"
     )),
+
     name := "gatling-git",
     libraryDependencies ++=
       gatling ++
@@ -18,6 +19,8 @@ lazy val root = (project in file("."))
         Seq("com.google.inject" % "guice" % "3.0") ++
         Seq("commons-io" % "commons-io" % "2.6")
   )
+
+git.useGitDescribe := true
 
 assemblyMergeStrategy in assembly := {
  case PathList("META-INF", xs @ _*) => MergeStrategy.discard

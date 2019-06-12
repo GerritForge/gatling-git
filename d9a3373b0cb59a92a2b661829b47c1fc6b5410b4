@@ -22,6 +22,30 @@
       "revId": "d9a3373b0cb59a92a2b661829b47c1fc6b5410b4",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fd6f60d_11dedd62",
+        "filename": "build.sbt",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-06-12T17:52:03Z",
+      "side": 1,
+      "message": "Done...I have added scalafmt in another CS. Happy to switch to scalariform",
+      "parentUuid": "02885891_b725f00c",
+      "range": {
+        "startLine": 5,
+        "startChar": 38,
+        "endLine": 5,
+        "endChar": 67
+      },
+      "revId": "d9a3373b0cb59a92a2b661829b47c1fc6b5410b4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }

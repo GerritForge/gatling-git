@@ -44,10 +44,10 @@ sealed trait Request {
   def url: URIish
   def user: String
   val classLoader: ClassLoader = getClass.getClassLoader
-  private val repoName = url.getPath.split("/").last
-  val workTreeDirectory: File = new File(conf.tmpBasePath + s"/$user/$repoName")
-  private val builder = new FileRepositoryBuilder
-  val repository: Repository = builder.setWorkTree(workTreeDirectory).build()
+  private val repoName         = url.getPath.split("/").last
+  val workTreeDirectory: File  = new File(conf.tmpBasePath + s"/$user/$repoName")
+  private val builder          = new FileRepositoryBuilder
+  val repository: Repository   = builder.setWorkTree(workTreeDirectory).build()
 
   val sshSessionFactory: SshSessionFactory = new JschConfigSessionFactory() {
     protected def configure(host: OpenSshConfig.Host, session: SSHSession): Unit = {}
@@ -76,17 +76,24 @@ sealed trait Request {
     }
   }
 
-  class PimpedGitTransportCommand[C <: GitCommand[_],T](val c: TransportCommand[C,T]) {
+  class PimpedGitTransportCommand[C <: GitCommand[_], T](val c: TransportCommand[C, T]) {
     def setAuthenticationMethod(url: URIish, cb: TransportConfigCallback): C = {
       url.getScheme match {
         case "ssh" => c.setTransportConfigCallback(cb)
-        case "http" | "https" => c.setCredentialsProvider(new UsernamePasswordCredentialsProvider(conf.httpConfiguration.userName, conf.httpConfiguration.password))
+        case "http" | "https" =>
+          c.setCredentialsProvider(
+            new UsernamePasswordCredentialsProvider(
+              conf.httpConfiguration.userName,
+              conf.httpConfiguration.password
+            )
+          )
       }
     }
   }
 
   object PimpedGitTransportCommand {
-    implicit def toPimpedTransportCommand[C <: GitCommand[_],T](s: TransportCommand[C,T]) = new PimpedGitTransportCommand[C,T](s)
+    implicit def toPimpedTransportCommand[C <: GitCommand[_], T](s: TransportCommand[C, T]) =
+      new PimpedGitTransportCommand[C, T](s)
   }
 
 }
@@ -100,7 +107,10 @@ object Request {
   }
 }
 
-case class Clone(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration, val postMsgHook: Option[String] = None) extends Request {
+case class Clone(url: URIish, user: String)(
+    implicit val conf: GatlingGitConfiguration,
+    val postMsgHook: Option[String] = None
+) extends Request {
 
   val name = s"Clone: $url"
 
@@ -108,22 +118,26 @@ case class Clone(url: URIish, user: String)(implicit val conf: GatlingGitConfigu
 
   def send: Unit = {
     import PimpedGitTransportCommand._
-    Git.cloneRepository.setAuthenticationMethod(url, cb).setURI(url.toString).setDirectory(workTreeDirectory).call()
+    Git.cloneRepository
+      .setAuthenticationMethod(url, cb)
+      .setURI(url.toString)
+      .setDirectory(workTreeDirectory)
+      .call()
 
     postMsgHook.foreach { sourceCommitMsgFile =>
       val sourceCommitMsgPath =
         new File(classLoader.getResource(sourceCommitMsgFile).getPath).toPath
 
-        val destinationCommitMsgPath =
+      val destinationCommitMsgPath =
         Paths.get(workTreeDirectory.getAbsolutePath, s".git/hooks/${CommitMsgHook.NAME}")
-      new File(
-        Files.copy(sourceCommitMsgPath, destinationCommitMsgPath).toString)
+      new File(Files.copy(sourceCommitMsgPath, destinationCommitMsgPath).toString)
         .setExecutable(true)
     }
   }
 }
 
-case class Fetch(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration) extends Request {
+case class Fetch(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
+    extends Request {
   initRepo()
 
   val name = s"Fetch: $url"
@@ -138,7 +152,8 @@ case class Fetch(url: URIish, user: String)(implicit val conf: GatlingGitConfigu
   }
 }
 
-case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration) extends Request {
+case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
+    extends Request {
   initRepo()
 
   override def name: String = s"Pull: $url"
@@ -149,11 +164,12 @@ case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
   }
 }
 
-case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration) extends Request {
+case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
+    extends Request {
   initRepo()
 
   override def name: String = s"Push: $url"
-  val uniqueSuffix = s"$user - ${LocalDateTime.now}"
+  val uniqueSuffix          = s"$user - ${LocalDateTime.now}"
 
   override def send: Unit = {
     import PimpedGitTransportCommand._
@@ -161,9 +177,11 @@ case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
 
     val commitBuilder = new CommitBuilder(repository)
     // TODO: Create multiple commits per push
-    commitBuilder.createCommit(conf.commands.pushConfig.numFiles,
-                               conf.commands.pushConfig.minContentLength,
-                               conf.commands.pushConfig.maxContentLength)
+    commitBuilder.createCommit(
+      conf.commands.pushConfig.numFiles,
+      conf.commands.pushConfig.minContentLength,
+      conf.commands.pushConfig.maxContentLength
+    )
 
     // XXX Make branch configurable
     // XXX Make credential configurable
@@ -175,7 +193,8 @@ case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
   }
 }
 
-case class InvalidRequest(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration) extends Request {
+case class InvalidRequest(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
+    extends Request {
   override def name: String = "Invalid Request"
 
   override def send: Unit = {
@@ -186,5 +205,5 @@ case class InvalidRequest(url: URIish, user: String)(implicit val conf: GatlingG
 case class Response(status: ResponseStatus)
 
 sealed trait ResponseStatus
-case object OK extends ResponseStatus
+case object OK   extends ResponseStatus
 case object Fail extends ResponseStatus

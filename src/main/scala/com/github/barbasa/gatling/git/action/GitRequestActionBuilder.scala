@@ -19,8 +19,7 @@ import io.gatling.core.action.Action
 import io.gatling.core.action.builder.ActionBuilder
 import io.gatling.core.structure.ScenarioContext
 
-class GitRequestActionBuilder(requestBuilder: GitRequestBuilder)
-    extends ActionBuilder {
+class GitRequestActionBuilder(requestBuilder: GitRequestBuilder) extends ActionBuilder {
   override def build(ctx: ScenarioContext, next: Action): Action = {
     import ctx.coreComponents
 

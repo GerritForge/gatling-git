@@ -23,13 +23,15 @@ import org.eclipse.jgit.transport.URIish
 
 object GitRequestBuilder {
 
-  implicit def toActionBuilder(
-      requestBuilder: GitRequestBuilder): GitRequestActionBuilder =
+  implicit def toActionBuilder(requestBuilder: GitRequestBuilder): GitRequestActionBuilder =
     new GitRequestActionBuilder(requestBuilder)
 
 }
 
-case class GitRequestBuilder(request: GitRequestSession)(implicit conf: GatlingGitConfiguration, val postMsgHook: Option[String] = None) {
+case class GitRequestBuilder(request: GitRequestSession)(
+    implicit conf: GatlingGitConfiguration,
+    val postMsgHook: Option[String] = None
+) {
 
   def buildWithSession(session: Session): Validation[Request] = {
 
@@ -42,9 +44,9 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit conf: GatlingG
       command.toLowerCase match {
         case "clone" => Clone(url, user)
         case "fetch" => Fetch(url, user)
-        case "pull" => Pull(url, user)
-        case "push" => Push(url, user)
-        case _ => InvalidRequest(url, user)
+        case "pull"  => Pull(url, user)
+        case "push"  => Push(url, user)
+        case _       => InvalidRequest(url, user)
       }
     }
   }
@@ -53,11 +55,11 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit conf: GatlingG
     try {
       Success(new URIish(stringUrl))
     } catch {
-        case e: Exception => {
-          val errorMsg = s"Invalid url: $stringUrl. ${e.getMessage}"
-          println(errorMsg)
-          Failure(errorMsg)
-        }
+      case e: Exception => {
+        val errorMsg = s"Invalid url: $stringUrl. ${e.getMessage}"
+        println(errorMsg)
+        Failure(errorMsg)
+      }
     }
   }
 }

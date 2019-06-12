@@ -29,9 +29,9 @@ object MockFiles {
   }
 
   abstract class AbstractMockFile(contentLength: Int) extends MockFile {
-    val alphabet = ('a' to 'z') ++ ('A' to 'Z') ++ ('0' to '9') ++ ("_")
+    val alphabet         = ('a' to 'z') ++ ('A' to 'Z') ++ ('0' to '9') ++ ("_")
     override def content = generateContent(contentLength)
-    override def name = generateRandomString(10)
+    override def name    = generateRandomString(10)
 
     def generateRandomString(length: Int): String = (1 to length).foldLeft("")(
       (acc, _) => acc + alphabet(Random.nextInt(alphabet.size))
@@ -46,8 +46,8 @@ object MockFiles {
 
     override def save(workTreeDirectory: String): String = {
       val filePath = "%s/%s".format(workTreeDirectory, name)
-      val file = new File(filePath)
-      val writer = new BufferedWriter(new FileWriter(file))
+      val file     = new File(filePath)
+      val writer   = new BufferedWriter(new FileWriter(file))
       writer.write(content)
       writer.close()
 
@@ -62,7 +62,7 @@ object MockFileFactory {
   def create(fileType: String, contentLength: Int): MockFile = {
     fileType match {
       case "text" => new TextFile(contentLength)
-      case _ => throw new Exception("Unknown file type: %s".format(fileType))
+      case _      => throw new Exception("Unknown file type: %s".format(fileType))
     }
   }
 }

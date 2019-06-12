@@ -19,19 +19,17 @@ import com.typesafe.config.{Config, ConfigFactory}
 
 @Singleton
 case class GatlingGitConfiguration private (
-  httpConfiguration: HttpConfiguration,
-  sshConfiguration: SshConfiguration,
-  tmpBasePath: String,
-  commands: CommandsConfiguration
+    httpConfiguration: HttpConfiguration,
+    sshConfiguration: SshConfiguration,
+    tmpBasePath: String,
+    commands: CommandsConfiguration
 )
 
 case class HttpConfiguration(userName: String, password: String)
 case class SshConfiguration(private_key_path: String)
-case class PushConfiguration(numFiles: Int,
-                             minContentLength: Int,
-                             maxContentLength: Int)
+case class PushConfiguration(numFiles: Int, minContentLength: Int, maxContentLength: Int)
 object PushConfiguration {
-  val DEFAULT_NUM_FILES = 4
+  val DEFAULT_NUM_FILES          = 4
   val DEFAULT_MIN_CONTENT_LENGTH = 100
   val DEFAULT_MAX_CONTENT_LENGTH = 10000
 }
@@ -60,9 +58,8 @@ object GatlingGitConfiguration {
       } else {
         System.currentTimeMillis.toString
       }
-    val tmpBasePath = "/%s/gatling-%s".format(
-      config.getString("tmpFiles.basePath"),
-      testDataDirectory)
+    val tmpBasePath =
+      "/%s/gatling-%s".format(config.getString("tmpFiles.basePath"), testDataDirectory)
 
     val sshPrivateKeyPath = config.getString("ssh.private_key_path")
 
@@ -81,8 +78,7 @@ object GatlingGitConfiguration {
       HttpConfiguration(httpUserName, httpPassword),
       SshConfiguration(sshPrivateKeyPath),
       tmpBasePath,
-      CommandsConfiguration(
-        PushConfiguration(numFiles, minContentLength, maxContentLength))
+      CommandsConfiguration(PushConfiguration(numFiles, minContentLength, maxContentLength))
     )
   }
 }

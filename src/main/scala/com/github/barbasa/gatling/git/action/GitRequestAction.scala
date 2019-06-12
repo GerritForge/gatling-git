@@ -24,10 +24,11 @@ import io.gatling.core.session.Session
 import io.gatling.core.stats.StatsEngine
 import io.gatling.core.util.NameGen
 
-class GitRequestAction(coreComponents: CoreComponents,
-                       reqBuilder: GitRequestBuilder,
-                       val next: Action)
-    extends ExitableAction
+class GitRequestAction(
+    coreComponents: CoreComponents,
+    reqBuilder: GitRequestBuilder,
+    val next: Action
+) extends ExitableAction
     with NameGen {
 
   override def statsEngine: StatsEngine = coreComponents.statsEngine
@@ -50,13 +51,15 @@ class GitRequestAction(coreComponents: CoreComponents,
       case Failure(message) => (Response(Fail), "Unknown", Some(message))
     }
 
-    statsEngine.logResponse(session,
-                            reqName,
-                            start,
-                            clock.nowMillis,
-                            Request.gatlingStatusFromGit(response),
-                            None,
-                            message)
+    statsEngine.logResponse(
+      session,
+      reqName,
+      start,
+      clock.nowMillis,
+      Request.gatlingStatusFromGit(response),
+      None,
+      message
+    )
     next ! session.markAsSucceeded
   }
 }

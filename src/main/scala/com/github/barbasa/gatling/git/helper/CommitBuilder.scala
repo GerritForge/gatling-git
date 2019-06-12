@@ -22,13 +22,14 @@ import scala.util.Random
 
 class CommitBuilder(repository: Repository) {
 
-  val git = new Git(repository)
+  val git    = new Git(repository)
   val random = new Random()
 
   def createCommit(numFiles: Int, minContentLength: Int, maxContentLength: Int) {
     Vector.range(0, numFiles).par.foreach { e =>
-      val contentLength: Int = minContentLength + random.nextInt((maxContentLength - minContentLength) +1)
-      val file: MockFile = MockFileFactory.create("text", contentLength)
+      val contentLength: Int = minContentLength + random
+        .nextInt((maxContentLength - minContentLength) + 1)
+      val file: MockFile   = MockFileFactory.create("text", contentLength)
       val fileName: String = file.save(repository.getWorkTree.toString)
     }
 

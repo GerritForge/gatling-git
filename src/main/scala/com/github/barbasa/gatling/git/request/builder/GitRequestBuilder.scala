@@ -18,8 +18,8 @@ import com.github.barbasa.gatling.git.{GatlingGitConfiguration, GitRequestSessio
 import com.github.barbasa.gatling.git.action.GitRequestActionBuilder
 import com.github.barbasa.gatling.git.request._
 import io.gatling.commons.validation.{Failure, Success, Validation}
-import io.gatling.core.session.Session
-import org.eclipse.jgit.transport.URIish
+import io.gatling.core.session.{Expression, Session}
+import org.eclipse.jgit.transport.{RefSpec, URIish}
 
 object GitRequestBuilder {
 
@@ -35,6 +35,11 @@ case class GitRequestBuilder(request: GitRequestSession)(
 
   def buildWithSession(session: Session): Validation[Request] = {
 
+    val maybeRefSpec: Option[RefSpec] = session("refSpec")
+      .asOption[String]
+      .map(validateRefSpec)
+      .flatMap(_.toOption)
+
     for {
       command   <- request.commandName(session)
       urlString <- request.url(session)
@@ -42,11 +47,11 @@ case class GitRequestBuilder(request: GitRequestSession)(
     } yield {
       val user = session.userId.toString
       command.toLowerCase match {
-        case "clone" => Clone(url, user)
-        case "fetch" => Fetch(url, user)
-        case "pull"  => Pull(url, user)
-        case "push"  => Push(url, user)
-        case _       => InvalidRequest(url, user)
+        case "clone" => Clone(url, user, maybeRefSpec)
+        case "fetch" => Fetch(url, user, maybeRefSpec)
+        case "pull"  => Pull(url, user, maybeRefSpec)
+        case "push"  => Push(url, user, maybeRefSpec)
+        case _       => InvalidRequest(url, user, maybeRefSpec)
       }
     }
   }
@@ -57,6 +62,18 @@ case class GitRequestBuilder(request: GitRequestSession)(
     } catch {
       case e: Exception => {
         val errorMsg = s"Invalid url: $stringUrl. ${e.getMessage}"
+        println(errorMsg)
+        Failure(errorMsg)
+      }
+    }
+  }
+
+  private def validateRefSpec(stringRefSpec: String): Validation[RefSpec] = {
+    try {
+      Success(new RefSpec(stringRefSpec))
+    } catch {
+      case e: Exception => {
+        val errorMsg = s"Invalid refSpec: $stringRefSpec. ${e.getMessage}"
         println(errorMsg)
         Failure(errorMsg)
       }

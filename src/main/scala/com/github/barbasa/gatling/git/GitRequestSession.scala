@@ -16,7 +16,11 @@ package com.github.barbasa.gatling.git
 
 import io.gatling.core.session.{Expression, StaticStringExpression}
 
-case class GitRequestSession(commandName: Expression[String], url: Expression[String])
+case class GitRequestSession(
+    commandName: Expression[String],
+    url: Expression[String],
+    refSpec: Option[Expression[String]] = None
+)
 
 object GitRequestSession {
   def cmd(cmd: String, url: Expression[String]): GitRequestSession =

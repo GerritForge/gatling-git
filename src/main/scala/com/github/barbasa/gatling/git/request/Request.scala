@@ -43,6 +43,7 @@ sealed trait Request {
   def send: Unit
   def url: URIish
   def user: String
+  def maybeRefSpec: Option[RefSpec]
   val classLoader: ClassLoader = getClass.getClassLoader
   private val repoName         = url.getPath.split("/").last
   val workTreeDirectory: File  = new File(conf.tmpBasePath + s"/$user/$repoName")
@@ -87,6 +88,11 @@ sealed trait Request {
               conf.httpConfiguration.password
             )
           )
+        case "file" => c.setTransportConfigCallback(new TransportConfigCallback(){
+          override def configure(transport: Transport): Unit = {
+            println("Noop: writing on file")
+          }
+        })
       }
     }
   }
@@ -107,7 +113,7 @@ object Request {
   }
 }
 
-case class Clone(url: URIish, user: String)(
+case class Clone(url: URIish, user: String, maybeRefSpec: Option[RefSpec] = None)(
     implicit val conf: GatlingGitConfiguration,
     val postMsgHook: Option[String] = None
 ) extends Request {
@@ -136,9 +142,12 @@ case class Clone(url: URIish, user: String)(
   }
 }
 
-case class Fetch(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
-    extends Request {
-  initRepo()
+case class Fetch(url: URIish, user: String, maybeRefSpec: Option[RefSpec] = None)(
+    implicit val conf: GatlingGitConfiguration
+) extends Request {
+
+  val remoteConfig = initRepo()
+  maybeRefSpec.map(remoteConfig.addFetchRefSpec)
 
   val name = s"Fetch: $url"
 
@@ -152,9 +161,11 @@ case class Fetch(url: URIish, user: String)(implicit val conf: GatlingGitConfigu
   }
 }
 
-case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
-    extends Request {
-  initRepo()
+case class Pull(url: URIish, user: String, maybeRefSpec: Option[RefSpec] = None)(
+    implicit val conf: GatlingGitConfiguration
+) extends Request {
+  val remoteConfig = initRepo()
+  maybeRefSpec.map(remoteConfig.addFetchRefSpec)
 
   override def name: String = s"Pull: $url"
 
@@ -164,9 +175,11 @@ case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
   }
 }
 
-case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
-    extends Request {
-  initRepo()
+case class Push(url: URIish, user: String, maybeRefSpec: Option[RefSpec] = None)(
+    implicit val conf: GatlingGitConfiguration
+) extends Request {
+  val remoteConfig = initRepo()
+  maybeRefSpec.map(remoteConfig.addPushRefSpec)
 
   override def name: String = s"Push: $url"
   val uniqueSuffix          = s"$user - ${LocalDateTime.now}"
@@ -185,16 +198,18 @@ case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
 
     // XXX Make branch configurable
     // XXX Make credential configurable
+    val ref = maybeRefSpec.getOrElse(new RefSpec("HEAD:refs/head/master"))
     git.push
       .setAuthenticationMethod(url, cb)
       .setRemote(url.toString)
-      .add("HEAD:refs/for/master")
+      .setRefSpecs(ref)
       .call()
   }
 }
 
-case class InvalidRequest(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
-    extends Request {
+case class InvalidRequest(url: URIish, user: String, maybeRefSpec: Option[RefSpec] = None)(
+    implicit val conf: GatlingGitConfiguration
+) extends Request {
   override def name: String = "Invalid Request"
 
   override def send: Unit = {

@@ -36,7 +36,7 @@ class ReplayRecordsScenario extends Simulation {
     scenario("Git commands")
       .repeat(10000) {
         feed(feeder)
-          .exec(new GitRequestBuilder(GitRequestSession("${cmd}", "${url}")))
+          .exec(GitRequestBuilder(GitRequestSession("${cmd}", "${url}")))
       }
 //      .pause("${pause}")
 

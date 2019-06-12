@@ -43,6 +43,7 @@ sealed trait Request {
   def send: Unit
   def url: URIish
   def user: String
+  def maybeRefSpec: Option[RefSpec]
   val classLoader: ClassLoader = getClass.getClassLoader
   private val repoName         = url.getPath.split("/").last
   val workTreeDirectory: File  = new File(conf.tmpBasePath + s"/$user/$repoName")
@@ -107,7 +108,7 @@ object Request {
   }
 }
 
-case class Clone(url: URIish, user: String)(
+case class Clone(url: URIish, user: String, maybeRefSpec: Option[RefSpec])(
     implicit val conf: GatlingGitConfiguration,
     val postMsgHook: Option[String] = None
 ) extends Request {
@@ -136,8 +137,9 @@ case class Clone(url: URIish, user: String)(
   }
 }
 
-case class Fetch(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
-    extends Request {
+case class Fetch(url: URIish, user: String, maybeRefSpec: Option[RefSpec])(
+    implicit val conf: GatlingGitConfiguration
+) extends Request {
   initRepo()
 
   val name = s"Fetch: $url"
@@ -152,8 +154,9 @@ case class Fetch(url: URIish, user: String)(implicit val conf: GatlingGitConfigu
   }
 }
 
-case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
-    extends Request {
+case class Pull(url: URIish, user: String, maybeRefSpec: Option[RefSpec])(
+    implicit val conf: GatlingGitConfiguration
+) extends Request {
   initRepo()
 
   override def name: String = s"Pull: $url"
@@ -164,8 +167,9 @@ case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
   }
 }
 
-case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
-    extends Request {
+case class Push(url: URIish, user: String, maybeRefSpec: Option[RefSpec])(
+    implicit val conf: GatlingGitConfiguration
+) extends Request {
   initRepo()
 
   override def name: String = s"Push: $url"
@@ -193,8 +197,9 @@ case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
   }
 }
 
-case class InvalidRequest(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
-    extends Request {
+case class InvalidRequest(url: URIish, user: String, maybeRefSpec: Option[RefSpec])(
+    implicit val conf: GatlingGitConfiguration
+) extends Request {
   override def name: String = "Invalid Request"
 
   override def send: Unit = {

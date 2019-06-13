@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03a86aad_6a30b741",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-06-13T10:42:56Z",
+      "side": 1,
+      "message": "Why don\u0027t we move the validation of refSpec inside the GitRequestSession itself?\nIf the string used is not a valid perhaps we should abort immediately.\nWDYT?",
+      "revId": "f5019166363e8de4a4e3b8e2239c448f717c4417",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

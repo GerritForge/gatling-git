@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd1d7504_7c86cbe8",
+        "filename": "build.sbt",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-06-24T09:17:50Z",
+      "side": 1,
+      "message": "nit: Why adding a blank line here? That seems kind of arbitrary. This is also inconsistent with the next parameters.",
+      "revId": "2f838e7c86e1c6390d9936fd81bedcd757bdc8ec",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

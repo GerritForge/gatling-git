@@ -15,7 +15,7 @@
 package com.github.barbasa.gatling.git.action
 
 import com.github.barbasa.gatling.git.request.builder.GitRequestBuilder
-import com.github.barbasa.gatling.git.request.{Fail, OK, Request, Response}
+import com.github.barbasa.gatling.git.request.{Fail, OK, Request, GitCommandResponse}
 import io.gatling.commons.util.Clock
 import io.gatling.commons.validation.{Failure, Success}
 import io.gatling.core.CoreComponents
@@ -43,13 +43,13 @@ class GitRequestAction(
     val (response, reqName, message) = reqBuilder.buildWithSession(session) match {
       case Success(req) =>
         try {
-          req.send
-          (Response(OK), req.name, None)
+          val commandResponse = req.send
+          (commandResponse, req.name, commandResponse.message)
         } catch {
           case e: Exception =>
-            (Response(Fail), req.name, Some(s"${e.getMessage} - ${e.getCause}"))
+            (GitCommandResponse(Fail), req.name, Some(s"${e.getMessage} - ${e.getCause}"))
         }
-      case Failure(message) => (Response(Fail), "Unknown", Some(message))
+      case Failure(message) => (GitCommandResponse(Fail), "Unknown", Some(message))
     }
 
     statsEngine.logResponse(

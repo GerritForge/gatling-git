@@ -40,7 +40,7 @@ sealed trait Request {
 
   def conf: GatlingGitConfiguration
   def name: String
-  def send: Unit
+  def send: GitCommandResponse
   def url: URIish
   def user: String
   val classLoader: ClassLoader = getClass.getClassLoader
@@ -87,6 +87,9 @@ sealed trait Request {
               conf.httpConfiguration.password
             )
           )
+        case "file" => c.setTransportConfigCallback((transport: Transport) => {
+          println("Noop: writing on file")
+        })
       }
     }
   }
@@ -99,7 +102,7 @@ sealed trait Request {
 }
 
 object Request {
-  def gatlingStatusFromGit(response: Response): Status = {
+  def gatlingStatusFromGit(response: GitCommandResponse): Status = {
     response.status match {
       case OK   => GatlingOK
       case Fail => GatlingFail
@@ -116,7 +119,7 @@ case class Clone(url: URIish, user: String)(
 
   FileUtils.deleteDirectory(workTreeDirectory)
 
-  def send: Unit = {
+  def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
     Git.cloneRepository
       .setAuthenticationMethod(url, cb)
@@ -133,6 +136,8 @@ case class Clone(url: URIish, user: String)(
       new File(Files.copy(sourceCommitMsgPath, destinationCommitMsgPath).toString)
         .setExecutable(true)
     }
+
+    GitCommandResponse(OK)
   }
 }
 
@@ -142,13 +147,15 @@ case class Fetch(url: URIish, user: String)(implicit val conf: GatlingGitConfigu
 
   val name = s"Fetch: $url"
 
-  def send: Unit = {
+  def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
     new Git(repository)
       .fetch()
       .setRemote("origin")
       .setAuthenticationMethod(url, cb)
       .call()
+
+    GitCommandResponse(OK)
   }
 }
 
@@ -158,9 +165,15 @@ case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
 
   override def name: String = s"Pull: $url"
 
-  override def send: Unit = {
+  override def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
-    new Git(repository).pull().setAuthenticationMethod(url, cb).call()
+    val pullResult = new Git(repository).pull().setAuthenticationMethod(url, cb).call()
+
+    if(pullResult.isSuccessful) {
+      GitCommandResponse(OK)
+    } else {
+      GitCommandResponse(Fail, Some(pullResult.toString))
+    }
   }
 }
 
@@ -171,7 +184,7 @@ case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
   override def name: String = s"Push: $url"
   val uniqueSuffix          = s"$user - ${LocalDateTime.now}"
 
-  override def send: Unit = {
+  override def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
     val git = new Git(repository)
 
@@ -190,6 +203,8 @@ case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
       .setRemote(url.toString)
       .add("master")
       .call()
+
+    GitCommandResponse(OK)
   }
 }
 
@@ -197,13 +212,13 @@ case class InvalidRequest(url: URIish, user: String)(implicit val conf: GatlingG
     extends Request {
   override def name: String = "Invalid Request"
 
-  override def send: Unit = {
+  override def send: GitCommandResponse = {
     throw new Exception("Invalid Git command type")
   }
 }
 
-case class Response(status: ResponseStatus)
+case class GitCommandResponse(status: GitCommandResponseStatus, message: Option[String] = None)
 
-sealed trait ResponseStatus
-case object OK   extends ResponseStatus
-case object Fail extends ResponseStatus
+sealed trait GitCommandResponseStatus
+case object OK   extends GitCommandResponseStatus
+case object Fail extends GitCommandResponseStatus

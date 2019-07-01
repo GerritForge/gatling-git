@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a78dd010_bf9b3acf",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/FetchSpec.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-07-01T18:01:37Z",
+      "side": 1,
+      "message": "Testing the Fail case proven to be a bit difficult. It also varies from command to command. I was trying to mock the JGit command calls but I got stuck with ScalaMock :/",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 3
+      },
+      "revId": "cd217899f85234cb6cac61e3cb8c7a88ab210a16",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

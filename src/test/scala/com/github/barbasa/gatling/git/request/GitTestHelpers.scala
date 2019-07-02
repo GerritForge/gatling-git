@@ -14,7 +14,7 @@ import org.eclipse.jgit.api.{Git => JGit}
 trait GitTestHelpers {
   var testGitRepo: JGit = _
 
-  val tempBase: String        = "/tmp"
+  val tempBase: String        = System.getProperty("user.dir")
   val testUser: String        = "testUser"
   val testRepo: String        = "testRepo"
   val workTreeDirectory: File = new File(s"$tempBase/$testUser/$testRepo")

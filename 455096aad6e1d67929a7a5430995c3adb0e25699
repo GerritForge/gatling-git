@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13d0ccd0_bf614dba",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/GitTestHelpers.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-07-02T07:45:07Z",
+      "side": 1,
+      "message": "Does this work then?",
+      "range": {
+        "startLine": 24,
+        "startChar": 22,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "455096aad6e1d67929a7a5430995c3adb0e25699",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

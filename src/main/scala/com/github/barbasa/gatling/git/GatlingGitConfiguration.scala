@@ -17,6 +17,8 @@ package com.github.barbasa.gatling.git
 import com.google.inject.Singleton
 import com.typesafe.config.{Config, ConfigFactory}
 
+import scala.util.Try
+
 @Singleton
 case class GatlingGitConfiguration private (
     httpConfiguration: HttpConfiguration,
@@ -27,11 +29,12 @@ case class GatlingGitConfiguration private (
 
 case class HttpConfiguration(userName: String, password: String)
 case class SshConfiguration(private_key_path: String)
-case class PushConfiguration(numFiles: Int, minContentLength: Int, maxContentLength: Int)
+case class PushConfiguration(numFiles: Int, minContentLength: Int, maxContentLength: Int, commitPrefix: String)
 object PushConfiguration {
   val DEFAULT_NUM_FILES          = 4
   val DEFAULT_MIN_CONTENT_LENGTH = 100
   val DEFAULT_MAX_CONTENT_LENGTH = 10000
+  val DEFAULT_COMMIT_PREFIX = ""
 }
 
 case class CommandsConfiguration(pushConfig: PushConfiguration)
@@ -73,12 +76,14 @@ object GatlingGitConfiguration {
       .optionalInt("commands.push.maxContentLength")
       .getOrElse(PushConfiguration.DEFAULT_MAX_CONTENT_LENGTH)
     //XXX: Missing validation on parameters, i.e.: values >0. max > min
+    val commitPrefix = Try(config
+      .getString("commands.push.commitPrefix")).toOption.getOrElse(PushConfiguration.DEFAULT_COMMIT_PREFIX)
 
     GatlingGitConfiguration(
       HttpConfiguration(httpUserName, httpPassword),
       SshConfiguration(sshPrivateKeyPath),
       tmpBasePath,
-      CommandsConfiguration(PushConfiguration(numFiles, minContentLength, maxContentLength))
+      CommandsConfiguration(PushConfiguration(numFiles, minContentLength, maxContentLength, commitPrefix))
     )
   }
 }

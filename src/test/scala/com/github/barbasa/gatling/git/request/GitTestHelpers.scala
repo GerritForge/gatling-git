@@ -24,6 +24,6 @@ trait GitTestHelpers {
     HttpConfiguration("userName", "password"),
     SshConfiguration("/tmp/keys"),
     tempBase,
-    CommandsConfiguration(PushConfiguration(1, 2, 3))
+    CommandsConfiguration(PushConfiguration(1, 2, 3, ""))
   )
 }

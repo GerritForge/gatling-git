@@ -27,7 +27,7 @@ case class GatlingGitConfiguration private (
 
 case class HttpConfiguration(userName: String, password: String)
 case class SshConfiguration(private_key_path: String)
-case class PushConfiguration(numFiles: Int, minContentLength: Int, maxContentLength: Int)
+case class PushConfiguration(numFiles: Int, minContentLength: Int, maxContentLength: Int, commitPrefix: String)
 object PushConfiguration {
   val DEFAULT_NUM_FILES          = 4
   val DEFAULT_MIN_CONTENT_LENGTH = 100
@@ -73,12 +73,14 @@ object GatlingGitConfiguration {
       .optionalInt("commands.push.maxContentLength")
       .getOrElse(PushConfiguration.DEFAULT_MAX_CONTENT_LENGTH)
     //XXX: Missing validation on parameters, i.e.: values >0. max > min
+    val commitPrefix = config
+      .getString("commands.push.commitPrefix")
 
     GatlingGitConfiguration(
       HttpConfiguration(httpUserName, httpPassword),
       SshConfiguration(sshPrivateKeyPath),
       tmpBasePath,
-      CommandsConfiguration(PushConfiguration(numFiles, minContentLength, maxContentLength))
+      CommandsConfiguration(PushConfiguration(numFiles, minContentLength, maxContentLength, commitPrefix))
     )
   }
 }

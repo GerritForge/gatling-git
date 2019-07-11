@@ -201,7 +201,8 @@ case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
     commitBuilder.createCommit(
       conf.commands.pushConfig.numFiles,
       conf.commands.pushConfig.minContentLength,
-      conf.commands.pushConfig.maxContentLength
+      conf.commands.pushConfig.maxContentLength,
+      conf.commands.pushConfig.commitPrefix
     )
 
     // XXX Make branch configurable

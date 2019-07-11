@@ -59,3 +59,9 @@ Default: `100`
 Maximum content length in bytes of each file contained in the push
 
 Default: `10000`
+
+### commands.push.commitPrefix [COMMIT_PREFIX]
+Prefix added to the synthetic commit messages
+
+Default: `empty string`
+

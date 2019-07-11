@@ -25,7 +25,7 @@ class CommitBuilder(repository: Repository) {
   val git    = new Git(repository)
   val random = new Random()
 
-  def createCommit(numFiles: Int, minContentLength: Int, maxContentLength: Int) {
+  def createCommit(numFiles: Int, minContentLength: Int, maxContentLength: Int, prefix: String) {
     Vector.range(0, numFiles).par.foreach { e =>
       val contentLength: Int = minContentLength + random
         .nextInt((maxContentLength - minContentLength) + 1)
@@ -38,7 +38,7 @@ class CommitBuilder(repository: Repository) {
     val uniqueSuffix = s"${LocalDateTime.now}"
     git
       .commit()
-      .setMessage(s"Test commit header - $uniqueSuffix\n\nTest commit body - $uniqueSuffix\n")
+      .setMessage(s"${prefix}Test commit header - $uniqueSuffix\n\nTest commit body - $uniqueSuffix\n")
       .call()
   }
 }

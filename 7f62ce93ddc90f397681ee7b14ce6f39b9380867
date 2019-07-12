@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b21f5a0_dd5b79b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-12T09:58:52Z",
+      "side": 1,
+      "message": "Typo, also consider using imperative form",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "7f62ce93ddc90f397681ee7b14ce6f39b9380867",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a40f962_fae6cb11",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/GatlingGitConfiguration.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-12T09:58:52Z",
+      "side": 1,
+      "message": "For consistency, we could use pimping for strings too, as we did for OptionalInt\nI think the intended approach of lightbend is to use withFallBack instead[1].\nyou define a defaults.conf and when you merge it with your application.conf to fill potential values missing.\n\n[1] https://lightbend.github.io/config/latest/api/com/typesafe/config/Config.html#withFallback-com.typesafe.config.ConfigMergeable-",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 107
+      },
+      "revId": "7f62ce93ddc90f397681ee7b14ce6f39b9380867",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b20aa062_edf5c542",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-12T09:58:52Z",
+      "side": 1,
+      "message": "Have you considered setting a default for this?",
+      "range": {
+        "startLine": 28,
+        "startChar": 78,
+        "endLine": 28,
+        "endChar": 94
+      },
+      "revId": "7f62ce93ddc90f397681ee7b14ce6f39b9380867",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baa1b630_2bdd52fc",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-12T09:58:52Z",
+      "side": 1,
+      "message": "We only use this to then run getFullMessage on it, why don\u0027t we just define a getHeadCommitMessage utility then?",
+      "revId": "7f62ce93ddc90f397681ee7b14ce6f39b9380867",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fa349a8_cb53f38a",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-12T09:58:52Z",
+      "side": 1,
+      "message": "could we use jgit constants for this?",
+      "range": {
+        "startLine": 26,
+        "startChar": 38,
+        "endLine": 26,
+        "endChar": 57
+      },
+      "revId": "7f62ce93ddc90f397681ee7b14ce6f39b9380867",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f1ca24b_af4f2042",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-12T09:58:52Z",
+      "side": 1,
+      "message": "We could use variables here instead of magic numbers.\nPerhaps a TestFixture object to hold these values could be a good idea so that we don\u0027t have to repeat them.",
+      "range": {
+        "startLine": 43,
+        "startChar": 31,
+        "endLine": 43,
+        "endChar": 36
+      },
+      "revId": "7f62ce93ddc90f397681ee7b14ce6f39b9380867",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

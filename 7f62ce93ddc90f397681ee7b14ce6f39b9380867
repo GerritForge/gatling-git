@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "40fbc631_889655bd",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/GatlingGitConfiguration.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-16T18:08:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "20d48d01_49edb546",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 107
+      },
+      "revId": "7f62ce93ddc90f397681ee7b14ce6f39b9380867",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b20aa062_edf5c542",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
         "patchSetId": 3
@@ -143,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "e652327e_f7b359ff",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-16T18:08:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0b33c614_14ecf568",
+      "range": {
+        "startLine": 28,
+        "startChar": 78,
+        "endLine": 28,
+        "endChar": 94
+      },
+      "revId": "7f62ce93ddc90f397681ee7b14ce6f39b9380867",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa1b630_2bdd52fc",
         "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
         "patchSetId": 3
@@ -175,6 +223,24 @@
       "revId": "7f62ce93ddc90f397681ee7b14ce6f39b9380867",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aeb9a231_f5d96fff",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-16T18:08:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d5f14163_63cb66a0",
+      "revId": "7f62ce93ddc90f397681ee7b14ce6f39b9380867",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {

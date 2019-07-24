@@ -35,6 +35,7 @@ import org.eclipse.jgit.transport.SshSessionFactory
 import org.eclipse.jgit.util.FS
 import org.eclipse.jgit.transport.SshTransport
 import org.eclipse.jgit.hooks._
+
 import collection.JavaConverters._
 
 sealed trait Request {
@@ -185,10 +186,18 @@ case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
   }
 }
 
-case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
+case class Push(url: URIish, user: String, maybeCommitBuilder: Option[CommitBuilder] = None)(
+    implicit val conf: GatlingGitConfiguration)
     extends Request {
   initRepo()
 
+  val defaultCommitBuilder = new CommitBuilder(
+    repository,
+    conf.commands.pushConfig.numFiles,
+    conf.commands.pushConfig.minContentLength,
+    conf.commands.pushConfig.maxContentLength,
+    conf.commands.pushConfig.commitPrefix
+  )
   override def name: String = s"Push: $url"
   val uniqueSuffix          = s"$user - ${LocalDateTime.now}"
 
@@ -196,14 +205,9 @@ case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
     import PimpedGitTransportCommand._
     val git = new Git(repository)
 
-    val commitBuilder = new CommitBuilder(repository)
+    val commitBuilder = maybeCommitBuilder.getOrElse(defaultCommitBuilder)
     // TODO: Create multiple commits per push
-    commitBuilder.createCommit(
-      conf.commands.pushConfig.numFiles,
-      conf.commands.pushConfig.minContentLength,
-      conf.commands.pushConfig.maxContentLength,
-      conf.commands.pushConfig.commitPrefix
-    )
+    commitBuilder.createCommit()
 
     // XXX Make branch configurable
     // XXX Make credential configurable

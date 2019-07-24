@@ -40,24 +40,27 @@ class CommitBuilderSpec extends FlatSpec with BeforeAndAfter with Matchers with 
   behavior of "CommitBuilder"
 
   "without prefix parameter" should "create commits without prefix" in {
-    val commitBuilder = new CommitBuilder(testGitRepo.getRepository)
-    commitBuilder.createCommit(
+
+    val commitBuilder = new CommitBuilder(
+      testGitRepo.getRepository,
       fixtures.numberOfFilesPerCommit,
       fixtures.minContentLengthOfCommit,
       fixtures.maxContentLengthOfCommit,
       fixtures.defaultPrefixOfCommit
     )
+
+    commitBuilder.createCommit()
     getHeadCommit.getFullMessage should startWith("Test commit header - ")
   }
 
   "with prefix parameter" should "start with the prefix" in {
-    val commitBuilder = new CommitBuilder(testGitRepo.getRepository)
-    commitBuilder.createCommit(
-      fixtures.numberOfFilesPerCommit,
-      fixtures.minContentLengthOfCommit,
-      fixtures.maxContentLengthOfCommit,
-      "testPrefix - "
-    )
+
+    val commitBuilder = new CommitBuilder(testGitRepo.getRepository,
+                                          fixtures.numberOfFilesPerCommit,
+                                          fixtures.minContentLengthOfCommit,
+                                          fixtures.maxContentLengthOfCommit,
+                                          "testPrefix - ")
+    commitBuilder.createCommit()
     getHeadCommit.getFullMessage should startWith("testPrefix - Test commit header - ")
   }
 

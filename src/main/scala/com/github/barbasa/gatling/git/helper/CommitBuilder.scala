@@ -20,12 +20,16 @@ import org.eclipse.jgit.lib.Repository
 import java.time.LocalDateTime
 import scala.util.Random
 
-class CommitBuilder(repository: Repository) {
+class CommitBuilder(repository: Repository,
+                    numFiles: Int,
+                    minContentLength: Int,
+                    maxContentLength: Int,
+                    prefix: String) {
 
   val git    = new Git(repository)
   val random = new Random()
 
-  def createCommit(numFiles: Int, minContentLength: Int, maxContentLength: Int, prefix: String) {
+  def createCommit() {
     Vector.range(0, numFiles).par.foreach { e =>
       val contentLength: Int = minContentLength + random
         .nextInt((maxContentLength - minContentLength) + 1)

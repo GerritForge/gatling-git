@@ -247,7 +247,8 @@ object Push {
     conf.commands.pushConfig.numFiles,
     conf.commands.pushConfig.minContentLength,
     conf.commands.pushConfig.maxContentLength,
-    conf.commands.pushConfig.commitPrefix
+    conf.commands.pushConfig.commitPrefix,
+    None
   )
 }
 

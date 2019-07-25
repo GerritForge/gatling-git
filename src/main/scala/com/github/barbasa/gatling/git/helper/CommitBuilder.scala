@@ -14,27 +14,32 @@
 
 package com.github.barbasa.gatling.git.helper
 
+import java.io.File
+
 import com.github.barbasa.gatling.git.helper.MockFiles._
 import org.eclipse.jgit.api._
 import org.eclipse.jgit.lib.Repository
 import java.time.LocalDateTime
+
 import scala.util.Random
 
 class CommitBuilder(repository: Repository,
                     numFiles: Int,
                     minContentLength: Int,
                     maxContentLength: Int,
-                    prefix: String) {
+                    prefix: String,
+                    destinationDirectories: Seq[File]) {
 
   val git    = new Git(repository)
   val random = new Random()
 
   def createCommit() {
-    Vector.range(0, numFiles).par.foreach { e =>
+    val directories = Iterator.continually(destinationDirectories).flatten.take(numFiles)
+    Vector.range(0, numFiles).foreach { e =>
       val contentLength: Int = minContentLength + random
         .nextInt((maxContentLength - minContentLength) + 1)
-      val file: MockFile   = MockFileFactory.create("text", contentLength)
-      val fileName: String = file.save(repository.getWorkTree.toString)
+      val file: MockFile = MockFileFactory.create("text", contentLength)
+      file.save(directories.next.toString)
     }
 
     git.add.addFilepattern(".").call()

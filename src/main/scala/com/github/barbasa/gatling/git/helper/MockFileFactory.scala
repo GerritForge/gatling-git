@@ -15,6 +15,7 @@
 package com.github.barbasa.gatling.git.helper
 
 import java.io._
+import java.nio.file.Paths
 
 import scala.util.Random
 
@@ -25,10 +26,10 @@ object MockFiles {
     def content: String
 
     def generateContent(contentLength: Int): String
-    def save(workTreeDirectory: String): String
+    def save(): String
   }
 
-  abstract class AbstractMockFile(contentLength: Int) extends MockFile {
+  abstract class AbstractMockFile(contentLength: Int, directory: File) extends MockFile {
     val alphabet         = ('a' to 'z') ++ ('A' to 'Z') ++ ('0' to '9') ++ ("_")
     override def content = generateContent(contentLength)
     override def name    = generateRandomString(10)
@@ -38,14 +39,15 @@ object MockFiles {
     )
   }
 
-  class TextFile(contentLength: Int) extends AbstractMockFile(contentLength) {
+  class TextFile(contentLength: Int, directory: File)
+      extends AbstractMockFile(contentLength, directory) {
 
     override def generateContent(size: Int): String = {
       generateRandomString(size)
     }
 
-    override def save(workTreeDirectory: String): String = {
-      val filePath = "%s/%s".format(workTreeDirectory, name)
+    override def save(): String = {
+      val filePath = "%s/%s".format(directory.toString, name)
       val file     = new File(filePath)
       val writer   = new BufferedWriter(new FileWriter(file))
       writer.write(content)
@@ -56,12 +58,13 @@ object MockFiles {
   }
 }
 
-object MockFileFactory {
+class MockFileFactory(destinationDirectories: Seq[File]) {
   import MockFiles._
 
+  val directories = Iterator.continually(destinationDirectories).flatten
   def create(fileType: String, contentLength: Int): MockFile = {
     fileType match {
-      case "text" => new TextFile(contentLength)
+      case "text" => new TextFile(contentLength, directories.next)
       case _      => throw new Exception("Unknown file type: %s".format(fileType))
     }
   }

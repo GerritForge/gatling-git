@@ -15,43 +15,26 @@
 package com.github.barbasa.gatling.git.helper
 import java.io.File
 
-import com.github.barbasa.gatling.git.request.GitTestHelpers
+import com.github.barbasa.gatling.git.request.{Clone, GitTestHelpers, OK}
 import org.apache.commons.io.FileUtils
 import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
 import org.eclipse.jgit.api.{Git => JGit}
-import org.eclipse.jgit.lib.Constants
-import org.eclipse.jgit.revwalk.RevCommit
-import org.eclipse.jgit.revwalk.RevWalk
+import org.eclipse.jgit.transport.URIish
 
 class CommitBuilderSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
   before {
-    FileUtils.deleteDirectory(new File(s"$tempBase/$testUser"))
-    testGitRepo = JGit.init.setDirectory(workTreeDirectory).call
+    FileUtils.deleteDirectory(originRepoDirectory.getParentFile)
+    testGitRepo = JGit.init.setDirectory(originRepoDirectory).call
+    val response = Clone(new URIish(s"file://$originRepoDirectory"), testUser).send
+    response.status shouldBe OK
   }
 
   after {
     testGitRepo.getRepository.close()
-    FileUtils.deleteDirectory(new File(s"$tempBase/$testUser"))
+    FileUtils.deleteDirectory(originRepoDirectory.getParentFile)
   }
 
-  def getHeadCommit: RevCommit = {
-    try {
-      val repository = testGitRepo.getRepository
-      try {
-        val head = repository.findRef(Constants.HEAD)
-        try {
-          val walk = new RevWalk(repository)
-          try {
-            walk.parseCommit(head.getObjectId)
-          }
-        }
-      }
-    } catch {
-      case e: Exception => fail(e.getCause)
-    }
-  }
-
-  behavior of "CommitBuilder"
+  behavior of "CommitBuilder.commitToRepository"
 
   "without prefix parameter" should "create commits without prefix" in {
 
@@ -59,7 +42,8 @@ class CommitBuilderSpec extends FlatSpec with BeforeAndAfter with Matchers with 
       fixtures.numberOfFilesPerCommit,
       fixtures.minContentLengthOfCommit,
       fixtures.maxContentLengthOfCommit,
-      fixtures.defaultPrefixOfCommit
+      fixtures.defaultPrefixOfCommit,
+      None
     )
 
     commitBuilder.commitToRepository(testGitRepo.getRepository)
@@ -68,12 +52,73 @@ class CommitBuilderSpec extends FlatSpec with BeforeAndAfter with Matchers with 
 
   "with prefix parameter" should "start with the prefix" in {
 
-    val commitBuilder = new CommitBuilder(fixtures.numberOfFilesPerCommit,
-                                          fixtures.minContentLengthOfCommit,
-                                          fixtures.maxContentLengthOfCommit,
-                                          "testPrefix - ")
+    val commitBuilder = new CommitBuilder(
+      fixtures.numberOfFilesPerCommit,
+      fixtures.minContentLengthOfCommit,
+      fixtures.maxContentLengthOfCommit,
+      "testPrefix - ",
+      None
+    )
     commitBuilder.commitToRepository(testGitRepo.getRepository)
     getHeadCommit.getFullMessage should startWith("testPrefix - Test commit header - ")
+
+  }
+
+  "with different destination directories" should "place files in different directories if files == directories" in {
+    val directoryA = new File(s"${testGitRepo.getRepository.getWorkTree}/directoryA")
+    val directoryB = new File(s"${testGitRepo.getRepository.getWorkTree}/directoryB")
+    directoryA.mkdir
+    directoryB.mkdir
+    val directories = Seq(directoryA, directoryB)
+    val numFiles    = directories.size
+    val commitBuilder = new CommitBuilder(
+      numFiles,
+      fixtures.minContentLengthOfCommit,
+      fixtures.maxContentLengthOfCommit,
+      fixtures.defaultPrefixOfCommit,
+      Some(directories)
+    )
+    commitBuilder.commitToRepository(testGitRepo.getRepository)
+    getFilePathsInCommit(getHeadCommit.getTree).count(_.contains("directoryA")) shouldBe 1
+    getFilePathsInCommit(getHeadCommit.getTree).count(_.contains("directoryB")) shouldBe 1
+  }
+
+  "with different destination directories" should "not place files in all the directories if files < directories" in {
+    val directoryA = new File(s"${testGitRepo.getRepository.getWorkTree}/directoryA")
+    val directoryB = new File(s"${testGitRepo.getRepository.getWorkTree}/directoryB")
+    directoryA.mkdir
+    directoryB.mkdir
+    val directories = Seq(directoryA, directoryB)
+    val numFiles    = directories.size - 1
+    val commitBuilder = new CommitBuilder(
+      numFiles,
+      fixtures.minContentLengthOfCommit,
+      fixtures.maxContentLengthOfCommit,
+      fixtures.defaultPrefixOfCommit,
+      Some(directories)
+    )
+    commitBuilder.commitToRepository(testGitRepo.getRepository)
+    getFilePathsInCommit(getHeadCommit.getTree).count(_.contains("directoryA")) shouldBe 1
+    getFilePathsInCommit(getHeadCommit.getTree).count(_.contains("directoryB")) shouldBe 0
+  }
+
+  "with different destination directories" should "place files in different directories if files > directories" in {
+    val directoryA = new File(s"${testGitRepo.getRepository.getWorkTree}/directoryA")
+    val directoryB = new File(s"${testGitRepo.getRepository.getWorkTree}/directoryB")
+    directoryA.mkdir
+    directoryB.mkdir
+    val directories = Seq(directoryA, directoryB)
+    val numFiles    = directories.size + 1
+    val commitBuilder = new CommitBuilder(
+      numFiles,
+      fixtures.minContentLengthOfCommit,
+      fixtures.maxContentLengthOfCommit,
+      fixtures.defaultPrefixOfCommit,
+      Some(directories)
+    )
+    commitBuilder.commitToRepository(testGitRepo.getRepository)
+    getFilePathsInCommit(getHeadCommit.getTree).count(_.contains("directoryA")) shouldBe 2
+    getFilePathsInCommit(getHeadCommit.getTree).count(_.contains("directoryB")) shouldBe 1
   }
 
 }

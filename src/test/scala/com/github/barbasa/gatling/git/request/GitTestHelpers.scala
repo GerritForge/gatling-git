@@ -25,8 +25,16 @@ import com.github.barbasa.gatling.git.{
   SshConfiguration
 }
 import org.eclipse.jgit.api.{Git => JGit}
+import org.eclipse.jgit.lib.Constants
+import org.eclipse.jgit.revwalk.{RevCommit, RevTree, RevWalk}
+import org.eclipse.jgit.treewalk.{FileTreeIterator, TreeWalk}
+import org.scalatest.FlatSpec
 
-trait GitTestHelpers {
+import scala.collection.mutable.ListBuffer
+import scala.util.Try
+import collection.JavaConverters._
+
+trait GitTestHelpers extends FlatSpec {
   var testGitRepo: JGit = _
 
   val tempBase: String          = Files.createTempDirectory("gatlingGitTests").toFile.getAbsolutePath
@@ -55,5 +63,29 @@ trait GitTestHelpers {
     val minContentLengthOfCommit = 5
     val maxContentLengthOfCommit = 10
     val defaultPrefixOfCommit    = ""
+  }
+
+  def getHeadCommit: RevCommit = {
+    val repository = testGitRepo.getRepository
+    val resultTry = Try {
+      val head = repository.findRef(Constants.HEAD)
+      val walk = new RevWalk(repository)
+      walk.parseCommit(head.getObjectId)
+    }
+    resultTry.get
+  }
+
+  def getFilePathsInCommit(headCommit: RevTree): List[String] = {
+    var committedDirectories = new ListBuffer[String]()
+    val treeWalk             = new TreeWalk(testGitRepo.getRepository)
+    val resultTry = Try {
+      treeWalk.reset(headCommit)
+      treeWalk.setRecursive(true)
+      while (treeWalk.next) {
+        committedDirectories += treeWalk.getPathString
+      }
+      committedDirectories.toList
+    }
+    resultTry.get
   }
 }

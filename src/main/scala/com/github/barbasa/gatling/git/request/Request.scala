@@ -191,17 +191,11 @@ case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
 case class Push(url: URIish,
                 user: String,
                 refSpec: String = HeadToMasterRefSpec.value,
-                maybeCommitBuilder: Option[CommitBuilder] = None)(
+                commitBuilder: CommitBuilder = Push.defaultCommitBuilder)(
     implicit val conf: GatlingGitConfiguration
 ) extends Request {
   initRepo()
 
-  val defaultCommitBuilder = new CommitBuilder(
-    conf.commands.pushConfig.numFiles,
-    conf.commands.pushConfig.minContentLength,
-    conf.commands.pushConfig.maxContentLength,
-    conf.commands.pushConfig.commitPrefix
-  )
   override def name: String = s"Push: $url"
   val uniqueSuffix          = s"$user - ${LocalDateTime.now}"
 
@@ -209,7 +203,6 @@ case class Push(url: URIish,
     import PimpedGitTransportCommand._
     val git = new Git(repository)
 
-    val commitBuilder = maybeCommitBuilder.getOrElse(defaultCommitBuilder)
     // TODO: Create multiple commits per push
     commitBuilder.commitToRepository(repository)
 
@@ -246,6 +239,17 @@ case class Push(url: URIish,
       )
     }
   }
+}
+
+object Push {
+  val conf = GatlingGitConfiguration()
+  val defaultCommitBuilder = new CommitBuilder(
+    conf.commands.pushConfig.numFiles,
+    conf.commands.pushConfig.minContentLength,
+    conf.commands.pushConfig.maxContentLength,
+    conf.commands.pushConfig.commitPrefix,
+    None
+  )
 }
 
 case class InvalidRequest(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)

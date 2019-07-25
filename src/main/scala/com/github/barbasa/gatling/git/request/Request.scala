@@ -196,7 +196,8 @@ case class Push(url: URIish, user: String, maybeCommitBuilder: Option[CommitBuil
     conf.commands.pushConfig.numFiles,
     conf.commands.pushConfig.minContentLength,
     conf.commands.pushConfig.maxContentLength,
-    conf.commands.pushConfig.commitPrefix
+    conf.commands.pushConfig.commitPrefix,
+    Seq(repository.getWorkTree)
   )
   override def name: String = s"Push: $url"
   val uniqueSuffix          = s"$user - ${LocalDateTime.now}"

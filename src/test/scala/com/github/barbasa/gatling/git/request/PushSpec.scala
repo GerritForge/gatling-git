@@ -14,6 +14,7 @@
 
 package com.github.barbasa.gatling.git.request
 
+import com.github.barbasa.gatling.git.helper.CommitBuilder
 import org.apache.commons.io.FileUtils
 import org.eclipse.jgit.api.{Git => JGit}
 import org.eclipse.jgit.transport.URIish
@@ -26,6 +27,8 @@ class PushSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHe
   before {
     FileUtils.deleteDirectory(originRepoDirectory.getParentFile)
     testGitRepo = JGit.init.setDirectory(originRepoDirectory).call
+    val response = Clone(new URIish(s"file://${originRepoDirectory}"), s"$testUser").send
+    response.status shouldBe OK
   }
 
   after {
@@ -51,5 +54,26 @@ class PushSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHe
 
     val refsList = testGitRepo.branchList().call().asScala
     refsList.map(_.getName) should contain(pushRef)
+  }
+
+  it should "push to a the specified directory" in {
+    val directoryA = new File(s"${workTreeDirectory.toString}/directoryA")
+    directoryA.mkdir
+    val commitBuilder = new CommitBuilder(
+      fixtures.numberOfFilesPerCommit,
+      fixtures.minContentLengthOfCommit,
+      fixtures.maxContentLengthOfCommit,
+      fixtures.defaultPrefixOfCommit,
+      Seq(directoryA)
+    )
+    val response = Push(
+      url = new URIish(s"file://$originRepoDirectory"),
+      user = s"$testUser",
+      maybeCommitBuilder = Some(commitBuilder)
+    ).send
+
+    Thread.sleep(1000)
+    response.status shouldBe OK
+    getPathsInCommit(getHeadCommit.getTree) should be(List("directoryA"))
   }
 }

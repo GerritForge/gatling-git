@@ -16,6 +16,81 @@
       "revId": "cd5bd749614f14ea0dfc11829f82aa641c3b04a7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c79ca993_80ed42a1",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-25T09:24:56Z",
+      "side": 1,
+      "message": "I thought we use scalaformat now, which is a step that triggers just before compile time.\nIs that not the case?\n\nIf so, then this line is correctly formatted (for the current definition of \"correct\")",
+      "parentUuid": "07262b7a_d4c94a50",
+      "revId": "cd5bd749614f14ea0dfc11829f82aa641c3b04a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f112800_48fa6ee9",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-25T09:24:56Z",
+      "side": 1,
+      "message": "Any reason why we moved the arguments of createCommit() to the CommitBuilder constructor?\nWouldn\u0027t this limit the possibility to create different type of commits without requiring also the creation of different CommitBuilder objects?",
+      "revId": "cd5bd749614f14ea0dfc11829f82aa641c3b04a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1323f033_62052907",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-25T09:24:56Z",
+      "side": 1,
+      "message": "Didn\u0027t scalaformat pick up this one?",
+      "revId": "cd5bd749614f14ea0dfc11829f82aa641c3b04a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "966b0cb8_19896bc8",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-25T09:24:56Z",
+      "side": 1,
+      "message": "instead of passing Option with a default of None and then defining another default later on in the body,\nwhy don\u0027t we define a singleton DefaultCommitBuilder and change the signature as such:\n\ncase class Push(url: URIish, user: String, commitBuilder:CommitBuilder \u003d DefaultCommitBuilder)",
+      "range": {
+        "startLine": 189,
+        "startChar": 43,
+        "endLine": 189,
+        "endChar": 91
+      },
+      "revId": "cd5bd749614f14ea0dfc11829f82aa641c3b04a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }

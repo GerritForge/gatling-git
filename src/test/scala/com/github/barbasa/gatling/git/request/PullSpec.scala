@@ -1,7 +1,5 @@
 package com.github.barbasa.gatling.git.request
 
-import java.io.File
-
 import org.apache.commons.io.FileUtils
 import org.eclipse.jgit.api.{Git => JGit}
 import org.eclipse.jgit.transport.URIish

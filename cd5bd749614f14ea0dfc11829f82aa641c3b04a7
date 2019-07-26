@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "4fa949b2_15506991",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-26T09:26:05Z",
+      "side": 1,
+      "message": "oh I don\u0027t know why I believed at some point we were talking about scalaformat :shrug:\nFair enought then :)",
+      "parentUuid": "608edd30_bfca39fa",
+      "revId": "cd5bd749614f14ea0dfc11829f82aa641c3b04a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f112800_48fa6ee9",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
         "patchSetId": 1
@@ -87,6 +105,24 @@
       "revId": "cd5bd749614f14ea0dfc11829f82aa641c3b04a7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41f83c1e_417f0e00",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-26T09:26:05Z",
+      "side": 1,
+      "message": "Where would you build these objects? Would that be in the feeder itself?\nPerhaps this would be clearer when I see it in action.\n\nBut fine, I understand the scope now, thanks.",
+      "parentUuid": "54261e9d_7a8bff62",
+      "revId": "cd5bd749614f14ea0dfc11829f82aa641c3b04a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {
@@ -125,6 +161,24 @@
     },
     {
       "key": {
+        "uuid": "345102d9_1301cfdf",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-26T09:26:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8755e76a_6deb61e3",
+      "revId": "cd5bd749614f14ea0dfc11829f82aa641c3b04a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "966b0cb8_19896bc8",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
         "patchSetId": 1
@@ -160,6 +214,30 @@
       "side": 1,
       "message": "See my comment in CommitBuilder.scala",
       "parentUuid": "966b0cb8_19896bc8",
+      "range": {
+        "startLine": 189,
+        "startChar": 43,
+        "endLine": 189,
+        "endChar": 91
+      },
+      "revId": "cd5bd749614f14ea0dfc11829f82aa641c3b04a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d37b26fd_31496c7b",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-26T09:26:05Z",
+      "side": 1,
+      "message": "I understand your point above, but the defaultCommitBuilter can be a singleton and can be still passed directly instead of wrapping everything in an option no?",
+      "parentUuid": "1904ebce_7d237159",
       "range": {
         "startLine": 189,
         "startChar": 43,

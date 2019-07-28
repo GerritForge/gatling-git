@@ -10,6 +10,7 @@ lazy val root = (project in file("."))
       scalaVersion := "2.12.8",
       assemblyJarName := "gatling-git-extension.jar"
     )),
+
     name := "gatling-git",
     libraryDependencies ++=
       gatling ++
@@ -20,6 +21,8 @@ lazy val root = (project in file("."))
         Seq("commons-io" % "commons-io" % "2.6") ++
         Seq("org.scalatest" %% "scalatest" % "3.0.1" % Test )
   )
+
+git.useGitDescribe := true
 
 git.useGitDescribe := true
 

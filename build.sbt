@@ -6,7 +6,7 @@ lazy val root = (project in file("."))
   .enablePlugins(GitVersioning)
   .settings(
     inThisBuild(List(
-      organization := "gerritforge",
+      organization := "com.gerritforge",
       scalaVersion := "2.12.8",
       assemblyJarName := "gatling-git-extension.jar"
     )),

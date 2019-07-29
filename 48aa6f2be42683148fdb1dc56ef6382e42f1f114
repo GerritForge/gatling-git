@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "54e58391_aac44ce6",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-29T18:14:08Z",
+      "side": 1,
+      "message": "Perhaps the choice of the destinations should be delegated to the MockFactory, which is already taking care of creating and storing files",
+      "range": {
+        "startLine": 31,
+        "startChar": 22,
+        "endLine": 31,
+        "endChar": 55
+      },
+      "revId": "48aa6f2be42683148fdb1dc56ef6382e42f1f114",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "318cde5e_5b367273",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
         "patchSetId": 1

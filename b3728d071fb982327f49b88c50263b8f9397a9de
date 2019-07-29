@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d26c612e_e2a4c59e",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-29T09:56:07Z",
+      "side": 1,
+      "message": "What\u0027s the reason for adding this suffix?",
+      "revId": "b3728d071fb982327f49b88c50263b8f9397a9de",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d894f9b9_857e5275",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-29T09:56:07Z",
+      "side": 1,
+      "message": "The constant defined in the parent commit could be used instead",
+      "range": {
+        "startLine": 115,
+        "startChar": 58,
+        "endLine": 115,
+        "endChar": 77
+      },
+      "revId": "b3728d071fb982327f49b88c50263b8f9397a9de",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

@@ -37,6 +37,11 @@ Here below an example:
   {
     "url": "http://localhost:8080/loadtest-repo.git",
     "cmd": "fetch"
+  },
+  {
+    "url": "http://localhost:8080/loadtest-repo.git",
+    "cmd": "push",
+    "ref-spec": "HEAD:refs/for/master"
   }
 ]
 ```

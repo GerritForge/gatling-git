@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3a89333_2a48b4fa",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/GitRequestSession.scala",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-29T13:54:06Z",
+      "side": 1,
+      "message": "R_HEADS already has a trailing slash:\nhttps://github.com/eclipse/jgit/blob/master/org.eclipse.jgit/src/org/eclipse/jgit/lib/Constants.java#L255\n\nNot sure if jgit gracefully handles that, but perhaps we should tidy it up",
+      "revId": "c1e2dbd6e9ee0e7fbb036f18f9b6588179ee8421",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

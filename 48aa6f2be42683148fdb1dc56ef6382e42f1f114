@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "cfe6ec2e_efbe24b9",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-07-29T18:31:56Z",
+      "side": 1,
+      "message": "You are right, the mapping between files and its directories is convoluted, I didn\u0027t really thought about it, but I understand why it creates confusion. \n\nThe reason why I didn\u0027t think about it is that...I don\u0027t care :P\n\nLet me try to outline my scenario and see if it makes more sense. What I wanted is that some files will finish in a particular directory, I don\u0027t care which ones. This is the scenario I\u0027m currently facing and it is probably the easiest, that\u0027s why I didn\u0027t want to overcomplicate the configuration and leave the framework to figure out where to put the files.\n\nIn my specific scenario I want to test the OWNERS plugin, hence if this is my repo:\n\n./directoryA/OWNERS\n./directoryA/fileA\n./fileB\n\n...I want some files to finish in \"./directoryA/\" and some other in \"./\" and check if the owners have been correctly assigned to the changeset. Is sounds more a functional test rather than a load test, but since OWNERS plugin triggers prolog rules, performance might be affected.\n\nI cannot come up with other scenarios that might need to mess around with directories, that\u0027s why the implementation is a bit tight to my scenario and not too generic. I believe we can make it more generic if needed. WDYT?",
+      "parentUuid": "318cde5e_5b367273",
+      "revId": "48aa6f2be42683148fdb1dc56ef6382e42f1f114",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99f7fd8c_3961656b",
         "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
         "patchSetId": 1

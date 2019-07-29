@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25311495_d9e97606",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-07-29T04:45:08Z",
+      "side": 1,
+      "message": "You might be able to use org.eclipse.jgit.lib.Constants.HEAD here",
+      "range": {
+        "startLine": 188,
+        "startChar": 62,
+        "endLine": 188,
+        "endChar": 84
+      },
+      "revId": "fa90018d7a9fc230092bb7d9ff04276e029f2ef6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7305fc84_74184ff8",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-07-29T04:45:08Z",
+      "side": 1,
+      "message": "Does it work if the refspec is not specified?",
+      "range": {
+        "startLine": 42,
+        "startChar": 27,
+        "endLine": 42,
+        "endChar": 34
+      },
+      "revId": "fa90018d7a9fc230092bb7d9ff04276e029f2ef6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6588d06_0f962f36",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-07-29T04:45:08Z",
+      "side": 1,
+      "message": "Refspec could be passed to used in the Pull request as well.",
+      "range": {
+        "startLine": 48,
+        "startChar": 24,
+        "endLine": 48,
+        "endChar": 39
+      },
+      "revId": "fa90018d7a9fc230092bb7d9ff04276e029f2ef6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

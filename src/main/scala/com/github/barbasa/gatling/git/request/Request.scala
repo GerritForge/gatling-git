@@ -46,7 +46,7 @@ sealed trait Request {
   def user: String
   val classLoader: ClassLoader = getClass.getClassLoader
   private val repoName         = url.getPath.split("/").last
-  val workTreeDirectory: File  = new File(conf.tmpBasePath + s"/$user/$repoName")
+  val workTreeDirectory: File  = new File(conf.tmpBasePath + s"/$user/$repoName-worktree")
   private val builder          = new FileRepositoryBuilder
   val repository: Repository   = builder.setWorkTree(workTreeDirectory).build()
 
@@ -112,7 +112,7 @@ object Request {
   }
 }
 
-case class Clone(url: URIish, user: String)(
+case class Clone(url: URIish, user: String, ref: String = "refs/heads/master")(
     implicit val conf: GatlingGitConfiguration,
     val postMsgHook: Option[String] = None
 ) extends Request {
@@ -127,6 +127,7 @@ case class Clone(url: URIish, user: String)(
       .setAuthenticationMethod(url, cb)
       .setURI(url.toString)
       .setDirectory(workTreeDirectory)
+      .setBranch(ref)
       .call()
 
     postMsgHook.foreach { sourceCommitMsgFile =>

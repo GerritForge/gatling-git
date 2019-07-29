@@ -10,22 +10,22 @@ import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
 class PullSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
 
   before {
-    FileUtils.deleteDirectory(new File(s"$tempBase/$testUser"))
-    testGitRepo = JGit.init.setDirectory(workTreeDirectory).call
+    FileUtils.deleteDirectory(originRepoDirectory.getParentFile)
+    testGitRepo = JGit.init.setDirectory(originRepoDirectory).call
   }
 
   after {
     testGitRepo.getRepository.close()
-    FileUtils.deleteDirectory(new File(s"$tempBase/$testUser"))
+    FileUtils.deleteDirectory(originRepoDirectory.getParentFile)
   }
 
   behavior of "Pull"
 
   "without any error" should "return OK" in {
 
-    Push(new URIish(s"file://$tempBase/$testUser/$testRepo"), s"$testUser").send
+    Push(new URIish(s"file://$originRepoDirectory"), s"$testUser").send
 
-    val cmd      = Pull(new URIish(s"file://$tempBase/$testUser/$testRepo"), s"$testUser")
+    val cmd      = Pull(new URIish(s"file://$originRepoDirectory"), s"$testUser")
     val response = cmd.send
     response.status shouldBe OK
   }

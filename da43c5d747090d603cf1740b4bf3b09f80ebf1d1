@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06d6c088_08d2349d",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/GitRequestSession.scala",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-29T13:55:42Z",
+      "side": 1,
+      "message": "R_HEADS already has a trailing slash",
+      "range": {
+        "startLine": 29,
+        "startChar": 30,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "da43c5d747090d603cf1740b4bf3b09f80ebf1d1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

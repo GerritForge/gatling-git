@@ -15,10 +15,23 @@
 package com.github.barbasa.gatling.git
 
 import io.gatling.core.session.{Expression, StaticStringExpression}
+import org.eclipse.jgit.lib.Constants.{HEAD, MASTER, R_HEADS}
 
-case class GitRequestSession(commandName: Expression[String], url: Expression[String])
+import GitRequestSession._
+
+case class GitRequestSession(
+    commandName: Expression[String],
+    url: Expression[String],
+    refSpec: Expression[String] = HeadToMasterRefSpec
+)
 
 object GitRequestSession {
-  def cmd(cmd: String, url: Expression[String]): GitRequestSession =
-    GitRequestSession(StaticStringExpression(cmd), url)
+  val HeadToMasterRefSpec = StaticStringExpression(s"$HEAD:$R_HEADS/$MASTER")
+
+  def cmd(
+      cmd: String,
+      url: Expression[String],
+      refSpec: Expression[String] = HeadToMasterRefSpec
+  ): GitRequestSession =
+    GitRequestSession(StaticStringExpression(cmd), url, refSpec)
 }

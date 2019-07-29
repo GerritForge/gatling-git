@@ -17,7 +17,7 @@ import java.io.File
 import java.nio.file.{Files, Paths}
 import java.time.LocalDateTime
 
-import com.github.barbasa.gatling.git.GatlingGitConfiguration
+import com.github.barbasa.gatling.git.{GatlingGitConfiguration, GitRequestSession}
 import com.github.barbasa.gatling.git.helper.CommitBuilder
 import com.jcraft.jsch.JSch
 import com.jcraft.jsch.{Session => SSHSession}
@@ -35,6 +35,8 @@ import org.eclipse.jgit.transport.SshSessionFactory
 import org.eclipse.jgit.util.FS
 import org.eclipse.jgit.transport.SshTransport
 import org.eclipse.jgit.hooks._
+import GitRequestSession.HeadToMasterRefSpec
+
 import collection.JavaConverters._
 
 sealed trait Request {
@@ -185,7 +187,7 @@ case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
   }
 }
 
-case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
+case class Push(url: URIish, user: String, refSpec: String = HeadToMasterRefSpec.value)(implicit val conf: GatlingGitConfiguration)
     extends Request {
   initRepo()
 
@@ -210,7 +212,7 @@ case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
     val pushResults = git.push
       .setAuthenticationMethod(url, cb)
       .setRemote(url.toString)
-      .add("master")
+      .add(refSpec)
       .call()
 
     val maybeStatus = pushResults.asScala

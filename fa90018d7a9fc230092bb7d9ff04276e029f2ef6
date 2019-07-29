@@ -404,6 +404,24 @@
       "revId": "fa90018d7a9fc230092bb7d9ff04276e029f2ef6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "384ee456_0a37971b",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/PushSpec.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-07-29T13:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1334b9a4_dffd2cb9",
+      "revId": "fa90018d7a9fc230092bb7d9ff04276e029f2ef6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }

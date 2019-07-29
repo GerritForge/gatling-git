@@ -37,15 +37,27 @@ Here below an example:
   {
     "url": "http://localhost:8080/loadtest-repo.git",
     "cmd": "fetch"
+  },
+  {
+    "url": "http://localhost:8080/loadtest-repo.git",
+    "cmd": "push",
+    "ref-spec": "HEAD:refs/for/master"
   }
 ]
 ```
 
-Valid commands are:
-* fetch
-* pull
-* push
-* clone
+Valid commands that can be specified in the `cmd` parameter are:
+
+* `fetch`: run a git-upload-pack
+* `pull`: run a git-upload-pack and then merge the remote fetched head to the local branch
+* `push`: push the local ref to the remote Git server
+* `clone`: clone the remote repository
+
+The common parameters are:
+
+* `url`: The HTTP or SSH Git URL of the remote repository
+* `ref-spec`: ref-spec of the `push` operation. Can be specified with a simple branch name or have
+  the more general form of `local:remote` refs.
 
 ### How to run the tests
 

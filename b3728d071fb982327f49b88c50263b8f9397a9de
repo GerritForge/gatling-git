@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "497731b2_e74aa657",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-07-29T13:24:41Z",
+      "side": 1,
+      "message": "You just can\u0027t have a worktree co-located with the source repository: the tests were all failing. We didn\u0027t notice that before just because there were not accurate tests about it ;-)",
+      "parentUuid": "d26c612e_e2a4c59e",
+      "revId": "b3728d071fb982327f49b88c50263b8f9397a9de",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d894f9b9_857e5275",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "b3728d071fb982327f49b88c50263b8f9397a9de",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1dca7a1_d537e9da",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-07-29T13:24:41Z",
+      "side": 1,
+      "message": "This isn\u0027t a ref-spec though, but I could reuse the same JGit\u0027s constants.",
+      "parentUuid": "d894f9b9_857e5275",
+      "range": {
+        "startLine": 115,
+        "startChar": 58,
+        "endLine": 115,
+        "endChar": 77
+      },
+      "revId": "b3728d071fb982327f49b88c50263b8f9397a9de",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }

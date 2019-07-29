@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "318cde5e_5b367273",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-29T11:55:56Z",
+      "side": 1,
+      "message": "I think I struggle to understand this.\nWhy do we need an Iterator at all? Why do we use to initialize an infinite-length iterator if we already know the number of directories? Is this done to allow infinite cycling over the directories?\n\nLet me see if I understand this correctly:\n\nSay you have 3 files per commit, 2 commits and 2 directories you will have:\n Commit1:\n   file1 -\u003e in dir1\n   file2 -\u003e in dir2\n   file3 -\u003e in dir1\n\n Commit2:\n   file1 -\u003e in dir2\n   file2 -\u003e in dir1\n   file3 -\u003e in dir2\n\nIf you pass 3 directories (or 4 or 5) to the previous scenario, you will have the same result as we cap the number of directories to the number of files?\n\nIf this is the case I find this logic a bit complex to follow, was this the intended solution or am I missing something?",
+      "revId": "48aa6f2be42683148fdb1dc56ef6382e42f1f114",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99f7fd8c_3961656b",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-29T11:55:56Z",
+      "side": 1,
+      "message": "We could use Try instead of nested java try:\n\n  def getPathsInCommit(headCommit: RevTree): List[String] \u003d {\n    var committedDirectories \u003d new ListBuffer[String]()\n    val treeWalk \u003d new TreeWalk(testGitRepo.getRepository)\n    val resultTry \u003d Try {\n      treeWalk.reset(headCommit)\n      while (treeWalk.next) {\n        committedDirectories +\u003d treeWalk.getPathString\n      }\n      committedDirectories.toList\n    }\n\n    if (treeWalk !\u003d null) treeWalk.close()\n    resultTry.get\n  }",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 3
+      },
+      "revId": "48aa6f2be42683148fdb1dc56ef6382e42f1f114",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf4ea0fb_232a56c2",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-07-29T11:55:56Z",
+      "side": 1,
+      "message": "Regarding the discussion above, I think it\u0027d be useful to have other test cases where the number of files in a commit and the number of directories do not match",
+      "revId": "48aa6f2be42683148fdb1dc56ef6382e42f1f114",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

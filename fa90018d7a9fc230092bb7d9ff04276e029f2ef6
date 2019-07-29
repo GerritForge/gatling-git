@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "21a1b856_f94764d2",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-07-29T13:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40977f11_31af9104",
+      "revId": "fa90018d7a9fc230092bb7d9ff04276e029f2ef6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d239b449_c7c65bd8",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/GitRequestSession.scala",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "2c086a4f_6995749a",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/GitRequestSession.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-07-29T13:08:56Z",
+      "side": 1,
+      "message": "This can be either a simple branch name or a full ref-spec.\nThe JGit layer manages that for us, including the associated validation.",
+      "parentUuid": "d239b449_c7c65bd8",
+      "range": {
+        "startLine": 21,
+        "startChar": 107,
+        "endLine": 21,
+        "endChar": 113
+      },
+      "revId": "fa90018d7a9fc230092bb7d9ff04276e029f2ef6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7fd61fa_fbaf2812",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/GitRequestSession.scala",
         "patchSetId": 2
@@ -56,6 +98,24 @@
       "revId": "fa90018d7a9fc230092bb7d9ff04276e029f2ef6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adea71e3_ec0910ec",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/GitRequestSession.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-07-29T13:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7fd61fa_fbaf2812",
+      "revId": "fa90018d7a9fc230092bb7d9ff04276e029f2ef6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {
@@ -102,6 +162,54 @@
       "revId": "fa90018d7a9fc230092bb7d9ff04276e029f2ef6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6af5bdd5_9e4ef4e8",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-07-29T13:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "182412ba_eccdd7ca",
+      "range": {
+        "startLine": 188,
+        "startChar": 43,
+        "endLine": 188,
+        "endChar": 85
+      },
+      "revId": "fa90018d7a9fc230092bb7d9ff04276e029f2ef6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f02fd0a_c64b2093",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-07-29T13:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25311495_d9e97606",
+      "range": {
+        "startLine": 188,
+        "startChar": 62,
+        "endLine": 188,
+        "endChar": 84
+      },
+      "revId": "fa90018d7a9fc230092bb7d9ff04276e029f2ef6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {
@@ -152,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "ab347c7c_d92ddbb2",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-07-29T13:08:56Z",
+      "side": 1,
+      "message": "Yep, has a default value.",
+      "parentUuid": "7dcd83b2_00edd287",
+      "range": {
+        "startLine": 42,
+        "startChar": 27,
+        "endLine": 42,
+        "endChar": 34
+      },
+      "revId": "fa90018d7a9fc230092bb7d9ff04276e029f2ef6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6588d06_0f962f36",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
         "patchSetId": 2
@@ -199,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "28ba1878_5ddb2f42",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-07-29T13:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fb4a45d_45a52c31",
+      "range": {
+        "startLine": 48,
+        "startChar": 24,
+        "endLine": 48,
+        "endChar": 39
+      },
+      "revId": "fa90018d7a9fc230092bb7d9ff04276e029f2ef6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbf9c8a9_9099b9e1",
         "filename": "src/test/resources/data/requests.json",
         "patchSetId": 2
@@ -213,6 +369,24 @@
       "revId": "fa90018d7a9fc230092bb7d9ff04276e029f2ef6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf8f415d_d7ef1ace",
+        "filename": "src/test/resources/data/requests.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-07-29T13:08:56Z",
+      "side": 1,
+      "message": "This isn\u0027t the default: it\u0027s an example of how to create a change. Actually, with this version of the code, it\u0027s the ONLY way to make it succeed, because of multiple users conflicting on the push to the same brach. While pushing \u0027refs/for/master\u0027 instead, create a new change for review and thus won\u0027t conflict.",
+      "parentUuid": "dbf9c8a9_9099b9e1",
+      "revId": "fa90018d7a9fc230092bb7d9ff04276e029f2ef6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {

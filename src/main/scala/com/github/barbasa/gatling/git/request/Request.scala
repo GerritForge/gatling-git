@@ -185,7 +185,7 @@ case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
   }
 }
 
-case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
+case class Push(url: URIish, user: String, refSpec: String = "HEAD:refs/heads/master")(implicit val conf: GatlingGitConfiguration)
     extends Request {
   initRepo()
 
@@ -210,7 +210,7 @@ case class Push(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
     val pushResults = git.push
       .setAuthenticationMethod(url, cb)
       .setRemote(url.toString)
-      .add("master")
+      .add(refSpec)
       .call()
 
     val maybeStatus = pushResults.asScala

@@ -26,7 +26,8 @@ case class GitRequestSession(
 )
 
 object GitRequestSession {
-  val HeadToMasterRefSpec = StaticStringExpression(s"$HEAD:$R_HEADS/$MASTER")
+  val MasterRef           = s"$R_HEADS/$MASTER"
+  val HeadToMasterRefSpec = StaticStringExpression(s"$HEAD:$MasterRef")
 
   def cmd(
       cmd: String,

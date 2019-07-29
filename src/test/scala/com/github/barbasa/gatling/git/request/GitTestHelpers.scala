@@ -15,11 +15,12 @@ import org.eclipse.jgit.api.{Git => JGit}
 trait GitTestHelpers {
   var testGitRepo: JGit = _
 
-  val tempBase: String        = Files.createTempDirectory("gatlinGitTests").toFile.getAbsolutePath
-  val testUser: String        = "testUser"
-  val testRepo: String        = "testRepo"
-  val testRefName: String     = "refs/heads/mybranch"
-  val workTreeDirectory: File = new File(s"$tempBase/$testUser/$testRepo")
+  val tempBase: String          = Files.createTempDirectory("gatlinGitTests").toFile.getAbsolutePath
+  val testUser: String          = "testUser"
+  val testRepo: String          = "testRepo"
+  val testBranchName: String    = "mybranch"
+  val originRepoDirectory: File = new File(s"$tempBase/$testUser/$testRepo")
+  val workTreeDirectory: File   = new File(s"$tempBase/$testUser/$testRepo-worktree")
 
   val defaultPushConfiguration = PushConfiguration(
     PushConfiguration.DEFAULT_NUM_FILES,

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2b31449_bdd35eeb",
+        "filename": "build.sbt",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2019-07-29T06:34:11Z",
+      "side": 1,
+      "message": "Same param twice",
+      "revId": "cfc72b3d6cd22d0ab94cd2c30ddaaa568f1c1a31",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

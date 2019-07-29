@@ -27,6 +27,7 @@
   {
     "url": "http://localhost:8080/loadtest-repo",
     "cmd": "push",
+    "ref-spec": "HEAD:refs/for/master",
     "pause": "7 ms"
   }
 ]

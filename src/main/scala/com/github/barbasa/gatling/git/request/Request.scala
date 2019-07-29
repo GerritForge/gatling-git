@@ -187,8 +187,9 @@ case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
   }
 }
 
-case class Push(url: URIish, user: String, refSpec: String = HeadToMasterRefSpec.value)(implicit val conf: GatlingGitConfiguration)
-    extends Request {
+case class Push(url: URIish, user: String, refSpec: String = HeadToMasterRefSpec.value)(
+    implicit val conf: GatlingGitConfiguration
+) extends Request {
   initRepo()
 
   override def name: String = s"Push: $url"

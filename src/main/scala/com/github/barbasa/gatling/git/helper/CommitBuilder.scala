@@ -38,7 +38,9 @@ class CommitBuilder(repository: Repository) {
     val uniqueSuffix = s"${LocalDateTime.now}"
     git
       .commit()
-      .setMessage(s"${prefix}Test commit header - $uniqueSuffix\n\nTest commit body - $uniqueSuffix\n")
+      .setMessage(
+        s"${prefix}Test commit header - $uniqueSuffix\n\nTest commit body - $uniqueSuffix\n"
+      )
       .call()
   }
 }

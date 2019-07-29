@@ -23,7 +23,7 @@ import org.apache.commons.io.FileUtils
 
 class AllUsersAllRecordsCloneOnlyScenario extends Simulation {
 
-  val gitProtocol = GitProtocol()
+  val gitProtocol   = GitProtocol()
   implicit val conf = GatlingGitConfiguration()
 
   val feeder = Array(

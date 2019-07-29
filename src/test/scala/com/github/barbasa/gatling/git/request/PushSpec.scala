@@ -29,10 +29,14 @@ class PushSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHe
   }
 
   it should "push to a new branch" in {
-    val response = Push(new URIish(s"file://$tempBase/$testUser/$testRepo"), s"$testUser", s"HEAD:$testRefName").send
+    val response = Push(
+      new URIish(s"file://$tempBase/$testUser/$testRepo"),
+      s"$testUser",
+      s"HEAD:$testRefName"
+    ).send
     response.status shouldBe OK
 
     val refsList = testGitRepo.branchList().call().asScala
-    refsList.map(_.getName) should contain (testRefName)
+    refsList.map(_.getName) should contain(testRefName)
   }
 }

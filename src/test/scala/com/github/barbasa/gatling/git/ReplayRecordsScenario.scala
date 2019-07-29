@@ -25,10 +25,9 @@ import org.eclipse.jgit.hooks._
 
 class ReplayRecordsScenario extends Simulation {
 
-  val gitProtocol = GitProtocol()
-  implicit val conf = GatlingGitConfiguration()
-  implicit val postMessageHook: Option[String] = Some(
-    s"hooks/${CommitMsgHook.NAME}")
+  val gitProtocol                              = GitProtocol()
+  implicit val conf                            = GatlingGitConfiguration()
+  implicit val postMessageHook: Option[String] = Some(s"hooks/${CommitMsgHook.NAME}")
 
   val feeder = jsonFile("data/requests.json").circular
 
@@ -47,8 +46,8 @@ class ReplayRecordsScenario extends Simulation {
       rampUsers(10) during (5 seconds),
       constantUsersPerSec(20) during (15 seconds),
       constantUsersPerSec(20) during (15 seconds) randomized
-    ))
-    .protocols(gitProtocol)
+    )
+  ).protocols(gitProtocol)
     .maxDuration(60 seconds)
 
   after {

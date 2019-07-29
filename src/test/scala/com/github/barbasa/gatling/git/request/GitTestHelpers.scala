@@ -18,7 +18,7 @@ trait GitTestHelpers {
   val tempBase: String        = Files.createTempDirectory("gatlinGitTests").toFile.getAbsolutePath
   val testUser: String        = "testUser"
   val testRepo: String        = "testRepo"
-  val testRefName: String      = "refs/heads/mybranch"
+  val testRefName: String     = "refs/heads/mybranch"
   val workTreeDirectory: File = new File(s"$tempBase/$testUser/$testRepo")
 
   val defaultPushConfiguration = PushConfiguration(

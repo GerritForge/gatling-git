@@ -20,7 +20,7 @@ import io.gatling.core.config.GatlingPropertiesBuilder
 object GatlingRunner {
 
   def main(args: Array[String]): Unit = {
-    
+
     val simClass = classOf[ReplayRecordsScenario].getName
 
     val props = new GatlingPropertiesBuilder

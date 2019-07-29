@@ -12,31 +12,32 @@ import scala.collection.JavaConverters._
 class PushSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
 
   before {
-    FileUtils.deleteDirectory(new File(s"$tempBase/$testUser"))
-    testGitRepo = JGit.init.setDirectory(workTreeDirectory).call
+    FileUtils.deleteDirectory(originRepoDirectory.getParentFile)
+    testGitRepo = JGit.init.setDirectory(originRepoDirectory).call
   }
 
   after {
     testGitRepo.getRepository.close()
-    FileUtils.deleteDirectory(new File(s"$tempBase/$testUser"))
+    FileUtils.deleteDirectory(originRepoDirectory.getParentFile)
   }
 
   behavior of "Push"
 
   "without any error" should "return OK" in {
-    val response = Push(new URIish(s"file://$tempBase/$testUser/$testRepo"), s"$testUser").send
+    val response = Push(new URIish(s"file://$originRepoDirectory"), s"$testUser").send
     response.status shouldBe OK
   }
 
   it should "push to a new branch" in {
+    val pushRef = s"refs/heads/$testBranchName"
     val response = Push(
-      new URIish(s"file://$tempBase/$testUser/$testRepo"),
+      new URIish(s"file://$originRepoDirectory"),
       s"$testUser",
-      s"HEAD:$testRefName"
+      s"HEAD:$pushRef"
     ).send
     response.status shouldBe OK
 
     val refsList = testGitRepo.branchList().call().asScala
-    refsList.map(_.getName) should contain(testRefName)
+    refsList.map(_.getName) should contain(pushRef)
   }
 }

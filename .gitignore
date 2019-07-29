@@ -66,3 +66,9 @@ fabric.properties
 *.log
 target
 project/target
+
+# gatling-git data
+test-data
+
+# MacOS stuff
+.DS_Store

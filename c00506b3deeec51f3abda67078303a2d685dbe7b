@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c7f9765_4a339cef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-07-30T07:07:56Z",
+      "side": 1,
+      "message": "\"Add script to generate virtual users\" would be more descriptive IMHO.",
+      "revId": "c00506b3deeec51f3abda67078303a2d685dbe7b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ece7f26_b6bda9f3",
+        "filename": "scripts/generate_users_for_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-07-30T07:07:56Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 31,
+        "startChar": 11,
+        "endLine": 31,
+        "endChar": 12
+      },
+      "revId": "c00506b3deeec51f3abda67078303a2d685dbe7b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37b483ce_67670a92",
+        "filename": "scripts/generate_users_for_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-07-30T07:07:56Z",
+      "side": 1,
+      "message": "I would also echo the repositories that will be used for completeness",
+      "revId": "c00506b3deeec51f3abda67078303a2d685dbe7b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f4aeeed_564d10d0",
+        "filename": "scripts/generate_users_for_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-07-30T07:07:56Z",
+      "side": 1,
+      "message": "shouldn\u0027t this also be a parameter?",
+      "revId": "c00506b3deeec51f3abda67078303a2d685dbe7b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5ac455f_a402bb7c",
+        "filename": "scripts/generate_users_for_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1016501
+      },
+      "writtenOn": "2019-07-30T07:07:56Z",
+      "side": 1,
+      "message": "The ssh-url might not be the same everywhere. E.g. different port. Or SSH might not be enabled at all. This does not have to be done in this change, but we should make that configurable.",
+      "range": {
+        "startLine": 42,
+        "startChar": 39,
+        "endLine": 42,
+        "endChar": 72
+      },
+      "revId": "c00506b3deeec51f3abda67078303a2d685dbe7b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

@@ -247,6 +247,30 @@
       "revId": "cd5bd749614f14ea0dfc11829f82aa641c3b04a7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faf3d287_302e163a",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-07-30T20:10:21Z",
+      "side": 1,
+      "message": "This is a way I was thinking of using it:\n\nval commitBuilder1 \u003d new CommitBuilder(repo,3,4,5, \"prefix\", Seq(\"directoryA\"))\nval commitBuilder2 \u003d new CommitBuilder(repo,6,3,6, \"prefix\", Seq(\"directoryB\",\"directoryC\"))\n\nval scn \u003d scenario(\"Owner plugin\")\n\t.exec(\n\t\tGit.clone(s\"https://${baseUrl}:29418/testing/owners_plugin\"),\n\t\tPush(new URIish(\"https://${baseUrl}:29418/testing/owners_plugin\"), \"ciccio\", commitBuilder1).send,\n\t\tPush(new URIish(\"https://${baseUrl}:29418/testing/owners_plugin\"), \"ciccio\", commitBuilder2).send\n\t)\n\nFor this reason I don\u0027t think CommitBuilder can be a singleton. Did you have something else in mind?",
+      "parentUuid": "d37b26fd_31496c7b",
+      "range": {
+        "startLine": 189,
+        "startChar": 43,
+        "endLine": 189,
+        "endChar": 91
+      },
+      "revId": "cd5bd749614f14ea0dfc11829f82aa641c3b04a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }

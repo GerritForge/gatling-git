@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "69387bf4_c2b91865",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-07-31T22:01:16Z",
+      "side": 1,
+      "message": "Ah cool, let me try :-)",
+      "parentUuid": "44d4de80_a7f2a85f",
+      "range": {
+        "startLine": 62,
+        "startChar": 33,
+        "endLine": 64,
+        "endChar": 102
+      },
+      "revId": "79f7b2bf5f9b2a93540ef04a7f6b8b5f758bb05f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "308591e5_dc933788",
         "filename": "README.md",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "79f7b2bf5f9b2a93540ef04a7f6b8b5f758bb05f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba1c43ce_5a70b957",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-07-31T22:01:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "308591e5_dc933788",
+      "range": {
+        "startLine": 76,
+        "startChar": 43,
+        "endLine": 76,
+        "endChar": 44
+      },
+      "revId": "79f7b2bf5f9b2a93540ef04a7f6b8b5f758bb05f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }

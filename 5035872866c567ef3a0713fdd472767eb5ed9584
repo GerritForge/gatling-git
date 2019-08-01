@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1395cfc2_9cfc2e3a",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-08-01T09:20:46Z",
+      "side": 1,
+      "message": "the only reason we pass numFiles to the MockFileDirectory constructor is so that we can cap the number of `directories` to at most `numFiles`.\n`numFiles` is otherwise not used, nor stored as a class field.\n\n- Why do we need it at all? Can\u0027t the create() method just get (circularly) the next available directory when it needs it?\nIn fact, removing the take(numFiles) from the code still allows all tests to pass.\n\nAm I missing something?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 1
+      },
+      "revId": "5035872866c567ef3a0713fdd472767eb5ed9584",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79ec9a5b_bce9dc4a",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-08-01T09:20:46Z",
+      "side": 1,
+      "message": "Should we not check that directoryA contains 2 files and directoryB contains 1?",
+      "revId": "5035872866c567ef3a0713fdd472767eb5ed9584",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f210de0_39c28f61",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/GitTestHelpers.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-08-01T09:20:46Z",
+      "side": 1,
+      "message": "what\u0027s the point of these nested try\u0027s?\nDoesn\u0027t the outermost one catch all exceptions anyway?\nThis also generates warnings at compile time\n\nPerhaps you can rewrite it using Try {} instead?",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 5
+      },
+      "revId": "5035872866c567ef3a0713fdd472767eb5ed9584",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

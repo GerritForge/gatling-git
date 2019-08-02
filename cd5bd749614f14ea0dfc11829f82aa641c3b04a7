@@ -271,6 +271,30 @@
       "revId": "cd5bd749614f14ea0dfc11829f82aa641c3b04a7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3be1b23_efad834c",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-08-02T19:37:56Z",
+      "side": 1,
+      "message": "I was not suggesting that CommitBuilder should be a singleton, but that we have a singleton DefaultCommitBuilder, which at the moment is defined as a val and it is defaulted to if the option is None.\n\nYour example:\n...\nval commitBuilder2 \u003d new CommitBuilder(repo,6,3,6, \"prefix\", Seq(\"directoryB\",\"directoryC\"))\n...\nPush(new URIish(\"https://${baseUrl}:29418/testing/owners_plugin\"), \"ciccio\", commitBuilder2).send\n...\n\nDoes not match your method\u0027s interface because Push gets an Option, not a commitBuilder\n\nHope it makes sense",
+      "parentUuid": "faf3d287_302e163a",
+      "range": {
+        "startLine": 189,
+        "startChar": 43,
+        "endLine": 189,
+        "endChar": 91
+      },
+      "revId": "cd5bd749614f14ea0dfc11829f82aa641c3b04a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }

@@ -56,8 +56,8 @@ lazy val root = (project in file("."))
     name := "gatling-git",
     libraryDependencies ++=
       gatling ++
-        Seq("io.gatling" % "gatling-core" % "3.1.1" ) ++
-        Seq("io.gatling" % "gatling-app" % "3.1.1" ) ++
+        Seq("io.gatling" % "gatling-core" % GatlingVersion ) ++
+        Seq("io.gatling" % "gatling-app" % GatlingVersion ) ++
         Seq("org.eclipse.jgit" % "org.eclipse.jgit" % "5.3.0.201903130848-r") ++
         Seq("com.google.inject" % "guice" % "3.0") ++
         Seq("commons-io" % "commons-io" % "2.6") ++

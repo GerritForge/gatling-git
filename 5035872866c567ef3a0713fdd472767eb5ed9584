@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ccc1d1c3_92ebbff0",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-08-02T22:08:49Z",
+      "side": 1,
+      "message": "Nope...it was actually wrong what I was doing. \"take\" is not needed at all.",
+      "parentUuid": "1395cfc2_9cfc2e3a",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 1
+      },
+      "revId": "5035872866c567ef3a0713fdd472767eb5ed9584",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79ec9a5b_bce9dc4a",
         "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
         "patchSetId": 7
@@ -36,6 +60,24 @@
       "writtenOn": "2019-08-01T09:20:46Z",
       "side": 1,
       "message": "Should we not check that directoryA contains 2 files and directoryB contains 1?",
+      "revId": "5035872866c567ef3a0713fdd472767eb5ed9584",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "485bc22f_560113ef",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-08-02T22:08:49Z",
+      "side": 1,
+      "message": "I don\u0027t think so..the distribution of the files in directories is an internal implementation of the commit builder, at least for the time being.",
+      "parentUuid": "79ec9a5b_bce9dc4a",
       "revId": "5035872866c567ef3a0713fdd472767eb5ed9584",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
@@ -62,6 +104,30 @@
       "revId": "5035872866c567ef3a0713fdd472767eb5ed9584",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c810c55_e2339df0",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/GitTestHelpers.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-08-02T22:08:49Z",
+      "side": 1,
+      "message": "No point really...it was a mistake I did in the previous version of the code. I moved this function in the GitTestHelper method and I didn\u0027t want to modify it to make it clear that the function was just moving place in the code. But I am happy to change it and just use a scala Try{}",
+      "parentUuid": "9f210de0_39c28f61",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 5
+      },
+      "revId": "5035872866c567ef3a0713fdd472767eb5ed9584",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }

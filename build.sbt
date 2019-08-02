@@ -2,6 +2,34 @@ import Dependencies._
 
 enablePlugins(GatlingPlugin)
 
+val ponch = Developer(
+  id    = "barbasa",
+  name  = "Fabio Ponciroli",
+  email = "ponch78@gmail.com",
+  url   = url("https://github.com/barbasa")
+)
+
+val tony = Developer(
+  id    = "syntonyze",
+  name  = "Antonio Barone",
+  email = "syntonyze@gmail.com",
+  url   = url("https://github.com/syntonyze")
+)
+
+val thomas = Developer(
+  id    = "thomasdraebing",
+  name  = "Thomas Draebing",
+  email = "thomas.draebing@sap.com",
+  url   = url("https://github.com/thomasdraebing")
+)
+
+val luca = Developer(
+  id    = "lucamilanesio",
+  name  = "Luca Milanesio",
+  email = "luca.milanesio@gmail.com",
+  url   = url("https://github.com/lucamilanesio")
+)
+
 lazy val root = (project in file("."))
   .enablePlugins(GitVersioning)
   .settings(
@@ -12,19 +40,7 @@ lazy val root = (project in file("."))
       assemblyJarName := "gatling-git-extension.jar",
       scmInfo := Some(ScmInfo(url("https://review.gerrithub.io/GerritForge/gatling-git"),
         "scm:https://review.gerrithub.io/GerritForge/gatling-git.git")),
-      developers := List(
-        Developer(
-          id    = "barbasa",
-          name  = "Fabio Ponciroli",
-          email = "ponch78@gmail.com",
-          url   = url("https://github.com/barbasa")
-        ),
-        Developer(
-          id    = "syntonyze",
-          name  = "Antonio Barone",
-          email = "syntonyze@gmail.com",
-          url   = url("https://github.com/syntonyze")
-        )),
+      developers := List(ponch, tony, thomas, luca),
       description := "Gatlin plugin for supporting the Git protocol over SSH and HTTP",
       licenses := List("Apache 2" -> new URL("http://www.apache.org/licenses/LICENSE-2.0.txt")),
       homepage := Some(url("https://github.com/GerritForge/gatling-git")),

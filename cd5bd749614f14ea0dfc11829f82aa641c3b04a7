@@ -295,6 +295,30 @@
       "revId": "cd5bd749614f14ea0dfc11829f82aa641c3b04a7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7953fd0_a8f8134a",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-08-05T16:39:52Z",
+      "side": 1,
+      "message": "Have a look at the last patch set. Is that what you meant?",
+      "parentUuid": "f3be1b23_efad834c",
+      "range": {
+        "startLine": 189,
+        "startChar": 43,
+        "endLine": 189,
+        "endChar": 91
+      },
+      "revId": "cd5bd749614f14ea0dfc11829f82aa641c3b04a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }

@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "9d97fad0_af2fbf4d",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-08-08T10:35:27Z",
+      "side": 1,
+      "message": "Actually commitBuilder.commitToRepository _doesn\u0027t_ place files in different directories here, it only creates _one_ directory",
+      "range": {
+        "startLine": 71,
+        "startChar": 51,
+        "endLine": 71,
+        "endChar": 109
+      },
+      "revId": "5035872866c567ef3a0713fdd472767eb5ed9584",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79ec9a5b_bce9dc4a",
         "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
         "patchSetId": 7
@@ -78,6 +101,24 @@
       "side": 1,
       "message": "I don\u0027t think so..the distribution of the files in directories is an internal implementation of the commit builder, at least for the time being.",
       "parentUuid": "79ec9a5b_bce9dc4a",
+      "revId": "5035872866c567ef3a0713fdd472767eb5ed9584",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92019c29_51ec6402",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-08-08T10:35:27Z",
+      "side": 1,
+      "message": "\u003e the distribution of the files in directories is an internal implementation of the commit builder\n\nI am not sure this is the case, _how_ the distribution is implemented is an implementation detail, I agree, but _where_ files end up is deterministic and it is an observable effect of the method, isn\u0027t?\n\nThat\u0027s why in your previous test (\"place files in different directories - files \u003c directories\") you can assert that the file ends up in \"directoryA\" and not in \"directoryB\", if that was an implementation detail would you not have asserted something like: \"it ends up in any, but not in both\"?",
+      "parentUuid": "485bc22f_560113ef",
       "revId": "5035872866c567ef3a0713fdd472767eb5ed9584",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true

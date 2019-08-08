@@ -1,0 +1,273 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "094151af_a358a25c",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 13
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-08-08T10:35:27Z",
+      "side": 1,
+      "message": "nit: unneeded new line\nCould you run `sbt formatAll` before submitting?",
+      "revId": "b9887d93ed8e2b2bac9be118d5b54c40297bdaa7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68efd3e8_53e7cdaa",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-08-08T10:35:27Z",
+      "side": 1,
+      "message": "Do we really need an option here?\nWouldn\u0027t an empty list achieve the same result?",
+      "range": {
+        "startLine": 30,
+        "startChar": 49,
+        "endLine": 30,
+        "endChar": 66
+      },
+      "revId": "b9887d93ed8e2b2bac9be118d5b54c40297bdaa7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d8b8cef_1e637880",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-08-08T10:35:27Z",
+      "side": 1,
+      "message": "Perhaps we should abstract over the directory separator to allow this to be run on any OS:\n\nPaths.get(directory.toString, name).toFile.toString\n\nShould to the trick",
+      "revId": "b9887d93ed8e2b2bac9be118d5b54c40297bdaa7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b835bdd_be22cb9a",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 13
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-08-08T10:35:27Z",
+      "side": 1,
+      "message": "instead of using strings and raise exceptions if they are wrong how about something like:\n\n```\nsealed trait FileType\ncase object TextFileType extends FileType\n```\n\nthen you can define:\n\n```\ndef create(fileType: FileType, contentLength: Int): MockFile\n```\n\nAnd make impossible to pass the wrong thing to it",
+      "range": {
+        "startLine": 64,
+        "startChar": 13,
+        "endLine": 64,
+        "endChar": 29
+      },
+      "revId": "b9887d93ed8e2b2bac9be118d5b54c40297bdaa7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf05ffa3_ab28e48c",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-08-08T10:35:27Z",
+      "side": 1,
+      "message": "nit stringification not needed",
+      "range": {
+        "startLine": 28,
+        "startChar": 71,
+        "endLine": 28,
+        "endChar": 74
+      },
+      "revId": "b9887d93ed8e2b2bac9be118d5b54c40297bdaa7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e50921f_841663b6",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-08-08T10:35:27Z",
+      "side": 1,
+      "message": "nit: brackets not needed",
+      "range": {
+        "startLine": 28,
+        "startChar": 45,
+        "endLine": 28,
+        "endChar": 47
+      },
+      "revId": "b9887d93ed8e2b2bac9be118d5b54c40297bdaa7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7b92a71_53e3ed88",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 13
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-08-08T10:35:27Z",
+      "side": 1,
+      "message": "Should we add:\n\n```\nbehavior of \"CommitBuilder.commitToRepository\"\n```\n\nJust before this line, so that it is clear what we are testing?",
+      "revId": "b9887d93ed8e2b2bac9be118d5b54c40297bdaa7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81a1824f_7783313e",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 13
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-08-08T10:35:27Z",
+      "side": 1,
+      "message": "nit: you could abstract your assertion away from the List implementation, using scalatest:\n\ngetPathsInCommit(getHeadCommit.getTree) should contain only(\"directoryA\", \"directoryB\")",
+      "revId": "b9887d93ed8e2b2bac9be118d5b54c40297bdaa7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4282683_df245d4b",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/GitTestHelpers.scala",
+        "patchSetId": 13
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-08-08T10:35:27Z",
+      "side": 1,
+      "message": "If we are not doing anything with the exception, and we are not running any `finally`, why do we `try` at all?\nWouldn\u0027t be the same to just let the exception propagate?",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 3
+      },
+      "revId": "b9887d93ed8e2b2bac9be118d5b54c40297bdaa7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7649a420_654aae77",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/PushSpec.scala",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-08-08T10:35:27Z",
+      "side": 1,
+      "message": "nit: stringification not needed",
+      "range": {
+        "startLine": 32,
+        "startChar": 71,
+        "endLine": 32,
+        "endChar": 74
+      },
+      "revId": "b9887d93ed8e2b2bac9be118d5b54c40297bdaa7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b79527c3_d15cc3f1",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/PushSpec.scala",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-08-08T10:35:27Z",
+      "side": 1,
+      "message": "nit: brackets not needed",
+      "range": {
+        "startLine": 32,
+        "startChar": 45,
+        "endLine": 32,
+        "endChar": 47
+      },
+      "revId": "b9887d93ed8e2b2bac9be118d5b54c40297bdaa7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0faad2e5_24aea5b0",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/PushSpec.scala",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-08-08T10:35:27Z",
+      "side": 1,
+      "message": "nit: testUser is already a string",
+      "range": {
+        "startLine": 73,
+        "startChar": 13,
+        "endLine": 73,
+        "endChar": 25
+      },
+      "revId": "b9887d93ed8e2b2bac9be118d5b54c40297bdaa7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "047314a0_ccdeaa67",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/PushSpec.scala",
+        "patchSetId": 13
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2019-08-08T10:35:27Z",
+      "side": 1,
+      "message": "Is this needed? Removing it does not cause the test to fail to me\nPush.send does not perform an async computation does it?\n\nIf it does then I think we should make it explicit in the return types and use async scalatest[1]\n\n[1] http://www.scalatest.org/user_guide/async_testing",
+      "revId": "b9887d93ed8e2b2bac9be118d5b54c40297bdaa7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

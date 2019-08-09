@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d5c66a70_d1a63f22",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 13
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-08-09T18:55:38Z",
+      "side": 1,
+      "message": "Do you mind to check if you get a different formatting when running `sbt formatAll`?",
+      "parentUuid": "c8935df2_33f5c249",
+      "revId": "b9887d93ed8e2b2bac9be118d5b54c40297bdaa7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68efd3e8_53e7cdaa",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
         "patchSetId": 13

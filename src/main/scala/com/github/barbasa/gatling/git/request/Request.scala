@@ -214,7 +214,7 @@ case class Push(url: URIish,
       .add(refSpec)
       .call()
 
-    val maybeStatus = pushResults.asScala
+    val maybeRemoteRefUpdate = pushResults.asScala
       .flatMap { pushResult =>
         pushResult.getRemoteUpdates.asScala
       }
@@ -228,16 +228,16 @@ case class Push(url: URIish,
             RemoteRefUpdate.Status.REJECTED_REMOTE_CHANGED
           ).contains(remoteRefUpdate.getStatus)
       )
-      .map(remoteRefUpdate => remoteRefUpdate.getStatus)
 
-    if (maybeStatus.isEmpty) {
-      GitCommandResponse(OK)
-    } else {
-      GitCommandResponse(
-        Fail,
-        Some(maybeStatus.getOrElse(RemoteRefUpdate.Status.REJECTED_OTHER_REASON).toString)
-      )
-    }
+    maybeRemoteRefUpdate.fold(GitCommandResponse(OK))(
+      remoteRefUpdate =>
+        GitCommandResponse(
+          Fail,
+          Some(
+            s"Status: ${remoteRefUpdate.getStatus.toString} - Message: ${remoteRefUpdate.getMessage}"
+          )
+        )
+    )
   }
 }
 

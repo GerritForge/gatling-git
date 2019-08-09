@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "34538ce7_af6c044e",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-08-09T22:49:06Z",
+      "side": 1,
+      "message": "What about using a fold() instead?",
+      "range": {
+        "startLine": 232,
+        "startChar": 8,
+        "endLine": 232,
+        "endChar": 36
+      },
+      "revId": "7fba51f3eb8bc47e22d94669ddb513c8093fb0b1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f4e6f3a9_175ec0ba",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
         "patchSetId": 1

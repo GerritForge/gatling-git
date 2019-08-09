@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4e6f3a9_175ec0ba",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-08-09T17:16:08Z",
+      "side": 1,
+      "message": "REJECTED_OTHER_REASON is the only status with a message, for the other status is \"null\".\n\nWe could add a check to add the message just for REJECTED_OTHER_REASON, but I don\u0027t think it is a big deal having a \"null\" in a debugging string, I\u0027d rather keep the code more linear.",
+      "range": {
+        "startLine": 241,
+        "startChar": 44,
+        "endLine": 241,
+        "endChar": 61
+      },
+      "revId": "7fba51f3eb8bc47e22d94669ddb513c8093fb0b1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

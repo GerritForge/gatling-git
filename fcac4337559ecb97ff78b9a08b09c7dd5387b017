@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f495f54_d83ff744",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 15
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-08-09T22:46:08Z",
+      "side": 1,
+      "message": "Option[Seq[File]] looks a bit too complex: why not simply a Seq[File] that is empty by default?\nYou should also use Java NIO Path rather than File.",
+      "range": {
+        "startLine": 31,
+        "startChar": 33,
+        "endLine": 31,
+        "endChar": 50
+      },
+      "revId": "fcac4337559ecb97ff78b9a08b09c7dd5387b017",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3624947c_b9713faa",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 15
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-08-09T22:46:08Z",
+      "side": 1,
+      "message": "This could be simply a ++",
+      "range": {
+        "startLine": 39,
+        "startChar": 6,
+        "endLine": 39,
+        "endChar": 43
+      },
+      "revId": "fcac4337559ecb97ff78b9a08b09c7dd5387b017",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "463883e2_59c1a6a8",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 15
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-08-09T22:46:08Z",
+      "side": 1,
+      "message": "Path?",
+      "range": {
+        "startLine": 31,
+        "startChar": 65,
+        "endLine": 31,
+        "endChar": 69
+      },
+      "revId": "fcac4337559ecb97ff78b9a08b09c7dd5387b017",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b0e92e7_7524519d",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 15
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-08-09T22:46:08Z",
+      "side": 1,
+      "message": "you could use Path.resolve(name)",
+      "range": {
+        "startLine": 49,
+        "startChar": 36,
+        "endLine": 49,
+        "endChar": 54
+      },
+      "revId": "fcac4337559ecb97ff78b9a08b09c7dd5387b017",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5bccdce_c82c637a",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 15
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-08-09T22:46:08Z",
+      "side": 1,
+      "message": "This could just be defined as the default value.",
+      "range": {
+        "startLine": 253,
+        "startChar": 4,
+        "endLine": 253,
+        "endChar": 8
+      },
+      "revId": "fcac4337559ecb97ff78b9a08b09c7dd5387b017",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "48ce63fc_6dec5a3d",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-08-09T18:53:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d97fad0_af2fbf4d",
+      "range": {
+        "startLine": 71,
+        "startChar": 51,
+        "endLine": 71,
+        "endChar": 109
+      },
+      "revId": "5035872866c567ef3a0713fdd472767eb5ed9584",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79ec9a5b_bce9dc4a",
         "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
         "patchSetId": 7
@@ -122,6 +146,24 @@
       "revId": "5035872866c567ef3a0713fdd472767eb5ed9584",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3394c5ab_c9d1f904",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-08-09T18:53:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "92019c29_51ec6402",
+      "revId": "5035872866c567ef3a0713fdd472767eb5ed9584",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     },
     {
       "key": {

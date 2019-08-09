@@ -184,6 +184,30 @@
     },
     {
       "key": {
+        "uuid": "b37aefae_38d030a9",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 13
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-08-09T19:03:08Z",
+      "side": 1,
+      "message": "Addressed here: https://review.gerrithub.io/c/GerritForge/gatling-git/+/464718",
+      "parentUuid": "a32257a9_98d92f7b",
+      "range": {
+        "startLine": 64,
+        "startChar": 13,
+        "endLine": 64,
+        "endChar": 29
+      },
+      "revId": "b9887d93ed8e2b2bac9be118d5b54c40297bdaa7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf05ffa3_ab28e48c",
         "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
         "patchSetId": 13

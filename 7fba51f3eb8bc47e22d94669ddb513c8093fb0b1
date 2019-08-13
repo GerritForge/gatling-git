@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f681ffd0_0667dc0a",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-08-13T21:46:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34538ce7_af6c044e",
+      "range": {
+        "startLine": 232,
+        "startChar": 8,
+        "endLine": 232,
+        "endChar": 36
+      },
+      "revId": "7fba51f3eb8bc47e22d94669ddb513c8093fb0b1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4e6f3a9_175ec0ba",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "7fba51f3eb8bc47e22d94669ddb513c8093fb0b1",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9687215a_22419bf0",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-08-13T21:46:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4e6f3a9_175ec0ba",
+      "range": {
+        "startLine": 241,
+        "startChar": 44,
+        "endLine": 241,
+        "endChar": 61
+      },
+      "revId": "7fba51f3eb8bc47e22d94669ddb513c8093fb0b1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }

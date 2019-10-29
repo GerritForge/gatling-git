@@ -20,10 +20,12 @@ import java.nio.file.Files
 import com.github.barbasa.gatling.git.{
   CommandsConfiguration,
   GatlingGitConfiguration,
+  GitConfiguration,
   HttpConfiguration,
   PushConfiguration,
   SshConfiguration
 }
+
 import org.eclipse.jgit.api.{Git => JGit}
 
 trait GitTestHelpers {
@@ -44,6 +46,7 @@ trait GitTestHelpers {
   )
 
   implicit val gatlingConfig = GatlingGitConfiguration(
+    GitConfiguration(timeout = 30),
     HttpConfiguration("userName", "password"),
     SshConfiguration("/tmp/keys"),
     tempBase,

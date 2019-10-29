@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3b1dba2_435cc8dc",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/GatlingGitConfiguration.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-10-29T06:33:47Z",
+      "side": 1,
+      "message": "This could become public in the GitConfiguration companion object, so we can use the constant around, for example in the test.",
+      "range": {
+        "startLine": 47,
+        "startChar": 14,
+        "endLine": 47,
+        "endChar": 29
+      },
+      "revId": "ad784f4c4ade592fc19c41cdd96d248e2af5736b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab091aea_0cadcfad",
+        "filename": "src/test/resources/application.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-10-29T06:33:47Z",
+      "side": 1,
+      "message": "Shall we default it for consistency, as we are doing with the other parameters?",
+      "revId": "ad784f4c4ade592fc19c41cdd96d248e2af5736b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4da4c0ac_d0c340cd",
+        "filename": "src/test/resources/application.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-10-29T06:33:47Z",
+      "side": 1,
+      "message": "WDYT about renaming this into commandTimeout or something similar? When it comes to timeout it always takes a while to understand what it is referring to.",
+      "range": {
+        "startLine": 2,
+        "startChar": 2,
+        "endLine": 2,
+        "endChar": 9
+      },
+      "revId": "ad784f4c4ade592fc19c41cdd96d248e2af5736b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

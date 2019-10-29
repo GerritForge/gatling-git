@@ -19,12 +19,13 @@ import com.typesafe.config.{Config, ConfigFactory}
 
 @Singleton
 case class GatlingGitConfiguration private (
+    gitConfiguration: GitConfiguration,
     httpConfiguration: HttpConfiguration,
     sshConfiguration: SshConfiguration,
     tmpBasePath: String,
     commands: CommandsConfiguration
 )
-
+case class GitConfiguration(timeout: Int)
 case class HttpConfiguration(userName: String, password: String)
 case class SshConfiguration(private_key_path: String)
 case class PushConfiguration(
@@ -43,6 +44,7 @@ object PushConfiguration {
 case class CommandsConfiguration(pushConfig: PushConfiguration)
 
 object GatlingGitConfiguration {
+  private val DEFAULT_TIMEOUT = 30
   private val config = ConfigFactory.load()
 
   implicit class RichConfig(val config: Config) extends AnyVal {
@@ -62,6 +64,7 @@ object GatlingGitConfiguration {
   }
 
   def apply(): GatlingGitConfiguration = {
+    val gitTimeout = if(config.hasPath("git.timeout"))  config.getInt("git.timeout") else DEFAULT_TIMEOUT
     val httpUserName = config.getString("http.username")
     val httpPassword = config.getString("http.password")
     val testDataDirectory: String =
@@ -90,6 +93,7 @@ object GatlingGitConfiguration {
       .getOrElse(PushConfiguration.DEFAULT_COMMIT_PREFIX)
 
     GatlingGitConfiguration(
+      GitConfiguration(timeout = gitTimeout),
       HttpConfiguration(httpUserName, httpPassword),
       SshConfiguration(sshPrivateKeyPath),
       tmpBasePath,

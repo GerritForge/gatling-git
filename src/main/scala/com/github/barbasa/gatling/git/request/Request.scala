@@ -135,6 +135,7 @@ case class Clone(url: URIish, user: String, ref: String = MasterRef)(
       .setURI(url.toString)
       .setDirectory(workTreeDirectory)
       .setBranch(ref)
+      .setTimeout(conf.gitConfiguration.timeout)
       .call()
 
     postMsgHook.foreach { sourceCommitMsgFile =>
@@ -165,6 +166,7 @@ case class Fetch(url: URIish, user: String)(implicit val conf: GatlingGitConfigu
       .fetch()
       .setRemote("origin")
       .setAuthenticationMethod(url, cb)
+      .setTimeout(conf.gitConfiguration.timeout)
       .call()
 
     if (fetchResult.getAdvertisedRefs.size() > 0) {
@@ -183,7 +185,10 @@ case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
 
   override def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
-    val pullResult = new Git(repository).pull().setAuthenticationMethod(url, cb).call()
+    val pullResult = new Git(repository)
+      .pull().setAuthenticationMethod(url, cb)
+      .setTimeout(conf.gitConfiguration.timeout)
+      .call()
 
     if (pullResult.isSuccessful) {
       GitCommandResponse(OK)
@@ -217,6 +222,7 @@ case class Push(url: URIish,
       .setAuthenticationMethod(url, cb)
       .setRemote(url.toString)
       .add(refSpec)
+      .setTimeout(conf.gitConfiguration.timeout)
       .call()
 
     val maybeRemoteRefUpdate = pushResults.asScala
@@ -266,6 +272,7 @@ case class Tag(url: URIish,
       .setRemote("origin")
       .setRefSpecs(refSpec)
       .setAuthenticationMethod(url, cb)
+      .setTimeout(conf.gitConfiguration.timeout)
       .call()
 
     val fetchHead = fetchResult.getAdvertisedRef(refSpec)
@@ -283,6 +290,7 @@ case class Tag(url: URIish,
       .setRemote("origin")
       .setRefSpecs(new RefSpec(s"refs/tags/${tag}"))
       .setAuthenticationMethod(url, cb)
+      .setTimeout(conf.gitConfiguration.timeout)
       .call()
       .asScala
 

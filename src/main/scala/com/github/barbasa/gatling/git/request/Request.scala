@@ -13,7 +13,7 @@
 // limitations under the License.
 
 package com.github.barbasa.gatling.git.request
-import java.io.File
+import java.io.{File, PrintWriter}
 import java.nio.file.{Files, Paths}
 import java.time.LocalDateTime
 
@@ -26,7 +26,7 @@ import io.gatling.commons.stats.{KO => GatlingFail}
 import io.gatling.commons.stats.Status
 import org.apache.commons.io.FileUtils
 import org.eclipse.jgit.api._
-import org.eclipse.jgit.lib.Repository
+import org.eclipse.jgit.lib.{NullProgressMonitor, Repository, TextProgressMonitor}
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder
 import org.eclipse.jgit.transport._
 import org.eclipse.jgit.transport.JschConfigSessionFactory
@@ -66,6 +66,8 @@ sealed trait Request {
       defaultJSch
     }
   }
+
+  def progressMonitor = if(conf.gitConfiguration.showProgress) new TextProgressMonitor(new PrintWriter(System.out)) else  NullProgressMonitor.INSTANCE
 
   def initRepo() = {
     Git.init
@@ -135,7 +137,9 @@ case class Clone(url: URIish, user: String, ref: String = MasterRef)(
       .setURI(url.toString)
       .setDirectory(workTreeDirectory)
       .setBranch(ref)
+      .setProgressMonitor(progressMonitor)
       .setTimeout(conf.gitConfiguration.commandTimeout)
+
       .call()
 
     postMsgHook.foreach { sourceCommitMsgFile =>
@@ -167,6 +171,7 @@ case class Fetch(url: URIish, user: String)(implicit val conf: GatlingGitConfigu
       .setRemote("origin")
       .setAuthenticationMethod(url, cb)
       .setTimeout(conf.gitConfiguration.commandTimeout)
+      .setProgressMonitor(progressMonitor)
       .call()
 
     if (fetchResult.getAdvertisedRefs.size() > 0) {
@@ -188,6 +193,7 @@ case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
     val pullResult = new Git(repository)
       .pull().setAuthenticationMethod(url, cb)
       .setTimeout(conf.gitConfiguration.commandTimeout)
+      .setProgressMonitor(progressMonitor)
       .call()
 
     if (pullResult.isSuccessful) {
@@ -223,6 +229,7 @@ case class Push(url: URIish,
       .setRemote(url.toString)
       .add(refSpec)
       .setTimeout(conf.gitConfiguration.commandTimeout)
+      .setProgressMonitor(progressMonitor)
       .call()
 
     val maybeRemoteRefUpdate = pushResults.asScala
@@ -273,6 +280,7 @@ case class Tag(url: URIish,
       .setRefSpecs(refSpec)
       .setAuthenticationMethod(url, cb)
       .setTimeout(conf.gitConfiguration.commandTimeout)
+      .setProgressMonitor(progressMonitor)
       .call()
 
     val fetchHead = fetchResult.getAdvertisedRef(refSpec)
@@ -291,6 +299,7 @@ case class Tag(url: URIish,
       .setRefSpecs(new RefSpec(s"refs/tags/${tag}"))
       .setAuthenticationMethod(url, cb)
       .setTimeout(conf.gitConfiguration.commandTimeout)
+      .setProgressMonitor(progressMonitor)
       .call()
       .asScala
 

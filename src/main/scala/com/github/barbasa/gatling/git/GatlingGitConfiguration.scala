@@ -25,10 +25,11 @@ case class GatlingGitConfiguration private (
     tmpBasePath: String,
     commands: CommandsConfiguration
 )
-case class GitConfiguration(commandTimeout: Int)
+case class GitConfiguration(commandTimeout: Int, showProgress: Boolean)
 
 object GitConfiguration{
   val DEFAULT_TIMEOUT = 30
+  val DEFAULT_SHOW_PROGRESS = true
 }
 
 case class HttpConfiguration(userName: String, password: String)
@@ -65,11 +66,23 @@ object GatlingGitConfiguration {
       } else {
         None
       }
+
+    def optionalBoolean(path: String): Option[Boolean] =
+      if (config.hasPath(path)) {
+        Some(config.getBoolean(path))
+      } else {
+        None
+      }
+
   }
 
   def apply(): GatlingGitConfiguration = {
     val gitCommandTimeout =
       if(config.hasPath("git.commandTimeout")) config.getInt("git.commandTimeout") else GitConfiguration.DEFAULT_TIMEOUT
+
+    val gitShowProgress = config
+      .optionalBoolean("git.showProgress")
+      .getOrElse(GitConfiguration.DEFAULT_SHOW_PROGRESS)
 
     val httpUserName = config.getString("http.username")
     val httpPassword = config.getString("http.password")
@@ -99,7 +112,7 @@ object GatlingGitConfiguration {
       .getOrElse(PushConfiguration.DEFAULT_COMMIT_PREFIX)
 
     GatlingGitConfiguration(
-      GitConfiguration(commandTimeout = gitCommandTimeout),
+      GitConfiguration(commandTimeout = gitCommandTimeout, showProgress = gitShowProgress),
       HttpConfiguration(httpUserName, httpPassword),
       SshConfiguration(sshPrivateKeyPath),
       tmpBasePath,

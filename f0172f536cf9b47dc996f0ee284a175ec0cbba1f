@@ -22,6 +22,30 @@
       "revId": "f0172f536cf9b47dc996f0ee284a175ec0cbba1f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ee8734a_691b7cb0",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/GatlingGitConfiguration.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2019-10-30T07:11:57Z",
+      "side": 1,
+      "message": "Same as previous comment: But by default git client is using this monitor, quiet mode is optional",
+      "parentUuid": "0e8e0b62_0060ed8b",
+      "range": {
+        "startLine": 32,
+        "startChar": 30,
+        "endLine": 32,
+        "endChar": 34
+      },
+      "revId": "f0172f536cf9b47dc996f0ee284a175ec0cbba1f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }

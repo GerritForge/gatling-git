@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e8e0b62_0060ed8b",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/GatlingGitConfiguration.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2019-10-30T06:55:20Z",
+      "side": 1,
+      "message": "this should be false, by default.",
+      "range": {
+        "startLine": 32,
+        "startChar": 30,
+        "endLine": 32,
+        "endChar": 34
+      },
+      "revId": "f0172f536cf9b47dc996f0ee284a175ec0cbba1f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

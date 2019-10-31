@@ -24,10 +24,14 @@ import io.gatling.core.session.Session
 import io.gatling.core.stats.StatsEngine
 import io.gatling.core.util.NameGen
 
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
+
 class GitRequestAction(
     coreComponents: CoreComponents,
     reqBuilder: GitRequestBuilder,
-    val next: Action
+    val throttled: Boolean,
+    val next: Action,
 ) extends ExitableAction
     with NameGen {
 
@@ -38,29 +42,36 @@ class GitRequestAction(
   override def name: String = genName("GitRequest")
 
   override def execute(session: Session): Unit = {
-    val start = clock.nowMillis
+    Future {
+      val start = clock.nowMillis
 
-    val (response, reqName, message) = reqBuilder.buildWithSession(session) match {
-      case Success(req) =>
-        try {
-          val commandResponse = req.send
-          (commandResponse, req.name, commandResponse.message)
-        } catch {
-          case e: Exception =>
-            (GitCommandResponse(Fail), req.name, Some(s"${e.getMessage} - ${e.getCause}"))
-        }
-      case Failure(message) => (GitCommandResponse(Fail), "Unknown", Some(message))
+      val (response, reqName, message) = reqBuilder.buildWithSession(session) match {
+        case Success(req) =>
+          try {
+            val commandResponse = req.send
+            (commandResponse, req.name, commandResponse.message)
+          } catch {
+            case e: Exception =>
+              (GitCommandResponse(Fail), req.name, Some(s"${e.getMessage} - ${e.getCause}"))
+          }
+        case Failure(message) => (GitCommandResponse(Fail), "Unknown", Some(message))
+      }
+
+      statsEngine.logResponse(
+        session,
+        reqName,
+        start,
+        clock.nowMillis,
+        Request.gatlingStatusFromGit(response),
+        None,
+        message
+      )
+      if (throttled) {
+        coreComponents.throttler.throttle(session.scenario, () => next ! session.markAsSucceeded)
+      } else {
+        next ! session.markAsSucceeded
+      }
     }
 
-    statsEngine.logResponse(
-      session,
-      reqName,
-      start,
-      clock.nowMillis,
-      Request.gatlingStatusFromGit(response),
-      None,
-      message
-    )
-    next ! session.markAsSucceeded
   }
 }

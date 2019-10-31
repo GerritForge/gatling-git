@@ -46,7 +46,10 @@ trait GitTestHelpers {
   )
 
   implicit val gatlingConfig = GatlingGitConfiguration(
-    GitConfiguration(commandTimeout = GitConfiguration.DEFAULT_TIMEOUT),
+    GitConfiguration(
+      commandTimeout = GitConfiguration.DEFAULT_TIMEOUT,
+      showProgress = GitConfiguration.DEFAULT_SHOW_PROGRESS
+    ),
     HttpConfiguration("userName", "password"),
     SshConfiguration("/tmp/keys"),
     tempBase,

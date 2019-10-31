@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ffe88827_c145bfcf",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/action/GitRequestAction.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2019-10-31T06:22:34Z",
+      "side": 1,
+      "message": "It\u0027s done like that in:\nio.gatling.jms.action.JmsAction,\nio.gatling.http.engine.tx.HttpTxExecutor and KafkaRequestAction,",
+      "parentUuid": "1f614838_4dd9bc2b",
+      "range": {
+        "startLine": 69,
+        "startChar": 6,
+        "endLine": 73,
+        "endChar": 7
+      },
+      "revId": "918a327096266fa669c6160e178b12766b4fd001",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad51011b_cac6b1a1",
         "filename": "src/test/scala/com/github/barbasa/gatling/git/request/GitTestHelpers.scala",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-31T05:58:37Z",
       "side": 1,
       "message": "I guess this is not part of this CR, right ?",
+      "range": {
+        "startLine": 51,
+        "startChar": 6,
+        "endLine": 51,
+        "endChar": 59
+      },
+      "revId": "918a327096266fa669c6160e178b12766b4fd001",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eba72340_0e00bec8",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/GitTestHelpers.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2019-10-31T06:22:34Z",
+      "side": 1,
+      "message": "Yes it\u0027s a fix I\u0027ve noticed that in previous cr tests are not compiling :( I\u0027ve added it because I want to have this done for tomorrow morning. But you are right let me split it",
+      "parentUuid": "ad51011b_cac6b1a1",
       "range": {
         "startLine": 51,
         "startChar": 6,

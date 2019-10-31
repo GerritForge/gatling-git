@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ba349dbb_7b4f7a2c",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/action/GitRequestAction.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2019-10-31T06:29:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ffe88827_c145bfcf",
+      "range": {
+        "startLine": 69,
+        "startChar": 6,
+        "endLine": 73,
+        "endChar": 7
+      },
+      "revId": "918a327096266fa669c6160e178b12766b4fd001",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad51011b_cac6b1a1",
         "filename": "src/test/scala/com/github/barbasa/gatling/git/request/GitTestHelpers.scala",
         "patchSetId": 1

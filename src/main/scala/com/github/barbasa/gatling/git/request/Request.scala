@@ -157,7 +157,7 @@ case class Clone(url: URIish, user: String, ref: String = MasterRef)(
   }
 }
 
-case class Fetch(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
+case class Fetch(url: URIish, user: String, refSpec: String)(implicit val conf: GatlingGitConfiguration)
     extends Request {
   initRepo()
 
@@ -168,7 +168,7 @@ case class Fetch(url: URIish, user: String)(implicit val conf: GatlingGitConfigu
     val fetchResult = new Git(repository)
       .fetch()
       .setRemote("origin")
-      .setRefSpecs("+refs/*:refs/*")
+      .setRefSpecs(refSpec)
       .setAuthenticationMethod(url, cb)
       .setTimeout(conf.gitConfiguration.commandTimeout)
       .setProgressMonitor(progressMonitor)

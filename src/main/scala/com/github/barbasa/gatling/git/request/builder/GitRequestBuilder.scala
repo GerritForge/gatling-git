@@ -45,7 +45,7 @@ case class GitRequestBuilder(request: GitRequestSession)(
       val user = session.userId.toString
       command.toLowerCase match {
         case "clone" => Clone(url, user, refSpec)
-        case "fetch" => Fetch(url, user)
+        case "fetch" => Fetch(url, user, refSpec)
         case "pull"  => Pull(url, user)
         case "push"  => Push(url, user, refSpec)
         case "tag"   => Tag(url, user, refSpec, tag)

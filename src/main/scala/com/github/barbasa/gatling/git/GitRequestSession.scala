@@ -28,6 +28,7 @@ case class GitRequestSession(
 
 object GitRequestSession {
   val MasterRef           = s"$R_HEADS$MASTER"
+  val AllRefs             = s"+refs/*:refs/*"
   val HeadToMasterRefSpec = StaticStringExpression(s"$HEAD:$MasterRef")
   val EmptyTag            = StaticStringExpression("")
 

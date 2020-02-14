@@ -91,13 +91,13 @@ sbt compile
 ### Setup
 
 If you are running SSH commands the private keys of the users used for testing need to go in `/tmp/ssh-keys`.
-The keys need to be generated this way (JSch won't validate them [otherwise](https://stackoverflow.com/questions/53134212/invalid-privatekey-when-using-jsch):
+The keys need to be generated this way (JSch won't validate them [otherwise](https://stackoverflow.com/questions/53134212/invalid-privatekey-when-using-jsch)):
 
 ```bash
 ssh-keygen -m PEM -t rsa -C "test@mail.com" -f /tmp/ssh-keys/id_rsa
 ```
 
-NOTE: Don't forget to add the public keys for the testing user(s) to your git server
+NOTE: Don't forget to add the public keys for the testing user(s) to your git server.
 
 #### Using Gatling's feeder input
 
@@ -124,14 +124,14 @@ Here below an example:
 
 Valid commands that can be specified in the `cmd` parameter are:
 
+* `clone`: clone the remote repository
 * `fetch`: run a git-upload-pack
 * `pull`: run a git-upload-pack and then merge the remote fetched head to the local branch
 * `push`: push the local ref to the remote Git server
-* `clone`: clone the remote repository
 
 The common parameters are:
 
-* `url`: The HTTP or SSH Git URL of the remote repository
+* `url`: The HTTP or SSH Git URL of the remote repository.
 * `ref-spec`: ref-spec of the `push` operation. Can be specified with a simple branch name or have
   the more general form of `local:remote` refs.
 

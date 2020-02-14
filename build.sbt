@@ -3,31 +3,31 @@ import Dependencies._
 enablePlugins(GatlingPlugin)
 
 val ponch = Developer(
-  id    = "barbasa",
-  name  = "Fabio Ponciroli",
+  id = "barbasa",
+  name = "Fabio Ponciroli",
   email = "ponch78@gmail.com",
-  url   = url("https://github.com/barbasa")
+  url = url("https://github.com/barbasa")
 )
 
 val tony = Developer(
-  id    = "syntonyze",
-  name  = "Antonio Barone",
+  id = "syntonyze",
+  name = "Antonio Barone",
   email = "syntonyze@gmail.com",
-  url   = url("https://github.com/syntonyze")
+  url = url("https://github.com/syntonyze")
 )
 
 val thomas = Developer(
-  id    = "thomasdraebing",
-  name  = "Thomas Draebing",
+  id = "thomasdraebing",
+  name = "Thomas Draebing",
   email = "thomas.draebing@sap.com",
-  url   = url("https://github.com/thomasdraebing")
+  url = url("https://github.com/thomasdraebing")
 )
 
 val luca = Developer(
-  id    = "lucamilanesio",
-  name  = "Luca Milanesio",
+  id = "lucamilanesio",
+  name = "Luca Milanesio",
   email = "luca.milanesio@gmail.com",
-  url   = url("https://github.com/lucamilanesio")
+  url = url("https://github.com/lucamilanesio")
 )
 
 lazy val root = (project in file("."))
@@ -56,13 +56,13 @@ lazy val root = (project in file("."))
     name := "gatling-git",
     libraryDependencies ++=
       gatling ++
-        Seq("io.gatling" % "gatling-core" % GatlingVersion ) ++
-        Seq("io.gatling" % "gatling-app" % GatlingVersion ) ++
+        Seq("io.gatling" % "gatling-core" % GatlingVersion) ++
+        Seq("io.gatling" % "gatling-app" % GatlingVersion) ++
         Seq("org.eclipse.jgit" % "org.eclipse.jgit" % "5.3.0.201903130848-r") ++
         Seq("com.google.inject" % "guice" % "3.0") ++
         Seq("commons-io" % "commons-io" % "2.6") ++
         Seq("com.typesafe.scala-logging" %% "scala-logging" % "3.9.2") ++
-      Seq("org.scalatest" %% "scalatest" % "3.0.1" % Test ),
+        Seq("org.scalatest" %% "scalatest" % "3.0.1" % Test),
   )
 
 credentials += Credentials(Path.userHome / ".sbt" / "sonatype_credentials")
@@ -73,6 +73,6 @@ useGpg := true
 usePgpKeyHex("C54DAC2791F484279F956ED9F53F69D12E935B99")
 
 assemblyMergeStrategy in assembly := {
- case PathList("META-INF", xs @ _*) => MergeStrategy.discard
- case x => MergeStrategy.first
+  case PathList("META-INF", xs@_*) => MergeStrategy.discard
+  case x => MergeStrategy.first
 }

@@ -21,11 +21,8 @@ fabric.properties
 # JetBrains templates
 **___jb_tmp___
 
-### Scala ###
-*.class
-*.log
-target
-project/target
+# Scala sbt
+target/
 
 # gatling-git data
 test-data

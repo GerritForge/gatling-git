@@ -207,7 +207,9 @@ case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfigur
 case class Push(url: URIish,
                 user: String,
                 refSpec: String = HeadToMasterRefSpec.value,
-                commitBuilder: CommitBuilder = Push.defaultCommitBuilder)(
+                commitBuilder: CommitBuilder = Push.defaultCommitBuilder,
+                force: Boolean = false
+               )(
     implicit val conf: GatlingGitConfiguration
 ) extends Request {
   initRepo()
@@ -230,6 +232,7 @@ case class Push(url: URIish,
       .add(refSpec)
       .setTimeout(conf.gitConfiguration.commandTimeout)
       .setProgressMonitor(progressMonitor)
+      .setForce(force)
       .call()
 
     val maybeRemoteRefUpdate = pushResults.asScala

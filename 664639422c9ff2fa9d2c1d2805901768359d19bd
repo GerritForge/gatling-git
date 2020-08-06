@@ -46,6 +46,30 @@
       "revId": "664639422c9ff2fa9d2c1d2805901768359d19bd",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a87f62ef_f0cebb77",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/PushSpec.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2020-08-06T14:17:03Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t see it was already existing.",
+      "parentUuid": "42848e8c_9abc6e1a",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "664639422c9ff2fa9d2c1d2805901768359d19bd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }

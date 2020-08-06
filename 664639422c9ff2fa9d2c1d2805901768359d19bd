@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c195206_5b83f338",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/PushSpec.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2020-08-06T14:01:39Z",
+      "side": 1,
+      "message": "I struggle to understand the title of this test it reads:\n\n\"without any error should return OK\"\n\nCan you clarify the intent?",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "664639422c9ff2fa9d2c1d2805901768359d19bd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

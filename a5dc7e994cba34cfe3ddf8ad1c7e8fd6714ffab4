@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2ad4637_d485777a",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2020-08-07T07:32:40Z",
+      "side": 1,
+      "message": "I\u0027m not sure that I got the logic, if the branch exists checkout the branch and create the change, but if the branch doesn\u0027t exists commit the code and create branch locally. Shouldn\u0027t we first create branch locally and then commit the change?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 48
+      },
+      "revId": "a5dc7e994cba34cfe3ddf8ad1c7e8fd6714ffab4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

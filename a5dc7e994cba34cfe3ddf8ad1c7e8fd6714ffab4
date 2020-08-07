@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "dd603666_51ec2074",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2020-08-07T08:45:26Z",
+      "side": 1,
+      "message": "Would it make sense to have this computed only once as a lazy val, outside this method?\nOr do you want to get *new* branches as they get created?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 12
+      },
+      "revId": "a5dc7e994cba34cfe3ddf8ad1c7e8fd6714ffab4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2ad4637_d485777a",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
         "patchSetId": 1
@@ -46,6 +69,52 @@
       "revId": "a5dc7e994cba34cfe3ddf8ad1c7e8fd6714ffab4",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0acd4655_559a56ce",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2020-08-07T08:45:26Z",
+      "side": 1,
+      "message": "I am struggling to follow the logic. What\u0027s the meaning of \u0027:\u0027 here?",
+      "range": {
+        "startLine": 225,
+        "startChar": 65,
+        "endLine": 225,
+        "endChar": 90
+      },
+      "revId": "a5dc7e994cba34cfe3ddf8ad1c7e8fd6714ffab4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebb82481_604e459d",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2020-08-07T08:45:26Z",
+      "side": 1,
+      "message": "why not just using filterNot here?",
+      "range": {
+        "startLine": 225,
+        "startChar": 64,
+        "endLine": 225,
+        "endChar": 90
+      },
+      "revId": "a5dc7e994cba34cfe3ddf8ad1c7e8fd6714ffab4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
     }
   ]
 }

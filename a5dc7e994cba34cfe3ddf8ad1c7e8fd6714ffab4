@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6787bd57_b6ee0a6c",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-08-07T09:09:00Z",
+      "side": 1,
+      "message": "If you compute this only once, it will be stale after L55 and then it could potentially fail. E.g. use-case where you create two commits, the second commit will fail at L55 because the branch already exists.",
+      "parentUuid": "dd603666_51ec2074",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 12
+      },
+      "revId": "a5dc7e994cba34cfe3ddf8ad1c7e8fd6714ffab4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2ad4637_d485777a",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
         "patchSetId": 1
@@ -115,6 +139,54 @@
       "revId": "a5dc7e994cba34cfe3ddf8ad1c7e8fd6714ffab4",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4be4662_3279e21e",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-08-07T09:09:00Z",
+      "side": 1,
+      "message": "The refspec can be done in two forms:\n1. src-ref:dst-ref\n2. branch\n\nIf you are in case 1, then you cannot assume that it is a branch at all.\nIf you are in case 2, the refspec is the branch name.",
+      "parentUuid": "0acd4655_559a56ce",
+      "range": {
+        "startLine": 225,
+        "startChar": 65,
+        "endLine": 225,
+        "endChar": 90
+      },
+      "revId": "a5dc7e994cba34cfe3ddf8ad1c7e8fd6714ffab4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8c6cb20_6344dd93",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2020-08-07T09:09:00Z",
+      "side": 1,
+      "message": "Good point, addressed with Change-Id: Ic76aa7b626",
+      "parentUuid": "ebb82481_604e459d",
+      "range": {
+        "startLine": 225,
+        "startChar": 64,
+        "endLine": 225,
+        "endChar": 90
+      },
+      "revId": "a5dc7e994cba34cfe3ddf8ad1c7e8fd6714ffab4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }

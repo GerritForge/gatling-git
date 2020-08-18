@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a223a517_8d3417dd",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2020-08-18T22:18:10Z",
+      "side": 1,
+      "message": "This has the same name of the boolean. Maybe we should call this differently, i.e.: computedChangeId ?",
+      "range": {
+        "startLine": 62,
+        "startChar": 10,
+        "endLine": 62,
+        "endChar": 25
+      },
+      "revId": "f880875eab4aed323a48350d6b0fee84c5b763b3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

@@ -213,7 +213,8 @@ case class Push(
     user: String,
     refSpec: String = HeadToMasterRefSpec.value,
     commitBuilder: CommitBuilder = Push.defaultCommitBuilder,
-    force: Boolean = false
+    force: Boolean = false,
+    computeChangeId: Boolean = false
 )(
     implicit val conf: GatlingGitConfiguration
 ) extends Request {
@@ -228,7 +229,11 @@ case class Push(
     val isSrcDstRefSpec: String => Boolean = _.contains(":") // e.g. HEAD:refs/for/master
 
     // TODO: Create multiple commits per push
-    commitBuilder.commitToRepository(repository, Option(refSpec).filterNot(isSrcDstRefSpec))
+    commitBuilder.commitToRepository(
+      repository,
+      Option(refSpec).filterNot(isSrcDstRefSpec),
+      computeChangeId
+    )
 
     // XXX Make credential configurable
     val pushResults = git.push

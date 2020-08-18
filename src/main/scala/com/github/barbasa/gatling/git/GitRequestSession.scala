@@ -24,7 +24,8 @@ case class GitRequestSession(
     url: Expression[String],
     refSpec: Expression[String] = HeadToMasterRefSpec,
     tag: Expression[String] = EmptyTag,
-    force: Expression[Boolean] = False
+    force: Expression[Boolean] = False,
+    computeChangeId: Expression[Boolean] = False
 )
 
 object GitRequestSession {

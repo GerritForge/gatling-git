@@ -18,15 +18,21 @@ import com.github.barbasa.gatling.git.helper.MockFiles._
 import org.eclipse.jgit.api._
 import org.eclipse.jgit.lib.Repository
 import java.time.LocalDateTime
+
 import scala.util.Random
 import scala.collection.JavaConverters._
 import org.eclipse.jgit.lib.Constants.R_HEADS
+import org.eclipse.jgit.util.ChangeIdUtil
 
 class CommitBuilder(numFiles: Int, minContentLength: Int, maxContentLength: Int, prefix: String) {
 
   val random = new Random()
 
-  def commitToRepository(repository: Repository, branch: Option[String] = Option.empty) {
+  def commitToRepository(
+      repository: Repository,
+      branch: Option[String] = Option.empty,
+      computeChangeId: Boolean = false
+  ) {
     val git = new Git(repository)
     Vector.range(0, numFiles).par.foreach { e =>
       val contentLength: Int = minContentLength + random
@@ -45,12 +51,26 @@ class CommitBuilder(numFiles: Int, minContentLength: Int, maxContentLength: Int,
     git.add.addFilepattern(".").call()
 
     val uniqueSuffix = s"${LocalDateTime.now}"
-    git
+    val revCommit = git
       .commit()
       .setMessage(
         s"${prefix}Test commit header - $uniqueSuffix\n\nTest commit body - $uniqueSuffix\n"
       )
       .call()
+
+    if (computeChangeId) {
+      val computeChangeId = ChangeIdUtil.computeChangeId(
+        revCommit.getTree.getId,
+        revCommit.getId,
+        revCommit.getAuthorIdent,
+        revCommit.getCommitterIdent,
+        revCommit.getFullMessage
+      );
+      if (computeChangeId != null) {
+        val commitMessage = ChangeIdUtil.insertId(revCommit.getFullMessage, computeChangeId, true)
+        git.commit().setAmend(true).setMessage(commitMessage).call()
+      }
+    }
 
     branch
       .filterNot(existingBranch.contains)

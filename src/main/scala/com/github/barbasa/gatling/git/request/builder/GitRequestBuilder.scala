@@ -36,19 +36,20 @@ case class GitRequestBuilder(request: GitRequestSession)(
   def buildWithSession(session: Session): Validation[Request] = {
 
     for {
-      command   <- request.commandName(session)
-      urlString <- request.url(session)
-      url       <- validateUrl(urlString)
-      refSpec   <- request.refSpec(session)
-      tag       <- request.tag(session)
-      force     <- request.force(session)
+      command         <- request.commandName(session)
+      urlString       <- request.url(session)
+      url             <- validateUrl(urlString)
+      refSpec         <- request.refSpec(session)
+      tag             <- request.tag(session)
+      force           <- request.force(session)
+      computeChangeId <- request.computeChangeId(session)
     } yield {
       val user = session.userId.toString
       command.toLowerCase match {
         case "clone" => Clone(url, user, refSpec)
         case "fetch" => Fetch(url, user, refSpec)
         case "pull"  => Pull(url, user)
-        case "push"  => Push(url, user, refSpec, force = force)
+        case "push"  => Push(url, user, refSpec, force = force, computeChangeId = computeChangeId)
         case "tag"   => Tag(url, user, refSpec, tag)
         case _       => InvalidRequest(url, user)
       }

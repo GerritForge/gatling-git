@@ -64,7 +64,7 @@ class PushSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHe
     response.status shouldBe OK
   }
 
-  it should "push to a new branch" in {
+  "with a branch ref-spec" should "push to a new branch" in {
     val pushRef = testBranchName
     val response = Push(
       new URIish(s"file://$originRepoDirectory"),
@@ -76,7 +76,7 @@ class PushSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHe
     testGitRepo.branchList.call.asScala.map(_.getName) should contain(s"$R_HEADS$pushRef")
   }
 
-  it should "push to an existing branch" in {
+  "with a branch ref-spec" should "push to an existing branch" in {
     val pushRef = testBranchName
     val push = Push(
       new URIish(s"file://$originRepoDirectory"),
@@ -88,5 +88,17 @@ class PushSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHe
     push.send.status shouldBe OK
 
     testGitRepo.branchList.call.asScala.map(_.getName) should contain(s"$R_HEADS$pushRef")
+  }
+
+  "with a branch and computing a Change-Id" should "create a commit ready for review" in {
+    val basePush = Push(new URIish(s"file://$originRepoDirectory"), s"$testUser", refSpec = testBranchName)
+    basePush.send.status shouldBe OK
+    basePush.copy(computeChangeId = true).send.status shouldBe OK
+
+    val branchHead = testGitRepo.getRepository.exactRef(s"$R_HEADS$testBranchName")
+    val newCommit = testGitRepo.getRepository.parseCommit(branchHead.getObjectId)
+
+    newCommit.getFullMessage should include("Change-Id: I")
+    newCommit.getParents should not be(empty)
   }
 }

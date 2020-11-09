@@ -58,7 +58,7 @@ sealed trait Request {
   val repository: Repository = builder.setWorkTree(workTreeDirectory).build()
 
   val sshSessionFactory: SshSessionFactory = new JschConfigSessionFactory() {
-    protected def configure(host: OpenSshConfig.Host, session: SSHSession): Unit = {}
+    protected override def configure(host: OpenSshConfig.Host, session: SSHSession): Unit = {}
 
     override protected def createDefaultJSch(fs: FS): JSch = {
       val defaultJSch = super.createDefaultJSch(fs)

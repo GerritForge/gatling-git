@@ -18,25 +18,21 @@ import java.nio.file.{Files, Path, Paths}
 import java.time.LocalDateTime
 import java.util.List
 
-import scala.util.{Failure, Success, Try}
-
 import com.github.barbasa.gatling.git.{GatlingGitConfiguration, GitRequestSession}
 import com.github.barbasa.gatling.git.helper.CommitBuilder
 import com.typesafe.scalalogging.LazyLogging
-import io.gatling.commons.stats.{KO => GatlingFail, OK => GatlingOK, Status}
+import io.gatling.commons.stats.{Status, KO => GatlingFail, OK => GatlingOK}
 import org.apache.commons.io.FileUtils
 import org.eclipse.jgit.api._
 import org.eclipse.jgit.hooks._
-import org.eclipse.jgit.internal.storage.file.FileRepository
 import org.eclipse.jgit.lib.{NullProgressMonitor, Repository, TextProgressMonitor}
 import org.eclipse.jgit.revwalk.RevWalk
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder
 import org.eclipse.jgit.transport.{SshSessionFactory, SshTransport}
 import org.eclipse.jgit.transport._
+import GitRequestSession.{AllRefs, EmptyTag, HeadToMasterRefSpec, MasterRef}
 import org.eclipse.jgit.transport.sshd.SshdSessionFactory
-import org.eclipse.jgit.util.FS
 
-import GitRequestSession.{EmptyTag, HeadToMasterRefSpec, MasterRef, AllRefs}
 import collection.JavaConverters._
 
 sealed trait Request {
@@ -77,8 +73,14 @@ sealed trait Request {
 
   val cb = new TransportConfigCallback() {
     def configure(transport: Transport): Unit = {
-      val sshTransport = transport.asInstanceOf[SshTransport]
-      sshTransport.setSshSessionFactory(sshSessionFactory)
+      transport match {
+        case httpTransport: TransportHttp =>
+          httpTransport.setAdditionalHeaders(Map("Git-Protocol" -> s"version=${conf.gitConfiguration.gitProtocolVersion}").asJava)
+        case sshTransport: SshTransport =>
+          sshTransport.setSshSessionFactory(sshSessionFactory)
+        case t =>
+          println(s"Expecting either SSH or HTTP, got ${t.getClass}")
+      }
     }
   }
 

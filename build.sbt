@@ -60,7 +60,7 @@ lazy val root = (project in file("."))
       gatling ++
         Seq("io.gatling" % "gatling-core" % GatlingVersion) ++
         Seq("io.gatling" % "gatling-app" % GatlingVersion) ++
-        Seq("org.eclipse.jgit" % "org.eclipse.jgit" % JGitVersion) ++
+        //Seq("org.eclipse.jgit" % "org.eclipse.jgit" % JGitVersion) ++
         Seq("org.eclipse.jgit" % "org.eclipse.jgit.ssh.apache" % JGitVersion) ++
         Seq("com.google.inject" % "guice" % "3.0") ++
         Seq("commons-io" % "commons-io" % "2.6") ++

@@ -25,11 +25,12 @@ case class GatlingGitConfiguration private (
     tmpBasePath: String,
     commands: CommandsConfiguration
 )
-case class GitConfiguration(commandTimeout: Int, showProgress: Boolean)
+case class GitConfiguration(commandTimeout: Int, showProgress: Boolean, gitProtocolVersion: Int)
 
 object GitConfiguration {
   val DEFAULT_TIMEOUT       = 30
   val DEFAULT_SHOW_PROGRESS = true
+  val DEFAULT_GIT_PROTOCOL_VERSION = 2
 }
 
 case class HttpConfiguration(userName: String, password: String)
@@ -85,6 +86,10 @@ object GatlingGitConfiguration {
       .optionalBoolean("git.showProgress")
       .getOrElse(GitConfiguration.DEFAULT_SHOW_PROGRESS)
 
+    val gitProtocolVersion = config
+      .optionalInt("git.gitProtocol")
+      .getOrElse(GitConfiguration.DEFAULT_GIT_PROTOCOL_VERSION)
+
     val httpUserName = config.getString("http.username")
     val httpPassword = config.getString("http.password")
     val testDataDirectory: String =
@@ -113,7 +118,7 @@ object GatlingGitConfiguration {
       .getOrElse(PushConfiguration.DEFAULT_COMMIT_PREFIX)
 
     GatlingGitConfiguration(
-      GitConfiguration(commandTimeout = gitCommandTimeout, showProgress = gitShowProgress),
+      GitConfiguration(commandTimeout = gitCommandTimeout, showProgress = gitShowProgress, gitProtocolVersion = gitProtocolVersion),
       HttpConfiguration(httpUserName, httpPassword),
       SshConfiguration(sshPrivateKeyPath),
       tmpBasePath,

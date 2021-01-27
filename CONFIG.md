@@ -74,3 +74,12 @@ Default: `30`
 Whether to report progress on standard output during git operations.
 
 Default: `true`
+
+## Git client configuration
+
+JGit will honour the global Git client configurations in Gatling home
+(`/home/gatling/.gitconfig`).
+
+A `.gitconfig` file with the needed parameters will need to be injected in the
+Docker image when building it. See the official Git documentation for the [available
+configurations](https://git-scm.com/docs/git-config).

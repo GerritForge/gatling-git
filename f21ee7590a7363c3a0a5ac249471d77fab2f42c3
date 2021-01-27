@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db8a71b5_4c00b907",
+        "filename": "CONFIG.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-01-27T09:47:09Z",
+      "side": 1,
+      "message": "Running this in docker is only one possible approach.\n\nAlternatively it could be executed via sbt \"gatling:test\".\n\nWhich .gitconfig will it be used in that case?\nThe one of the user running the sbt process?\nwill the .gitconfig always be found in $HOME/.gitconfig?\n\nPerhaps we should document this behaviour as well.\n\nWDYT?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 53
+      },
+      "revId": "f21ee7590a7363c3a0a5ac249471d77fab2f42c3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

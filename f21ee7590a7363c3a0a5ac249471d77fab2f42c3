@@ -22,6 +22,30 @@
       },
       "revId": "f21ee7590a7363c3a0a5ac249471d77fab2f42c3",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "319f229d_4912d165",
+        "filename": "CONFIG.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2021-01-28T09:30:55Z",
+      "side": 1,
+      "message": "Have a look if it makes more sense?\nBasically I am saying:\n* the config is in `$HOME/.gitconfig`\n* $HOME is /homa/gatling in Docker, otherwise is $HOME",
+      "parentUuid": "db8a71b5_4c00b907",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 53
+      },
+      "revId": "f21ee7590a7363c3a0a5ac249471d77fab2f42c3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

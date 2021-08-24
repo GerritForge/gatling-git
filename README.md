@@ -108,7 +108,8 @@ Here below an example:
 [
   {
     "url": "ssh://admin@localhost:29418/loadtest-repo.git",
-    "cmd": "clone"
+    "cmd": "clone",
+    "ignoreWantNotValid": true
   },
   {
     "url": "http://localhost:8080/loadtest-repo.git",
@@ -141,6 +142,14 @@ The push operation have optional extra parameters:
 * `force`: set to `true` performs a forced push
 * `compute-change-id`: set to `true` for generating the standard `Change-Id` when pushing commits
   for review.
+
+The clone operation have optional extra parameters:
+* `ignoreWantNotValid`:
+  WantNotValid exceptions can be thrown by jgit during reachability checks. This
+  scenario might commonly arise when executing gatling tests that force-push
+  target refs with a high concurrency and high frequency. set to `true` for not
+  treating WantNotValid exceptions as failures.
+  Default: false
 
 ### How to run the tests
 

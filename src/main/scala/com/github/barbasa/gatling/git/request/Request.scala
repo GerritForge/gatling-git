@@ -35,8 +35,9 @@ import org.eclipse.jgit.transport.{SshSessionFactory, SshTransport}
 import org.eclipse.jgit.transport._
 import org.eclipse.jgit.transport.sshd.SshdSessionFactory
 import org.eclipse.jgit.util.FS
+import GitRequestSession.{AllRefs, EmptyTag, HeadToMasterRefSpec, MasterRef}
+import org.eclipse.jgit.api.errors.TransportException
 
-import GitRequestSession.{EmptyTag, HeadToMasterRefSpec, MasterRef, AllRefs}
 import collection.JavaConverters._
 
 sealed trait Request {
@@ -117,10 +118,10 @@ object Request {
   }
 }
 
-case class Clone(url: URIish, user: String, ref: String = MasterRef)(
+case class Clone(url: URIish, user: String, ref: String = MasterRef, ignoreWantNotValid: Boolean = false)(
     implicit val conf: GatlingGitConfiguration,
     val postMsgHook: Option[String] = None
-) extends Request {
+) extends Request with LazyLogging {
 
   val name = s"Clone: $url"
 
@@ -128,28 +129,40 @@ case class Clone(url: URIish, user: String, ref: String = MasterRef)(
 
   def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
-    Git.cloneRepository
-      .setAuthenticationMethod(url, cb)
-      .setURI(url.toString)
-      .setDirectory(workTreeDirectory)
-      .setBranch(ref)
-      .setProgressMonitor(progressMonitor)
-      .setTimeout(conf.gitConfiguration.commandTimeout)
-      .call()
 
-    postMsgHook.foreach { sourceCommitMsgFile =>
-      val sourceCommitMsgPath =
-        new File(classLoader.getResource(sourceCommitMsgFile).getPath).toPath
+    Try(
+      Git.cloneRepository
+        .setAuthenticationMethod(url, cb)
+        .setURI(url.toString)
+        .setDirectory(workTreeDirectory)
+        .setBranch(ref)
+        .setProgressMonitor(progressMonitor)
+        .setTimeout(conf.gitConfiguration.commandTimeout)
+        .call()
+    ).fold(
+      {
+        case ex: TransportException if ex.getMessage.matches(".*want.+not valid.*") && ignoreWantNotValid => {
+          val msg = s"'${ex.getMessage}': treating as OK"
+          logger.warn(msg)
+          GitCommandResponse(OK, Some(msg))
+        }
+        case ex => {
+          GitCommandResponse(Fail, Some(s"Clone failed: ${ex.getMessage}"))
+        }
+      },
+      _ => {
+        postMsgHook.foreach { sourceCommitMsgFile =>
+          val sourceCommitMsgPath =
+            new File(classLoader.getResource(sourceCommitMsgFile).getPath).toPath
 
-      val destinationCommitMsgPath =
-        Paths.get(workTreeDirectory.getAbsolutePath, s".git/hooks/${CommitMsgHook.NAME}")
-      new File(Files.copy(sourceCommitMsgPath, destinationCommitMsgPath).toString)
-        .setExecutable(true)
-    }
-
-    // Clone doesn't have a Result a return value, hence either it works or
-    // it will throw an exception
-    GitCommandResponse(OK)
+          val destinationCommitMsgPath =
+            Paths.get(workTreeDirectory.getAbsolutePath, s".git/hooks/${CommitMsgHook.NAME}")
+          new File(Files.copy(sourceCommitMsgPath, destinationCommitMsgPath).toString)
+            .setExecutable(true)
+        }
+        GitCommandResponse(OK)
+      }
+    )
   }
 }
 

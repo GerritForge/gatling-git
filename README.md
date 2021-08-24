@@ -135,6 +135,30 @@ The common parameters are:
 * `url`: The HTTP or SSH Git URL of the remote repository.
 * `ref-spec`: ref-spec of the `push` operation. Can be specified with a simple branch name or have
   the more general form of `local:remote` refs.
+* `ignoreFailureRegexps`:
+  In some scenarios some failures are expected due to the nature of the tests
+  rather than actual git protocol errors.
+
+  As an example, WantNotValid exceptions may be thrown by jgit during
+  reachability checks, in a scenario where tests perform force pushes with a
+  high concurrency and high frequency.
+
+  In this case, consumers of gatling-git might explicitly list failure messages
+  that are expected and thus are to be ignored.
+  default: `empty list`
+
+  To ignore `want <sha1> not valid` exceptions during clones for example, the
+  following request can be built:
+
+  ```
+    new GitRequestBuilder(
+      GitRequestSession(
+        "clone",
+        s"$url/${testConfig.project}",
+        "${refSpec}",
+        ignoreFailureRegexps = List(".*want.+not valid.*")
+      )
+  ```
 
 The push operation have optional extra parameters:
 

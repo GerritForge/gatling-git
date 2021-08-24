@@ -25,7 +25,8 @@ case class GitRequestSession(
     refSpec: Expression[String] = HeadToMasterRefSpec,
     tag: Expression[String] = EmptyTag,
     force: Expression[Boolean] = False,
-    computeChangeId: Expression[Boolean] = False
+    computeChangeId: Expression[Boolean] = False,
+    ignoreFailureRegexps: Expression[List[String]] = List.empty.expressionSuccess
 )
 
 object GitRequestSession {

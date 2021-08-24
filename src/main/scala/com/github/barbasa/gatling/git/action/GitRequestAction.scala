@@ -49,11 +49,17 @@ class GitRequestAction(
       val (response, reqName, message) = reqBuilder.buildWithSession(session) match {
         case Success(req) =>
           try {
-            val commandResponse = req.send
-            (commandResponse, req.name, commandResponse.message)
+            val commandResponse: GitCommandResponse = req.send
+
+            commandResponse match {
+              case _@GitCommandResponse(Fail, _) =>
+                mayOverrideFailure(session, commandResponse, req.name, commandResponse.message)
+              case _ =>
+                (commandResponse, req.name, commandResponse.message)
+            }
           } catch {
             case e: Exception =>
-              (GitCommandResponse(Fail), req.name, Some(s"${e.getMessage} - ${e.getCause}"))
+              mayOverrideFailure(session, GitCommandResponse(Fail), req.name, Some(s"${e.getMessage} - ${e.getCause}"))
           }
         case Failure(message) => (GitCommandResponse(Fail), "Unknown", Some(message))
       }
@@ -73,6 +79,22 @@ class GitRequestAction(
       } else {
         next ! setSessionStatus(session, gatlingStatus)
       }
+    }
+  }
+
+  private def mayOverrideFailure(session: Session, origResponse: GitCommandResponse, reqName: String, optionalMessage: Option[String]): (GitCommandResponse, String, Option[String]) = {
+    val original = (origResponse, reqName, optionalMessage)
+
+    reqBuilder.request.ignoreFailureRegexps(session) match {
+      case Success(ignoreFailureRegexps) if optionalMessage.isDefined =>
+        val originalMessage = optionalMessage.get
+        if (ignoreFailureRegexps.exists(regexp => originalMessage.matches(regexp))) {
+          val msg = s"[treating as OK] $originalMessage"
+          logger.warn(s"Ignore failure: $msg")
+          (GitCommandResponse(OK, Some(msg)), reqName, Some(msg))
+        }
+        else original
+      case Failure(_) => original
     }
   }
 

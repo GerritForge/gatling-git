@@ -35,8 +35,9 @@ import org.eclipse.jgit.transport.{SshSessionFactory, SshTransport}
 import org.eclipse.jgit.transport._
 import org.eclipse.jgit.transport.sshd.SshdSessionFactory
 import org.eclipse.jgit.util.FS
+import GitRequestSession.{AllRefs, EmptyTag, HeadToMasterRefSpec, MasterRef}
+import org.eclipse.jgit.api.errors.TransportException
 
-import GitRequestSession.{EmptyTag, HeadToMasterRefSpec, MasterRef, AllRefs}
 import collection.JavaConverters._
 
 sealed trait Request {
@@ -111,16 +112,16 @@ sealed trait Request {
 object Request {
   def gatlingStatusFromGit(response: GitCommandResponse): Status = {
     response.status match {
-      case OK   => GatlingOK
+      case OK => GatlingOK
       case Fail => GatlingFail
     }
   }
 }
 
 case class Clone(url: URIish, user: String, ref: String = MasterRef)(
-    implicit val conf: GatlingGitConfiguration,
-    val postMsgHook: Option[String] = None
-) extends Request {
+  implicit val conf: GatlingGitConfiguration,
+  val postMsgHook: Option[String] = None
+) extends Request with LazyLogging {
 
   val name = s"Clone: $url"
 

@@ -24,6 +24,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e33826bb_e683abe2",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-08-25T17:32:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67357955_a239e3bd",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 21
+      },
+      "revId": "4713b937259882fae4faaa2fd81f2ecb37353715",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e3e4a65_0b058866",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-25T07:31:17Z",
       "side": 1,
       "message": "What about being more lax with the check, only the error message and make it configurable? We could have an \"error whitelisting\" section in the configuration to specify which errors shouldn\u0027t be accounted among the errors.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 9
+      },
+      "revId": "4713b937259882fae4faaa2fd81f2ecb37353715",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e008827b_f22490f7",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2021-08-25T17:32:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e3e4a65_0b058866",
       "range": {
         "startLine": 144,
         "startChar": 0,

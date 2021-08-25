@@ -16,6 +16,52 @@
       "message": "An example on how to use: https://review.gerrithub.io/c/GerritForge/gatling-sbt-gerrit-test/+/522845",
       "revId": "9afe064df8df526dbe4034542e344bddbced25d0",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45d0a2c0_aa7e9bba",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/action/GitRequestAction.scala",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2021-08-25T20:34:57Z",
+      "side": 1,
+      "message": "nit: what about renaming it to avoid confusing it with the GitRequestSession attribute? I can\u0027t come up with a god suggestion...even an abbreviation would do it: iFR ?",
+      "range": {
+        "startLine": 89,
+        "startChar": 19,
+        "endLine": 89,
+        "endChar": 39
+      },
+      "revId": "9afe064df8df526dbe4034542e344bddbced25d0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f8dda95_d79288b1",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/action/GitRequestAction.scala",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2021-08-25T20:34:57Z",
+      "side": 1,
+      "message": "nit: newMsg?",
+      "range": {
+        "startLine": 92,
+        "startChar": 14,
+        "endLine": 92,
+        "endChar": 17
+      },
+      "revId": "9afe064df8df526dbe4034542e344bddbced25d0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

@@ -31,11 +31,11 @@ object MockFiles {
   abstract class AbstractMockFile(contentLength: Int) extends MockFile {
     val alphabet         = ('a' to 'z') ++ ('A' to 'Z') ++ ('0' to '9') ++ ("_")
     override def content = generateContent(contentLength)
-    override def name    = generateRandomString(10)
+    override def name    = generateRandomString(10) + ".java"
 
     def generateRandomString(length: Int): String = (1 to length).foldLeft("")(
       (acc, _) => acc + alphabet(Random.nextInt(alphabet.size))
-    )
+    ).grouped(120).mkString("\n")
   }
 
   sealed trait FileType

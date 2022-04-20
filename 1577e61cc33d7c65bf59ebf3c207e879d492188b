@@ -16,6 +16,24 @@
       "message": "nit: there are lot of unrelated import refactoring.\nConsider a base change just for formatting?",
       "revId": "1577e61cc33d7c65bf59ebf3c207e879d492188b",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4657361_3c6d22cf",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-20T19:10:57Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "013a08c2_d633979d",
+      "revId": "1577e61cc33d7c65bf59ebf3c207e879d492188b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

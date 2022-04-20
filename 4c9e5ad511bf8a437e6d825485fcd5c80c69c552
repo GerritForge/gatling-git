@@ -24,6 +24,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a76260f_aef34bc2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-20T19:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd226d7b_b3faea3e",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "4c9e5ad511bf8a437e6d825485fcd5c80c69c552",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4de780e_67c0d2c0",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-20T19:04:23Z",
       "side": 1,
       "message": "nit: be",
+      "range": {
+        "startLine": 14,
+        "startChar": 24,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "4c9e5ad511bf8a437e6d825485fcd5c80c69c552",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c75126e0_3c9995ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-20T19:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4de780e_67c0d2c0",
       "range": {
         "startLine": 14,
         "startChar": 24,
@@ -77,6 +125,24 @@
       "writtenOn": "2022-04-20T19:04:23Z",
       "side": 1,
       "message": "nit: this is side-effecting, consider adding parenthesis",
+      "revId": "4c9e5ad511bf8a437e6d825485fcd5c80c69c552",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e99400c0_65453343",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-20T19:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2030b2e_615f7888",
       "revId": "4c9e5ad511bf8a437e6d825485fcd5c80c69c552",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
@@ -128,6 +194,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80d1562c_a8081a83",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-20T19:10:57Z",
+      "side": 1,
+      "message": "The worktree is associated to a single repository:\n\n```\n  repoName         \u003d url.getPath.split(\"/\").last\n```",
+      "parentUuid": "d1aa8a5e_68641c60",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 20
+      },
+      "revId": "4c9e5ad511bf8a437e6d825485fcd5c80c69c552",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc3593ce_f7d16a3f",
@@ -151,6 +241,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f478f9e0_ffbbd561",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/CleanupRepoSpec.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-20T19:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc3593ce_f7d16a3f",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "4c9e5ad511bf8a437e6d825485fcd5c80c69c552",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3886fe84_a1972319",
@@ -164,6 +278,24 @@
       "writtenOn": "2022-04-20T17:01:22Z",
       "side": 1,
       "message": "I think it should be easy to test the Fail case as well by just using an invalid directory.",
+      "revId": "4c9e5ad511bf8a437e6d825485fcd5c80c69c552",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dd17460_1ca65711",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/CleanupRepoSpec.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-20T19:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3886fe84_a1972319",
       "revId": "4c9e5ad511bf8a437e6d825485fcd5c80c69c552",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }

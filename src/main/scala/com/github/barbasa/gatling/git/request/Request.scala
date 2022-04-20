@@ -17,13 +17,11 @@ import java.io.{File, PrintWriter}
 import java.nio.file.{Files, Path, Paths}
 import java.time.LocalDateTime
 import java.util.List
-
 import scala.util.{Failure, Success, Try}
-
 import com.github.barbasa.gatling.git.{GatlingGitConfiguration, GitRequestSession}
 import com.github.barbasa.gatling.git.helper.CommitBuilder
 import com.typesafe.scalalogging.LazyLogging
-import io.gatling.commons.stats.{KO => GatlingFail, OK => GatlingOK, Status}
+import io.gatling.commons.stats.{Status, KO => GatlingFail, OK => GatlingOK}
 import org.apache.commons.io.FileUtils
 import org.eclipse.jgit.api._
 import org.eclipse.jgit.hooks._
@@ -35,9 +33,10 @@ import org.eclipse.jgit.transport.{SshSessionFactory, SshTransport}
 import org.eclipse.jgit.transport._
 import org.eclipse.jgit.transport.sshd.SshdSessionFactory
 import org.eclipse.jgit.util.FS
+import GitRequestSession.{AllRefs, EmptyTag, HeadToMasterRefSpec, MasterRef}
 
-import GitRequestSession.{EmptyTag, HeadToMasterRefSpec, MasterRef, AllRefs}
 import collection.JavaConverters._
+import scala.reflect.io.Directory
 
 sealed trait Request {
 
@@ -74,6 +73,9 @@ sealed trait Request {
       .setUri(url)
       .call()
   }
+
+  def cleanRepo =
+    new Directory(workTreeDirectory).deleteRecursively() && { initRepo(); true }
 
   val cb = new TransportConfigCallback() {
     def configure(transport: Transport): Unit = {
@@ -117,6 +119,7 @@ object Request {
   }
 }
 
+
 case class Clone(url: URIish, user: String, ref: String = MasterRef)(
     implicit val conf: GatlingGitConfiguration,
     val postMsgHook: Option[String] = None
@@ -151,6 +154,20 @@ case class Clone(url: URIish, user: String, ref: String = MasterRef)(
     // it will throw an exception
     GitCommandResponse(OK)
   }
+}
+
+case class CleanupRepo(url: URIish, user: String)(
+  implicit val conf: GatlingGitConfiguration
+) extends Request {
+  override def name: String = s"Clean local repository"
+
+  override def send: GitCommandResponse =
+    GitCommandResponse {
+      if (cleanRepo)
+        OK
+      else
+        Fail
+    }
 }
 
 case class Fetch(url: URIish, user: String, refSpec: String = AllRefs)(

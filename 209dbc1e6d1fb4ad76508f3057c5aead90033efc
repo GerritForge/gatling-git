@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1724e9cf_4e95ccec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2022-04-20T19:10:41Z",
+      "side": 1,
+      "message": "Probably this command should also be documented in the README.md",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "209dbc1e6d1fb4ad76508f3057c5aead90033efc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77bc6e3d_682fd50e",
         "filename": "src/test/scala/com/github/barbasa/gatling/git/request/CleanupRepoSpec.scala",
         "patchSetId": 4

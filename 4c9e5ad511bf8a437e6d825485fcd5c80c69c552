@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd226d7b_b3faea3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2022-04-20T19:04:23Z",
+      "side": 1,
+      "message": "one \"local\" is redundant, consider: \n\n\"leave behind a lot of files on the local filesystem\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "4c9e5ad511bf8a437e6d825485fcd5c80c69c552",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4de780e_67c0d2c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2022-04-20T19:04:23Z",
+      "side": 1,
+      "message": "nit: be",
+      "range": {
+        "startLine": 14,
+        "startChar": 24,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "4c9e5ad511bf8a437e6d825485fcd5c80c69c552",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "330849f4_f66e992c",
@@ -14,6 +60,46 @@
       "writtenOn": "2022-04-20T18:45:00Z",
       "side": 1,
       "message": "CR+1 for the idea, but leave more experienced to do the real review 😄",
+      "revId": "4c9e5ad511bf8a437e6d825485fcd5c80c69c552",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2030b2e_615f7888",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2022-04-20T19:04:23Z",
+      "side": 1,
+      "message": "nit: this is side-effecting, consider adding parenthesis",
+      "revId": "4c9e5ad511bf8a437e6d825485fcd5c80c69c552",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1aa8a5e_68641c60",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2022-04-20T19:04:23Z",
+      "side": 1,
+      "message": "The cleaning command is just for a specific url, why cleaning up the entire worktree?",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 20
+      },
       "revId": "4c9e5ad511bf8a437e6d825485fcd5c80c69c552",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },

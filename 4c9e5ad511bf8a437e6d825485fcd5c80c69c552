@@ -104,6 +104,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "646f0c10_937f05c1",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2022-04-20T19:07:14Z",
+      "side": 1,
+      "message": "Sorry, I just realized now that \"workTree\" *is* per repo.\nPlease ignore this comment.",
+      "parentUuid": "d1aa8a5e_68641c60",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 20
+      },
+      "revId": "4c9e5ad511bf8a437e6d825485fcd5c80c69c552",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc3593ce_f7d16a3f",

@@ -55,6 +55,7 @@ case class GitRequestBuilder(request: GitRequestSession)(
         case "pull"  => Pull(url, user)
         case "push"  => Push(url, user, refSpec, force = force, computeChangeId = computeChangeId)
         case "tag"   => Tag(url, user, refSpec, tag)
+        case "cleanup-repo"   => CleanupRepo(url, user)
         case _       => InvalidRequest(url, user)
       }
     }

@@ -50,12 +50,13 @@ case class GitRequestBuilder(request: GitRequestSession)(
     } yield {
       val user = session.userId.toString
       command.toLowerCase match {
-        case "clone" => Clone(url, user, refSpec)
-        case "fetch" => Fetch(url, user, refSpec)
-        case "pull"  => Pull(url, user)
-        case "push"  => Push(url, user, refSpec, force = force, computeChangeId = computeChangeId)
-        case "tag"   => Tag(url, user, refSpec, tag)
-        case _       => InvalidRequest(url, user)
+        case "clone"        => Clone(url, user, refSpec)
+        case "fetch"        => Fetch(url, user, refSpec)
+        case "pull"         => Pull(url, user)
+        case "push"         => Push(url, user, refSpec, force = force, computeChangeId = computeChangeId)
+        case "tag"          => Tag(url, user, refSpec, tag)
+        case "cleanup-repo" => CleanupRepo(url, user)
+        case _              => InvalidRequest(url, user)
       }
     }
   }

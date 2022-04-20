@@ -38,6 +38,7 @@ import org.eclipse.jgit.util.FS
 
 import GitRequestSession.{EmptyTag, HeadToMasterRefSpec, MasterRef, AllRefs}
 import collection.JavaConverters._
+import scala.reflect.io.Directory
 
 sealed trait Request {
 
@@ -47,11 +48,14 @@ sealed trait Request {
   def url: URIish
   def user: String
   val classLoader: ClassLoader = getClass.getClassLoader
-  private val repoName         = url.getPath.split("/").last
-  val workTreeDirectory: File  = new File(conf.tmpBasePath + s"/$user/$repoName-worktree")
-  private val builder          = new FileRepositoryBuilder
-  workTreeDirectory.mkdirs()
-  val repository: Repository = builder.setWorkTree(workTreeDirectory).build()
+  val repoName                 = url.getPath.split("/").last
+  lazy val workTreeDirectory: File = {
+    val dir = new File(conf.tmpBasePath + s"/$user/$repoName-worktree")
+    dir.mkdirs()
+    dir
+  }
+  private val builder             = new FileRepositoryBuilder
+  lazy val repository: Repository = builder.setWorkTree(workTreeDirectory).build()
 
   val sshSessionFactory: SshSessionFactory = new SshdSessionFactory {
     override protected def getDefaultIdentities(sshDir: File): List[Path] = {
@@ -73,6 +77,14 @@ sealed trait Request {
       .setName("origin")
       .setUri(url)
       .call()
+  }
+
+  def cleanRepo() = {
+    val deleteCommandResult = new Directory(workTreeDirectory).deleteRecursively()
+    if (deleteCommandResult) {
+      initRepo()
+    }
+    deleteCommandResult
   }
 
   val cb = new TransportConfigCallback() {
@@ -151,6 +163,20 @@ case class Clone(url: URIish, user: String, ref: String = MasterRef)(
     // it will throw an exception
     GitCommandResponse(OK)
   }
+}
+
+case class CleanupRepo(url: URIish, user: String)(
+    implicit val conf: GatlingGitConfiguration
+) extends Request {
+  override def name: String = s"Clean local repository $repoName"
+
+  override def send: GitCommandResponse =
+    GitCommandResponse {
+      if (cleanRepo())
+        OK
+      else
+        Fail
+    }
 }
 
 case class Fetch(url: URIish, user: String, refSpec: String = AllRefs)(

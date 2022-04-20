@@ -129,6 +129,7 @@ Valid commands that can be specified in the `cmd` parameter are:
 * `fetch`: run a git-upload-pack
 * `pull`: run a git-upload-pack and then merge the remote fetched head to the local branch
 * `push`: push the local ref to the remote Git server
+* `cleanup-repo`: clean up all the content of the local repository
 
 The common parameters are:
 

@@ -24,6 +24,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaa2ad19_f40f5bed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-20T21:08:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6968b3a9_d794fafb",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "1db7da9d79cc2f55f579aae1f6983105366afeae",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a41dd37_3f8f1bd7",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-04-20T20:12:06Z",
       "side": 1,
       "message": "This def side effects - we should append empty parens to it.",
+      "revId": "1db7da9d79cc2f55f579aae1f6983105366afeae",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "780a5497_e5a02d08",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-20T21:08:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a41dd37_3f8f1bd7",
       "revId": "1db7da9d79cc2f55f579aae1f6983105366afeae",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
@@ -58,6 +100,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e704c00f_31777950",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-20T21:08:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c4b5d57_d94735d0",
+      "revId": "1db7da9d79cc2f55f579aae1f6983105366afeae",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35cf99a5_54eb9870",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-04-20T20:12:06Z",
       "side": 1,
       "message": "`it` (due to using `behavior of` above)?",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 15
+      },
+      "revId": "1db7da9d79cc2f55f579aae1f6983105366afeae",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c39c15f1_8b3315a2",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/CleanupRepoSpec.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-20T21:08:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35cf99a5_54eb9870",
       "range": {
         "startLine": 38,
         "startChar": 2,

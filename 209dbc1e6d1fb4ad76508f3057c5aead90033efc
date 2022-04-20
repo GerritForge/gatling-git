@@ -47,6 +47,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eed5645a_ed61f456",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/CleanupRepoSpec.scala",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-20T20:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77bc6e3d_682fd50e",
+      "range": {
+        "startLine": 38,
+        "startChar": 39,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "209dbc1e6d1fb4ad76508f3057c5aead90033efc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d0b7097_6ca5b26c",
@@ -64,6 +88,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68833507_e1924f3a",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/CleanupRepoSpec.scala",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-20T20:59:39Z",
+      "side": 1,
+      "message": "The directory isn\u0027t deleted but cleaned up.",
+      "parentUuid": "7d0b7097_6ca5b26c",
+      "revId": "209dbc1e6d1fb4ad76508f3057c5aead90033efc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93c0694d_86e2abfa",
@@ -77,6 +119,30 @@
       "writtenOn": "2022-04-20T19:09:11Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 44,
+        "startChar": 30,
+        "endLine": 44,
+        "endChar": 35
+      },
+      "revId": "209dbc1e6d1fb4ad76508f3057c5aead90033efc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "065d174c_a770244b",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/CleanupRepoSpec.scala",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-04-20T20:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93c0694d_86e2abfa",
       "range": {
         "startLine": 44,
         "startChar": 30,

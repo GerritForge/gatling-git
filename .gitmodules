@@ -1,0 +1,4 @@
+[submodule "jgit"]
+	path = jgit
+	url = https://github.com/GerritForge/jgit.git
+	branch = dev

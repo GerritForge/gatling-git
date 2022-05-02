@@ -23,6 +23,7 @@ fabric.properties
 
 # Scala sbt
 target/
+lib/
 
 # gatling-git data
 test-data

@@ -1,0 +1,4 @@
+[submodule "jgit"]
+	path = jgit
+	url = ../jgit.git
+	branch = dev

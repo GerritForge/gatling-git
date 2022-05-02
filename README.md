@@ -101,7 +101,7 @@ NOTE: Don't forget to add the public keys for the testing user(s) to your git se
 
 #### Using Gatling's feeder input
 
-The ReplayRecordsScenario is expecting the [src/test/resources/data/requests.json](/src/test/resources/data/requests.json) file.
+The ReplayRecordsScenario is expecting the [src/test/resources/data/requests.json](/gatling-extension/src/test/resources/data/requests.json) file.
 Here below an example:
 
 ```json

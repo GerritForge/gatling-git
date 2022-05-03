@@ -16,6 +16,24 @@
       "message": "Which tests were failing? I ran `sbt test` on master and it works perfectly for me.",
       "revId": "f3329cf70cfe0c2da46324b1943d2a628706681d",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cccaaa82_0fa6e1b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2022-05-03T10:19:59Z",
+      "side": 1,
+      "message": "It depends on the setting you have locally. The result of the tests used to depend on the `init.defaultBranchName` setting where the tests are running.\nWith this CS I removed this dependency.",
+      "parentUuid": "2b4a1197_05241b97",
+      "revId": "f3329cf70cfe0c2da46324b1943d2a628706681d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

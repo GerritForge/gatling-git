@@ -15,7 +15,6 @@
 package com.github.barbasa.gatling.git.request
 
 import org.apache.commons.io.FileUtils
-import org.eclipse.jgit.api.{Git => JGit}
 import org.eclipse.jgit.transport.URIish
 import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
 
@@ -25,7 +24,7 @@ class CleanupRepoSpec extends FlatSpec with BeforeAndAfter with Matchers with Gi
 
   before {
     FileUtils.deleteDirectory(originRepoDirectory.getParentFile)
-    testGitRepo = JGit.init.setDirectory(originRepoDirectory).call
+    testGitRepo = Request.initRepo(originRepoDirectory)
   }
 
   after {

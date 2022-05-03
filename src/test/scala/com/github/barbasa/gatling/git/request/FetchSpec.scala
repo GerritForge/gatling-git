@@ -15,16 +15,15 @@
 package com.github.barbasa.gatling.git.request
 
 import org.apache.commons.io.FileUtils
-import org.eclipse.jgit.api.{Git => JGit}
 import org.eclipse.jgit.transport.URIish
 import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
-import com.github.barbasa.gatling.git.GitRequestSession.MasterRef
+import com.github.barbasa.gatling.git.request.Request.initRepo
 
 class FetchSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
 
   before {
     FileUtils.deleteDirectory(originRepoDirectory.getParentFile)
-    testGitRepo = JGit.init.setDirectory(originRepoDirectory).call
+    testGitRepo = initRepo(originRepoDirectory)
   }
 
   after {

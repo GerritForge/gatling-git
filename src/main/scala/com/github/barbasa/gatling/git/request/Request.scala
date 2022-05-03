@@ -17,13 +17,11 @@ import java.io.{File, PrintWriter}
 import java.nio.file.{Files, Path, Paths}
 import java.time.LocalDateTime
 import java.util.List
-
 import scala.util.{Failure, Success, Try}
-
 import com.github.barbasa.gatling.git.{GatlingGitConfiguration, GitRequestSession}
 import com.github.barbasa.gatling.git.helper.CommitBuilder
 import com.typesafe.scalalogging.LazyLogging
-import io.gatling.commons.stats.{KO => GatlingFail, OK => GatlingOK, Status}
+import io.gatling.commons.stats.{Status, KO => GatlingFail, OK => GatlingOK}
 import org.apache.commons.io.FileUtils
 import org.eclipse.jgit.api._
 import org.eclipse.jgit.hooks._
@@ -35,8 +33,10 @@ import org.eclipse.jgit.transport.{SshSessionFactory, SshTransport}
 import org.eclipse.jgit.transport._
 import org.eclipse.jgit.transport.sshd.SshdSessionFactory
 import org.eclipse.jgit.util.FS
+import GitRequestSession.{AllRefs, EmptyTag, HeadToMasterRefSpec, MasterRef}
+import com.github.barbasa.gatling.git.request.Request.{addRemote, initRepo}
+import org.eclipse.jgit.lib.Constants.MASTER
 
-import GitRequestSession.{EmptyTag, HeadToMasterRefSpec, MasterRef, AllRefs}
 import collection.JavaConverters._
 import scala.reflect.io.Directory
 
@@ -69,20 +69,10 @@ sealed trait Request {
     if (conf.gitConfiguration.showProgress) new TextProgressMonitor(new PrintWriter(System.out))
     else NullProgressMonitor.INSTANCE
 
-  def initRepo() = {
-    Git.init
-      .setDirectory(workTreeDirectory)
-      .call()
-      .remoteAdd()
-      .setName("origin")
-      .setUri(url)
-      .call()
-  }
-
   def cleanRepo() = {
     val deleteCommandResult = new Directory(workTreeDirectory).deleteRecursively()
     if (deleteCommandResult) {
-      initRepo()
+      addRemote(initRepo(workTreeDirectory), url)
     }
     deleteCommandResult
   }
@@ -121,11 +111,26 @@ sealed trait Request {
 }
 
 object Request {
+  def initRepo(workTreeDirectory: File, initialBranchName: String = MASTER) = {
+    Git.init
+      .setInitialBranch(initialBranchName)
+      .setDirectory(workTreeDirectory)
+      .call()
+  }
+
   def gatlingStatusFromGit(response: GitCommandResponse): Status = {
     response.status match {
       case OK   => GatlingOK
       case Fail => GatlingFail
     }
+  }
+
+  def addRemote(repo: Git, url: URIish): RemoteConfig = {
+    repo
+      .remoteAdd()
+      .setName("origin")
+      .setUri(url)
+      .call()
   }
 }
 
@@ -182,7 +187,7 @@ case class CleanupRepo(url: URIish, user: String)(
 case class Fetch(url: URIish, user: String, refSpec: String = AllRefs)(
     implicit val conf: GatlingGitConfiguration
 ) extends Request {
-  initRepo()
+  addRemote(initRepo(workTreeDirectory), url)
 
   val name = s"Fetch: $url"
 
@@ -207,7 +212,7 @@ case class Fetch(url: URIish, user: String, refSpec: String = AllRefs)(
 
 case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
     extends Request {
-  initRepo()
+  addRemote(initRepo(workTreeDirectory), url)
 
   override def name: String = s"Pull: $url"
 
@@ -238,7 +243,7 @@ case class Push(
 )(
     implicit val conf: GatlingGitConfiguration
 ) extends Request {
-  initRepo()
+  addRemote(initRepo(workTreeDirectory), url)
 
   override def name: String = s"Push: $url"
   val uniqueSuffix          = s"$user - ${LocalDateTime.now}"

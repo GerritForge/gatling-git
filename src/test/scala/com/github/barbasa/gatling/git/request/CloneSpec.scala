@@ -14,6 +14,7 @@
 
 package com.github.barbasa.gatling.git.request
 
+import com.github.barbasa.gatling.git.request.Request.initRepo
 import org.apache.commons.io.FileUtils
 import org.eclipse.jgit.api.{Git => JGit}
 import org.eclipse.jgit.transport.URIish
@@ -25,7 +26,7 @@ class CloneSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestH
 
   before {
     FileUtils.deleteDirectory(originRepoDirectory.getParentFile)
-    testGitRepo = JGit.init.setDirectory(originRepoDirectory).call
+    testGitRepo = initRepo(originRepoDirectory)
     testGitRepo.commit().setMessage("Initial Commit").call()
     testGitRepo.branchCreate().setName(testBranchName).call()
   }

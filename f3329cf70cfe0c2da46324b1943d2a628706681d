@@ -70,6 +70,23 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a176c0b_d85ebb58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-05-03T11:42:22Z",
+      "side": 1,
+      "message": "Also mention the refactoring of `initRepo` for being reused in tests",
+      "revId": "f3329cf70cfe0c2da46324b1943d2a628706681d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2b4a1197_05241b97",

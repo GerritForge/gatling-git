@@ -24,6 +24,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf86ff0a_55b29517",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2022-05-03T12:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4bccff2_6738c7e2",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "f3329cf70cfe0c2da46324b1943d2a628706681d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72a8abe0_746373ac",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-03T11:40:27Z",
       "side": 1,
       "message": "+ which is `master` by default",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "f3329cf70cfe0c2da46324b1943d2a628706681d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74fda5e2_7acf4efb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2022-05-03T12:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72a8abe0_746373ac",
       "range": {
         "startLine": 10,
         "startChar": 15,
@@ -70,6 +118,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0756cffc_27312e6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2022-05-03T12:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0959bfa_688ae1c4",
+      "range": {
+        "startLine": 11,
+        "startChar": 49,
+        "endLine": 11,
+        "endChar": 60
+      },
+      "revId": "f3329cf70cfe0c2da46324b1943d2a628706681d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a176c0b_d85ebb58",
@@ -83,6 +155,24 @@
       "writtenOn": "2022-05-03T11:42:22Z",
       "side": 1,
       "message": "Also mention the refactoring of `initRepo` for being reused in tests",
+      "revId": "f3329cf70cfe0c2da46324b1943d2a628706681d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fed6c0a9_b17fbd5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2022-05-03T12:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a176c0b_d85ebb58",
       "revId": "f3329cf70cfe0c2da46324b1943d2a628706681d",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },

@@ -16,6 +16,24 @@
       "message": "Is the aim to be more flexible in the jgit version to \"inject\" to build the extension? As in instead of pointing to a fixed url, just include it from a directory?\n\nIt will be definitively flexible for development but it might get in the way when releasing the library.",
       "revId": "97d58bb2261ae96590fcd15aa96a3e14f166e1bd",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7962cb7b_49739f4a",
+        "filename": ".gitmodules",
+        "patchSetId": 10
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-05-04T19:17:29Z",
+      "side": 1,
+      "message": "\u003e Is the aim to be more flexible in the jgit version to \"inject\" to build the extension? As in instead of pointing to a fixed url, just include it from a directory?\n\nNot just that, even the ability to use a different protocol (e.g. SSH).\n\n\u003e It will be definitively flexible for development but it might get in the way when releasing the library.\n\nActually that allows us to either release from GitHub or GerritHub, which is a good thing.",
+      "parentUuid": "766b9fad_50c73892",
+      "revId": "97d58bb2261ae96590fcd15aa96a3e14f166e1bd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

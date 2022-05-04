@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5879494_9191387b",
+        "filename": ".gitmodules",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-05-04T12:18:24Z",
+      "side": 1,
+      "message": "It would be best to use a relative URL from GerritHub.io, so that we could also refer to open changes and validate them E2E with Gatling.",
+      "range": {
+        "startLine": 3,
+        "startChar": 7,
+        "endLine": 3,
+        "endChar": 46
+      },
+      "revId": "15b8c35845e1b9170fb280da654c7cd7dd41c85b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63c1abe7_5d79c578",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-05-04T12:18:24Z",
+      "side": 1,
+      "message": "The assembly phase creates a jar file without the necessary dependencies included.",
+      "revId": "15b8c35845e1b9170fb280da654c7cd7dd41c85b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

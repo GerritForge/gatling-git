@@ -34,6 +34,24 @@
       "parentUuid": "766b9fad_50c73892",
       "revId": "97d58bb2261ae96590fcd15aa96a3e14f166e1bd",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ad9c91_f741f9d2",
+        "filename": ".gitmodules",
+        "patchSetId": 10
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-05-04T19:30:50Z",
+      "side": 1,
+      "message": "See an example of the `git submodule update --init` from a repo cloned with Git/SSH:\n\n```\ngit submodule update --init\nSubmodule \u0027jgit\u0027 (ssh://lucamilanesio@review.gerrithub.io:29418/GerritForge/jgit.git) registered for path \u0027jgit\u0027\nCloning into \u0027/Users/lucamilanesio/tmp/gatling-git/jgit\u0027...\nTotal 162439 (delta 68412), reused 162378 (delta 68412)\nSubmodule path \u0027jgit\u0027: checked out \u002778c9b9260a5287d09c87b407e396021590714513\u0027\n```",
+      "parentUuid": "7962cb7b_49739f4a",
+      "revId": "97d58bb2261ae96590fcd15aa96a3e14f166e1bd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

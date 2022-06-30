@@ -28,14 +28,18 @@ object MockFiles {
     def save(workTreeDirectory: String): String
   }
 
+  val LoremIpsumText = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+  val LoremIpsumTextLen = LoremIpsumText.length
+
   abstract class AbstractMockFile(contentLength: Int) extends MockFile {
     val alphabet         = ('a' to 'z') ++ ('A' to 'Z') ++ ('0' to '9') ++ ("_")
     override def content = generateContent(contentLength)
     override def name    = generateRandomString(10) + ".java"
 
-    def generateRandomString(length: Int): String = (1 to length).foldLeft("")(
-      (acc, _) => acc + alphabet(Random.nextInt(alphabet.size))
-    ).grouped(120).mkString("\n")
+    def generateRandomString(length: Int): String = (1 to length)
+      .grouped(120)
+      .map(line => LoremIpsumText.drop(Random.nextInt(LoremIpsumTextLen - line.length)).take(line.length))
+      .mkString("\n")
   }
 
   sealed trait FileType

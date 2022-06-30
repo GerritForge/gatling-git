@@ -48,6 +48,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2caff299_2c8b4f6c",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-06-30T21:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33d4671d_fa625a71",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 20
+      },
+      "revId": "7fa0f9baeb5604a34b52ad68e2cc6ffc3adb08e4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e305f58f_5ee8c6cc",
@@ -61,6 +85,30 @@
       "writtenOn": "2022-06-30T21:08:30Z",
       "side": 1,
       "message": "add new line before the variable and start the name with lower case",
+      "range": {
+        "startLine": 33,
+        "startChar": 6,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "7fa0f9baeb5604a34b52ad68e2cc6ffc3adb08e4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f22a77f7_90efc805",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-06-30T21:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e305f58f_5ee8c6cc",
       "range": {
         "startLine": 33,
         "startChar": 6,

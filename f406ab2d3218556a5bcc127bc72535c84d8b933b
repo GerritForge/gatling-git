@@ -56,6 +56,30 @@
       },
       "revId": "f406ab2d3218556a5bcc127bc72535c84d8b933b",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e873ce52_e7359177",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1019121
+      },
+      "writtenOn": "2022-07-01T05:25:24Z",
+      "side": 1,
+      "message": "Hmmm, AFAIU previous version does the same:\n```\nscala\u003e def generateRandomString(length: Int): String \u003d (1 to length).foldLeft(\"\")(\n     |       (acc, _) \u003d\u003e acc + alphabet(Random.nextInt(alphabet.size))\n     |     ).grouped(120).mkString(\"\\n\")\ndef generateRandomString(length: Int): String\n                                                                                                                                                                                                                                                                                                                              \nscala\u003e generateRandomString(121).length\nval res0: Int \u003d 122\nscala\u003e generateRandomString(241).length\nval res4: Int \u003d 243\n```",
+      "parentUuid": "32143a0b_c2876966",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 23
+      },
+      "revId": "f406ab2d3218556a5bcc127bc72535c84d8b933b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5372d689_f9f2d0cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019121
+      },
+      "writtenOn": "2022-07-01T05:35:54Z",
+      "side": 1,
+      "message": "@Luca @Tony would it make sense to release new version?\nBTW: AFAICT `1.0.18` was not pushed back to repo ;)",
+      "revId": "f406ab2d3218556a5bcc127bc72535c84d8b933b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32143a0b_c2876966",
         "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
         "patchSetId": 4

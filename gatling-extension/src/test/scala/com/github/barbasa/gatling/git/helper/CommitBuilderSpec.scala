@@ -13,15 +13,15 @@
 // limitations under the License.
 
 package com.github.barbasa.gatling.git.helper
-import java.io.File
-
 import com.github.barbasa.gatling.git.request.GitTestHelpers
 import org.apache.commons.io.FileUtils
-import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
 import org.eclipse.jgit.api.{Git => JGit}
 import org.eclipse.jgit.lib.Constants
-import org.eclipse.jgit.revwalk.RevCommit
-import org.eclipse.jgit.revwalk.RevWalk
+import org.eclipse.jgit.revwalk.{RevCommit, RevWalk}
+import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
+
+import java.io.File
+import scala.util.Try
 
 class CommitBuilderSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
   before {
@@ -35,20 +35,15 @@ class CommitBuilderSpec extends FlatSpec with BeforeAndAfter with Matchers with 
   }
 
   def getHeadCommit: RevCommit = {
-    try {
-      val repository = testGitRepo.getRepository
-      try {
-        val head = repository.findRef(Constants.HEAD)
-        try {
-          val walk = new RevWalk(repository)
-          try {
-            walk.parseCommit(head.getObjectId)
-          }
-        }
-      }
-    } catch {
-      case e: Exception => fail(e.getCause)
-    }
+    val revCommitT = for {
+      repository <- Try(testGitRepo.getRepository)
+      head       <- Try(repository.findRef(Constants.HEAD))
+      walk       <- Try(new RevWalk(repository))
+      revCommit  <- Try(walk.parseCommit(head.getObjectId))
+    } yield revCommit
+    revCommitT.recover {
+      case e => fail(e.getCause)
+    }.get
   }
 
   behavior of "CommitBuilder"

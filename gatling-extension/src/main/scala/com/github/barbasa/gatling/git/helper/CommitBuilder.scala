@@ -16,13 +16,13 @@ package com.github.barbasa.gatling.git.helper
 
 import com.github.barbasa.gatling.git.helper.MockFiles._
 import org.eclipse.jgit.api._
-import org.eclipse.jgit.lib.Repository
-import java.time.LocalDateTime
-
-import scala.util.Random
-import scala.collection.JavaConverters._
 import org.eclipse.jgit.lib.Constants.R_HEADS
+import org.eclipse.jgit.lib.Repository
 import org.eclipse.jgit.util.ChangeIdUtil
+
+import java.time.LocalDateTime
+import scala.jdk.CollectionConverters._
+import scala.util.Random
 
 class CommitBuilder(numFiles: Int, minContentLength: Int, maxContentLength: Int, prefix: String) {
 
@@ -32,7 +32,7 @@ class CommitBuilder(numFiles: Int, minContentLength: Int, maxContentLength: Int,
       repository: Repository,
       branch: Option[String] = Option.empty,
       computeChangeId: Boolean = false
-  ) {
+  ) = {
     val git = new Git(repository)
     Vector.range(0, numFiles).foreach { e =>
       val contentLength: Int = minContentLength + random

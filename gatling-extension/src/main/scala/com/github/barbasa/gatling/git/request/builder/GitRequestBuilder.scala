@@ -21,6 +21,8 @@ import io.gatling.commons.validation.{Failure, Success, Validation}
 import io.gatling.core.session.Session
 import org.eclipse.jgit.transport.URIish
 
+import scala.util.Try
+
 object GitRequestBuilder {
 
   implicit def toActionBuilder(requestBuilder: GitRequestBuilder): GitRequestActionBuilder =
@@ -62,14 +64,11 @@ case class GitRequestBuilder(request: GitRequestSession)(
   }
 
   private def validateUrl(stringUrl: String): Validation[URIish] = {
-    try {
-      Success(new URIish(stringUrl))
-    } catch {
-      case e: Exception => {
+    Try(Success(new URIish(stringUrl))).recover {
+      case e: Exception =>
         val errorMsg = s"Invalid url: $stringUrl. ${e.getMessage}"
         println(errorMsg)
         Failure(errorMsg)
-      }
-    }
+    }.get
   }
 }

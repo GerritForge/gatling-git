@@ -34,8 +34,7 @@ class AllUsersAllRecordsCloneOnlyScenario extends Simulation {
 
   val allUsersAllCallsScenario: ScenarioBuilder =
     scenario("Git Clone").foreach(feeder, "record") {
-      exec(flattenMapIntoAttributes("${record}"))
-        .exec(Git.clone("http://localhost:8081/${repo}"))
+      exec(Git.clone("http://localhost:8081/#{record.repo}"))
     }
 
   setUp(allUsersAllCallsScenario.inject(atOnceUsers(3)))

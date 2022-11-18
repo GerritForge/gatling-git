@@ -37,7 +37,7 @@ import GitRequestSession.{AllRefs, EmptyTag, HeadToMasterRefSpec, MasterRef}
 import com.github.barbasa.gatling.git.request.Request.{addRemote, initRepo}
 import org.eclipse.jgit.lib.Constants.MASTER
 
-import collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 import scala.reflect.io.Directory
 
 sealed trait Request {

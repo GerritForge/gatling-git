@@ -41,14 +41,14 @@ class ReplayRecordsScenario extends Simulation {
 
   setUp(
     replayCallsScenario.inject(
-      nothingFor(4 seconds),
+      nothingFor(4.seconds),
       atOnceUsers(10),
-      rampUsers(10) during (5 seconds),
-      constantUsersPerSec(20) during (15 seconds),
-      constantUsersPerSec(20) during (15 seconds) randomized
+      rampUsers(10) during 5.seconds,
+      constantUsersPerSec(20) during 15.seconds,
+      constantUsersPerSec(20).during(15.seconds).randomized
     )
   ).protocols(gitProtocol)
-    .maxDuration(60 seconds)
+    .maxDuration(60.seconds)
 
   after {
     try {

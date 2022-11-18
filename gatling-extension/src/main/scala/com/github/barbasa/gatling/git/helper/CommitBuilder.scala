@@ -21,6 +21,7 @@ import java.time.LocalDateTime
 
 import scala.util.Random
 import scala.collection.JavaConverters._
+import scala.collection.parallel.CollectionConverters._
 import org.eclipse.jgit.lib.Constants.R_HEADS
 import org.eclipse.jgit.util.ChangeIdUtil
 

@@ -44,13 +44,14 @@ lazy val root = (project in file("."))
     publishArtifact := false
   )
 
+ThisBuild / scalaVersion := "2.13.10"
+
 lazy val extension = (project in file("gatling-extension"))
   .enablePlugins(GitVersioning)
   .enablePlugins(AssemblyPlugin)
   .settings(
     organization := "com.gerritforge",
     organizationName := "GerritForge",
-    scalaVersion := "2.12.8",
     assemblyJarName := "gatling-git-extension.jar",
     scmInfo := Some(
       ScmInfo(
@@ -72,8 +73,9 @@ lazy val extension = (project in file("gatling-extension"))
         Seq("io.gatling"                 % "gatling-app"    % GatlingVersion % "provided") ++
         Seq("com.google.inject"          % "guice"          % "3.0") ++
         Seq("commons-io"                 % "commons-io"     % "2.11.0") ++
+        Seq("org.scala-lang.modules"     %% "scala-parallel-collections" % "1.0.4") ++
         Seq("com.typesafe.scala-logging" %% "scala-logging" % "3.9.2" % "provided") ++
-        Seq("org.scalatest"              %% "scalatest"     % "3.0.1" % Test),
+        Seq("org.scalatest"              %% "scalatest"     % "3.0.8" % Test),
     assembly / assemblyMergeStrategy := {
       case PathList("META-INF", xs @ _*) => MergeStrategy.discard
       case x                             => MergeStrategy.first

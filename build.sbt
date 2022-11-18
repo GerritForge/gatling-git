@@ -38,6 +38,10 @@ ThisBuild / publishTo := {
 
 ThisBuild / publishMavenStyle := true
 
+ThisBuild / scalacOptions ++= Seq(
+  "-deprecation"
+)
+
 lazy val root = (project in file("."))
   .aggregate(extension, jgit)
   .settings(

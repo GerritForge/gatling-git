@@ -20,7 +20,7 @@ import org.eclipse.jgit.lib.Constants.R_HEADS
 import org.eclipse.jgit.transport.URIish
 import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 
 class PushSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
 

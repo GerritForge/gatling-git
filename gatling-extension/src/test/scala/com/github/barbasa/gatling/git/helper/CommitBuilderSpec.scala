@@ -22,6 +22,7 @@ import org.eclipse.jgit.api.{Git => JGit}
 import org.eclipse.jgit.lib.Constants
 import org.eclipse.jgit.revwalk.RevCommit
 import org.eclipse.jgit.revwalk.RevWalk
+import scala.util.Try
 
 class CommitBuilderSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
   before {
@@ -35,20 +36,15 @@ class CommitBuilderSpec extends FlatSpec with BeforeAndAfter with Matchers with 
   }
 
   def getHeadCommit: RevCommit = {
-    try {
-      val repository = testGitRepo.getRepository
-      try {
-        val head = repository.findRef(Constants.HEAD)
-        try {
-          val walk = new RevWalk(repository)
-          try {
-            walk.parseCommit(head.getObjectId)
-          }
-        }
-      }
-    } catch {
-      case e: Exception => fail(e.getCause)
-    }
+    val revCommitT = for {
+      repository <- Try(testGitRepo.getRepository)
+      head       <- Try(repository.findRef(Constants.HEAD))
+      walk       <- Try(new RevWalk(repository))
+      revCommit  <- Try(walk.parseCommit(head.getObjectId))
+    } yield revCommit
+    revCommitT.recover {
+      case e => fail(e.getCause)
+    }.get
   }
 
   behavior of "CommitBuilder"

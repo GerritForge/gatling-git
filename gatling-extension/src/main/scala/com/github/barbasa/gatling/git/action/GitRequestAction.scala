@@ -31,7 +31,6 @@ import io.gatling.commons.stats.{KO => GatlingFail, OK => GatlingOK, Status}
 class GitRequestAction(
     coreComponents: CoreComponents,
     reqBuilder: GitRequestBuilder,
-    val throttled: Boolean,
     val next: Action
 ) extends ExitableAction
     with NameGen {
@@ -71,7 +70,8 @@ class GitRequestAction(
 
       val gatlingStatus = Request.gatlingStatusFromGit(response)
       statsEngine.logResponse(
-        session,
+        session.scenario,
+        session.groups,
         reqName,
         start,
         clock.nowMillis,
@@ -79,11 +79,13 @@ class GitRequestAction(
         None,
         message
       )
-      if (throttled) {
-        coreComponents.throttler
-          .throttle(session.scenario, () => next ! setSessionStatus(session, gatlingStatus))
-      } else {
-        next ! setSessionStatus(session, gatlingStatus)
+      coreComponents.throttler match {
+        case Some(throttler) =>
+          throttler.throttle(
+            session.scenario,
+            () => next ! setSessionStatus(session, gatlingStatus)
+          )
+        case None => next ! setSessionStatus(session, gatlingStatus)
       }
     }
   }

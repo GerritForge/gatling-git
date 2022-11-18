@@ -14,9 +14,8 @@
 
 package com.github.barbasa.gatling.git
 
-import io.gatling.core.session.{Expression, StaticStringExpression, ExpressionSuccessWrapper}
+import io.gatling.core.session.{Expression, ExpressionSuccessWrapper, StaticValueExpression}
 import org.eclipse.jgit.lib.Constants.{HEAD, MASTER, R_HEADS}
-
 import GitRequestSession._
 
 case class GitRequestSession(
@@ -32,8 +31,8 @@ case class GitRequestSession(
 object GitRequestSession {
   val MasterRef           = s"$R_HEADS$MASTER"
   val AllRefs             = s"+refs/*:refs/*"
-  val HeadToMasterRefSpec = StaticStringExpression(s"$HEAD:$MasterRef")
-  val EmptyTag            = StaticStringExpression("")
+  val HeadToMasterRefSpec = StaticValueExpression(s"$HEAD:$MasterRef")
+  val EmptyTag            = StaticValueExpression("")
   val False               = false.expressionSuccess
 
   def cmd(
@@ -42,5 +41,5 @@ object GitRequestSession {
       refSpec: Expression[String] = HeadToMasterRefSpec,
       tag: Expression[String] = EmptyTag
   ): GitRequestSession =
-    GitRequestSession(StaticStringExpression(cmd), url, refSpec, tag)
+    GitRequestSession(StaticValueExpression(cmd), url, refSpec, tag)
 }

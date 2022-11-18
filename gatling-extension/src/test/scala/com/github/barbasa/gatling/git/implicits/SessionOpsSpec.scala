@@ -15,7 +15,8 @@
 package com.github.barbasa.gatling.git.implicits
 
 import com.github.barbasa.gatling.git.implicits.SessionOps._
-import io.gatling.core.session.{Session, StaticStringExpression}
+import io.gatling.core.session.{Session, StaticValueExpression}
+import io.netty.channel.DefaultEventLoop
 import org.scalatest.{FlatSpec, Matchers}
 
 class SessionOpsSpec extends FlatSpec with Matchers {
@@ -26,10 +27,10 @@ class SessionOpsSpec extends FlatSpec with Matchers {
     val attributeValue = "foo"
     val attributeKey   = "bar"
 
-    Session("TestScenario", aUserID, System.currentTimeMillis())
-      .ensureOrElse(attributeValue, StaticStringExpression(attributeKey))
+    Session("TestScenario", aUserID, new DefaultEventLoop())
+      .ensureOrElse(attributeValue, StaticValueExpression(attributeKey))
       .attributes(attributeValue)
-      .asInstanceOf[StaticStringExpression]
+      .asInstanceOf[StaticValueExpression[String]]
       .value shouldBe attributeKey
   }
 
@@ -38,9 +39,9 @@ class SessionOpsSpec extends FlatSpec with Matchers {
     val attributeValue         = "foo"
     val originalAttributeValue = "bar"
 
-    Session("TestScenario", aUserID, System.currentTimeMillis())
+    Session("TestScenario", aUserID, new DefaultEventLoop())
       .set(attributeValue, originalAttributeValue)
-      .ensureOrElse(attributeValue, StaticStringExpression("some other value"))
+      .ensureOrElse(attributeValue, StaticValueExpression("some other value"))
       .attributes(attributeValue)
       .asInstanceOf[String] shouldBe originalAttributeValue
   }

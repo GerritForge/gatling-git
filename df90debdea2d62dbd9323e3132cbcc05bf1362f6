@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2affb071_29db855c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019805
+      },
+      "writtenOn": "2022-11-19T15:42:50Z",
+      "side": 1,
+      "message": "I note that `GatlingRunner` doesn\u0027t run `AllUsersAllRecordsCloneOnlyScenario` - should it?",
+      "revId": "df90debdea2d62dbd9323e3132cbcc05bf1362f6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

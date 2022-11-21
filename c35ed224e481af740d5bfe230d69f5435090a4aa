@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62df92c6_9409b0d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2022-11-21T10:09:58Z",
+      "side": 1,
+      "message": "nit: can you add in the comment you had to bummpup scala version as well because of Gatling?",
+      "revId": "c35ed224e481af740d5bfe230d69f5435090a4aa",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7757847a_9caf8da3",
         "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
         "patchSetId": 1
@@ -14,6 +31,24 @@
       "writtenOn": "2022-11-18T21:16:27Z",
       "side": 1,
       "message": "This is not like-for-like as we\u0027re iterating through the elements sequentially instead of in parallel. I don\u0027t know if this matters - if it does we can explore a little further.",
+      "revId": "c35ed224e481af740d5bfe230d69f5435090a4aa",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35bee04f_f65d4324",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2022-11-21T10:09:58Z",
+      "side": 1,
+      "message": "It is part of a public API but unless we are using it internally I wouldn\u0027t bother to keep the same behaviour unless necessary.\n\nLet me check if we use it.",
+      "parentUuid": "7757847a_9caf8da3",
       "revId": "c35ed224e481af740d5bfe230d69f5435090a4aa",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }

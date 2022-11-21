@@ -38,7 +38,7 @@ ThisBuild / publishTo := {
 
 ThisBuild / publishMavenStyle := true
 
-lazy val root = (project in file("."))
+lazy val root = Project("gatling-git", file("."))
   .aggregate(extension, jgit)
   .settings(
     publishArtifact := false

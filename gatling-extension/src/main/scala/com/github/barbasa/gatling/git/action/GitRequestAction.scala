@@ -51,8 +51,8 @@ class GitRequestAction(
             val commandResponse = req.send
 
             commandResponse match {
-              case _ @GitCommandResponse(Fail, _) =>
-                mayOverrideFailure(session, commandResponse, req.name, commandResponse.message)
+              case GitCommandResponse(Fail, Some(message)) =>
+                mayOverrideFailure(session, commandResponse, req.name, message)
               case _ =>
                 (commandResponse, req.name, commandResponse.message)
             }
@@ -62,7 +62,7 @@ class GitRequestAction(
                 session,
                 GitCommandResponse(Fail),
                 req.name,
-                Some(s"${e.getMessage} - ${e.getCause}")
+                s"${e.getMessage} - ${e.getCause}"
               )
           }
         case Failure(message) => (GitCommandResponse(Fail), "Unknown", Some(message))
@@ -94,21 +94,15 @@ class GitRequestAction(
       session: Session,
       origResponse: GitCommandResponse,
       reqName: String,
-      optionalMessage: Option[String]
-  ): (GitCommandResponse, String, Option[String]) = {
-    val original = (origResponse, reqName, optionalMessage)
-
+      originalMessage: String
+  ): (GitCommandResponse, String, Option[String]) =
     reqBuilder.request.ignoreFailureRegexps(session) match {
-      case Success(regexList) if optionalMessage.isDefined =>
-        val originalMessage = optionalMessage.get
-        if (regexList.exists(regex => originalMessage.matches(regex))) {
-          val newMessage = s"[Ignore failure] Request '$reqName' - $originalMessage"
-          logger.warn(newMessage)
-          (GitCommandResponse(OK, Some(newMessage)), reqName, Some(newMessage))
-        } else original
-      case Failure(_) => original
+      case Success(regexList) if regexList.exists(originalMessage.matches) =>
+        val newMessage = s"[Ignore failure] Request '$reqName' - $originalMessage"
+        logger.warn(newMessage)
+        (GitCommandResponse(OK, Some(newMessage)), reqName, Some(newMessage))
+      case _ => (origResponse, reqName, Some(originalMessage))
     }
-  }
 
   private def setSessionStatus(session: Session, status: Status): Session = {
     status match {

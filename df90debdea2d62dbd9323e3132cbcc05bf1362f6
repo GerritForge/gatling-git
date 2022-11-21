@@ -16,6 +16,24 @@
       "message": "I note that `GatlingRunner` doesn\u0027t run `AllUsersAllRecordsCloneOnlyScenario` - should it?",
       "revId": "df90debdea2d62dbd9323e3132cbcc05bf1362f6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c1ad034_d7efbe9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019805
+      },
+      "writtenOn": "2022-11-21T13:17:10Z",
+      "side": 1,
+      "message": "Apparently this is only used as a helper to run these scenarios in the IDE, so can leave as is and manually alter if we want to debug these.",
+      "parentUuid": "2affb071_29db855c",
+      "revId": "df90debdea2d62dbd9323e3132cbcc05bf1362f6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

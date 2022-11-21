@@ -51,6 +51,24 @@
       "parentUuid": "7757847a_9caf8da3",
       "revId": "c35ed224e481af740d5bfe230d69f5435090a4aa",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7908127_51737a36",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2022-11-21T16:35:43Z",
+      "side": 1,
+      "message": "Since it doesn\u0027t look to be a big deal I would keep the same behaviour as before.",
+      "parentUuid": "35bee04f_f65d4324",
+      "revId": "c35ed224e481af740d5bfe230d69f5435090a4aa",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

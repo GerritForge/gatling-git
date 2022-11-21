@@ -72,14 +72,15 @@ lazy val extension = (project in file("gatling-extension"))
     },
     name := "gatling-git",
     libraryDependencies ++=
-      gatling ++
-        Seq("io.gatling"                 % "gatling-core"   % GatlingVersion % "provided") ++
-        Seq("io.gatling"                 % "gatling-app"    % GatlingVersion % "provided") ++
-        Seq("com.google.inject"          % "guice"          % "3.0") ++
-        Seq("commons-io"                 % "commons-io"     % "2.11.0") ++
-        Seq("org.scala-lang.modules"     %% "scala-parallel-collections" % "1.0.4") ++
-        Seq("com.typesafe.scala-logging" %% "scala-logging" % "3.9.2" % "provided") ++
-        Seq("org.scalatest"              %% "scalatest"     % "3.0.8" % Test),
+      gatling ++ Seq(
+        "io.gatling"                 % "gatling-core"                % GatlingVersion % "provided",
+        "io.gatling"                 % "gatling-app"                 % GatlingVersion % "provided",
+        "com.google.inject"          % "guice"                       % "3.0",
+        "commons-io"                 % "commons-io"                  % "2.11.0",
+        "org.scala-lang.modules"     %% "scala-parallel-collections" % "1.0.4",
+        "com.typesafe.scala-logging" %% "scala-logging"              % "3.9.2" % "provided",
+        "org.scalatest"              %% "scalatest"                  % "3.0.8" % Test
+      ),
     assembly / assemblyMergeStrategy := {
       case PathList("META-INF", xs @ _*) => MergeStrategy.discard
       case x                             => MergeStrategy.first

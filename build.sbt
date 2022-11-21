@@ -64,7 +64,7 @@ lazy val extension = (project in file("gatling-extension"))
       )
     ),
     developers := List(ponch, tony, thomas, luca),
-    description := "Gatlin plugin for supporting the Git protocol over SSH and HTTP",
+    description := "Gatling plugin for supporting the Git protocol over SSH and HTTP",
     licenses := List("Apache 2" -> new URL("http://www.apache.org/licenses/LICENSE-2.0.txt")),
     homepage := Some(url("https://github.com/GerritForge/gatling-git")),
     pomIncludeRepository := { _ =>

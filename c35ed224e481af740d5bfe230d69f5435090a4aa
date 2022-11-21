@@ -18,6 +18,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e076f915_9fd9ff12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1019805
+      },
+      "writtenOn": "2022-11-21T20:08:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62df92c6_9409b0d2",
+      "revId": "c35ed224e481af740d5bfe230d69f5435090a4aa",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7757847a_9caf8da3",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Since it doesn\u0027t look to be a big deal I would keep the same behaviour as before.",
       "parentUuid": "35bee04f_f65d4324",
+      "revId": "c35ed224e481af740d5bfe230d69f5435090a4aa",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dbda7b1_f35770c2",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1019805
+      },
+      "writtenOn": "2022-11-21T20:08:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7908127_51737a36",
       "revId": "c35ed224e481af740d5bfe230d69f5435090a4aa",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }

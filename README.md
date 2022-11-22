@@ -15,10 +15,10 @@ level test scenarios using directly the Git verbs in your tests.
 
 ### Prerequisites
 
-* [Scala 2.12][scala]
-* [Gatling 3.1.1][gatling-3.1.1]
+* [Scala 2.13][scala]
+* [Gatling 3.8.4][gatling-3.8.4]
 
-[gatling-3.1.1]: https://mvnrepository.com/artifact/io.gatling/gatling-core/3.1.1
+[gatling-3.8.4]: https://mvnrepository.com/artifact/io.gatling/gatling-core/3.8.4
 [scala]: https://www.scala-lang.org/download/
 
 ### Using the Gatling Git test scenarios and protocol
@@ -34,7 +34,7 @@ import com.github.barbasa.gatling.git.request.builder._
 Add the following dependencies to your Gatling SBT project:
 
 ```scala
-val GATLING_VER = "3.1.1"
+val GATLING_VER = "3.8.4"
 
 libraryDependencies += "io.gatling.highcharts" % "gatling-charts-highcharts" % GATLING_VER % Test
 libraryDependencies += "io.gatling.highcharts" % "gatling-test-framework" % GATLING_VER % Test
@@ -73,20 +73,20 @@ For instance, for a constant traffic from 2 concurrent users for a 1 minute test
 val gitProtocol = GitProtocol()
 
   setUp(
-    gitPush.inject(constantConcurrentUsers(2) during (1 minute))
+    gitPush.inject(constantConcurrentUsers(2) during (1.minute))
   ).protocols(gitProtocol)
 ```
 
 ### Build from source
 
 See below the instructions on how to build the gatling-git plugin from source.
-It requires [Scala 2.12][scala] and [SBT 1.2.8][sbt-1.2.8]
+It requires [Scala 2.13][scala] and [SBT 1.8.0][sbt-1.8.0]
 
 ```bash
 sbt compile
 ```
 
-[sbt-1.2.8]: https://www.scala-sbt.org/download.html
+[sbt-1.8.0]: https://www.scala-sbt.org/download.html
 
 ### Setup
 
@@ -171,17 +171,17 @@ The push operation have optional extra parameters:
 
 All tests:
 ```
-sbt "gatling:test"
+sbt "Gatling/test"
 ```
 
 Single test:
 ```
-sbt "gatling:testOnly com.github.barbasa.gatling.git.ReplayRecordsScenario"
+sbt "Gatling/testOnly com.github.barbasa.gatling.git.ReplayRecordsScenario"
 ```
 
 Generate report:
 ```
-sbt "gatling:lastReport"
+sbt "Gatling/lastReport"
 ```
 
 ### How to use docker

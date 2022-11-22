@@ -16,6 +16,24 @@
       "message": "Nit: Tangential, but while we\u0027re updating the readme, maybe we could change this to upper camel case to follow the scala convention for constants.",
       "revId": "3caf9af03134af9db8dd383d94bd47a223808f3a",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27d95345_eee6e488",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2022-11-22T20:05:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c2cb7a0_4175789d",
+      "revId": "3caf9af03134af9db8dd383d94bd47a223808f3a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

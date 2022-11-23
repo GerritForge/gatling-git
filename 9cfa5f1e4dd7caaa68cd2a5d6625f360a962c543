@@ -1,4 +1,22 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9acaca1f_822e6203",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-11-23T11:59:31Z",
+      "side": 1,
+      "message": "Post-merge Verified -1: it dosn\u0027t work for me.\n\n[warn]\n[warn] \tNote: Some unresolved dependencies have extra attributes.  Check that these dependencies exist with the requested attributes.\n[warn] \t\tcom.typesafe.sbt:sbt-git:2.0.0 (sbtVersion\u003d1.0, scalaVersion\u003d2.12)\n[warn]\n[warn] \tNote: Unresolved dependencies path:\n[error] sbt.librarymanagement.ResolveException: Error downloading com.typesafe.sbt:sbt-git;sbtVersion\u003d1.0;scalaVersion\u003d2.12:2.0.0\n[error]   Not found\n[error]   Not found\n[error]   not found: https://repo1.maven.org/maven2/com/typesafe/sbt/sbt-git_2.12_1.0/2.0.0/sbt-git-2.0.0.pom\n[error]   not found: /Users/lucamilanesio/.ivy2/local/com.typesafe.sbt/sbt-git/scala_2.12/sbt_1.0/2.0.0/ivys/ivy.xml\n[error]   not found: https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-git/scala_2.12/sbt_1.0/2.0.0/ivys/ivy.xml\n[error]   not found: https://repo.typesafe.com/typesafe/ivy-releases/com.typesafe.sbt/sbt-git/scala_2.12/sbt_1.0/2.0.0/ivys/ivy.xml",
+      "revId": "9cfa5f1e4dd7caaa68cd2a5d6625f360a962c543",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ],
   "submitRequirementResults": []
 }

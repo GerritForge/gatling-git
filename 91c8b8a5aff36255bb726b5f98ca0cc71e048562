@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "225ce224_786c5507",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-11-23T14:32:44Z",
+      "side": 1,
+      "message": "You cannot avoid generating JavaDocs if you want to publish to Maven Central",
+      "revId": "91c8b8a5aff36255bb726b5f98ca0cc71e048562",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

@@ -22,6 +22,30 @@
       },
       "revId": "7014ebf6567dcb0d3b97325ee48f47b2a50ddb50",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a94e39ab_2afa7d8a",
+        "filename": "build.sbt",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-09T22:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2d6ac84_2bd5948e",
+      "range": {
+        "startLine": 53,
+        "startChar": 19,
+        "endLine": 53,
+        "endChar": 40
+      },
+      "revId": "7014ebf6567dcb0d3b97325ee48f47b2a50ddb50",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

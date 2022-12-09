@@ -43,12 +43,14 @@ ThisBuild / scalacOptions ++= Seq(
 )
 
 lazy val root = Project("gatling-git", file("."))
-  .aggregate(extension, jgit)
+  .aggregate(extension)
   .settings(
     publishArtifact := false
   )
 
 ThisBuild / scalaVersion := "2.13.10"
+
+val JGitVersion = "6.4.0.202211300538-r"
 
 lazy val extension = (project in file("gatling-extension"))
   .enablePlugins(GitVersioning)
@@ -79,6 +81,8 @@ lazy val extension = (project in file("gatling-extension"))
         "commons-io"                 % "commons-io"                  % "2.11.0",
         "org.scala-lang.modules"     %% "scala-parallel-collections" % "1.0.4",
         "com.typesafe.scala-logging" %% "scala-logging"              % "3.9.2" % "provided",
+        "org.eclipse.jgit"           % "org.eclipse.jgit"            % JGitVersion,
+        "org.eclipse.jgit"           % "org.eclipse.jgit.ssh.apache" % JGitVersion,
         "org.scalatest"              %% "scalatest"                  % "3.0.8" % Test
       ),
     assembly / assemblyMergeStrategy := {
@@ -92,41 +96,6 @@ lazy val extension = (project in file("gatling-extension"))
     },
     addArtifact(assembly / artifact, assembly)
   )
-  .dependsOn(jgit)
-
-val JGitVersion = "5.13.0.202109080827-r"
-
-lazy val jgit = (project in file("jgit")).settings(
-  crossPaths := false,
-  name := "gatling-git-jgit",
-  organization := "com.gerritforge",
-  organizationName := "GerritForge",
-  homepage := Some(url("https://gerritforge.com")),
-  scmInfo := Some(
-    ScmInfo(
-      url("https://github.com/GerritForge/jgit"),
-      "scm:https://review.gerrithub.io/GerritForge/jgit.git"
-    )
-  ),
-  developers := List(ponch, tony, thomas, luca),
-  description := "JGit fork used by the Gatling plugin for supporting the Git protocol over SSH and HTTP",
-  licenses := List("Apache 2" -> new URL("http://www.apache.org/licenses/LICENSE-2.0.txt")),
-  libraryDependencies ++= jgitDependencies,
-  Compile / javaSource := baseDirectory.value / "org.eclipse.jgit/src",
-  Compile / resourceDirectory := baseDirectory.value / "org.eclipse.jgit/resources",
-  Compile / unmanagedSourceDirectories += baseDirectory.value / "org.eclipse.jgit.ssh.apache/src",
-  Compile / unmanagedResourceDirectories += baseDirectory.value / "org.eclipse.jgit.ssh.apache/resources",
-  autoScalaLibrary := false
-)
-
-val jgitDependencies = Seq(
-  "org.eclipse.jgit" % "org.eclipse.jgit"            % JGitVersion,
-  "org.eclipse.jgit" % "org.eclipse.jgit.ssh.apache" % JGitVersion
-).map(
-  _ excludeAll ExclusionRule(
-    organization = "org.eclipse.jgit"
-  )
-)
 
 credentials += Credentials(Path.userHome / ".sbt" / "sonatype_credentials")
 scalafmtOnCompile := true

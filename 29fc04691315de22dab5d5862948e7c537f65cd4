@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae9e5024_157c2034",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1019805
+      },
+      "writtenOn": "2022-12-09T19:51:09Z",
+      "side": 1,
+      "message": "Nit: typo: away",
+      "range": {
+        "startLine": 10,
+        "startChar": 34,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "29fc04691315de22dab5d5862948e7c537f65cd4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

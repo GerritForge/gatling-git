@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "486365e2_f54a1736",
+        "filename": "build.sbt",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-09T18:07:37Z",
+      "side": 1,
+      "message": "Are you sure there aren\u0027t more recent releases on stable-5.13?",
+      "range": {
+        "startLine": 53,
+        "startChar": 19,
+        "endLine": 53,
+        "endChar": 40
+      },
+      "revId": "d69c46307d3926ce2c140c0dacbf59c38ac0b2e9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

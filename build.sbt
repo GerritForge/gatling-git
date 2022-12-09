@@ -50,7 +50,7 @@ lazy val root = Project("gatling-git", file("."))
 
 ThisBuild / scalaVersion := "2.13.10"
 
-val JGitVersion = "6.4.0.202211300538-r"
+val JGitVersion = "5.13.1.202206130422-r"
 
 lazy val extension = (project in file("gatling-extension"))
   .enablePlugins(GitVersioning)

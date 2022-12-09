@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2d6ac84_2bd5948e",
+        "filename": "build.sbt",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2022-12-09T22:30:41Z",
+      "side": 1,
+      "message": "Unfortunately, this isn\u0027t enough. \nThe following commits are missing:\n\naa9f736c3 (HEAD -\u003e stable-5.13, origin/stable-5.13) Silence API warnings\n48316309b [benchmarks] Remove profiler configuration\nc20e9676c Add SHA1 benchmark\n4fac79658 [benchmarks] Set version of maven-compiler-plugin to 3.8.1\n8d53a1433 Fix running JMH benchmarks\n59029aec3 Add option to allow using JDK\u0027s SHA1 implementation\n924491d4d Ignore IllegalStateException if JVM is already shutting down\n035e0e23f (gerrithub/stable-5.13) UploadPack: don\u0027t prematurely terminate timer in case of error\nca6b51843 Merge \"Do not create reflog for remote tracking branches during clone\" into stable-5.13\n4bb469363 Do not create reflog for remote tracking branches during clone\n66ace4b9a UploadPack: do not check reachability of visible SHA1s\nf4cbf31ae Add missing package import javax.management to org.eclipse.jgit\ndb074a135 Prepare 5.13.2-SNAPSHOT builds\n\nIN particular, the 4bb469363 is *very important* for gatling-git.",
+      "range": {
+        "startLine": 53,
+        "startChar": 19,
+        "endLine": 53,
+        "endChar": 40
+      },
+      "revId": "7014ebf6567dcb0d3b97325ee48f47b2a50ddb50",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

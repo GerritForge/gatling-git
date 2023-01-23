@@ -16,6 +16,24 @@
       "message": "@Dani: did you verify the simulation are still working? I.e.: they compile and test pass? ",
       "revId": "dbbc0ac148034fc61710442dff8f809db6173277",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d081e1eb_c93a4c2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-01-23T16:09:09Z",
+      "side": 1,
+      "message": "`sbt:compile` and `sbt:test` still work yes. I have also published the jar locally and tested against `gatling-sbt-gerrit-test` and it works.",
+      "parentUuid": "7959fe2a_be34d65d",
+      "revId": "dbbc0ac148034fc61710442dff8f809db6173277",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

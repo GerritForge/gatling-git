@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7959fe2a_be34d65d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2023-01-23T15:57:58Z",
+      "side": 1,
+      "message": "@Dani: did you verify the simulation are still working? I.e.: they compile and test pass? ",
+      "revId": "dbbc0ac148034fc61710442dff8f809db6173277",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

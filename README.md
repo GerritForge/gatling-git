@@ -80,13 +80,13 @@ val gitProtocol = GitProtocol()
 ### Build from source
 
 See below the instructions on how to build the gatling-git plugin from source.
-It requires [Scala 2.13][scala] and [SBT 1.8.0][sbt-1.8.0]
+It requires [Scala 2.13][scala] and [SBT 1.8.2][sbt-1.8.2]
 
 ```bash
 sbt compile
 ```
 
-[sbt-1.8.0]: https://www.scala-sbt.org/download.html
+[sbt-1.8.2]: https://www.scala-sbt.org/download.html
 
 ### Setup
 

@@ -34,11 +34,11 @@ class CommitBuilder(numFiles: Int, minContentLength: Int, maxContentLength: Int,
       computeChangeId: Boolean = false
   ) = {
     val git = new Git(repository)
-    Vector.range(0, numFiles).foreach { e =>
+    Vector.range(0, numFiles).foreach { _ =>
       val contentLength: Int = minContentLength + random
         .nextInt((maxContentLength - minContentLength) + 1)
       val file: MockFile   = MockFileFactory.create(TextFileType, contentLength)
-      val fileName: String = file.save(repository.getWorkTree.toString)
+      file.save(repository.getWorkTree.toString)
     }
 
     val existingBranches = git.branchList.call.asScala

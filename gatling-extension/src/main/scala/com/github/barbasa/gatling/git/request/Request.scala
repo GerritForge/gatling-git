@@ -13,30 +13,25 @@
 // limitations under the License.
 
 package com.github.barbasa.gatling.git.request
-import java.io.{File, PrintWriter}
-import java.nio.file.{Files, Path, Paths}
-import java.time.LocalDateTime
-import java.util.List
-import scala.util.{Failure, Success, Try}
-import com.github.barbasa.gatling.git.{GatlingGitConfiguration, GitRequestSession}
+import com.github.barbasa.gatling.git.GatlingGitConfiguration
+import com.github.barbasa.gatling.git.GitRequestSession.{AllRefs, EmptyTag, HeadToMasterRefSpec, MasterRef}
 import com.github.barbasa.gatling.git.helper.CommitBuilder
+import com.github.barbasa.gatling.git.request.Request.{addRemote, initRepo}
 import com.typesafe.scalalogging.LazyLogging
 import io.gatling.commons.stats.{Status, KO => GatlingFail, OK => GatlingOK}
 import org.apache.commons.io.FileUtils
 import org.eclipse.jgit.api._
-import org.eclipse.jgit.hooks._
-import org.eclipse.jgit.internal.storage.file.FileRepository
+import org.eclipse.jgit.lib.Constants.MASTER
 import org.eclipse.jgit.lib.{NullProgressMonitor, Repository, TextProgressMonitor}
 import org.eclipse.jgit.revwalk.RevWalk
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder
-import org.eclipse.jgit.transport.{SshSessionFactory, SshTransport}
 import org.eclipse.jgit.transport._
 import org.eclipse.jgit.transport.sshd.SshdSessionFactory
-import org.eclipse.jgit.util.FS
-import GitRequestSession.{AllRefs, EmptyTag, HeadToMasterRefSpec, MasterRef}
-import com.github.barbasa.gatling.git.request.Request.{addRemote, initRepo}
-import org.eclipse.jgit.lib.Constants.MASTER
 
+import java.io.{File, PrintWriter}
+import java.nio.file.{Path, Paths}
+import java.time.LocalDateTime
+import java.util.List
 import scala.jdk.CollectionConverters._
 import scala.reflect.io.Directory
 
@@ -135,8 +130,7 @@ object Request {
 }
 
 case class Clone(url: URIish, user: String, ref: String = MasterRef)(
-    implicit val conf: GatlingGitConfiguration,
-    val postMsgHook: Option[String] = None
+    implicit val conf: GatlingGitConfiguration
 ) extends Request {
 
   val name = s"Clone: $url"
@@ -153,16 +147,6 @@ case class Clone(url: URIish, user: String, ref: String = MasterRef)(
       .setProgressMonitor(progressMonitor)
       .setTimeout(conf.gitConfiguration.commandTimeout)
       .call()
-
-    postMsgHook.foreach { sourceCommitMsgFile =>
-      val sourceCommitMsgPath =
-        new File(classLoader.getResource(sourceCommitMsgFile).getPath).toPath
-
-      val destinationCommitMsgPath =
-        Paths.get(workTreeDirectory.getAbsolutePath, s".git/hooks/${CommitMsgHook.NAME}")
-      new File(Files.copy(sourceCommitMsgPath, destinationCommitMsgPath).toString)
-        .setExecutable(true)
-    }
 
     // Clone doesn't have a Result a return value, hence either it works or
     // it will throw an exception
@@ -333,7 +317,7 @@ case class Tag(
       revWalk.close()
     }
 
-    val tagResult = git.tag().setName(tag).setObjectId(headCommit).call()
+    git.tag().setName(tag).setObjectId(headCommit).call()
     val pushResult = git
       .push()
       .setRemote("origin")

@@ -14,7 +14,7 @@
 
 package com.github.barbasa.gatling.git.request
 import com.github.barbasa.gatling.git.GatlingGitConfiguration
-import com.github.barbasa.gatling.git.GitRequestSession.{AllRefs, EmptyTag, HeadToMasterRefSpec, MasterRef}
+import com.github.barbasa.gatling.git.GitRequestSession.{AllRefs,EmptyTag,HeadToMasterRefSpec,MasterRef}
 import com.github.barbasa.gatling.git.helper.CommitBuilder
 import com.github.barbasa.gatling.git.request.Request.{addRemote, initRepo}
 import com.typesafe.scalalogging.LazyLogging
@@ -31,9 +31,10 @@ import org.eclipse.jgit.transport.sshd.SshdSessionFactory
 import java.io.{File, PrintWriter}
 import java.nio.file.{Path, Paths}
 import java.time.LocalDateTime
-import java.util.List
+import java.util.{List => JavaList}
 import scala.jdk.CollectionConverters._
 import scala.reflect.io.Directory
+import scala.collection.immutable.List
 
 sealed trait Request {
 
@@ -53,7 +54,7 @@ sealed trait Request {
   lazy val repository: Repository = builder.setWorkTree(workTreeDirectory).build()
 
   val sshSessionFactory: SshSessionFactory = new SshdSessionFactory {
-    override protected def getDefaultIdentities(sshDir: File): List[Path] = {
+    override protected def getDefaultIdentities(sshDir: File): JavaList[Path] = {
       val defaultIdentities = super.getDefaultIdentities(sshDir)
       defaultIdentities.add(Paths.get(conf.sshConfiguration.private_key_path))
       defaultIdentities
@@ -223,7 +224,8 @@ case class Push(
     refSpec: String = HeadToMasterRefSpec.value,
     commitBuilder: CommitBuilder = Push.defaultCommitBuilder,
     force: Boolean = false,
-    computeChangeId: Boolean = false
+    computeChangeId: Boolean = false,
+    options: List[String] = List.empty
 )(
     implicit val conf: GatlingGitConfiguration
 ) extends Request {
@@ -245,14 +247,20 @@ case class Push(
     )
 
     // XXX Make credential configurable
-    val pushResults = git.push
-      .setAuthenticationMethod(url, cb)
-      .setRemote(url.toString)
-      .add(refSpec)
-      .setTimeout(conf.gitConfiguration.commandTimeout)
-      .setProgressMonitor(progressMonitor)
-      .setForce(force)
-      .call()
+    val basePushCommand: PushCommand =
+      git.push
+        .setAuthenticationMethod(url, cb)
+        .setRemote(url.toString)
+        .add(refSpec)
+        .setTimeout(conf.gitConfiguration.commandTimeout)
+        .setProgressMonitor(progressMonitor)
+        .setForce(force)
+
+    val pushResults =
+      if (url.getScheme == "file")
+        basePushCommand.call()
+      else
+        basePushCommand.setPushOptions(options.asJava).call()
 
     val maybeRemoteRefUpdate = pushResults.asScala
       .flatMap { pushResult =>

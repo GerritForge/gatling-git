@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc6ade93_ec6288b3",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1019805
+      },
+      "writtenOn": "2023-03-28T21:27:21Z",
+      "side": 1,
+      "message": "Nit: I\u0027d rather this remained `List`, and `java.util.List` was aliased to `JList` or something. We are in Scala after all and if we have a naming clash I think we should default to the Scala type being the default, and the Java one being the aliased one.",
+      "revId": "245adf4a2a73058649d99125c3f97c6686384b2e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0623c37_4ecebf90",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1019805
+      },
+      "writtenOn": "2023-03-28T21:27:21Z",
+      "side": 1,
+      "message": "Is it difficult to test this? I note we have `PushSpec`, but I don\u0027t know how much effort it would be to add a test for this. If it\u0027s a lot of work maybe we can forgo it, but otherwise we should add one.",
+      "revId": "245adf4a2a73058649d99125c3f97c6686384b2e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24c42e11_b9211e26",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1019805
+      },
+      "writtenOn": "2023-03-28T21:27:21Z",
+      "side": 1,
+      "message": "Why do we not support push options for file urls?",
+      "revId": "245adf4a2a73058649d99125c3f97c6686384b2e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac703dea_97e79463",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1019805
+      },
+      "writtenOn": "2023-03-28T21:27:21Z",
+      "side": 1,
+      "message": "If the intent here is to compare the scheme, that\u0027s what we should do, i.e. does `url.getScheme \u003d \"file\"` do what we want? If so that\u0027s what we should be doing instead of `toString.startsWith`.",
+      "revId": "245adf4a2a73058649d99125c3f97c6686384b2e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

@@ -101,6 +101,12 @@ class PushSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHe
     val newCommit  = testGitRepo.getRepository.parseCommit(branchHead.getObjectId)
 
     newCommit.getFullMessage should include("Change-Id: I")
-    newCommit.getParents should not be (empty)
+    newCommit.getParents should not be empty
+  }
+
+  it should "not fail if push options are added over local protocol" in {
+    val basePush =
+      Push(new URIish(s"file://$originRepoDirectory"), s"$testUser", refSpec = testBranchName, options = List("testKey=testValue"))
+    basePush.send.status shouldBe OK
   }
 }

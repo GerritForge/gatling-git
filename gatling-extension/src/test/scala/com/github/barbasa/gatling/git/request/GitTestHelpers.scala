@@ -42,7 +42,7 @@ trait GitTestHelpers {
     PushConfiguration.DEFAULT_NUM_FILES,
     PushConfiguration.DEFAULT_MIN_CONTENT_LENGTH,
     PushConfiguration.DEFAULT_MAX_CONTENT_LENGTH,
-    PushConfiguration.DEFAULT_COMMIT_PREFIX
+    PushConfiguration.DEFAULT_COMMIT_PREFIX,
   )
 
   implicit val gatlingConfig = GatlingGitConfiguration(

@@ -14,7 +14,12 @@
 
 package com.github.barbasa.gatling.git.request
 import com.github.barbasa.gatling.git.GatlingGitConfiguration
-import com.github.barbasa.gatling.git.GitRequestSession.{AllRefs, EmptyTag, HeadToMasterRefSpec, MasterRef}
+import com.github.barbasa.gatling.git.GitRequestSession.{
+  AllRefs,
+  EmptyTag,
+  HeadToMasterRefSpec,
+  MasterRef
+}
 import com.github.barbasa.gatling.git.helper.CommitBuilder
 import com.github.barbasa.gatling.git.request.Request.{addRemote, initRepo}
 import com.typesafe.scalalogging.LazyLogging
@@ -34,6 +39,7 @@ import java.time.LocalDateTime
 import java.util.List
 import scala.jdk.CollectionConverters._
 import scala.reflect.io.Directory
+import scala.collection.immutable.{List => ScalaList}
 
 sealed trait Request {
 
@@ -223,7 +229,8 @@ case class Push(
     refSpec: String = HeadToMasterRefSpec.value,
     commitBuilder: CommitBuilder = Push.defaultCommitBuilder,
     force: Boolean = false,
-    computeChangeId: Boolean = false
+    computeChangeId: Boolean = false,
+    options: ScalaList[String] = ScalaList.empty
 )(
     implicit val conf: GatlingGitConfiguration
 ) extends Request {
@@ -245,14 +252,20 @@ case class Push(
     )
 
     // XXX Make credential configurable
-    val pushResults = git.push
-      .setAuthenticationMethod(url, cb)
-      .setRemote(url.toString)
-      .add(refSpec)
-      .setTimeout(conf.gitConfiguration.commandTimeout)
-      .setProgressMonitor(progressMonitor)
-      .setForce(force)
-      .call()
+    val basePushCommand: PushCommand =
+      git.push
+        .setAuthenticationMethod(url, cb)
+        .setRemote(url.toString)
+        .add(refSpec)
+        .setTimeout(conf.gitConfiguration.commandTimeout)
+        .setProgressMonitor(progressMonitor)
+        .setForce(force)
+
+    val pushResults =
+      if (url.toString.startsWith("file:///"))
+        basePushCommand.call()
+      else
+        basePushCommand.setPushOptions(options.asJava).call()
 
     val maybeRemoteRefUpdate = pushResults.asScala
       .flatMap { pushResult =>

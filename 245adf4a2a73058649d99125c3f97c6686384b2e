@@ -67,6 +67,42 @@
       "message": "If the intent here is to compare the scheme, that\u0027s what we should do, i.e. does `url.getScheme \u003d \"file\"` do what we want? If so that\u0027s what we should be doing instead of `toString.startsWith`.",
       "revId": "245adf4a2a73058649d99125c3f97c6686384b2e",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d26a7973_853eea96",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1019121
+      },
+      "writtenOn": "2023-03-29T05:00:59Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "ac703dea_97e79463",
+      "revId": "245adf4a2a73058649d99125c3f97c6686384b2e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e0e5b9b_d41d7ab5",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1019121
+      },
+      "writtenOn": "2023-03-29T05:00:59Z",
+      "side": 1,
+      "message": "push options are not supported over the _local_ (file) protocol:\n```\n$ git clone /tmp/test_local\n...\n$ echo \"foo\" \u003e\u003e test.file \u0026\u0026 git add test.file \u0026\u0026 git commit -m \"add file to repo\"\n...\n$ git push origin HEAD:refs/heads/master --push-option\u003d\"echoback\u003dHello\"\nfatal: the receiving end does not support push options\nfatal: the remote end hung up unexpectedly\n```",
+      "parentUuid": "24c42e11_b9211e26",
+      "revId": "245adf4a2a73058649d99125c3f97c6686384b2e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

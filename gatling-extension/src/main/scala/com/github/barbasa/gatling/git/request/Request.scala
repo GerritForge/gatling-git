@@ -14,12 +14,7 @@
 
 package com.github.barbasa.gatling.git.request
 import com.github.barbasa.gatling.git.GatlingGitConfiguration
-import com.github.barbasa.gatling.git.GitRequestSession.{
-  AllRefs,
-  EmptyTag,
-  HeadToMasterRefSpec,
-  MasterRef
-}
+import com.github.barbasa.gatling.git.GitRequestSession.{AllRefs, EmptyTag, HeadToMasterRefSpec, MasterRef}
 import com.github.barbasa.gatling.git.helper.CommitBuilder
 import com.github.barbasa.gatling.git.request.Request.{addRemote, initRepo}
 import com.typesafe.scalalogging.LazyLogging
@@ -40,6 +35,7 @@ import java.util.List
 import scala.jdk.CollectionConverters._
 import scala.reflect.io.Directory
 import scala.collection.immutable.{List => ScalaList}
+import scala.util.Try
 
 sealed trait Request {
 
@@ -234,14 +230,17 @@ case class Push(
 )(
     implicit val conf: GatlingGitConfiguration
 ) extends Request {
-  addRemote(initRepo(workTreeDirectory), url)
+
+  val git: Git = Try(Git.open(workTreeDirectory)).getOrElse {
+    addRemote(initRepo(workTreeDirectory), url)
+    Git.open(workTreeDirectory)
+  }
 
   override def name: String = s"Push: $url"
-  val uniqueSuffix          = s"$user - ${LocalDateTime.now}"
 
   override def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
-    val git                                = new Git(repository)
+//    val git                                = new Git(repository)
     val isSrcDstRefSpec: String => Boolean = _.contains(":") // e.g. HEAD:refs/for/master
 
     // TODO: Create multiple commits per push

@@ -18,6 +18,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30539ae8_f761f6a8",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-03-31T10:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc6ade93_ec6288b3",
+      "revId": "245adf4a2a73058649d99125c3f97c6686384b2e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0623c37_4ecebf90",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-03-28T21:27:21Z",
       "side": 1,
       "message": "Is it difficult to test this? I note we have `PushSpec`, but I don\u0027t know how much effort it would be to add a test for this. If it\u0027s a lot of work maybe we can forgo it, but otherwise we should add one.",
+      "revId": "245adf4a2a73058649d99125c3f97c6686384b2e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da13d347_c1fa7aa8",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-03-31T10:32:14Z",
+      "side": 1,
+      "message": "You\u0027re totally right, however I have tried testing this wit ha different protocol. The only available protocols are ssh and http and both would require a fair amount of setting up.\nI haven\u0027t really managed to find a way of doing this in a straightforward way and would most likely require quite a bit of work.",
+      "parentUuid": "c0623c37_4ecebf90",
       "revId": "245adf4a2a73058649d99125c3f97c6686384b2e",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
@@ -119,6 +155,24 @@
       "side": 1,
       "message": "Ah, I see! Thanks for explaining :)",
       "parentUuid": "6e0e5b9b_d41d7ab5",
+      "revId": "245adf4a2a73058649d99125c3f97c6686384b2e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4a790ab_5485eeea",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-03-31T10:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d26a7973_853eea96",
       "revId": "245adf4a2a73058649d99125c3f97c6686384b2e",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }

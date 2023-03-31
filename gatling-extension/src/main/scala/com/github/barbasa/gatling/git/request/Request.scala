@@ -47,7 +47,7 @@ sealed trait Request {
   def send: GitCommandResponse
   def url: URIish
   def user: String
-  val classLoader: ClassLoader = getClass.getClassLoader
+
   val repoName                 = url.getPath.split("/").last
   lazy val workTreeDirectory   = new File(conf.tmpBasePath + s"/$user/$repoName-worktree")
 
@@ -232,7 +232,6 @@ case class Push(
 ) extends Request {
 
   override def name: String = s"Push: $url"
-  val uniqueSuffix          = s"$user - ${LocalDateTime.now}"
 
   override def send: GitCommandResponse = {
     import PimpedGitTransportCommand._

@@ -38,17 +38,6 @@ ThisBuild / publishTo := {
 
 ThisBuild / publishMavenStyle := true
 
-ThisBuild / scalacOptions ++= Seq(
-  "-deprecation",
-  "-feature",
-  "-language:implicitConversions",
-  "-Ywarn-unused:imports", // Warn if an import selector is not referenced
-  "-Ywarn-unused:locals", // Warn if a local definition is unused
-  "-Ywarn-unused:patvars", // Warn if a variable bound in a pattern is unused
-  "-Ywarn-unused:privates", // Warn if a private member is unused
-  "-Xfatal-warnings" // Fail if there are any compile time warnings
-)
-
 lazy val root = Project("gatling-git", file("."))
   .aggregate(extension)
   .settings(

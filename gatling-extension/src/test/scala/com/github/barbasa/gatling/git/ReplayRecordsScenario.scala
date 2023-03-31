@@ -18,11 +18,16 @@ import com.github.barbasa.gatling.git.protocol.GitProtocol
 import com.github.barbasa.gatling.git.request.builder.GitRequestBuilder
 import io.gatling.core.Predef._
 import io.gatling.core.structure.ScenarioBuilder
+
 import java.io._
 import org.apache.commons.io.FileUtils
+
 import scala.concurrent.duration._
 import org.eclipse.jgit.hooks._
 
+import scala.annotation.nowarn
+
+@nowarn("msg=unused value")
 class ReplayRecordsScenario extends Simulation {
 
   val gitProtocol                              = GitProtocol()

@@ -19,6 +19,9 @@ import org.apache.commons.io.FileUtils
 import org.eclipse.jgit.transport.URIish
 import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
 
+import scala.annotation.nowarn
+
+@nowarn("msg=unused value")
 class PullSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
 
   before {

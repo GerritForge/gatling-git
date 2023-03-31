@@ -20,8 +20,10 @@ import org.eclipse.jgit.lib.Constants.R_HEADS
 import org.eclipse.jgit.transport.URIish
 import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
 
+import scala.annotation.nowarn
 import scala.jdk.CollectionConverters._
 
+@nowarn("msg=unused value")
 class PushSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
 
   before {

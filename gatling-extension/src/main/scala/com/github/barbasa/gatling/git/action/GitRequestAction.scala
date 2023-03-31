@@ -87,7 +87,7 @@ class GitRequestAction(
           )
         case None => next ! setSessionStatus(session, gatlingStatus)
       }
-    }
+    }: Unit
   }
 
   private def mayOverrideFailure(

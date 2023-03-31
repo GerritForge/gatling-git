@@ -17,6 +17,9 @@ package com.github.barbasa.gatling.git
 import io.gatling.app.Gatling
 import io.gatling.core.config.GatlingPropertiesBuilder
 
+import scala.annotation.nowarn
+
+@nowarn("msg=unused value")
 object GatlingRunner {
 
   def main(args: Array[String]): Unit = {
@@ -26,7 +29,7 @@ object GatlingRunner {
     val props = new GatlingPropertiesBuilder
     props.simulationClass(simClass)
 
-    Gatling.fromMap(props.build)
+    Gatling.fromMap(props.build): Unit
 
   }
 

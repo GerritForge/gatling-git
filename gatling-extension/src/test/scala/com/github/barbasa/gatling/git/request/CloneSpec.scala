@@ -20,8 +20,10 @@ import org.eclipse.jgit.api.{Git => JGit}
 import org.eclipse.jgit.transport.URIish
 import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
 
+import scala.annotation.nowarn
 import scala.jdk.CollectionConverters._
 
+@nowarn("msg=unused value")
 class CloneSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
 
   before {

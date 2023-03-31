@@ -24,11 +24,14 @@ fabric.properties
 # Scala sbt
 target/
 lib/
+/project/project/
 
 # gatling-git data
 test-data
+/results/
 
 # MacOS stuff
 .DS_Store
 
 .bsp/
+.vscode/

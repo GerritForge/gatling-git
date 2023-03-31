@@ -231,7 +231,6 @@ case class Push(
 ) extends Request {
 
   override def name: String = s"Push: $url"
-  val uniqueSuffix          = s"$user - ${LocalDateTime.now}"
 
   override def send: GitCommandResponse = {
     import PimpedGitTransportCommand._

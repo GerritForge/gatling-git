@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "937e356a_45455b80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1019805
+      },
+      "writtenOn": "2023-03-31T15:43:26Z",
+      "side": 1,
+      "message": "`intended`",
+      "range": {
+        "startLine": 11,
+        "startChar": 66,
+        "endLine": 11,
+        "endChar": 74
+      },
+      "revId": "01fbbe8f5f30bfd335e0e2f0ca11ff8eaf499d85",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b13b43ed_b40e82f8",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1019805
+      },
+      "writtenOn": "2023-03-31T15:43:26Z",
+      "side": 1,
+      "message": "I\u0027m not sure how this builds a repository per user per simulation? Don\u0027t we just try and add a new remote if the work tree fails to open?",
+      "revId": "01fbbe8f5f30bfd335e0e2f0ca11ff8eaf499d85",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

@@ -27,7 +27,7 @@ import scala.annotation.nowarn
 @nowarn("msg=unused value")
 class AllUsersAllRecordsCloneOnlyScenario extends Simulation {
 
-  val gitProtocol   = GitProtocol()
+  val gitProtocol   = GitProtocol
   implicit val conf = GatlingGitConfiguration()
 
   val feeder = Array(

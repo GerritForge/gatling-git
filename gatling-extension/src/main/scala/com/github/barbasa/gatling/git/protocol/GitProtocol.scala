@@ -14,14 +14,8 @@
 
 package com.github.barbasa.gatling.git.protocol
 
-import io.gatling.core.config.GatlingConfiguration
 import io.gatling.core.protocol.Protocol
 
-import scala.annotation.nowarn
+sealed trait GitProtocol
 
-object GitProtocol {
-  @nowarn("msg=never used")
-  def apply(configuration: GatlingConfiguration): GitProtocol = GitProtocol()
-}
-
-case class GitProtocol() extends Protocol
+case object GitProtocol extends GitProtocol with Protocol

@@ -30,7 +30,7 @@ import scala.annotation.nowarn
 @nowarn("msg=unused value")
 class ReplayRecordsScenario extends Simulation {
 
-  val gitProtocol                              = GitProtocol()
+  val gitProtocol                              = GitProtocol
   implicit val conf                            = GatlingGitConfiguration()
   implicit val postMessageHook: Option[String] = Some(s"hooks/${CommitMsgHook.NAME}")
 

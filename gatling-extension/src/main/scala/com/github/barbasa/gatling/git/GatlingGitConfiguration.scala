@@ -107,7 +107,7 @@ object GatlingGitConfiguration {
     val maxContentLength = config
       .optionalInt("commands.push.maxContentLength")
       .getOrElse(PushConfiguration.DEFAULT_MAX_CONTENT_LENGTH)
-    //XXX: Missing validation on parameters, i.e.: values >0. max > min
+    // XXX: Missing validation on parameters, i.e.: values >0. max > min
     val commitPrefix = config
       .optionalString("commands.push.commitPrefix")
       .getOrElse(PushConfiguration.DEFAULT_COMMIT_PREFIX)

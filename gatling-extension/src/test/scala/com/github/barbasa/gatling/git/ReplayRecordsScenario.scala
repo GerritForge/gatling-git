@@ -57,7 +57,7 @@ class ReplayRecordsScenario extends Simulation {
 
   after {
     try {
-      //After is often called too early. Some retries should be implemented.
+      // After is often called too early. Some retries should be implemented.
       Thread.sleep(5000)
       FileUtils.deleteDirectory(new File(conf.tmpBasePath))
     } catch {

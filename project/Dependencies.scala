@@ -5,6 +5,6 @@ object Dependencies {
 
   lazy val gatling = Seq(
     "io.gatling.highcharts" % "gatling-charts-highcharts",
-    "io.gatling" % "gatling-test-framework",
+    "io.gatling"            % "gatling-test-framework"
   ).map(_ % GatlingVersion % Test)
 }

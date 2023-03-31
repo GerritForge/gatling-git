@@ -55,33 +55,33 @@ lazy val extension = (project in file("gatling-extension"))
   .enablePlugins(GitVersioning)
   .enablePlugins(AssemblyPlugin)
   .settings(
-    organization := "com.gerritforge",
+    organization     := "com.gerritforge",
     organizationName := "GerritForge",
-    assemblyJarName := "gatling-git-extension.jar",
+    assemblyJarName  := "gatling-git-extension.jar",
     scmInfo := Some(
       ScmInfo(
         url("https://review.gerrithub.io/GerritForge/gatling-git"),
         "scm:https://review.gerrithub.io/GerritForge/gatling-git.git"
       )
     ),
-    developers := List(ponch, tony, thomas, luca),
+    developers  := List(ponch, tony, thomas, luca),
     description := "Gatling plugin for supporting the Git protocol over SSH and HTTP",
-    licenses := List("Apache 2" -> new URL("http://www.apache.org/licenses/LICENSE-2.0.txt")),
-    homepage := Some(url("https://github.com/GerritForge/gatling-git")),
+    licenses    := List("Apache 2" -> new URL("http://www.apache.org/licenses/LICENSE-2.0.txt")),
+    homepage    := Some(url("https://github.com/GerritForge/gatling-git")),
     pomIncludeRepository := { _ =>
       false
     },
     name := "gatling-git",
     libraryDependencies ++=
       gatling ++ Seq(
-        "io.gatling"                 % "gatling-core"                % GatlingVersion % "provided",
-        "io.gatling"                 % "gatling-app"                 % GatlingVersion % "provided",
-        "com.google.inject"          % "guice"                       % "3.0",
-        "commons-io"                 % "commons-io"                  % "2.11.0",
-        "com.typesafe.scala-logging" %% "scala-logging"              % "3.9.5" % "provided",
-        "org.eclipse.jgit"           % "org.eclipse.jgit"            % JGitVersion,
-        "org.eclipse.jgit"           % "org.eclipse.jgit.ssh.apache" % JGitVersion,
-        "org.scalatest"              %% "scalatest"                  % "3.0.8" % Test
+        "io.gatling"                  % "gatling-core"                % GatlingVersion % "provided",
+        "io.gatling"                  % "gatling-app"                 % GatlingVersion % "provided",
+        "com.google.inject"           % "guice"                       % "3.0",
+        "commons-io"                  % "commons-io"                  % "2.11.0",
+        "com.typesafe.scala-logging" %% "scala-logging"               % "3.9.5"        % "provided",
+        "org.eclipse.jgit"            % "org.eclipse.jgit"            % JGitVersion,
+        "org.eclipse.jgit"            % "org.eclipse.jgit.ssh.apache" % JGitVersion,
+        "org.scalatest"              %% "scalatest"                   % "3.0.8"        % Test
       ),
     assembly / assemblyMergeStrategy := {
       case PathList("META-INF", xs @ _*) => MergeStrategy.discard

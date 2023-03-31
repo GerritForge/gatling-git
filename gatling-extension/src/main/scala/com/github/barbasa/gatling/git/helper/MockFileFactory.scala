@@ -40,11 +40,10 @@ object MockFiles {
     def generateRandomString(length: Int): String =
       (1 to length)
         .grouped(120)
-        .map(
-          line =>
-            loremIpsumText
-              .drop(Random.nextInt(loremIpsumTextLen - line.length))
-              .take(line.length)
+        .map(line =>
+          loremIpsumText
+            .drop(Random.nextInt(loremIpsumTextLen - line.length))
+            .take(line.length)
         )
         .mkString("\n")
   }

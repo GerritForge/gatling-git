@@ -37,7 +37,7 @@ class CommitBuilder(numFiles: Int, minContentLength: Int, maxContentLength: Int,
     Vector.range(0, numFiles).foreach { _ =>
       val contentLength: Int = minContentLength + random
         .nextInt((maxContentLength - minContentLength) + 1)
-      val file: MockFile   = MockFileFactory.create(TextFileType, contentLength)
+      val file: MockFile = MockFileFactory.create(TextFileType, contentLength)
       file.save(repository.getWorkTree.toString)
     }
 
@@ -67,13 +67,12 @@ class CommitBuilder(numFiles: Int, minContentLength: Int, maxContentLength: Int,
           revCommit.getCommitterIdent,
           revCommit.getFullMessage
         )
-      ).foreach(
-        changeId =>
-          git
-            .commit()
-            .setAmend(true)
-            .setMessage(ChangeIdUtil.insertId(revCommit.getFullMessage, changeId, true))
-            .call()
+      ).foreach(changeId =>
+        git
+          .commit()
+          .setAmend(true)
+          .setMessage(ChangeIdUtil.insertId(revCommit.getFullMessage, changeId, true))
+          .call()
       )
     }
 

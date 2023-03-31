@@ -42,8 +42,8 @@ class CommitBuilderSpec extends FlatSpec with BeforeAndAfter with Matchers with 
       walk       <- Try(new RevWalk(repository))
       revCommit  <- Try(walk.parseCommit(head.getObjectId))
     } yield revCommit
-    revCommitT.recover {
-      case e => fail(e.getCause)
+    revCommitT.recover { case e =>
+      fail(e.getCause)
     }.get
   }
 

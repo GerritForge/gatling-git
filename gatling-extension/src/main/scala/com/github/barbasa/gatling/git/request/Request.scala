@@ -14,7 +14,12 @@
 
 package com.github.barbasa.gatling.git.request
 import com.github.barbasa.gatling.git.GatlingGitConfiguration
-import com.github.barbasa.gatling.git.GitRequestSession.{AllRefs, EmptyTag, HeadToMasterRefSpec, MasterRef}
+import com.github.barbasa.gatling.git.GitRequestSession.{
+  AllRefs,
+  EmptyTag,
+  HeadToMasterRefSpec,
+  MasterRef
+}
 import com.github.barbasa.gatling.git.helper.CommitBuilder
 import com.github.barbasa.gatling.git.request.Request.{addRemote, initRepo}
 import com.typesafe.scalalogging.LazyLogging
@@ -129,8 +134,8 @@ object Request {
   }
 }
 
-case class Clone(url: URIish, user: String, ref: String = MasterRef)(
-    implicit val conf: GatlingGitConfiguration
+case class Clone(url: URIish, user: String, ref: String = MasterRef)(implicit
+    val conf: GatlingGitConfiguration
 ) extends Request {
 
   val name = s"Clone: $url"
@@ -154,8 +159,8 @@ case class Clone(url: URIish, user: String, ref: String = MasterRef)(
   }
 }
 
-case class CleanupRepo(url: URIish, user: String)(
-    implicit val conf: GatlingGitConfiguration
+case class CleanupRepo(url: URIish, user: String)(implicit
+    val conf: GatlingGitConfiguration
 ) extends Request {
   override def name: String = s"Clean local repository $repoName"
 
@@ -168,8 +173,8 @@ case class CleanupRepo(url: URIish, user: String)(
     }
 }
 
-case class Fetch(url: URIish, user: String, refSpec: String = AllRefs)(
-    implicit val conf: GatlingGitConfiguration
+case class Fetch(url: URIish, user: String, refSpec: String = AllRefs)(implicit
+    val conf: GatlingGitConfiguration
 ) extends Request {
   addRemote(initRepo(workTreeDirectory), url): Unit
 
@@ -224,8 +229,8 @@ case class Push(
     commitBuilder: CommitBuilder = Push.defaultCommitBuilder,
     force: Boolean = false,
     computeChangeId: Boolean = false
-)(
-    implicit val conf: GatlingGitConfiguration
+)(implicit
+    val conf: GatlingGitConfiguration
 ) extends Request {
   addRemote(initRepo(workTreeDirectory), url): Unit
 
@@ -258,25 +263,23 @@ case class Push(
       .flatMap { pushResult =>
         pushResult.getRemoteUpdates.asScala
       }
-      .find(
-        remoteRefUpdate =>
-          Seq(
-            RemoteRefUpdate.Status.REJECTED_OTHER_REASON,
-            RemoteRefUpdate.Status.REJECTED_NONFASTFORWARD,
-            RemoteRefUpdate.Status.REJECTED_NODELETE,
-            RemoteRefUpdate.Status.NON_EXISTING,
-            RemoteRefUpdate.Status.REJECTED_REMOTE_CHANGED
-          ).contains(remoteRefUpdate.getStatus)
+      .find(remoteRefUpdate =>
+        Seq(
+          RemoteRefUpdate.Status.REJECTED_OTHER_REASON,
+          RemoteRefUpdate.Status.REJECTED_NONFASTFORWARD,
+          RemoteRefUpdate.Status.REJECTED_NODELETE,
+          RemoteRefUpdate.Status.NON_EXISTING,
+          RemoteRefUpdate.Status.REJECTED_REMOTE_CHANGED
+        ).contains(remoteRefUpdate.getStatus)
       )
 
-    maybeRemoteRefUpdate.fold(GitCommandResponse(OK))(
-      remoteRefUpdate =>
-        GitCommandResponse(
-          Fail,
-          Some(
-            s"Status: ${remoteRefUpdate.getStatus.toString} - Message: ${remoteRefUpdate.getMessage}"
-          )
+    maybeRemoteRefUpdate.fold(GitCommandResponse(OK))(remoteRefUpdate =>
+      GitCommandResponse(
+        Fail,
+        Some(
+          s"Status: ${remoteRefUpdate.getStatus.toString} - Message: ${remoteRefUpdate.getMessage}"
         )
+      )
     )
   }
 }
@@ -286,8 +289,8 @@ case class Tag(
     user: String,
     refSpec: String = HeadToMasterRefSpec.value,
     tag: String = EmptyTag.value
-)(
-    implicit val conf: GatlingGitConfiguration
+)(implicit
+    val conf: GatlingGitConfiguration
 ) extends Request
     with LazyLogging {
   override def name: String = s"Push: $url"
@@ -311,11 +314,12 @@ case class Tag(
     val fetchHead = fetchResult.getAdvertisedRef(refSpec)
 
     val revWalk = new RevWalk(git.getRepository)
-    val headCommit = try {
-      revWalk.parseAny(fetchHead.getObjectId)
-    } finally {
-      revWalk.close()
-    }
+    val headCommit =
+      try {
+        revWalk.parseAny(fetchHead.getObjectId)
+      } finally {
+        revWalk.close()
+      }
 
     git.tag().setName(tag).setObjectId(headCommit).call()
     val pushResult = git

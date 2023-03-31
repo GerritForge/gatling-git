@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05efe914_f1dabe54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2023-03-31T16:32:29Z",
+      "side": 1,
+      "message": "Nice find!",
+      "revId": "7dd78a2716476b9af1a6d97b3224213404469cbb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35e08ef6_ca5c8c8b",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/GitRequestSession.scala",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2023-03-31T16:32:29Z",
+      "side": 1,
+      "message": "`userId`?",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "7dd78a2716476b9af1a6d97b3224213404469cbb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4809770_2fbd8c68",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 10
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2023-03-31T16:32:29Z",
+      "side": 1,
+      "message": "I recogn it shouldn\u0027t be difficult adding a test to check the repo is created once. WDYT?",
+      "revId": "7dd78a2716476b9af1a6d97b3224213404469cbb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

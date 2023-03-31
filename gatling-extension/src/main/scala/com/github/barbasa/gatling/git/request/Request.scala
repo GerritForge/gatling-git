@@ -14,7 +14,12 @@
 
 package com.github.barbasa.gatling.git.request
 import com.github.barbasa.gatling.git.GatlingGitConfiguration
-import com.github.barbasa.gatling.git.GitRequestSession.{AllRefs,EmptyTag,HeadToMasterRefSpec,MasterRef}
+import com.github.barbasa.gatling.git.GitRequestSession.{
+  AllRefs,
+  EmptyTag,
+  HeadToMasterRefSpec,
+  MasterRef
+}
 import com.github.barbasa.gatling.git.helper.CommitBuilder
 import com.github.barbasa.gatling.git.request.Request.{addRemote, initRepo}
 import com.typesafe.scalalogging.LazyLogging
@@ -44,7 +49,7 @@ sealed trait Request {
   def user: String
   val classLoader: ClassLoader = getClass.getClassLoader
   val repoName                 = url.getPath.split("/").last
-  lazy val workTreeDirectory = new File(conf.tmpBasePath + s"/$user/$repoName-worktree")
+  lazy val workTreeDirectory   = new File(conf.tmpBasePath + s"/$user/$repoName-worktree")
 
   private val builder             = new FileRepositoryBuilder
   lazy val repository: Repository = builder.setWorkTree(workTreeDirectory).build()
@@ -225,14 +230,17 @@ case class Push(
 )(
     implicit val conf: GatlingGitConfiguration
 ) extends Request {
-  addRemote(initRepo(workTreeDirectory), url)
 
   override def name: String = s"Push: $url"
   val uniqueSuffix          = s"$user - ${LocalDateTime.now}"
 
   override def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
-    val git                                = new Git(repository)
+
+    val git = {
+      if (!workTreeDirectory.exists()) addRemote(initRepo(workTreeDirectory), url)
+      Git.open(workTreeDirectory)
+    }
     val isSrcDstRefSpec: String => Boolean = _.contains(":") // e.g. HEAD:refs/for/master
 
     // TODO: Create multiple commits per push

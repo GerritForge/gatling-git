@@ -36,28 +36,20 @@ ThisBuild / publishTo := {
   else Some("releases" at nexus + "service/local/staging/deploy/maven2")
 }
 
+ThisBuild / organization      := "com.gerritforge"
+ThisBuild / organizationName  := "GerritForge"
+ThisBuild / scalaVersion      := "2.13.10"
 ThisBuild / publishMavenStyle := true
-
-lazy val root = Project("gatling-git", file("."))
-  .aggregate(extension)
-  .settings(
-    publishArtifact := false
-  )
-
-ThisBuild / scalaVersion := "2.13.10"
 
 val JGitVersion = "5.13.2-20221120.212658-7"
 
 ThisBuild / resolvers +=
   "Eclipse JGit Snapshots" at "https://repo.eclipse.org/content/groups/jgit"
 
-lazy val extension = (project in file("gatling-extension"))
+lazy val root = (project in file("."))
   .enablePlugins(GitVersioning)
   .enablePlugins(AssemblyPlugin)
   .settings(
-    organization     := "com.gerritforge",
-    organizationName := "GerritForge",
-    assemblyJarName  := "gatling-git-extension.jar",
     scmInfo := Some(
       ScmInfo(
         url("https://review.gerrithub.io/GerritForge/gatling-git"),

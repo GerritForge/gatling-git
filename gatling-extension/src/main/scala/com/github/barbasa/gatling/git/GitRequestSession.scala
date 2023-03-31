@@ -26,7 +26,8 @@ case class GitRequestSession(
     force: Expression[Boolean] = False,
     computeChangeId: Expression[Boolean] = False,
     ignoreFailureRegexps: Expression[List[String]] = List.empty.expressionSuccess,
-    pushOptions: Expression[List[String]] = List.empty.expressionSuccess
+    pushOptions: Expression[String] = StaticValueExpression(""),
+    user: Expression[String] = StaticValueExpression("")
 )
 
 object GitRequestSession {

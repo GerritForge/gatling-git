@@ -39,6 +39,24 @@
       "message": "I\u0027m not sure how this builds a repository per user per simulation? Don\u0027t we just try and add a new remote if the work tree fails to open?",
       "revId": "01fbbe8f5f30bfd335e0e2f0ca11ff8eaf499d85",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84fe5cb4_09987166",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-03-31T15:50:09Z",
+      "side": 1,
+      "message": "Yes, that is it. If a worktree fails to open, we initialise a new repo and add a new remote to it. This will happen on the first call for every user for every new simulation.\n\nWhile from that point onwards, the worktree will open succesfully giving us an already initialised repository.",
+      "parentUuid": "b13b43ed_b40e82f8",
+      "revId": "01fbbe8f5f30bfd335e0e2f0ca11ff8eaf499d85",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

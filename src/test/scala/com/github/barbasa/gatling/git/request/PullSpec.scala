@@ -17,12 +17,14 @@ package com.github.barbasa.gatling.git.request
 import com.github.barbasa.gatling.git.request.Request.initRepo
 import org.apache.commons.io.FileUtils
 import org.eclipse.jgit.transport.URIish
-import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
+import org.scalatest.BeforeAndAfter
 
 import scala.annotation.nowarn
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
 @nowarn("msg=unused value")
-class PullSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
+class PullSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
 
   before {
     FileUtils.deleteDirectory(originRepoDirectory.getParentFile)

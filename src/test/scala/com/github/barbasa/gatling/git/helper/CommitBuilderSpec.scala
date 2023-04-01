@@ -17,14 +17,16 @@ import java.io.File
 
 import com.github.barbasa.gatling.git.request.GitTestHelpers
 import org.apache.commons.io.FileUtils
-import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
+import org.scalatest.BeforeAndAfter
 import org.eclipse.jgit.api.{Git => JGit}
 import org.eclipse.jgit.lib.Constants
 import org.eclipse.jgit.revwalk.RevCommit
 import org.eclipse.jgit.revwalk.RevWalk
 import scala.util.Try
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class CommitBuilderSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
+class CommitBuilderSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
   before {
     FileUtils.deleteDirectory(new File(s"$tempBase/$testUser"))
     testGitRepo = JGit.init.setDirectory(workTreeDirectory).call

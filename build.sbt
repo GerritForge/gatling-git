@@ -73,7 +73,7 @@ lazy val root = (project in file("."))
         "com.typesafe.scala-logging" %% "scala-logging"               % "3.9.5"        % "provided",
         "org.eclipse.jgit"            % "org.eclipse.jgit"            % JGitVersion,
         "org.eclipse.jgit"            % "org.eclipse.jgit.ssh.apache" % JGitVersion,
-        "org.scalatest"              %% "scalatest"                   % "3.0.8"        % Test
+        "org.scalatest"              %% "scalatest"                   % "3.2.15"       % Test
       ),
     assembly / assemblyMergeStrategy := {
       case PathList("META-INF", xs @ _*) => MergeStrategy.discard

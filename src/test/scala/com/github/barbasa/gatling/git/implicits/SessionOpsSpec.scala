@@ -17,9 +17,10 @@ package com.github.barbasa.gatling.git.implicits
 import com.github.barbasa.gatling.git.implicits.SessionOps._
 import io.gatling.core.session.{Session, StaticValueExpression}
 import io.netty.channel.DefaultEventLoop
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class SessionOpsSpec extends FlatSpec with Matchers {
+class SessionOpsSpec extends AnyFlatSpec with Matchers {
   behavior of "ensureOrElse"
 
   it should "set session attribute when not present" in {

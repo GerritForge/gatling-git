@@ -16,11 +16,13 @@ package com.github.barbasa.gatling.git.request
 
 import org.apache.commons.io.FileUtils
 import org.eclipse.jgit.transport.URIish
-import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
+import org.scalatest.BeforeAndAfter
 
 import java.io.File
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class CleanupRepoSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
+class CleanupRepoSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
 
   before {
     FileUtils.deleteDirectory(originRepoDirectory.getParentFile)

@@ -75,16 +75,16 @@ lazy val root = (project in file("."))
         "org.eclipse.jgit"            % "org.eclipse.jgit.ssh.apache" % JGitVersion,
         "org.scalatest"              %% "scalatest"                   % "3.2.15"       % Test
       ),
-    assembly / assemblyMergeStrategy := {
+    sbtassembly.AssemblyKeys.assembly / assemblyMergeStrategy := {
       case PathList("META-INF", xs @ _*) => MergeStrategy.discard
       case x                             => MergeStrategy.first
     },
     autoScalaLibrary := false,
-    assembly / artifact := {
-      val art = (assembly / artifact).value
+    sbtassembly.AssemblyKeys.assembly / artifact := {
+      val art = (sbtassembly.AssemblyKeys.assembly / artifact).value
       art.withClassifier(Some("assembly"))
     },
-    addArtifact(assembly / artifact, assembly)
+    addArtifact(sbtassembly.AssemblyKeys.assembly / artifact, sbtassembly.AssemblyKeys.assembly)
   )
 
 credentials += Credentials(Path.userHome / ".sbt" / "sonatype_credentials")

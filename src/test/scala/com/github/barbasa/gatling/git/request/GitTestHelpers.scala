@@ -31,12 +31,17 @@ import org.eclipse.jgit.api.{Git => JGit}
 trait GitTestHelpers {
   var testGitRepo: JGit = _
 
+  def commandName: String
+
   val tempBase: String       = Files.createTempDirectory("gatlingGitTests").toFile.getAbsolutePath
   val testUser: String       = "testUser"
   val testRepo: String       = "testRepo"
   val testBranchName: String = "mybranch"
+
   val originRepoDirectory: File = new File(s"$tempBase/$testUser/$testRepo")
-  val workTreeDirectory: File   = new File(s"$tempBase/$testUser/$testRepo-worktree")
+  def workTreeDirectory(suffix: String = ""): File = new File(
+    s"$tempBase/$commandName/$testUser/$testRepo-worktree$suffix"
+  )
 
   val defaultPushConfiguration = PushConfiguration(
     PushConfiguration.DEFAULT_NUM_FILES,

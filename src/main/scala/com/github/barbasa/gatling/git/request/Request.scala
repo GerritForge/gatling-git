@@ -24,7 +24,6 @@ import com.github.barbasa.gatling.git.helper.CommitBuilder
 import com.github.barbasa.gatling.git.request.Request.{addRemote, initRepo}
 import com.typesafe.scalalogging.LazyLogging
 import io.gatling.commons.stats.{Status, KO => GatlingFail, OK => GatlingOK}
-import org.apache.commons.io.FileUtils
 import org.eclipse.jgit.api._
 import org.eclipse.jgit.lib.Constants.MASTER
 import org.eclipse.jgit.lib.{NullProgressMonitor, Repository, TextProgressMonitor}
@@ -42,17 +41,22 @@ import scala.reflect.io.Directory
 
 sealed trait Request {
 
+  def commandName = this.getClass.getSimpleName
+
   def conf: GatlingGitConfiguration
   def name: String
   def send: GitCommandResponse
   def url: URIish
   def user: String
 
-  val repoName                 = url.getPath.split("/").last
-  lazy val workTreeDirectory   = new File(conf.tmpBasePath + s"/$user/$repoName-worktree")
+  val repoName = url.getPath.split("/").last
+  def workTreeDirectory(suffix: Option[String] = None): File =
+    new File(
+      conf.tmpBasePath + s"/$commandName/$user/$repoName-worktree${suffix.fold("")(s => s"-$s")}"
+    )
 
   private val builder             = new FileRepositoryBuilder
-  lazy val repository: Repository = builder.setWorkTree(workTreeDirectory).build()
+  lazy val repository: Repository = builder.setWorkTree(workTreeDirectory()).build()
 
   val sshSessionFactory: SshSessionFactory = new SshdSessionFactory {
     override protected def getDefaultIdentities(sshDir: File): JavaList[Path] = {
@@ -67,10 +71,9 @@ sealed trait Request {
     else NullProgressMonitor.INSTANCE
 
   def cleanRepo() = {
-    val deleteCommandResult = new Directory(workTreeDirectory).deleteRecursively()
-    if (deleteCommandResult) {
-      addRemote(initRepo(workTreeDirectory), url): Unit
-    }
+    val deleteCommandResult = new Directory(workTreeDirectory()).deleteRecursively()
+    if (deleteCommandResult)
+      addRemote(initRepo(workTreeDirectory()), url): Unit
     deleteCommandResult
   }
 
@@ -131,20 +134,23 @@ object Request {
   }
 }
 
-case class Clone(url: URIish, user: String, ref: String = MasterRef)(implicit
+case class Clone(
+    url: URIish,
+    user: String,
+    ref: String = MasterRef,
+    workTreeDirSuffix: String = System.nanoTime().toString
+)(implicit
     val conf: GatlingGitConfiguration
 ) extends Request {
 
   val name = s"Clone: $url"
-
-  FileUtils.deleteDirectory(workTreeDirectory)
 
   def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
     Git.cloneRepository
       .setAuthenticationMethod(url, cb)
       .setURI(url.toString)
-      .setDirectory(workTreeDirectory)
+      .setDirectory(workTreeDirectory(Some(workTreeDirSuffix)))
       .setBranch(ref)
       .setProgressMonitor(progressMonitor)
       .setTimeout(conf.gitConfiguration.commandTimeout)
@@ -173,7 +179,7 @@ case class CleanupRepo(url: URIish, user: String)(implicit
 case class Fetch(url: URIish, user: String, refSpec: String = AllRefs)(implicit
     val conf: GatlingGitConfiguration
 ) extends Request {
-  addRemote(initRepo(workTreeDirectory), url): Unit
+  addRemote(initRepo(workTreeDirectory()), url): Unit
 
   val name = s"Fetch: $url"
 
@@ -198,7 +204,7 @@ case class Fetch(url: URIish, user: String, refSpec: String = AllRefs)(implicit
 
 case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
     extends Request {
-  addRemote(initRepo(workTreeDirectory), url): Unit
+  addRemote(initRepo(workTreeDirectory()), url): Unit
 
   override def name: String = s"Pull: $url"
 
@@ -237,8 +243,8 @@ case class Push(
     import PimpedGitTransportCommand._
 
     val git = {
-      if (!workTreeDirectory.exists()) addRemote(initRepo(workTreeDirectory), url): Unit
-      Git.open(workTreeDirectory)
+      if (!workTreeDirectory().exists()) addRemote(initRepo(workTreeDirectory()), url): Unit
+      Git.open(workTreeDirectory())
     }
     val isSrcDstRefSpec: String => Boolean = _.contains(":") // e.g. HEAD:refs/for/master
 
@@ -305,7 +311,7 @@ case class Tag(
 
   override def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
-    val git = Git.init().setDirectory(workTreeDirectory).call()
+    val git = Git.init().setDirectory(workTreeDirectory()).call()
     git.remoteAdd().setName("origin").setUri(url).call()
 
     val fetchResult = git

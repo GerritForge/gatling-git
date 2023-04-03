@@ -29,7 +29,7 @@ import org.scalatest.matchers.should.Matchers
 class CommitBuilderSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
   before {
     FileUtils.deleteDirectory(new File(s"$tempBase/$testUser"))
-    testGitRepo = JGit.init.setDirectory(workTreeDirectory).call
+    testGitRepo = JGit.init.setDirectory(workTreeDirectory()).call
   }
 
   after {
@@ -76,4 +76,5 @@ class CommitBuilderSpec extends AnyFlatSpec with BeforeAndAfter with Matchers wi
     getHeadCommit.getFullMessage should startWith("testPrefix - Test commit header - ")
   }
 
+  override def commandName: String = "CommitBuilder"
 }

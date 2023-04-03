@@ -40,7 +40,7 @@ class PushSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTes
 
   behavior of "Push"
 
-  "with an non-ff rejection error" should "return Fail" in {
+  "with an non-ff rejection error asdf" should "return Fail" in {
     // Force non-ff failure:
     // 1. Clone a repo for user-1
     Clone(new URIish(s"file://${originRepoDirectory}"), s"$testUser-1").send
@@ -118,4 +118,6 @@ class PushSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTes
       )
     basePush.send.status shouldBe OK
   }
+
+  override def commandName: String = "Push"
 }

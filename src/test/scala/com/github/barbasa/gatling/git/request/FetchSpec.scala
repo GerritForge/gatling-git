@@ -47,4 +47,5 @@ class FetchSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTe
     response.status shouldBe OK
   }
 
+  override def commandName: String = "Fetch"
 }

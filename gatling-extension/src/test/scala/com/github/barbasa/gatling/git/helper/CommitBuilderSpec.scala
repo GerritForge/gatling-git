@@ -27,7 +27,7 @@ import scala.util.Try
 class CommitBuilderSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
   before {
     FileUtils.deleteDirectory(new File(s"$tempBase/$testUser"))
-    testGitRepo = JGit.init.setDirectory(workTreeDirectory).call
+    testGitRepo = JGit.init.setDirectory(workTreeDirectory()).call
   }
 
   after {
@@ -74,4 +74,5 @@ class CommitBuilderSpec extends FlatSpec with BeforeAndAfter with Matchers with 
     getHeadCommit.getFullMessage should startWith("testPrefix - Test commit header - ")
   }
 
+  override def commandName: String = "CommitBuilder"
 }

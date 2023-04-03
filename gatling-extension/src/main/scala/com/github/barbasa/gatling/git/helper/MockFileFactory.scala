@@ -35,17 +35,17 @@ object MockFiles {
 
   abstract class AbstractMockFile(contentLength: Int) extends MockFile {
     override def content = generateContent(contentLength)
-    override def name    = generateRandomString(10) + ".java"
+    val extensionList    = List("java", "md", "scala", "py", "js").map(str => s".$str")
+    override def name =
+      generateRandomString(10).filterNot(_.isLetterOrDigit) + System.nanoTime() + extensionList(Random.nextInt(extensionList.length))
 
     def generateRandomString(length: Int): String =
       (1 to length)
         .grouped(120)
-        .map(
-          line =>
-            loremIpsumText
-              .drop(Random.nextInt(loremIpsumTextLen - line.length))
-              .take(line.length)
-        )
+        .map { line =>
+          val idx = Random.nextInt(loremIpsumTextLen - line.length)
+          loremIpsumText.slice(idx, idx + line.length)
+        }
         .mkString("\n")
   }
 

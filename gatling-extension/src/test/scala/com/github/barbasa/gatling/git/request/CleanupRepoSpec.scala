@@ -34,9 +34,10 @@ class CleanupRepoSpec extends FlatSpec with BeforeAndAfter with Matchers with Gi
 
   behavior of "CleanupRepo"
 
-  it should "return OK when the directory exists" in {
-    val cleanupRepo = CleanupRepo(new URIish(s"file://$originRepoDirectory"), testUser)
-    cleanupRepo.workTreeDirectory.mkdir()
+  it should "return OK when the directory exists asdf" in {
+    val cleanupRepo: CleanupRepo = CleanupRepo(new URIish(s"file://$originRepoDirectory"), testUser)
+    println(cleanupRepo.workTreeDirectory())
+    cleanupRepo.workTreeDirectory().mkdirs()
 
     val response = cleanupRepo.send
 
@@ -45,9 +46,11 @@ class CleanupRepoSpec extends FlatSpec with BeforeAndAfter with Matchers with Gi
 
   it should "return Fail when there directory does not exist" in {
     val cleanupRepoAction = new CleanupRepo(new URIish(s"file://$originRepoDirectory"), testUser) {
-      override lazy val workTreeDirectory = new File("/non/existent/directory")
+      override def workTreeDirectory(suffix: Option[String] = None) = new File("/non/existent/directory")
     }
 
     cleanupRepoAction.send.status shouldBe Fail
   }
+
+  override def commandName: String = ???
 }

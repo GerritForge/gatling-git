@@ -109,4 +109,6 @@ class PushSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHe
       Push(new URIish(s"file://$originRepoDirectory"), s"$testUser", refSpec = testBranchName, options = List("testKey=testValue"))
     basePush.send.status shouldBe OK
   }
+
+  override def commandName: String = "Push"
 }

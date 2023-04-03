@@ -42,4 +42,5 @@ class FetchSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestH
     response.status shouldBe OK
   }
 
+  override def commandName: String = "Fetch"
 }

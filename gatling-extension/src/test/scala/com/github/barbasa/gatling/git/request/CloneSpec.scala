@@ -45,12 +45,14 @@ class CloneSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestH
   }
 
   it should "clone a specific ref" in {
+    val suffix = System.nanoTime().toString
     val response =
-      Clone(new URIish(s"file://${originRepoDirectory}"), s"$testUser", s"$testBranchName").send
+      Clone(new URIish(s"file://${originRepoDirectory}"), s"$testUser", s"$testBranchName", suffix).send
     response.status shouldBe OK
 
-    val refsList = JGit.open(workTreeDirectory).branchList().call().asScala
+    val refsList = JGit.open(workTreeDirectory(s"-$suffix")).branchList().call().asScala
     refsList.map(_.getName) should contain(s"refs/heads/$testBranchName")
   }
 
+  override def commandName: String = "Clone"
 }

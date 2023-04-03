@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9c77bb5_e5a5e82f",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2023-04-03T17:02:09Z",
+      "side": 0,
+      "message": "Why is this not needed anymore?",
+      "revId": "439e74be3ce45b207c54cf417179d5b9019eeb7e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

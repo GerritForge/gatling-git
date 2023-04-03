@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a768890a_f385a200",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2023-04-03T17:02:09Z",
+      "side": 1,
+      "message": "independence",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "5824f631dfb2778d67111311d4fbf1d32ee40a86",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7f26412_dbaa97e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2023-04-03T17:02:09Z",
+      "side": 1,
+      "message": "did you mean simulation? I think we want scenarios to share the same data, while simulation shouldn\u0027t.",
+      "range": {
+        "startLine": 13,
+        "startChar": 26,
+        "endLine": 13,
+        "endChar": 35
+      },
+      "revId": "5824f631dfb2778d67111311d4fbf1d32ee40a86",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54a756d2_3a957f11",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2023-04-03T17:02:09Z",
+      "side": 1,
+      "message": "If the purpose of this change is avoid name clashing I think changing the file extension is out of scope.",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "5824f631dfb2778d67111311d4fbf1d32ee40a86",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d56b641_6021cbdc",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2023-04-03T17:02:09Z",
+      "side": 1,
+      "message": "Is this part of this change?",
+      "range": {
+        "startLine": 45,
+        "startChar": 9,
+        "endLine": 48,
+        "endChar": 9
+      },
+      "revId": "5824f631dfb2778d67111311d4fbf1d32ee40a86",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d923d952_da5390b8",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2023-04-03T17:02:09Z",
+      "side": 1,
+      "message": "I think we should document this change in behaviour.",
+      "range": {
+        "startLine": 134,
+        "startChar": 69,
+        "endLine": 134,
+        "endChar": 86
+      },
+      "revId": "5824f631dfb2778d67111311d4fbf1d32ee40a86",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4651c5db_8ea3e678",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2023-04-03T17:02:09Z",
+      "side": 1,
+      "message": "I think this way we would prevent having a simulation which fetched twice on the same repo. We might have to expose the workingtree suffix in the Fetch API.",
+      "range": {
+        "startLine": 174,
+        "startChar": 12,
+        "endLine": 174,
+        "endChar": 42
+      },
+      "revId": "5824f631dfb2778d67111311d4fbf1d32ee40a86",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

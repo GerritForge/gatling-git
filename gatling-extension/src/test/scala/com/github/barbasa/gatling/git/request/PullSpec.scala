@@ -42,4 +42,5 @@ class PullSpec extends FlatSpec with BeforeAndAfter with Matchers with GitTestHe
     response.status shouldBe OK
   }
 
+  override def commandName: String = "Pull"
 }

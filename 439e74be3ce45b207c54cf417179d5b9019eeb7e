@@ -16,6 +16,24 @@
       "message": "Why is this not needed anymore?",
       "revId": "439e74be3ce45b207c54cf417179d5b9019eeb7e",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db2afd75_a4ddb8ab",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-04T20:50:44Z",
+      "side": 0,
+      "message": "Because now we are using a different folder(by adding the suffix) for each clone.",
+      "parentUuid": "d9c77bb5_e5a5e82f",
+      "revId": "439e74be3ce45b207c54cf417179d5b9019eeb7e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

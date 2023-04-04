@@ -16,6 +16,7 @@ package com.github.barbasa.gatling.git.request
 import com.github.barbasa.gatling.git.GatlingGitConfiguration
 import com.github.barbasa.gatling.git.GitRequestSession.{
   AllRefs,
+  EmptyName,
   EmptyTag,
   HeadToMasterRefSpec,
   MasterRef
@@ -44,7 +45,10 @@ sealed trait Request {
   def commandName = this.getClass.getSimpleName
 
   def conf: GatlingGitConfiguration
-  def name: String
+
+  def maybeName: String
+  def name =
+    if (maybeName == EmptyName.value) s"${this.getClass.getSimpleName}: $url" else maybeName
   def send: GitCommandResponse
   def url: URIish
   def user: String
@@ -138,12 +142,11 @@ case class Clone(
     url: URIish,
     user: String,
     ref: String = MasterRef,
-    workTreeDirSuffix: String = System.nanoTime().toString
+    workTreeDirSuffix: String = System.nanoTime().toString,
+    maybeName: String = EmptyName.value
 )(implicit
     val conf: GatlingGitConfiguration
 ) extends Request {
-
-  val name = s"Clone: $url"
 
   def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
@@ -162,10 +165,11 @@ case class Clone(
   }
 }
 
-case class CleanupRepo(url: URIish, user: String)(implicit
+case class CleanupRepo(url: URIish, user: String, maybeName: String = EmptyName.value)(implicit
     val conf: GatlingGitConfiguration
 ) extends Request {
-  override def name: String = s"Clean local repository $repoName"
+  override def name: String =
+    if (maybeName == EmptyName.value) s"Clean local repository $repoName" else maybeName
 
   override def send: GitCommandResponse =
     GitCommandResponse {
@@ -176,12 +180,15 @@ case class CleanupRepo(url: URIish, user: String)(implicit
     }
 }
 
-case class Fetch(url: URIish, user: String, refSpec: String = AllRefs)(implicit
+case class Fetch(
+    url: URIish,
+    user: String,
+    refSpec: String = AllRefs,
+    maybeName: String = EmptyName.value
+)(implicit
     val conf: GatlingGitConfiguration
 ) extends Request {
   addRemote(initRepo(workTreeDirectory()), url): Unit
-
-  val name = s"Fetch: $url"
 
   def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
@@ -202,11 +209,10 @@ case class Fetch(url: URIish, user: String, refSpec: String = AllRefs)(implicit
   }
 }
 
-case class Pull(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
-    extends Request {
+case class Pull(url: URIish, user: String, maybeName: String = EmptyName.value)(implicit
+    val conf: GatlingGitConfiguration
+) extends Request {
   addRemote(initRepo(workTreeDirectory()), url): Unit
-
-  override def name: String = s"Pull: $url"
 
   override def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
@@ -232,12 +238,11 @@ case class Push(
     commitBuilder: CommitBuilder = Push.defaultCommitBuilder,
     force: Boolean = false,
     computeChangeId: Boolean = false,
-    options: List[String] = List.empty
+    options: List[String] = List.empty,
+    maybeName: String = EmptyName.value
 )(implicit
     val conf: GatlingGitConfiguration
 ) extends Request {
-
-  override def name: String = s"Push: $url"
 
   override def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
@@ -300,12 +305,12 @@ case class Tag(
     url: URIish,
     user: String,
     refSpec: String = HeadToMasterRefSpec.value,
-    tag: String = EmptyTag.value
+    tag: String = EmptyTag.value,
+    maybeName: String = EmptyName.value
 )(implicit
     val conf: GatlingGitConfiguration
 ) extends Request
     with LazyLogging {
-  override def name: String = s"Push: $url"
 
   val uniqueSuffix = s"$user - ${LocalDateTime.now}"
 
@@ -362,9 +367,9 @@ object Push {
   )
 }
 
-case class InvalidRequest(url: URIish, user: String)(implicit val conf: GatlingGitConfiguration)
-    extends Request {
-  override def name: String = "Invalid Request"
+case class InvalidRequest(url: URIish, user: String, maybeName: String)(implicit
+    val conf: GatlingGitConfiguration
+) extends Request {
 
   override def send: GitCommandResponse = {
     throw new Exception("Invalid Git command type")

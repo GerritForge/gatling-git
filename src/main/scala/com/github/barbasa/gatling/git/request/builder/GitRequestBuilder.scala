@@ -51,12 +51,15 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
       computeChangeId <- request.computeChangeId(session)
       pushOptions     <- request.pushOptions(session)
       user            <- request.userId(session)
+      requestName     <- request.requestName(session)
+      repoDirOverride <- request.repoDirOverride(session)
     } yield {
-      val userId = if (user == "") session.userId.toString else user
+      val userId               = if (user == "") session.userId.toString else user
+      val maybeRepoDirOverride = if (repoDirOverride == "") None else Some(repoDirOverride)
       command.toLowerCase match {
-        case "clone" => Clone(url, userId, refSpec)
-        case "fetch" => Fetch(url, userId, refSpec)
-        case "pull"  => Pull(url, userId)
+        case "clone" => Clone(url, userId, refSpec, requestName)
+        case "fetch" => Fetch(url, userId, refSpec, requestName)
+        case "pull"  => Pull(url, userId, requestName, maybeRepoDirOverride)
         case "push" =>
           Push(
             url,
@@ -64,11 +67,13 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
             refSpec,
             force = force,
             computeChangeId = computeChangeId,
-            options = pushOptions.split(",").toList
+            options = pushOptions.split(",").toList,
+            maybeRequestName = requestName,
+            repoDirOverride = maybeRepoDirOverride
           )
-        case "tag"          => Tag(url, userId, refSpec, tag)
-        case "cleanup-repo" => CleanupRepo(url, userId)
-        case _              => InvalidRequest(url, userId)
+        case "tag"          => Tag(url, userId, refSpec, tag, requestName)
+        case "cleanup-repo" => CleanupRepo(url, userId, requestName)
+        case _              => InvalidRequest(url, userId, requestName)
       }
     }
   }

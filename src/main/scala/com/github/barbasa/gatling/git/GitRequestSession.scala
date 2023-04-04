@@ -27,7 +27,8 @@ case class GitRequestSession(
     computeChangeId: Expression[Boolean] = False,
     ignoreFailureRegexps: Expression[List[String]] = List.empty.expressionSuccess,
     pushOptions: Expression[String] = StaticValueExpression(""),
-    userId: Expression[String] = StaticValueExpression("")
+    userId: Expression[String] = StaticValueExpression(""),
+    requestName: Expression[String] = StaticValueExpression("")
 )
 
 object GitRequestSession {
@@ -35,6 +36,7 @@ object GitRequestSession {
   val AllRefs             = s"+refs/*:refs/*"
   val HeadToMasterRefSpec = StaticValueExpression(s"$HEAD:$MasterRef")
   val EmptyTag            = StaticValueExpression("")
+  val EmptyRequestName    = StaticValueExpression("")
   val False               = false.expressionSuccess
 
   def cmd(

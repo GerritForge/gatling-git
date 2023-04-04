@@ -51,12 +51,13 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
       computeChangeId <- request.computeChangeId(session)
       pushOptions     <- request.pushOptions(session)
       user            <- request.userId(session)
+      scenarioName    <- request.scenarioName(session)
     } yield {
       val userId = if (user == "") session.userId.toString else user
       command.toLowerCase match {
-        case "clone" => Clone(url, userId, refSpec)
-        case "fetch" => Fetch(url, userId, refSpec)
-        case "pull"  => Pull(url, userId)
+        case "clone" => Clone(url, userId, refSpec, scenarioName)
+        case "fetch" => Fetch(url, userId, refSpec, scenarioName)
+        case "pull"  => Pull(url, userId, scenarioName)
         case "push" =>
           Push(
             url,
@@ -64,11 +65,12 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
             refSpec,
             force = force,
             computeChangeId = computeChangeId,
-            options = pushOptions.split(",").toList
+            options = pushOptions.split(",").toList,
+            maybeScenarioName = scenarioName
           )
-        case "tag"          => Tag(url, userId, refSpec, tag)
-        case "cleanup-repo" => CleanupRepo(url, userId)
-        case _              => InvalidRequest(url, userId)
+        case "tag"          => Tag(url, userId, refSpec, tag, scenarioName)
+        case "cleanup-repo" => CleanupRepo(url, userId, scenarioName)
+        case _              => InvalidRequest(url, userId, scenarioName)
       }
     }
   }

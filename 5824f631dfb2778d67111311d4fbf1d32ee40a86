@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72d38ba3_c05318b7",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2023-04-05T03:28:54Z",
+      "side": 0,
+      "message": "What is we leave the operation name (and maybe the `url`?) and just add the description as a suffix?\n\n```\nval name \u003d s\"Clone: $url - $desc\"\n```\n\nWe did it for the Clone L#175, so probably we should be consistent. WDYT?",
+      "revId": "5824f631dfb2778d67111311d4fbf1d32ee40a86",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

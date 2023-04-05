@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "944f397c_7b6af79d",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/GitRequestSession.scala",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-05T14:15:25Z",
+      "side": 1,
+      "message": "the reason why I didn\u0027t call this `userId` was to avoid confusion with Gatling\u0027s own internal session userId.\nI do agree that that would be a better name though so if happy with that I\u0027ll update it?",
+      "parentUuid": "35e08ef6_ca5c8c8b",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "7dd78a2716476b9af1a6d97b3224213404469cbb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e4809770_2fbd8c68",
         "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
         "patchSetId": 10

@@ -80,6 +80,24 @@
       "message": "I recogn it shouldn\u0027t be difficult adding a test to check the repo is created once. WDYT?",
       "revId": "7dd78a2716476b9af1a6d97b3224213404469cbb",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11a1aefe_17a07e33",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 10
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-06T10:48:03Z",
+      "side": 1,
+      "message": "How would you identify that the repo was not recreated? Creation time of the .git folder?",
+      "parentUuid": "e4809770_2fbd8c68",
+      "revId": "7dd78a2716476b9af1a6d97b3224213404469cbb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

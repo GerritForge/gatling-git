@@ -35,7 +35,9 @@ class CleanupRepoSpec extends FlatSpec with BeforeAndAfter with Matchers with Gi
   behavior of "CleanupRepo"
 
   it should "return OK when the directory exists" in {
-    val response = CleanupRepo(new URIish(s"file://$originRepoDirectory"), testUser).send
+    val cleanupRepo = CleanupRepo(new URIish(s"file://$originRepoDirectory"), testUser)
+    cleanupRepo.workTreeDirectory.mkdirs
+    val response = cleanupRepo.send
 
     response.status shouldBe OK
   }

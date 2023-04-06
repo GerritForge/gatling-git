@@ -44,11 +44,8 @@ sealed trait Request {
   def user: String
   val classLoader: ClassLoader = getClass.getClassLoader
   val repoName                 = url.getPath.split("/").last
-  lazy val workTreeDirectory: File = {
-    val dir = new File(conf.tmpBasePath + s"/$user/$repoName-worktree")
-    dir.mkdirs()
-    dir
-  }
+  lazy val workTreeDirectory = new File(conf.tmpBasePath + s"/$user/$repoName-worktree")
+
   private val builder             = new FileRepositoryBuilder
   lazy val repository: Repository = builder.setWorkTree(workTreeDirectory).build()
 

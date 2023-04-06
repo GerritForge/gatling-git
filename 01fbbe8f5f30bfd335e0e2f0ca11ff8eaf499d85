@@ -81,6 +81,24 @@
       "parentUuid": "b13b43ed_b40e82f8",
       "revId": "01fbbe8f5f30bfd335e0e2f0ca11ff8eaf499d85",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2d591b0_69627dcc",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-06T15:08:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84fe5cb4_09987166",
+      "revId": "01fbbe8f5f30bfd335e0e2f0ca11ff8eaf499d85",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "049f2894_53e0f36e",
+        "filename": "gatling-extension/src/test/scala/com/github/barbasa/gatling/git/request/CleanupRepoSpec.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1019805
+      },
+      "writtenOn": "2023-04-06T14:34:53Z",
+      "side": 1,
+      "message": "Missing parens - `mkdirs` side effects.",
+      "revId": "80ac76fab28246aa65e107f37a8f4eb49ec509e3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b44ea568_705b5d51",
+        "filename": "gatling-extension/src/test/scala/com/github/barbasa/gatling/git/request/CleanupRepoSpec.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1019805
+      },
+      "writtenOn": "2023-04-06T14:34:53Z",
+      "side": 1,
+      "message": "Doesn\u0027t `send` require parens too?",
+      "revId": "80ac76fab28246aa65e107f37a8f4eb49ec509e3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

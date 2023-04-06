@@ -18,6 +18,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a4bf063_969bc4be",
+        "filename": "gatling-extension/src/test/scala/com/github/barbasa/gatling/git/request/CleanupRepoSpec.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-06T14:46:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "049f2894_53e0f36e",
+      "revId": "80ac76fab28246aa65e107f37a8f4eb49ec509e3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b44ea568_705b5d51",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-04-06T14:34:53Z",
       "side": 1,
       "message": "Doesn\u0027t `send` require parens too?",
+      "revId": "80ac76fab28246aa65e107f37a8f4eb49ec509e3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d20cf07_c6e867c5",
+        "filename": "gatling-extension/src/test/scala/com/github/barbasa/gatling/git/request/CleanupRepoSpec.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-06T14:46:39Z",
+      "side": 1,
+      "message": "they weren\u0027t there before, they\u0027re not anywhere else, should probably be a separate change.",
+      "parentUuid": "b44ea568_705b5d51",
       "revId": "80ac76fab28246aa65e107f37a8f4eb49ec509e3",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }

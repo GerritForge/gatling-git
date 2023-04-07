@@ -46,6 +46,29 @@
       },
       "revId": "45f25df16ac543800b464c1427f2a63b0cbb9f00",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc0ef98a_18a11648",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-04-07T20:08:10Z",
+      "side": 1,
+      "message": "Have you checked that `,` isn\u0027t a valid git option or value?",
+      "range": {
+        "startLine": 59,
+        "startChar": 135,
+        "endLine": 59,
+        "endChar": 136
+      },
+      "revId": "45f25df16ac543800b464c1427f2a63b0cbb9f00",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

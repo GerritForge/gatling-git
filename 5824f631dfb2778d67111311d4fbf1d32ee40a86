@@ -142,6 +142,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "268cc524_53533d4d",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-11T12:55:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "995bd6f9_c68a6bbf",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "5824f631dfb2778d67111311d4fbf1d32ee40a86",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d56b641_6021cbdc",
@@ -202,6 +226,30 @@
       "writtenOn": "2023-04-03T17:02:09Z",
       "side": 1,
       "message": "I think we should document this change in behaviour.",
+      "range": {
+        "startLine": 134,
+        "startChar": 69,
+        "endLine": 134,
+        "endChar": 86
+      },
+      "revId": "5824f631dfb2778d67111311d4fbf1d32ee40a86",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f212970_ddc965a3",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-11T12:55:54Z",
+      "side": 1,
+      "message": "I\u0027ve made it clearer that there is a (potentially?) breaking change in the commit message with the idea that this will then be added to the release notes.",
+      "parentUuid": "d923d952_da5390b8",
       "range": {
         "startLine": 134,
         "startChar": 69,

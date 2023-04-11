@@ -24,6 +24,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eb2c9b0_e6af4297",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/action/GitRequestAction.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-11T16:53:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09b5e050_bb8dced4",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 11
+      },
+      "revId": "6d51c9af50fea4abab34a09dc54f823e9a6a69c2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8bb7fb9_58f47f7d",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-11T16:52:15Z",
       "side": 1,
       "message": "This is not a function definition; why add a type?\n\nSame in every other occurrence in this file.",
+      "range": {
+        "startLine": 199,
+        "startChar": 45,
+        "endLine": 199,
+        "endChar": 51
+      },
+      "revId": "6d51c9af50fea4abab34a09dc54f823e9a6a69c2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae808be5_cc71fa65",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-11T16:53:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8bb7fb9_58f47f7d",
       "range": {
         "startLine": 199,
         "startChar": 45,

@@ -24,6 +24,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89e218ee_773becdc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-11T11:28:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a768890a_f385a200",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "5824f631dfb2778d67111311d4fbf1d32ee40a86",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7f26412_dbaa97e6",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-03T17:02:09Z",
       "side": 1,
       "message": "did you mean simulation? I think we want scenarios to share the same data, while simulation shouldn\u0027t.",
+      "range": {
+        "startLine": 13,
+        "startChar": 26,
+        "endLine": 13,
+        "endChar": 35
+      },
+      "revId": "5824f631dfb2778d67111311d4fbf1d32ee40a86",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f47b4884_2d5d8d9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-11T11:28:58Z",
+      "side": 1,
+      "message": "I meant scenarios. I think there are cases, like clone, where sharing the same data even within the same scenario doesn\u0027t make sense. \nFor example, why clone to the same directory over and over again? You wouldn\u0027t be doing that in real life?",
+      "parentUuid": "e7f26412_dbaa97e6",
       "range": {
         "startLine": 13,
         "startChar": 26,

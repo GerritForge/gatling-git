@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09b5e050_bb8dced4",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/action/GitRequestAction.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-11T16:52:15Z",
+      "side": 1,
+      "message": "Is this a thing?",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 11
+      },
+      "revId": "6d51c9af50fea4abab34a09dc54f823e9a6a69c2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8bb7fb9_58f47f7d",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-11T16:52:15Z",
+      "side": 1,
+      "message": "This is not a function definition; why add a type?\n\nSame in every other occurrence in this file.",
+      "range": {
+        "startLine": 199,
+        "startChar": 45,
+        "endLine": 199,
+        "endChar": 51
+      },
+      "revId": "6d51c9af50fea4abab34a09dc54f823e9a6a69c2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

@@ -16,6 +16,24 @@
       "message": "What is we leave the operation name (and maybe the `url`?) and just add the description as a suffix?\n\n```\nval name \u003d s\"Clone: $url - $desc\"\n```\n\nWe did it for the Clone L#175, so probably we should be consistent. WDYT?",
       "revId": "5824f631dfb2778d67111311d4fbf1d32ee40a86",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "980e2fcc_f1621c6d",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-11T13:27:41Z",
+      "side": 0,
+      "message": "Can\u0027t really how L#175 relates to this?\nThere\u0027s nothing stopping the user passing in operation name and url if they find it useful, not sure we should prefix that forcefully.",
+      "parentUuid": "72d38ba3_c05318b7",
+      "revId": "5824f631dfb2778d67111311d4fbf1d32ee40a86",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

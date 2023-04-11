@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0abe23c2_f258acbb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-11T13:27:41Z",
+      "side": 1,
+      "message": "In Gatling terminology, this would be the name of the scenario, so it might make sense to leave it as that? I could maybe specify that it\u0027s the scenario name in the commit message?",
+      "parentUuid": "ab330ef2_fccfb49a",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "2826886a8542a9a74f2ae6fb55549390f7d82201",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06e79040_29080d2c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -60,6 +84,30 @@
       "writtenOn": "2023-04-05T03:28:54Z",
       "side": 1,
       "message": "Is this unrelated or I am missing something?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 5
+      },
+      "revId": "2826886a8542a9a74f2ae6fb55549390f7d82201",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d2acc36_5bf41767",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-11T13:27:41Z",
+      "side": 1,
+      "message": "Was from the rebase",
+      "parentUuid": "e078c383_a6706e2d",
       "range": {
         "startLine": 58,
         "startChar": 0,

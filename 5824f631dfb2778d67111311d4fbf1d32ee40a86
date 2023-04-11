@@ -165,6 +165,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1de2dbaf_a86fd1ed",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-11T12:28:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d56b641_6021cbdc",
+      "range": {
+        "startLine": 45,
+        "startChar": 9,
+        "endLine": 48,
+        "endChar": 9
+      },
+      "revId": "5824f631dfb2778d67111311d4fbf1d32ee40a86",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d923d952_da5390b8",

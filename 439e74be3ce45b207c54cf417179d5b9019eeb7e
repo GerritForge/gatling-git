@@ -34,6 +34,24 @@
       "parentUuid": "d9c77bb5_e5a5e82f",
       "revId": "439e74be3ce45b207c54cf417179d5b9019eeb7e",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bb539c1_6c8ef4a1",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-11T12:28:56Z",
+      "side": 0,
+      "message": "This also ensures unexpected side effects when using the Clone command, as other commands could be using that folder that we\u0027re deleting here.",
+      "parentUuid": "db2afd75_a4ddb8ab",
+      "revId": "439e74be3ce45b207c54cf417179d5b9019eeb7e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

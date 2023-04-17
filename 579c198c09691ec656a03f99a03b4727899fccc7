@@ -16,6 +16,23 @@
       "message": "Rebased, onto master, still fails when running `sbt publishLocal`:\n```\n[error] java.lang.IllegalArgumentException: Couldn\u0027t locate Gatling libraries in the classpath\n[error] \tat io.gatling.sbt.utils.DependenciesAnalyzer$.$anonfun$analyze$4(DependenciesAnalyzer.scala:76)\n[error] \tat scala.Option.getOrElse(Option.scala:189)\n[error] \tat io.gatling.sbt.utils.DependenciesAnalyzer$.analyze(DependenciesAnalyzer.scala:76)\n[error] \tat io.gatling.sbt.settings.gatling.TaskEnterprisePackage.$anonfun$buildEnterprisePackage$1(TaskEnterprisePackage.scala:47)\n[error] \tat scala.Function1.$anonfun$compose$1(Function1.scala:49)\n[error] \tat sbt.internal.util.$tilde$greater.$anonfun$$u2219$1(TypeFunctions.scala:62)\n[error] \tat sbt.std.Transform$$anon$4.work(Transform.scala:68)\n[error] \tat sbt.Execute.$anonfun$submit$2(Execute.scala:282)\n[error] \tat sbt.internal.util.ErrorHandling$.wideConvert(ErrorHandling.scala:23)\n[error] \tat sbt.Execute.work(Execute.scala:291)\n[error] \tat sbt.Execute.$anonfun$submit$1(Execute.scala:282)\n[error] \tat sbt.ConcurrentRestrictions$$anon$4.$anonfun$submitValid$1(ConcurrentRestrictions.scala:265)\n[error] \tat sbt.CompletionService$$anon$2.call(CompletionService.scala:64)\n[error] \tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n[error] \tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)\n[error] \tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n[error] \tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)\n[error] \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)\n[error] \tat java.base/java.lang.Thread.run(Thread.java:829)\n[error] (Gatling-it / enterprisePackage) java.lang.IllegalArgumentException: Couldn\u0027t locate Gatling libraries in the classpath\n```",
       "revId": "579c198c09691ec656a03f99a03b4727899fccc7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4452fb3_d32098ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019805
+      },
+      "writtenOn": "2023-04-17T20:37:21Z",
+      "side": 1,
+      "message": "Rebased, onto master, still fails when running `sbt publishLocal`:\n```\n[error] java.lang.IllegalArgumentException: Couldn\u0027t locate Gatling libraries in the classpath\n[error] \tat io.gatling.sbt.utils.DependenciesAnalyzer$.$anonfun$analyze$4(DependenciesAnalyzer.scala:76)\n[error] \tat scala.Option.getOrElse(Option.scala:189)\n[error] \tat io.gatling.sbt.utils.DependenciesAnalyzer$.analyze(DependenciesAnalyzer.scala:76)\n[error] \tat io.gatling.sbt.settings.gatling.TaskEnterprisePackage.$anonfun$buildEnterprisePackage$1(TaskEnterprisePackage.scala:47)\n[error] \tat scala.Function1.$anonfun$compose$1(Function1.scala:49)\n[error] \tat sbt.internal.util.$tilde$greater.$anonfun$$u2219$1(TypeFunctions.scala:62)\n[error] \tat sbt.std.Transform$$anon$4.work(Transform.scala:68)\n[error] \tat sbt.Execute.$anonfun$submit$2(Execute.scala:282)\n[error] \tat sbt.internal.util.ErrorHandling$.wideConvert(ErrorHandling.scala:23)\n[error] \tat sbt.Execute.work(Execute.scala:291)\n[error] \tat sbt.Execute.$anonfun$submit$1(Execute.scala:282)\n[error] \tat sbt.ConcurrentRestrictions$$anon$4.$anonfun$submitValid$1(ConcurrentRestrictions.scala:265)\n[error] \tat sbt.CompletionService$$anon$2.call(CompletionService.scala:64)\n[error] \tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n[error] \tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)\n[error] \tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)\n[error] \tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)\n[error] \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)\n[error] \tat java.base/java.lang.Thread.run(Thread.java:829)\n[error] (Gatling-it / enterprisePackage) java.lang.IllegalArgumentException: Couldn\u0027t locate Gatling libraries in the classpath\n```",
+      "revId": "579c198c09691ec656a03f99a03b4727899fccc7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

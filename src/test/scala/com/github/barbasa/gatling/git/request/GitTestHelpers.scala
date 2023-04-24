@@ -16,20 +16,12 @@ package com.github.barbasa.gatling.git.request
 
 import java.io.File
 import java.nio.file.Files
-
-import com.github.barbasa.gatling.git.{
-  CommandsConfiguration,
-  GatlingGitConfiguration,
-  GitConfiguration,
-  HttpConfiguration,
-  PushConfiguration,
-  SshConfiguration
-}
-
+import com.github.barbasa.gatling.git.{CommandsConfiguration, GatlingGitConfiguration, GitConfiguration, HttpConfiguration, PushConfiguration, SshConfiguration}
 import org.eclipse.jgit.api.{Git => JGit}
 
 trait GitTestHelpers {
   var testGitRepo: JGit = _
+  var configuredGitRepo: JGit = _
 
   def commandName: String
 
@@ -39,6 +31,9 @@ trait GitTestHelpers {
   val testBranchName: String = "mybranch"
 
   val originRepoDirectory: File = new File(s"$tempBase/$testUser/$testRepo")
+  val configuredRepoPath = s"$tempBase/$testUser/test-repo-${System.nanoTime()}"
+  val configuredRepoDirectory = new File(configuredRepoPath)
+
   def workTreeDirectory(suffix: String = ""): File = new File(
     s"$tempBase/$commandName/$testUser/$testRepo-worktree$suffix"
   )

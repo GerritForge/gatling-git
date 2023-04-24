@@ -160,6 +160,10 @@ The common parameters are:
         ignoreFailureRegexps = List(".*want.+not valid.*")
       )
   ```
+* `repoDirOverride` allows to specify a directory that will be used as the request's git repository.
+  This can be useful if we want to test how different commands interact on the same repository.
+  **Note:** Cannot be use for `Clone`, as it doesn't make sense to clone a repo to the same folder over
+  and over.
 
 The push operation have optional extra parameters:
 

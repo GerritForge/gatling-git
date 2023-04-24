@@ -353,6 +353,30 @@
       },
       "revId": "5824f631dfb2778d67111311d4fbf1d32ee40a86",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c89db053_b467b1ec",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-24T09:39:36Z",
+      "side": 1,
+      "message": "I misread your comment. As per conversation, I think you\u0027re right, however, I will do this as a separate change to help contain the scope context of this change.",
+      "parentUuid": "163d54e1_57c3c405",
+      "range": {
+        "startLine": 174,
+        "startChar": 12,
+        "endLine": 174,
+        "endChar": 42
+      },
+      "revId": "5824f631dfb2778d67111311d4fbf1d32ee40a86",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

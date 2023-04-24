@@ -23,6 +23,8 @@ import scala.annotation.nowarn
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
+import scala.util.Try
+
 @nowarn("msg=unused value")
 class FetchSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
 
@@ -45,6 +47,16 @@ class FetchSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTe
     val cmd      = Fetch(new URIish(s"file://${originRepoDirectory}"), s"$testUser")
     val response = cmd.send
     response.status shouldBe OK
+  }
+
+  "to the configured repo" should "return OK" in {
+    Push(new URIish(s"file://${originRepoDirectory}"), s"$testUser", repoDirOverride = Some(configuredRepoPath)).send
+
+    val cmd = Fetch(new URIish(s"file://${originRepoDirectory}"), s"$testUser", repoDirOverride = Some(configuredRepoPath))
+    val response = cmd.send
+
+    response.status shouldBe OK
+    Try(configuredGitRepo.log().call()).getOrElse(fail()): Unit
   }
 
   override def commandName: String = "Fetch"

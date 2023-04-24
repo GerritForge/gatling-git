@@ -60,8 +60,11 @@ sealed trait Request {
       conf.tmpBasePath + s"/$commandName/$user/$repoName-worktree${suffix.fold("")(s => s"-$s")}"
     )
 
-  private val builder             = new FileRepositoryBuilder
-  lazy val repository: Repository = builder.setWorkTree(workTreeDirectory()).build()
+  def repositoryPath(path: Option[String]): File =
+    path.fold(workTreeDirectory())(dir => new File(dir))
+
+  private val builder                    = new FileRepositoryBuilder
+  def repository(path: File): Repository = builder.setWorkTree(path).build()
 
   val sshSessionFactory: SshSessionFactory = new SshdSessionFactory {
     override protected def getDefaultIdentities(sshDir: File): JavaList[Path] = {
@@ -75,10 +78,10 @@ sealed trait Request {
     if (conf.gitConfiguration.showProgress) new TextProgressMonitor(new PrintWriter(System.out))
     else NullProgressMonitor.INSTANCE
 
-  def cleanRepo() = {
-    val deleteCommandResult = new Directory(workTreeDirectory()).deleteRecursively()
+  def cleanRepo(repoDir: File) = {
+    val deleteCommandResult = new Directory(repoDir).deleteRecursively()
     if (deleteCommandResult)
-      addRemote(initRepo(workTreeDirectory()), url): Unit
+      addRemote(initRepo(repoDir), url): Unit
     deleteCommandResult
   }
 
@@ -169,17 +172,19 @@ case class Clone(
 case class CleanupRepo(
     url: URIish,
     user: String,
-    maybeRequestName: String = EmptyRequestName.value
+    maybeRequestName: String = EmptyRequestName.value,
+    repoDirOverride: Option[String] = None
 )(implicit
     val conf: GatlingGitConfiguration
 ) extends Request {
+  val repoDir = repositoryPath(repoDirOverride)
   override def name: String =
     if (maybeRequestName == EmptyRequestName.value) s"Clean local repository $repoName"
     else maybeRequestName
 
   override def send: GitCommandResponse =
     GitCommandResponse {
-      if (cleanRepo())
+      if (cleanRepo(repoDir))
         OK
       else
         Fail
@@ -190,15 +195,17 @@ case class Fetch(
     url: URIish,
     user: String,
     refSpec: String = AllRefs,
-    maybeRequestName: String = EmptyRequestName.value
+    maybeRequestName: String = EmptyRequestName.value,
+    repoDirOverride: Option[String] = None
 )(implicit
     val conf: GatlingGitConfiguration
 ) extends Request {
-  addRemote(initRepo(workTreeDirectory()), url): Unit
+  val repoDir = repositoryPath(repoDirOverride)
+  addRemote(initRepo(repoDir), url): Unit
 
   def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
-    val fetchResult = new Git(repository)
+    val fetchResult = new Git(repository(repoDir))
       .fetch()
       .setRemote("origin")
       .setRefSpecs(refSpec)
@@ -215,14 +222,20 @@ case class Fetch(
   }
 }
 
-case class Pull(url: URIish, user: String, maybeRequestName: String = EmptyRequestName.value)(
-    implicit val conf: GatlingGitConfiguration
+case class Pull(
+    url: URIish,
+    user: String,
+    maybeRequestName: String = EmptyRequestName.value,
+    repoDirOverride: Option[String] = None
+)(implicit
+    val conf: GatlingGitConfiguration
 ) extends Request {
-  addRemote(initRepo(workTreeDirectory()), url): Unit
+  val repoDir = repositoryPath(repoDirOverride)
+  addRemote(initRepo(repoDir), url): Unit
 
   override def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
-    val pullResult = new Git(repository)
+    val pullResult = new Git(repository(repoDir))
       .pull()
       .setAuthenticationMethod(url, cb)
       .setTimeout(conf.gitConfiguration.commandTimeout)
@@ -245,23 +258,25 @@ case class Push(
     force: Boolean = false,
     computeChangeId: Boolean = false,
     options: List[String] = List.empty,
-    maybeRequestName: String = EmptyRequestName.value
+    maybeRequestName: String = EmptyRequestName.value,
+    repoDirOverride: Option[String] = None
 )(implicit
     val conf: GatlingGitConfiguration
 ) extends Request {
 
+  val repoDir = repositoryPath(repoDirOverride)
   override def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
 
     val git = {
-      if (!workTreeDirectory().exists()) addRemote(initRepo(workTreeDirectory()), url): Unit
-      Git.open(workTreeDirectory())
+      if (!repoDir.exists()) addRemote(initRepo(repoDir), url): Unit
+      Git.open(repoDir)
     }
     val isSrcDstRefSpec: String => Boolean = _.contains(":") // e.g. HEAD:refs/for/master
 
     // TODO: Create multiple commits per push
     commitBuilder.commitToRepository(
-      repository,
+      repository(repoDir),
       Option(refSpec).filterNot(isSrcDstRefSpec),
       computeChangeId
     )
@@ -312,17 +327,19 @@ case class Tag(
     user: String,
     refSpec: String = HeadToMasterRefSpec.value,
     tag: String = EmptyTag.value,
-    maybeRequestName: String = EmptyRequestName.value
+    maybeRequestName: String = EmptyRequestName.value,
+    repoDirOverride: Option[String] = None
 )(implicit
     val conf: GatlingGitConfiguration
 ) extends Request
     with LazyLogging {
 
+  val repoDir      = repositoryPath(repoDirOverride)
   val uniqueSuffix = s"$user - ${LocalDateTime.now}"
 
   override def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
-    val git = Git.init().setDirectory(workTreeDirectory()).call()
+    val git = Git.init().setDirectory(repoDir).call()
     git.remoteAdd().setName("origin").setUri(url).call()
 
     val fetchResult = git

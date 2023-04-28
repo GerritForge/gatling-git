@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7833f6db_6299d9c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2023-04-28T12:47:07Z",
+      "side": 1,
+      "message": "Just re-applied Ponch\u0027s +2",
+      "revId": "c51bf6820c74e4f411257af06957a9edee9196cd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

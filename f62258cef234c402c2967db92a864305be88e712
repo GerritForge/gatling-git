@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23145155_251fc07a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-28T23:50:33Z",
+      "side": 1,
+      "message": "What is the advantage of removing the Dockerfile?",
+      "revId": "f62258cef234c402c2967db92a864305be88e712",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4fca6e2_805ab9fc",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-06-28T23:50:33Z",
+      "side": 1,
+      "message": "The example is very Gerrit-specific, whilst the Dockerfile was more generic.",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 190
+      },
+      "revId": "f62258cef234c402c2967db92a864305be88e712",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

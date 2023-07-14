@@ -18,6 +18,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62622449_cc65ffaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019805
+      },
+      "writtenOn": "2023-07-14T12:43:09Z",
+      "side": 1,
+      "message": "This artifact is used as a library in other packages, and as such should be published as a regular JAR, not a fat JAR.\n\nMy understanding is that it\u0027s not used directly in a Dockerfile except in this example. If we want to maintain the fat JAR, I still suggest we publish the normal JAR, and maybe publish the fat JAR locally, as discussed in the ticket description.",
+      "parentUuid": "23145155_251fc07a",
+      "revId": "f62258cef234c402c2967db92a864305be88e712",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4fca6e2_805ab9fc",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-06-28T23:50:33Z",
       "side": 1,
       "message": "The example is very Gerrit-specific, whilst the Dockerfile was more generic.",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 190
+      },
+      "revId": "f62258cef234c402c2967db92a864305be88e712",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9d0dc8c_6cfaf4e0",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1019805
+      },
+      "writtenOn": "2023-07-14T12:43:09Z",
+      "side": 1,
+      "message": "True, this is an example of how one could create a Docker image using the library, it\u0027s the only one I\u0027m aware of I could point at.",
+      "parentUuid": "e4fca6e2_805ab9fc",
       "range": {
         "startLine": 193,
         "startChar": 0,

@@ -129,6 +129,30 @@
       },
       "revId": "f62258cef234c402c2967db92a864305be88e712",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb1b7b8d_6e0ab813",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1019805
+      },
+      "writtenOn": "2023-07-21T08:20:12Z",
+      "side": 1,
+      "message": "We discussed this in person and agreed to remove the Dockerfile. If we do decide to add it again we\u0027ll have to make changes to the sbt file and only publish it locally.",
+      "parentUuid": "df512b78_7cb94901",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 190
+      },
+      "revId": "f62258cef234c402c2967db92a864305be88e712",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

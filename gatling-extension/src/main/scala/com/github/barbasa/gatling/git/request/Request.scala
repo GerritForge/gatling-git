@@ -239,7 +239,8 @@ case class Push(
     refSpec: String = HeadToMasterRefSpec.value,
     commitBuilder: CommitBuilder = Push.defaultCommitBuilder,
     force: Boolean = false,
-    computeChangeId: Boolean = false
+    computeChangeId: Boolean = false,
+    createNewPatchset: Boolean = false
 )(
     implicit val conf: GatlingGitConfiguration
 ) extends Request {
@@ -257,7 +258,8 @@ case class Push(
     commitBuilder.commitToRepository(
       repository,
       Option(refSpec).filterNot(isSrcDstRefSpec),
-      computeChangeId
+      computeChangeId,
+      amend = createNewPatchset
     )
 
     // XXX Make credential configurable

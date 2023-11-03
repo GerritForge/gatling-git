@@ -18,6 +18,7 @@ import com.github.barbasa.gatling.git.helper.MockFiles._
 import org.eclipse.jgit.api._
 import org.eclipse.jgit.lib.Repository
 import java.time.LocalDateTime
+import org.eclipse.jgit.revwalk.{FooterKey, FooterLine}
 
 import scala.util.Random
 import scala.collection.JavaConverters._
@@ -26,12 +27,15 @@ import org.eclipse.jgit.util.ChangeIdUtil
 
 class CommitBuilder(numFiles: Int, minContentLength: Int, maxContentLength: Int, prefix: String) {
 
+  import CommitBuilder._
+
   val random = new Random()
 
   def commitToRepository(
       repository: Repository,
       branch: Option[String] = Option.empty,
-      computeChangeId: Boolean = false
+      computeChangeId: Boolean = false,
+      amend: Boolean = false
   ) {
     val git = new Git(repository)
     Vector.range(0, numFiles).par.foreach { e =>
@@ -50,15 +54,36 @@ class CommitBuilder(numFiles: Int, minContentLength: Int, maxContentLength: Int,
 
     git.add.addFilepattern(".").call()
 
-    val uniqueSuffix = s"${LocalDateTime.now}"
-    val revCommit = git
-      .commit()
-      .setMessage(
-        s"${prefix}Test commit header - $uniqueSuffix\n\nTest commit body - $uniqueSuffix\n"
-      )
-      .call()
+    val uniqueSuffix  = s"${LocalDateTime.now}"
+    val commitCommand = git.commit()
+    val existingChangeId: Option[FooterLine] = if (amend) {
+      git
+        .log()
+        .setMaxCount(1)
+        .call()
+        .asScala
+        .flatMap(_.getFooterLines.asScala)
+        .find(_.matches(ChangeIdFooterKey))
+    } else {
+      Option.empty
+    }
+    val revCommit = if (amend) {
+      val changeIdFooterLines = existingChangeId.map("\n" + _).getOrElse("")
+      commitCommand
+        .setAmend(amend)
+        .setMessage(
+          s"${prefix}Amended test commit header - $uniqueSuffix\n\nTest commit body - $uniqueSuffix\n$changeIdFooterLines"
+        )
+        .call()
+    } else {
+      commitCommand
+        .setMessage(
+          s"${prefix}Test commit header - $uniqueSuffix\n\nTest commit body - $uniqueSuffix\n"
+        )
+        .call()
+    }
 
-    if (computeChangeId) {
+    if (!amend && computeChangeId) {
       Option(
         ChangeIdUtil.computeChangeId(
           revCommit.getTree.getId,
@@ -81,4 +106,8 @@ class CommitBuilder(numFiles: Int, minContentLength: Int, maxContentLength: Int,
       .filterNot(existingBranch.contains)
       .foreach(git.branchCreate.setName(_).call)
   }
+}
+
+object CommitBuilder {
+  val ChangeIdFooterKey = new FooterKey("Change-Id")
 }

@@ -1,4 +1,22 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62ac14df_7f94ecc5",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 7
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1020920
+      },
+      "writtenOn": "2023-11-03T17:57:19Z",
+      "side": 1,
+      "message": "Is it worth updating the `name` to include whether the push is creating a patchset?\nthis would allow the gatling logs to differentiate between a \"standard\" push and push that creates a patchset\n\nFor multi site this can be useful because we can verify that an equal amount of patchsets were created among the two nodes.\nSo in the logs it could like:\n```\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n2023-11-03 17:52:38                                           5s elapsed\n---- Requests ------------------------------------------------------------------\n\u003e Global                                                   (OK\u003d18     KO\u003d0     )\n\u003e Clone: http://localhost:8082/load-test-3                 (OK\u003d3      KO\u003d0     )\n\u003e Clone: http://localhost:8081/load-test-3                 (OK\u003d3      KO\u003d0     )\n\u003e Push: http://localhost:8082/load-test-3                  (OK\u003d4      KO\u003d0     )\n\u003e Push: http://localhost:8081/load-test-3                  (OK\u003d4      KO\u003d0     )\n\u003e Push-patchset: http://localhost:8082/load-test-3         (OK\u003dn      KO\u003dn     )\n\u003e Push-patchset: http://localhost:8081/load-test-3         (OK\u003dn      KO\u003dn     )\n\u003e Clean local repository load-test-3                       (OK\u003d4      KO\u003d0     )\n\n---- Create change (HTTP) from Gerrit Multi-Site -------------------------------\n          active: 2      / done: 4\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n```",
+      "revId": "bfbec280b17ed40b8da87598ccf0d21a29a38476",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ],
   "submitRequirementResults": []
 }

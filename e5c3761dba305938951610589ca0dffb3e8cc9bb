@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71cc86c0_a35f880f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2023-11-03T15:46:59Z",
+      "side": 1,
+      "message": "some nits so I\u0027m happy to give +2",
+      "revId": "e5c3761dba305938951610589ca0dffb3e8cc9bb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac71b281_d110cebb",
+        "filename": "gatling-extension/src/test/scala/com/github/barbasa/gatling/git/request/PushSpec.scala",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1005270
+      },
+      "writtenOn": "2023-11-03T15:46:59Z",
+      "side": 1,
+      "message": "aren\u0027t we already checking if footer exists in L108?",
+      "range": {
+        "startLine": 110,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "e5c3761dba305938951610589ca0dffb3e8cc9bb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

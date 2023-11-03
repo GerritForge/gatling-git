@@ -34,6 +34,24 @@
       "parentUuid": "75894913_87e64b37",
       "revId": "3951d036871190e94dc99aa854480c350e278971",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b7e5c68_55124f40",
+        "filename": "gatling-extension/src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-11-03T17:06:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78624704_5d6308cb",
+      "revId": "3951d036871190e94dc99aa854480c350e278971",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

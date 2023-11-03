@@ -26,6 +26,7 @@ case class GitRequestSession(
     tag: Expression[String] = EmptyTag,
     force: Expression[Boolean] = False,
     computeChangeId: Expression[Boolean] = False,
+    createNewPatchset: Expression[Boolean] = False,
     ignoreFailureRegexps: Expression[List[String]] = List.empty.expressionSuccess
 )
 

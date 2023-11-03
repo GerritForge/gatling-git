@@ -16,6 +16,24 @@
       "message": "should this test also compare the footer if it wasn\u0027t regenerated instead of just checking if footer exists?",
       "revId": "3951d036871190e94dc99aa854480c350e278971",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78624704_5d6308cb",
+        "filename": "gatling-extension/src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-11-03T15:54:19Z",
+      "side": 1,
+      "message": "True, let me add the additional assertion, good catch 👍",
+      "parentUuid": "75894913_87e64b37",
+      "revId": "3951d036871190e94dc99aa854480c350e278971",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

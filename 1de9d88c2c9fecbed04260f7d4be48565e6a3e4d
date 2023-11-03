@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bedd7ba3_605965ab",
+        "filename": "gatling-extension/src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-11-03T12:37:15Z",
+      "side": 1,
+      "message": "Unneeded extra char.",
+      "range": {
+        "startLine": 75,
+        "startChar": 121,
+        "endLine": 75,
+        "endChar": 122
+      },
+      "revId": "1de9d88c2c9fecbed04260f7d4be48565e6a3e4d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

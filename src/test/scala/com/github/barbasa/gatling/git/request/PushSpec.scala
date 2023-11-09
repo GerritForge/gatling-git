@@ -14,9 +14,11 @@
 
 package com.github.barbasa.gatling.git.request
 
+import com.github.barbasa.gatling.git.helper.CommitBuilder
 import com.github.barbasa.gatling.git.request.Request.initRepo
 import org.apache.commons.io.FileUtils
 import org.eclipse.jgit.lib.Constants.R_HEADS
+import org.eclipse.jgit.revwalk.RevCommit
 import org.eclipse.jgit.transport.URIish
 import org.scalatest.BeforeAndAfter
 
@@ -40,7 +42,7 @@ class PushSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTes
 
   behavior of "Push"
 
-  "with an non-ff rejection error asdf" should "return Fail" in {
+  "with an non-ff rejection error" should "return Fail" in {
     // Force non-ff failure:
     // 1. Clone a repo for user-1
     Clone(new URIish(s"file://${originRepoDirectory}"), s"$testUser-1").send
@@ -95,17 +97,30 @@ class PushSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTes
     testGitRepo.branchList.call.asScala.map(_.getName) should contain(s"$R_HEADS$pushRef")
   }
 
-  "with a branch and computing a Change-Id" should "create a commit ready for review" in {
+  "with a branch and computing a Change-Id" should "create a commit and a new patch-set ready for review" in {
     val basePush =
       Push(new URIish(s"file://$originRepoDirectory"), s"$testUser", refSpec = testBranchName)
     basePush.send.status shouldBe OK
     basePush.copy(computeChangeId = true).send.status shouldBe OK
 
-    val branchHead = testGitRepo.getRepository.exactRef(s"$R_HEADS$testBranchName")
-    val newCommit  = testGitRepo.getRepository.parseCommit(branchHead.getObjectId)
+    def getHead = testGitRepo.getRepository.exactRef(s"$R_HEADS$testBranchName")
+    def getChangeIdFooterLine(commit: RevCommit) =
+      commit.getFooterLines.asScala.find(_.matches(CommitBuilder.ChangeIdFooterKey))
+
+    val newCommit      = testGitRepo.getRepository.parseCommit(getHead.getObjectId)
+    val changeIdFooter = getChangeIdFooterLine(newCommit)
+    changeIdFooter should not be (empty)
+    val parentCommits = newCommit.getParents
+    parentCommits should not be (empty)
 
     newCommit.getFullMessage should include("Change-Id: I")
     newCommit.getParents should not be empty
+    basePush.copy(force = true, createNewPatchset = true).send.status shouldBe OK
+    val newPatchSet = testGitRepo.getRepository.parseCommit(getHead.getObjectId)
+
+    newPatchSet.getParents should be(parentCommits)
+    newPatchSet.getId should not be newCommit.getId
+    getChangeIdFooterLine(newPatchSet).toString should be(changeIdFooter.toString)
   }
 
   it should "not fail if push options are added over local protocol" in {

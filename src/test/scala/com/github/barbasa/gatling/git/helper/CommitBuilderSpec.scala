@@ -14,7 +14,6 @@
 
 package com.github.barbasa.gatling.git.helper
 import java.io.File
-
 import com.github.barbasa.gatling.git.request.GitTestHelpers
 import org.apache.commons.io.FileUtils
 import org.scalatest.BeforeAndAfter
@@ -22,6 +21,7 @@ import org.eclipse.jgit.api.{Git => JGit}
 import org.eclipse.jgit.lib.Constants
 import org.eclipse.jgit.revwalk.RevCommit
 import org.eclipse.jgit.revwalk.RevWalk
+
 import scala.util.Try
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
@@ -51,7 +51,7 @@ class CommitBuilderSpec extends AnyFlatSpec with BeforeAndAfter with Matchers wi
 
   behavior of "CommitBuilder"
 
-  "without prefix parameter" should "create commits without prefix" in {
+  "without prefix parameter" should "create and amend commits with Change-Id without prefix" in {
 
     val commitBuilder = new CommitBuilder(
       fixtures.numberOfFilesPerCommit,
@@ -60,8 +60,19 @@ class CommitBuilderSpec extends AnyFlatSpec with BeforeAndAfter with Matchers wi
       fixtures.defaultPrefixOfCommit
     )
 
-    commitBuilder.commitToRepository(testGitRepo.getRepository)
-    getHeadCommit.getFullMessage should startWith("Test commit header - ")
+    commitBuilder.commitToRepository(testGitRepo.getRepository, computeChangeId = true)
+    val originalCommit = getHeadCommit
+
+    getHeadCommit.getFullMessage should startWith("Test commit header - "): Unit
+    val originalChangeId = getHeadCommit.getFooterLines(CommitBuilder.ChangeIdFooterKey)
+
+    commitBuilder.commitToRepository(testGitRepo.getRepository, amend = true)
+    val amendedCommit = getHeadCommit
+    getHeadCommit.getFullMessage should startWith("Amended test commit header - "): Unit
+
+    getHeadCommit.getFooterLines(CommitBuilder.ChangeIdFooterKey) should be(originalChangeId): Unit
+
+    amendedCommit.getId should not be (originalCommit.getId)
   }
 
   "with prefix parameter" should "start with the prefix" in {

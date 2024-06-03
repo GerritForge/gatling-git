@@ -42,18 +42,19 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
   def buildWithSession(session: Session): Validation[Request] = {
 
     for {
-      command           <- request.commandName(session)
-      urlString         <- request.url(session)
-      url               <- validateUrl(urlString)
-      refSpec           <- request.refSpec(session)
-      tag               <- request.tag(session)
-      force             <- request.force(session)
-      computeChangeId   <- request.computeChangeId(session)
-      pushOptions       <- request.pushOptions(session)
-      user              <- request.userId(session)
-      requestName       <- request.requestName(session)
-      repoDirOverride   <- request.repoDirOverride(session)
+      command         <- request.commandName(session)
+      urlString       <- request.url(session)
+      url             <- validateUrl(urlString)
+      refSpec         <- request.refSpec(session)
+      tag             <- request.tag(session)
+      force           <- request.force(session)
+      computeChangeId <- request.computeChangeId(session)
+      pushOptions     <- request.pushOptions(session)
+      user            <- request.userId(session)
+      requestName     <- request.requestName(session)
+      repoDirOverride <- request.repoDirOverride(session)
       createNewPatchset <- request.createNewPatchset(session)
+      resetBeforePush <- request.resetBeforePush(session)
     } yield {
       val userId               = if (user == "") session.userId.toString else user
       val maybeRepoDirOverride = if (repoDirOverride == "") None else Some(repoDirOverride)
@@ -71,7 +72,8 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
             options = pushOptions.split(",").toList,
             maybeRequestName = requestName,
             repoDirOverride = maybeRepoDirOverride,
-            createNewPatchset = createNewPatchset
+            createNewPatchset = createNewPatchset,
+            resetBeforePush = resetBeforePush
           )
         case "tag"          => Tag(url, userId, refSpec, tag, requestName)
         case "cleanup-repo" => CleanupRepo(url, userId, requestName)

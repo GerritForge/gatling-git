@@ -25,6 +25,7 @@ import com.github.barbasa.gatling.git.helper.CommitBuilder
 import com.github.barbasa.gatling.git.request.Request.{addRemote, initRepo}
 import com.typesafe.scalalogging.LazyLogging
 import io.gatling.commons.stats.{Status, KO => GatlingFail, OK => GatlingOK}
+import org.eclipse.jgit.api.ResetCommand.ResetType
 import org.eclipse.jgit.api._
 import org.eclipse.jgit.lib.Constants.MASTER
 import org.eclipse.jgit.lib.{NullProgressMonitor, Repository, TextProgressMonitor}
@@ -260,7 +261,8 @@ case class Push(
     options: List[String] = List.empty,
     maybeRequestName: String = EmptyRequestName.value,
     repoDirOverride: Option[String] = None,
-    createNewPatchset: Boolean = false
+    createNewPatchset: Boolean = false,
+    resetBeforePush: Boolean = false
 )(implicit
     val conf: GatlingGitConfiguration
 ) extends Request {
@@ -273,9 +275,16 @@ case class Push(
       if (!repoDir.exists()) addRemote(initRepo(repoDir), url): Unit
       Git.open(repoDir)
     }
+    if (resetBeforePush)
+      git
+        .reset()
+        .setMode(ResetType.HARD)
+        .setRef("origin/master")
+        .setProgressMonitor(progressMonitor)
+        .call()
+
     val isSrcDstRefSpec: String => Boolean = _.contains(":") // e.g. HEAD:refs/for/master
 
-    // TODO: Create multiple commits per push
     commitBuilder.commitToRepository(
       repository(repoDir),
       Option(refSpec).filterNot(isSrcDstRefSpec),

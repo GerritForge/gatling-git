@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4f10ddf_158442cf",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2024-06-03T14:17:27Z",
+      "side": 0,
+      "message": "Remove this TODO as it\u0027s actually already happening by not resetting the repo state. It has the same effect of pushing multiple commits as one as it creates a chain of commits.",
+      "range": {
+        "startLine": 278,
+        "startChar": 4,
+        "endLine": 278,
+        "endChar": 45
+      },
+      "revId": "741d08faf264cbb04004b63c19f522c33e8f848e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

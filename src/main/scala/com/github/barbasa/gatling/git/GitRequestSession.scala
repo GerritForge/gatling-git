@@ -30,7 +30,8 @@ case class GitRequestSession(
     userId: Expression[String] = StaticValueExpression(""),
     requestName: Expression[String] = StaticValueExpression(""),
     repoDirOverride: Expression[String] = StaticValueExpression(""),
-    createNewPatchset: Expression[Boolean] = False
+    createNewPatchset: Expression[Boolean] = False,
+    resetBeforePush: Expression[Boolean] = False
 )
 
 object GitRequestSession {

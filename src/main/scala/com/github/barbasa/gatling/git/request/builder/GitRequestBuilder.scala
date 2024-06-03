@@ -53,6 +53,7 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
       user            <- request.userId(session)
       requestName     <- request.requestName(session)
       repoDirOverride <- request.repoDirOverride(session)
+      resetBeforePush <- request.resetBeforePush(session)
     } yield {
       val userId               = if (user == "") session.userId.toString else user
       val maybeRepoDirOverride = if (repoDirOverride == "") None else Some(repoDirOverride)
@@ -69,7 +70,8 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
             computeChangeId = computeChangeId,
             options = pushOptions.split(",").toList,
             maybeRequestName = requestName,
-            repoDirOverride = maybeRepoDirOverride
+            repoDirOverride = maybeRepoDirOverride,
+            resetBeforePush = resetBeforePush
           )
         case "tag"          => Tag(url, userId, refSpec, tag, requestName)
         case "cleanup-repo" => CleanupRepo(url, userId, requestName)

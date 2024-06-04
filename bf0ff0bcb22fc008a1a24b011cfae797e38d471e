@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cc430c5_35e61a08",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2024-06-04T09:34:33Z",
+      "side": 1,
+      "message": "Would it be difficult to add a test that runs two `push` commands, asserting that the results are not in a chain relation?",
+      "revId": "bf0ff0bcb22fc008a1a24b011cfae797e38d471e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d03a4599_78eaad26",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2024-06-04T09:34:33Z",
+      "side": 1,
+      "message": "This shouldn\u0027t always reset to `master` right? It should rather _reset_ to the value `refSpec` is pushing to,\n\nFor example, if this `push` is to `HEAD:refs/heads/foo`, we should reset to `origin/foo`.\n\nWDYT?",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 32
+      },
+      "revId": "bf0ff0bcb22fc008a1a24b011cfae797e38d471e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

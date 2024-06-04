@@ -14,11 +14,12 @@
 
 package com.github.barbasa.gatling.git.request
 
+import com.github.barbasa.gatling.git.GitRequestSession.EmptyResetTo
 import com.github.barbasa.gatling.git.helper.CommitBuilder
 import com.github.barbasa.gatling.git.request.Request.initRepo
 import org.apache.commons.io.FileUtils
 import org.eclipse.jgit.lib.Constants.R_HEADS
-import org.eclipse.jgit.revwalk.RevCommit
+import org.eclipse.jgit.revwalk.{RevCommit, RevWalk}
 import org.eclipse.jgit.transport.URIish
 import org.scalatest.BeforeAndAfter
 
@@ -26,6 +27,8 @@ import scala.annotation.nowarn
 import scala.jdk.CollectionConverters._
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
+
+import java.util.UUID
 
 @nowarn("msg=unused value")
 class PushSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
@@ -132,6 +135,48 @@ class PushSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTes
         options = List("testKey=testValue")
       )
     basePush.send.status shouldBe OK
+  }
+
+  it should "create commits as siblings when branch is reset" in {
+    val baseBranch = s"branch-${UUID.randomUUID().toString}"
+    val rootCommit = pushToBranch(baseBranch)
+
+    val commit1 = pushToBranch(s"branch1-${UUID.randomUUID().toString}")
+    commit1.getParentCount shouldBe 1
+    commit1.getParent(0).getId shouldBe rootCommit.getId
+
+    val commit2 = pushToBranch(s"branch2-${UUID.randomUUID().toString}", maybeReset=Option(baseBranch))
+    commit2.getParentCount shouldBe 1
+    commit2.getParent(0).getId shouldBe rootCommit.getId
+  }
+
+  it should "create commits in a chain when branch is not reset" in {
+    val baseBranch = s"branch-${UUID.randomUUID().toString}"
+    val rootCommit = pushToBranch(baseBranch)
+
+    val commit1 = pushToBranch(s"branch1-${UUID.randomUUID().toString}")
+    commit1.getParentCount shouldBe 1
+    commit1.getParent(0).getId shouldBe rootCommit.getId
+
+    val commit2 = pushToBranch(s"branch2-${UUID.randomUUID().toString}")
+    commit2.getParentCount shouldBe 1
+    commit2.getParent(0).getId shouldBe commit1.getId
+  }
+
+  private def pushToBranch(branch: String, maybeReset: Option[String] = None): RevCommit = {
+    val push = Push(
+      new URIish(s"file://$originRepoDirectory"),
+      s"$testUser",
+      refSpec = branch,
+      maybeResetTo = maybeReset.getOrElse(EmptyResetTo.value)
+    )
+
+    push.send.status shouldBe OK
+
+    val push1ObjectId = testGitRepo.getRepository.exactRef(s"$R_HEADS$branch").getObjectId
+
+    val revWalk1 = new RevWalk(testGitRepo.getRepository)
+    revWalk1.parseCommit(push1ObjectId)
   }
 
   override def commandName: String = "Push"

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4567d5a_f159fee0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2024-06-07T10:46:13Z",
+      "side": 1,
+      "message": "@luca.milanesio@gmail.com if you are also happy with this change would you mind pushing this version to maven? so that we can consume it from [1]\n\n\n[1] https://review.gerrithub.io/c/GerritForge/gatling-sbt-gerrit-test/+/1195643",
+      "revId": "532fca71513628329dd846f995f67e789ace75ac",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d242fd93_50967259",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-06-25T21:30:14Z",
+      "side": 1,
+      "message": "Verified locally, tests are passing, working also E2E",
+      "revId": "d35e2a5f7d8b48ef71678331d9faa0a3ea39a5b8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

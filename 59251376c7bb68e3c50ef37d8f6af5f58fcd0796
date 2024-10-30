@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c02bb552_b0dd6ea4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2024-10-30T20:51:57Z",
+      "side": 1,
+      "message": "Great finding!!\nThis is also fixing an issue where we see file names having with spaces and commas.\n\n`\n,  376946917542083.java\n,  376947990107000.java\n,  376950078817208.java\n,  376952765464166.java\n?  376951128012833.java\n?  376960561297708.java\n? 376324304736041.java\n? 376324775088833.java\n? 376349300810333.java\n 376718731790375.java\n 376718921390166.java\n`\n\nThis is also reducing the collision space by a lot.",
+      "revId": "59251376c7bb68e3c50ef37d8f6af5f58fcd0796",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

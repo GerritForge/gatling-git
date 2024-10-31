@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91fe0696_4c1329fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-10-31T23:43:05Z",
+      "side": 1,
+      "message": "This is a *huge* performance improvement when testing Gatling with large repositories (e.g. AOSP)",
+      "revId": "056410f750e99b93c0caf7988555ac2eb4138ae4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

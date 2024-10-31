@@ -39,6 +39,30 @@
       },
       "revId": "59251376c7bb68e3c50ef37d8f6af5f58fcd0796",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b9ef927_7d3e652e",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2024-10-31T05:19:30Z",
+      "side": 1,
+      "message": "I wanted to make the minimum change possible. However, I have used your suggestion in a follup change [1].\n\n[1]: https://review.gerrithub.io/c/GerritForge/gatling-git/+/1203332/1",
+      "parentUuid": "842a9adc_4c18b50a",
+      "range": {
+        "startLine": 39,
+        "startChar": 6,
+        "endLine": 39,
+        "endChar": 56
+      },
+      "revId": "59251376c7bb68e3c50ef37d8f6af5f58fcd0796",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ],
   "submitRequirementResults": []

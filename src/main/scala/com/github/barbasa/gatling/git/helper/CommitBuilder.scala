@@ -39,7 +39,7 @@ class CommitBuilder(numFiles: Int, minContentLength: Int, maxContentLength: Int,
       amend: Boolean = false
   ) = {
     val git = new Git(repository)
-    Vector.range(0, numFiles).foreach { _ =>
+    val fileNames = Vector.range(0, numFiles).map { _ =>
       val contentLength: Int = minContentLength + random
         .nextInt((maxContentLength - minContentLength) + 1)
       val file: MockFile = MockFileFactory.create(TextFileType, contentLength)
@@ -53,7 +53,7 @@ class CommitBuilder(numFiles: Int, minContentLength: Int, maxContentLength: Int,
     val existingBranch = branch.filter(existingBranches.contains)
     existingBranch.foreach(git.checkout.setName(_).call)
 
-    git.add.addFilepattern(".").call()
+    fileNames.foreach(fileName => git.add.addFilepattern(fileName).call())
 
     val uniqueSuffix  = s"${LocalDateTime.now}"
     val commitCommand = git.commit()

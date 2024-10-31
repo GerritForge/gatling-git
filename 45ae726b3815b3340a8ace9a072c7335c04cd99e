@@ -1,4 +1,45 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1efbef83_ef0c466e",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-10-31T09:52:40Z",
+      "side": 1,
+      "message": "We already import `Random` on the line above. Also having `Random.alphanumeric` in the code at L40 is a lot more readable than just `alphanumeric`.",
+      "revId": "45ae726b3815b3340a8ace9a072c7335c04cd99e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34351b47_6a11a5fe",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-10-31T09:52:40Z",
+      "side": 1,
+      "message": "This is inconsistent with L47.\n\n\n\n```suggestion\n      Random.alphanumeric.take(10).mkString + System.nanoTime() + \".java\"\n```",
+      "range": {
+        "startLine": 40,
+        "startChar": 6,
+        "endLine": 40,
+        "endChar": 18
+      },
+      "revId": "45ae726b3815b3340a8ace9a072c7335c04cd99e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ],
   "submitRequirementResults": []
 }

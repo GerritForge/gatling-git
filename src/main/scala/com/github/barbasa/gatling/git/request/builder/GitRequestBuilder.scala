@@ -17,6 +17,7 @@ package com.github.barbasa.gatling.git.request.builder
 import com.github.barbasa.gatling.git.{GatlingGitConfiguration, GitRequestSession}
 import com.github.barbasa.gatling.git.action.GitRequestActionBuilder
 import com.github.barbasa.gatling.git.request._
+import com.typesafe.scalalogging.LazyLogging
 import io.gatling.commons.validation.{Failure, Success, Validation}
 import io.gatling.core.session.Session
 import org.eclipse.jgit.transport.URIish
@@ -37,7 +38,7 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
       since = "1.0.12"
     )
     val postMsgHook: Option[String] = None
-) {
+) extends LazyLogging {
 
   def buildWithSession(session: Session): Validation[Request] = {
 
@@ -61,6 +62,7 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
       val maybeRepoDirOverride = if (repoDirOverride == "") None else Some(repoDirOverride)
       command.toLowerCase match {
         case "clone" =>
+          logger.warn(s"CLONING with url $url")
           Clone(
             url,
             userId,
@@ -69,9 +71,14 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
             deleteWorkdirOnExit = deleteWorkdirOnExit,
             repoDirOverride = maybeRepoDirOverride
           )
-        case "fetch" => Fetch(url, userId, refSpec, requestName)
-        case "pull"  => Pull(url, userId, requestName, maybeRepoDirOverride)
+        case "fetch" =>
+          logger.warn(s"FETCH with url $url")
+          Fetch(url, userId, refSpec, requestName)
+        case "pull" =>
+          logger.warn(s"PULL with url $url")
+          Pull(url, userId, requestName, maybeRepoDirOverride)
         case "push" =>
+          logger.warn(s"PUSH with url $url")
           Push(
             url,
             userId,
@@ -84,9 +91,13 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
             createNewPatchset = createNewPatchset,
             maybeResetTo = resetTo
           )
-        case "tag"          => Tag(url, userId, refSpec, tag, requestName)
-        case "cleanup-repo" => CleanupRepo(url, userId, requestName)
-        case _              => InvalidRequest(url, userId, requestName)
+        case "tag" =>
+          logger.warn(s"TAG with url $url")
+          Tag(url, userId, refSpec, tag, requestName)
+        case "cleanup-repo" =>
+          logger.warn(s"cleanup-repo")
+          CleanupRepo(url, userId, requestName)
+        case _ => InvalidRequest(url, userId, requestName)
       }
     }
   }

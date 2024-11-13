@@ -22,6 +22,30 @@
       },
       "revId": "f5c3999a956daef8465538456341de3aefa81dcc",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "215c39db_7373c073",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2024-11-13T17:35:43Z",
+      "side": 1,
+      "message": "Oh yes, this was completely missed when the repository directory override was introduced in Ic83609a7c9b",
+      "parentUuid": "4c942a5d_0476dbcc",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 68
+      },
+      "revId": "f5c3999a956daef8465538456341de3aefa81dcc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

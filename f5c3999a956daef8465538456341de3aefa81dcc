@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c942a5d_0476dbcc",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2024-11-13T17:27:30Z",
+      "side": 1,
+      "message": "Tag and CleanupRepo also suffer from the same bug I believe.\nshould we fix them too?\nEven as a follow up change",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 68
+      },
+      "revId": "f5c3999a956daef8465538456341de3aefa81dcc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

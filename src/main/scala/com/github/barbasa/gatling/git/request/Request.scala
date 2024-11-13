@@ -36,7 +36,7 @@ import java.util.{List => JavaList}
 import scala.jdk.CollectionConverters._
 import scala.reflect.io.Directory
 
-sealed trait Request {
+sealed trait Request extends LazyLogging {
 
   def commandName = this.getClass.getSimpleName
 
@@ -51,10 +51,13 @@ sealed trait Request {
   def user: String
 
   val repoName = url.getPath.split("/").last
-  def workTreeDirectory(suffix: Option[String] = None): File =
+  def workTreeDirectory(suffix: Option[String] = None): File = {
+    val wtFolder = conf.tmpBasePath + s"/$commandName/$user/$repoName-worktree${suffix.fold("")(s => s"-$s")}"
+    logger.warn(s"WORKING TREE PATH: $wtFolder")
     new File(
-      conf.tmpBasePath + s"/$commandName/$user/$repoName-worktree${suffix.fold("")(s => s"-$s")}"
+      wtFolder
     )
+  }
 
   def repositoryPath(path: Option[String]): File =
     path.fold(workTreeDirectory())(dir => new File(dir))

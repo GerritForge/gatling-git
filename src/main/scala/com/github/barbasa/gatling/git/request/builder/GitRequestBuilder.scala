@@ -69,7 +69,7 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
             deleteWorkdirOnExit = deleteWorkdirOnExit,
             repoDirOverride = maybeRepoDirOverride
           )
-        case "fetch" => Fetch(url, userId, refSpec, requestName)
+        case "fetch" => Fetch(url, userId, refSpec, requestName, maybeRepoDirOverride)
         case "pull"  => Pull(url, userId, requestName, maybeRepoDirOverride)
         case "push" =>
           Push(

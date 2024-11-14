@@ -162,8 +162,11 @@ The common parameters are:
   ```
 * `repoDirOverride` allows to specify a directory that will be used as the request's git repository.
   This can be useful if we want to test how different commands interact on the same repository.
-  **Note:** Cannot be use for `Clone`, as it doesn't make sense to clone a repo to the same folder over
-  and over.
+
+  *Note*: When used with a Clone command, the repoOverride specifies the target worktree for the clone operation. It is
+  the caller’s responsibility to ensure that the chosen worktree name is available. This can be achieved by selecting a
+  unique, non-existing name, calling cleanup-repo to clear previous worktrees, or setting the deleteOnExit flag to
+  automatically remove the worktree when the process completes.
 
 The push operation have optional extra parameters:
 

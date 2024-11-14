@@ -139,6 +139,30 @@
       },
       "revId": "f5c3999a956daef8465538456341de3aefa81dcc",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81684025_0d409a98",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2024-11-14T01:00:54Z",
+      "side": 1,
+      "message": "Addressed in [1] and [2].\n\n[1]: https://review.gerrithub.io/c/GerritForge/gatling-git/+/1204050\n[2]: https://review.gerrithub.io/c/GerritForge/gatling-git/+/1204051",
+      "parentUuid": "2e84f69d_e0999330",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 68
+      },
+      "revId": "f5c3999a956daef8465538456341de3aefa81dcc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

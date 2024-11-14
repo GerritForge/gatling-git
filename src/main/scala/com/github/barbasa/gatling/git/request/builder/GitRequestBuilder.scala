@@ -65,7 +65,7 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
             url,
             userId,
             refSpec,
-            requestName,
+            maybeRequestName = requestName,
             deleteWorkdirOnExit = deleteWorkdirOnExit,
             repoDirOverride = maybeRepoDirOverride
           )

@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e050965_93a1f17b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2024-11-14T00:54:51Z",
+      "side": 1,
+      "message": "request",
+      "range": {
+        "startLine": 7,
+        "startChar": 38,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "f5c3999a956daef8465538456341de3aefa81dcc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a3d178a_eec73436",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2024-11-14T00:54:51Z",
+      "side": 1,
+      "message": "request",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "f5c3999a956daef8465538456341de3aefa81dcc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f940bd8b_1458a19d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2024-11-14T00:54:51Z",
+      "side": 1,
+      "message": "request",
+      "range": {
+        "startLine": 12,
+        "startChar": 38,
+        "endLine": 12,
+        "endChar": 44
+      },
+      "revId": "f5c3999a956daef8465538456341de3aefa81dcc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c942a5d_0476dbcc",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
         "patchSetId": 1

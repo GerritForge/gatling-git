@@ -84,7 +84,7 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
             createNewPatchset = createNewPatchset,
             maybeResetTo = resetTo
           )
-        case "tag"          => Tag(url, userId, refSpec, tag, requestName)
+        case "tag"          => Tag(url, userId, refSpec, tag, requestName, maybeRepoDirOverride)
         case "cleanup-repo" => CleanupRepo(url, userId, requestName)
         case _              => InvalidRequest(url, userId, requestName)
       }

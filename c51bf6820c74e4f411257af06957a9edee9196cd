@@ -56,6 +56,30 @@
       },
       "revId": "c51bf6820c74e4f411257af06957a9edee9196cd",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afc2018a_297f3e0c",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2024-12-11T09:13:48Z",
+      "side": 1,
+      "message": "This has been fixed in I46664c2734e7",
+      "parentUuid": "2147aa00_bc26d8a3",
+      "range": {
+        "startLine": 62,
+        "startChar": 55,
+        "endLine": 62,
+        "endChar": 75
+      },
+      "revId": "c51bf6820c74e4f411257af06957a9edee9196cd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ],
   "submitRequirementResults": []

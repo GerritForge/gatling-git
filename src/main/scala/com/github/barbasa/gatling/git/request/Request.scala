@@ -316,10 +316,11 @@ case class Push(
         .setForce(force)
 
     val pushResults =
-      if (url.getScheme == "file")
-        basePushCommand.call()
-      else
+      if (url.getScheme != "file" && options.nonEmpty) {
         basePushCommand.setPushOptions(options.asJava).call()
+      } else {
+        basePushCommand.call()
+      }
 
     val maybeRemoteRefUpdate = pushResults.asScala
       .flatMap { pushResult =>

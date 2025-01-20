@@ -80,7 +80,7 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
             refSpec,
             force = force,
             computeChangeId = computeChangeId,
-            options = pushOptions.split(",").toList,
+            options = pushOptions.split(",").toList.filter(_.nonEmpty),
             maybeRequestName = requestName,
             repoDirOverride = maybeRepoDirOverride,
             createNewPatchset = createNewPatchset,

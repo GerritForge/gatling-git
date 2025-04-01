@@ -34,7 +34,8 @@ case class GitRequestSession(
     resetTo: Expression[String] = StaticValueExpression(""),
     deleteWorkdirOnExit: Expression[Boolean] = False,
     failOnDeleteErrors: Expression[Boolean] = True,
-    mirror: Expression[Boolean] = False
+    mirror: Expression[Boolean] = False,
+    refsToClone: Expression[Set[String]] = Set.empty[String].expressionSuccess
 )
 
 object GitRequestSession {

@@ -37,6 +37,7 @@ trait GitTestHelpers {
   val testUser: String       = "testUser"
   val testRepo: String       = "testRepo"
   val testBranchName: String = "mybranch"
+  val secondTestBranchName: String = "secondBranch"
 
   val originRepoDirectory: File = new File(s"$tempBase/$testUser/$testRepo")
   def workTreeDirectory(suffix: String = ""): File = new File(

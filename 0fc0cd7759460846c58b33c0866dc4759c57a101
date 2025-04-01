@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "901411fd_9607dc50",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/CloneSpec.scala",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2025-04-01T14:13:44Z",
+      "side": 1,
+      "message": "nit: should this be done in a finally block, so that we clean after ourselves even if the assertion at L134 fails?",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 56
+      },
+      "revId": "0fc0cd7759460846c58b33c0866dc4759c57a101",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

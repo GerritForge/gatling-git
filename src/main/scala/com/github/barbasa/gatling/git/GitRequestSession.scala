@@ -33,7 +33,8 @@ case class GitRequestSession(
     createNewPatchset: Expression[Boolean] = False,
     resetTo: Expression[String] = StaticValueExpression(""),
     deleteWorkdirOnExit: Expression[Boolean] = False,
-    failOnDeleteErrors: Expression[Boolean] = True
+    failOnDeleteErrors: Expression[Boolean] = True,
+    mirror: Expression[Boolean] = False
 )
 
 object GitRequestSession {

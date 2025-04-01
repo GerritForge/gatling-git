@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd3a3717_54c35966",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/CloneSpec.scala",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2025-04-01T10:09:40Z",
+      "side": 1,
+      "message": "Can you also add a test with `mirror \u003d false`?\nOr maybe add an assertion in the test at line 48?",
+      "revId": "506e78436f1d607a720c983c43f39eaf00e8666b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ada45fdd_d7350ce3",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/CloneSpec.scala",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2025-04-01T10:09:40Z",
+      "side": 1,
+      "message": "I would use a normal ref her not a Gerrit specific one.",
+      "range": {
+        "startLine": 113,
+        "startChar": 30,
+        "endLine": 113,
+        "endChar": 33
+      },
+      "revId": "506e78436f1d607a720c983c43f39eaf00e8666b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

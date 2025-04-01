@@ -36,6 +36,7 @@ class CloneSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTe
     testGitRepo = initRepo(originRepoDirectory)
     testGitRepo.commit().setMessage("Initial Commit").call()
     testGitRepo.branchCreate().setName(testBranchName).call()
+    testGitRepo.branchCreate().setName(secondTestBranchName).call()
   }
 
   after {
@@ -152,6 +153,53 @@ class CloneSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTe
     val remoteRefs = git.lsRemote().call().asScala.map(ref => (ref.getName, ref.getObjectId))
     localRefs should not contain theSameElementsAs(remoteRefs)
     FileUtils.deleteDirectory(workDirFirstClone.toFile)
+  }
+
+  it should "clone just one branch" in {
+    val workDir = Files.createTempDirectory("oneBranch")
+    val cloneOneBranch = Clone(
+      url = new URIish(s"file://${originRepoDirectory}"),
+      user = s"$testUser",
+      ref = s"$testBranchName",
+      repoDirOverride = Some(workDir.toString),
+      refsToClone = Set(s"refs/heads/$testBranchName", s"refs/heads/$secondTestBranchName")
+    ).send
+    cloneOneBranch.status shouldBe OK
+
+    val git       = JGit.open(workDir.toFile)
+    val localRefs = git.getRepository.getRefDatabase.getRefs.asScala.map(_.getName)
+    localRefs should contain theSameElementsAs
+      Set(
+        "HEAD",
+        s"refs/heads/$testBranchName",
+        s"refs/remotes/origin/$testBranchName",
+        s"refs/remotes/origin/$secondTestBranchName"
+      )
+    FileUtils.deleteDirectory(workDir.toFile)
+  }
+
+  it should "clone all the branches" in {
+    val workDir = Files.createTempDirectory("allBranch")
+    val cloneOneBranch = Clone(
+      url = new URIish(s"file://${originRepoDirectory}"),
+      user = s"$testUser",
+      ref = s"$testBranchName",
+      repoDirOverride = Some(workDir.toString),
+      refsToClone = Set.empty
+    ).send
+    cloneOneBranch.status shouldBe OK
+
+    val git       = JGit.open(workDir.toFile)
+    val localRefs = git.getRepository.getRefDatabase.getRefs.asScala.map(_.getName)
+    localRefs should contain theSameElementsAs
+      Set(
+        "HEAD",
+        s"refs/heads/$testBranchName",
+        s"refs/remotes/origin/${Constants.MASTER}",
+        s"refs/remotes/origin/$testBranchName",
+        s"refs/remotes/origin/$secondTestBranchName"
+      )
+    FileUtils.deleteDirectory(workDir.toFile)
   }
 
   override def commandName: String = "Clone"

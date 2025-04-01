@@ -57,6 +57,7 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
       resetTo             <- request.resetTo(session)
       deleteWorkdirOnExit <- request.deleteWorkdirOnExit(session)
       failOnDeleteErrors  <- request.failOnDeleteErrors(session)
+      mirror              <- request.mirror(session)
     } yield {
       val userId               = if (user == "") session.userId.toString else user
       val maybeRepoDirOverride = if (repoDirOverride == "") None else Some(repoDirOverride)
@@ -69,7 +70,8 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
             maybeRequestName = requestName,
             deleteWorkdirOnExit = deleteWorkdirOnExit,
             repoDirOverride = maybeRepoDirOverride,
-            failOnDeleteErrors = failOnDeleteErrors
+            failOnDeleteErrors = failOnDeleteErrors,
+            mirror = mirror
           )
         case "fetch" => Fetch(url, userId, refSpec, requestName, maybeRepoDirOverride)
         case "pull"  => Pull(url, userId, requestName, maybeRepoDirOverride)

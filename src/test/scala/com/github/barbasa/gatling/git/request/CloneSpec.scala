@@ -17,6 +17,7 @@ package com.github.barbasa.gatling.git.request
 import com.github.barbasa.gatling.git.request.Request.initRepo
 import org.apache.commons.io.FileUtils
 import org.eclipse.jgit.api.{Git => JGit}
+import org.eclipse.jgit.lib.Constants
 import org.eclipse.jgit.transport.URIish
 import org.scalatest.BeforeAndAfter
 
@@ -93,6 +94,46 @@ class CloneSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTe
 
     val gitWorkDir = JGit.open(workDir.toFile)
     gitWorkDir.status().call().isClean shouldBe true
+  }
+
+  "clone mirror" should "clone all the references from the origin" in {
+    val workDirFirstClone = Files.createTempDirectory("firstClone")
+    val firstClone = Clone(
+      new URIish(s"file://${originRepoDirectory}"),
+      s"$testUser",
+      s"$testBranchName",
+      repoDirOverride = Some(workDirFirstClone.toString)
+    ).send
+    firstClone.status shouldBe OK
+
+    val firstChange =
+      Push(
+        url = new URIish(s"file://$originRepoDirectory"),
+        user = s"$testUser",
+        refSpec = s"HEAD:refs/for/$testBranchName",
+        computeChangeId = true,
+        maybeResetTo = s"${Constants.DEFAULT_REMOTE_NAME}/$testBranchName",
+        repoDirOverride = Some(workDirFirstClone.toString)
+      ).send
+    firstChange.status shouldBe OK
+
+    val workDirSecondClone = Files.createTempDirectory("secondClone")
+    val secondCloneWithMirror = Clone(
+      url = new URIish(s"file://${originRepoDirectory}"),
+      user = s"$testUser",
+      ref = s"master",
+      repoDirOverride = Some(workDirSecondClone.toString),
+      mirror = true
+    ).send
+    secondCloneWithMirror.status shouldBe OK
+
+    val git = JGit.open(workDirSecondClone.toFile)
+    val localRefs =
+      git.getRepository.getRefDatabase.getRefs.asScala.map(ref => (ref.getName, ref.getObjectId))
+    val remoteRefs = git.lsRemote().call().asScala.map(ref => (ref.getName, ref.getObjectId))
+    localRefs should contain theSameElementsAs (remoteRefs)
+    FileUtils.deleteDirectory(workDirFirstClone.toFile)
+    FileUtils.deleteDirectory(workDirSecondClone.toFile)
   }
 
   override def commandName: String = "Clone"

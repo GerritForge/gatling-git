@@ -22,6 +22,30 @@
       },
       "revId": "24d3f2e29384ba097fd41c281c58b5c31e11da69",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b11d9535_5a8a4b16",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1020779
+      },
+      "writtenOn": "2025-04-01T14:32:10Z",
+      "side": 1,
+      "message": "`setBranch`:[1]\n\n`setBranchesToClone`: [2]\n\nReferenes:\n[1] https://github.com/eclipse-jgit/jgit/blob/v5.13.2.202306221912-r/org.eclipse.jgit/src/org/eclipse/jgit/api/CloneCommand.java#L583\n[2] https://github.com/eclipse-jgit/jgit/blob/v5.13.2.202306221912-r/org.eclipse.jgit/src/org/eclipse/jgit/api/CloneCommand.java#L670",
+      "parentUuid": "c1eaf8a9_67dd77c1",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 45
+      },
+      "revId": "24d3f2e29384ba097fd41c281c58b5c31e11da69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

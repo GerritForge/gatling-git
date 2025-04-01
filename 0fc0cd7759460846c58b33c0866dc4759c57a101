@@ -22,6 +22,30 @@
       },
       "revId": "0fc0cd7759460846c58b33c0866dc4759c57a101",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "699e0ba3_0bd3d2c6",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/CloneSpec.scala",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1020779
+      },
+      "writtenOn": "2025-04-01T14:42:53Z",
+      "side": 1,
+      "message": "I think is a fair point. Maybe i should be pragmatic and dont delete them. Most of the tests dont delete them.",
+      "parentUuid": "901411fd_9607dc50",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 56
+      },
+      "revId": "0fc0cd7759460846c58b33c0866dc4759c57a101",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

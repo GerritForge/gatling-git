@@ -148,7 +148,8 @@ case class Clone(
     deleteWorkdirOnExit: Boolean = false,
     repoDirOverride: Option[String] = None,
     failOnDeleteErrors: Boolean = true,
-    mirror: Boolean = false
+    mirror: Boolean = false,
+    refsToClone: Set[String] = Set.empty
 )(implicit
     val conf: GatlingGitConfiguration
 ) extends Request {
@@ -163,6 +164,7 @@ case class Clone(
       .setURI(url.toString)
       .setDirectory(workTreeFile)
       .setBranch(ref)
+      .setBranchesToClone(refsToClone.asJava)
       .setProgressMonitor(progressMonitor)
       .setTimeout(conf.gitConfiguration.commandTimeout)
       .setMirror(mirror)

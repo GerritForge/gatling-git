@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1eaf8a9_67dd77c1",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2025-04-01T14:17:46Z",
+      "side": 1,
+      "message": "What\u0027s the difference between `setBranch` and `setBranchesToClone`?",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 45
+      },
+      "revId": "24d3f2e29384ba097fd41c281c58b5c31e11da69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

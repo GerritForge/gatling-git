@@ -326,28 +326,7 @@ case class Push(
         basePushCommand.call()
       }
 
-    val maybeRemoteRefUpdate = pushResults.asScala
-      .flatMap { pushResult =>
-        pushResult.getRemoteUpdates.asScala
-      }
-      .find(remoteRefUpdate =>
-        Seq(
-          RemoteRefUpdate.Status.REJECTED_OTHER_REASON,
-          RemoteRefUpdate.Status.REJECTED_NONFASTFORWARD,
-          RemoteRefUpdate.Status.REJECTED_NODELETE,
-          RemoteRefUpdate.Status.NON_EXISTING,
-          RemoteRefUpdate.Status.REJECTED_REMOTE_CHANGED
-        ).contains(remoteRefUpdate.getStatus)
-      )
-
-    maybeRemoteRefUpdate.fold(GitCommandResponse(OK))(remoteRefUpdate =>
-      GitCommandResponse(
-        Fail,
-        Some(
-          s"Status: ${remoteRefUpdate.getStatus.toString} - Message: ${remoteRefUpdate.getMessage}"
-        )
-      )
-    )
+    Push.checkPushResults(pushResults.asScala)
   }
 }
 
@@ -391,7 +370,7 @@ case class Tag(
       }
 
     git.tag().setName(tag).setObjectId(headCommit).call()
-    val pushResult = git
+    val pushResult: Iterable[PushResult] = git
       .push()
       .setRemote("origin")
       .setRefSpecs(new RefSpec(s"refs/tags/${tag}"))
@@ -401,11 +380,7 @@ case class Tag(
       .call()
       .asScala
 
-    if (!pushResult.isEmpty) {
-      GitCommandResponse(OK)
-    } else {
-      GitCommandResponse(Fail)
-    }
+    Push.checkPushResults(pushResult)
   }
 }
 
@@ -417,6 +392,31 @@ object Push {
     conf.commands.pushConfig.maxContentLength,
     conf.commands.pushConfig.commitPrefix
   )
+
+  def checkPushResults(results: Iterable[PushResult]): GitCommandResponse = {
+    val maybeRemoteRefUpdate = results
+      .flatMap { pushResult =>
+        pushResult.getRemoteUpdates.asScala
+      }
+      .find(remoteRefUpdate =>
+        Seq(
+          RemoteRefUpdate.Status.REJECTED_OTHER_REASON,
+          RemoteRefUpdate.Status.REJECTED_NONFASTFORWARD,
+          RemoteRefUpdate.Status.REJECTED_NODELETE,
+          RemoteRefUpdate.Status.NON_EXISTING,
+          RemoteRefUpdate.Status.REJECTED_REMOTE_CHANGED
+        ).contains(remoteRefUpdate.getStatus)
+      )
+
+    maybeRemoteRefUpdate.fold(GitCommandResponse(OK))(remoteRefUpdate =>
+      GitCommandResponse(
+        Fail,
+        Some(
+          s"Status: ${remoteRefUpdate.getStatus.toString} - Message: ${remoteRefUpdate.getMessage}"
+        )
+      )
+    )
+  }
 }
 
 case class InvalidRequest(url: URIish, user: String, maybeRequestName: String)(implicit

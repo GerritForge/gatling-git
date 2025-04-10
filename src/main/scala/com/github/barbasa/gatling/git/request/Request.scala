@@ -16,7 +16,7 @@ package com.github.barbasa.gatling.git.request
 import com.github.barbasa.gatling.git.GatlingGitConfiguration
 import com.github.barbasa.gatling.git.GitRequestSession._
 import com.github.barbasa.gatling.git.helper.CommitBuilder
-import com.github.barbasa.gatling.git.request.Request.{addRemote, initRepo}
+import com.github.barbasa.gatling.git.request.Request._
 import com.typesafe.scalalogging.LazyLogging
 import io.gatling.commons.stats.{Status, KO => GatlingFail, OK => GatlingOK}
 import org.apache.commons.io.FileUtils
@@ -57,8 +57,8 @@ sealed trait Request {
       conf.tmpBasePath + s"/$commandName/$user/$repoName-worktree${suffix.fold("")(s => s"-$s")}"
     )
 
-  def repositoryPath(path: Option[String]): File =
-    path.fold(workTreeDirectory())(dir => new File(dir))
+  def repositoryPath(path: Option[String], suffix: Option[String] = None): File =
+    path.fold(workTreeDirectory(suffix))(dir => new File(dir))
 
   private val builder                    = new FileRepositoryBuilder
   def repository(path: File): Repository = builder.setWorkTree(path).build()
@@ -116,6 +116,9 @@ sealed trait Request {
 }
 
 object Request {
+
+  val TestRemoteName = "test-origin";
+
   def initRepo(workTreeDirectory: File, initialBranchName: String = MASTER) = {
     Git.init
       .setInitialBranch(initialBranchName)
@@ -133,9 +136,19 @@ object Request {
   def addRemote(repo: Git, url: URIish): RemoteConfig = {
     repo
       .remoteAdd()
-      .setName("origin")
+      .setName(TestRemoteName)
       .setUri(url)
       .call()
+  }
+
+  def createGitRepository(repoDir: File, url: URIish): Git = {
+    val git =
+      if (!repoDir.exists())
+        initRepo(repoDir)
+      else
+        Git.open(repoDir)
+    addRemote(git, url): Unit
+    git
   }
 }
 
@@ -156,9 +169,8 @@ case class Clone(
 
   def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
-    val workTreeFile = repoDirOverride
-      .map(new File(_))
-      .getOrElse(workTreeDirectory(Some(workTreeDirSuffix)))
+    val workTreeFile = repositoryPath(repoDirOverride, Option(workTreeDirSuffix))
+
     Git.cloneRepository
       .setAuthenticationMethod(url, cb)
       .setURI(url.toString)
@@ -217,13 +229,13 @@ case class Fetch(
     val conf: GatlingGitConfiguration
 ) extends Request {
   val repoDir = repositoryPath(repoDirOverride)
-  addRemote(initRepo(repoDir), url): Unit
+  val git     = createGitRepository(repoDir, url)
 
   def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
-    val fetchResult = new Git(repository(repoDir))
+    val fetchResult = git
       .fetch()
-      .setRemote("origin")
+      .setRemote(TestRemoteName)
       .setRefSpecs(refSpec)
       .setAuthenticationMethod(url, cb)
       .setTimeout(conf.gitConfiguration.commandTimeout)
@@ -247,12 +259,13 @@ case class Pull(
     val conf: GatlingGitConfiguration
 ) extends Request {
   val repoDir = repositoryPath(repoDirOverride)
-  addRemote(initRepo(repoDir), url): Unit
+  val git     = createGitRepository(repoDir, url)
 
   override def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
-    val pullResult = new Git(repository(repoDir))
+    val pullResult = git
       .pull()
+      .setRemote(TestRemoteName)
       .setAuthenticationMethod(url, cb)
       .setTimeout(conf.gitConfiguration.commandTimeout)
       .setProgressMonitor(progressMonitor)
@@ -283,13 +296,10 @@ case class Push(
 ) extends Request {
 
   val repoDir = repositoryPath(repoDirOverride)
+  val git     = createGitRepository(repoDir, url)
+
   override def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
-
-    val git = {
-      if (!repoDir.exists()) addRemote(initRepo(repoDir), url): Unit
-      Git.open(repoDir)
-    }
 
     if (maybeResetTo != EmptyResetTo.value) {
       git
@@ -314,7 +324,7 @@ case class Push(
     val basePushCommand: PushCommand =
       git.push
         .setAuthenticationMethod(url, cb)
-        .setRemote(url.toString)
+        .setRemote(TestRemoteName)
         .setRefSpecs(refSpecs.toList.asJava)
         .setTimeout(conf.gitConfiguration.commandTimeout)
         .setProgressMonitor(progressMonitor)
@@ -344,16 +354,15 @@ case class Tag(
     with LazyLogging {
 
   val repoDir      = repositoryPath(repoDirOverride)
+  val git          = createGitRepository(repoDir, url)
   val uniqueSuffix = s"$user - ${LocalDateTime.now}"
 
   override def send: GitCommandResponse = {
     import PimpedGitTransportCommand._
-    val git = Git.init().setDirectory(repoDir).call()
-    git.remoteAdd().setName("origin").setUri(url).call()
 
     val fetchResult = git
       .fetch()
-      .setRemote("origin")
+      .setRemote(TestRemoteName)
       .setRefSpecs(refSpec)
       .setAuthenticationMethod(url, cb)
       .setTimeout(conf.gitConfiguration.commandTimeout)
@@ -373,7 +382,7 @@ case class Tag(
     git.tag().setName(tag).setObjectId(headCommit).call()
     val pushResult: Iterable[PushResult] = git
       .push()
-      .setRemote("origin")
+      .setRemote(TestRemoteName)
       .setRefSpecs(new RefSpec(s"refs/tags/${tag}"))
       .setAuthenticationMethod(url, cb)
       .setTimeout(conf.gitConfiguration.commandTimeout)

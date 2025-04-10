@@ -40,7 +40,8 @@ class PullSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTes
 
   "without any error" should "return OK" in {
 
-    Push(new URIish(s"file://$originRepoDirectory"), s"$testUser").send
+    val pushStatus = Push(new URIish(s"file://$originRepoDirectory"), s"$testUser").send
+    pushStatus.status shouldBe OK
 
     val cmd      = Pull(new URIish(s"file://$originRepoDirectory"), s"$testUser")
     val response = cmd.send

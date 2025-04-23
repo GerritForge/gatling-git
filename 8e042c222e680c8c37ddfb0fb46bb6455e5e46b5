@@ -46,6 +46,30 @@
       },
       "revId": "8e042c222e680c8c37ddfb0fb46bb6455e5e46b5",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a60ec92_5bc9d6c9",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/PushSpec.scala",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2025-04-23T20:20:32Z",
+      "side": 1,
+      "message": "Added a separate test to be explicit about the parsing of white spaces.",
+      "parentUuid": "eaaafe29_e4953e20",
+      "range": {
+        "startLine": 105,
+        "startChar": 45,
+        "endLine": 105,
+        "endChar": 46
+      },
+      "revId": "8e042c222e680c8c37ddfb0fb46bb6455e5e46b5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

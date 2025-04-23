@@ -16,6 +16,24 @@
       "message": "Can you explain the use case for doing it/not doing it ?",
       "revId": "12e341d323d5cb26af2ca3524dc6c43adcdee652",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfb18baa_608aa6d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-04-23T16:28:04Z",
+      "side": 1,
+      "message": "+1\n\nIf this can be achieved in a different way, then I don\u0027t see the point of this change.",
+      "parentUuid": "d9006b0c_98045fc4",
+      "revId": "12e341d323d5cb26af2ca3524dc6c43adcdee652",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

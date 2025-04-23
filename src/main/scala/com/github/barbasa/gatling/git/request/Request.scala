@@ -308,13 +308,14 @@ case class Push(
       computeChangeId,
       amend = createNewPatchset
     )
+    val refSpecs = refSpec.split(" ").map(rs => new RefSpec(rs))
 
     // XXX Make credential configurable
     val basePushCommand: PushCommand =
       git.push
         .setAuthenticationMethod(url, cb)
         .setRemote(url.toString)
-        .add(refSpec)
+        .setRefSpecs(refSpecs.toList.asJava)
         .setTimeout(conf.gitConfiguration.commandTimeout)
         .setProgressMonitor(progressMonitor)
         .setForce(force)

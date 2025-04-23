@@ -22,6 +22,30 @@
       },
       "revId": "8e042c222e680c8c37ddfb0fb46bb6455e5e46b5",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaaafe29_e4953e20",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/PushSpec.scala",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-04-23T18:02:21Z",
+      "side": 1,
+      "message": "Also add a comment highlighting the reason why you have multiple spaces.",
+      "parentUuid": "4ca39237_798a1ec9",
+      "range": {
+        "startLine": 105,
+        "startChar": 45,
+        "endLine": 105,
+        "endChar": 46
+      },
+      "revId": "8e042c222e680c8c37ddfb0fb46bb6455e5e46b5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

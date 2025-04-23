@@ -22,6 +22,29 @@
       },
       "revId": "55ee2fa06da26bc593d395c1d94a47178f2dd0e4",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c9a7cd6_2731215e",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-04-23T15:48:01Z",
+      "side": 1,
+      "message": "This looks quite artificial syntax, which isn\u0027t very natural in Git.\nIf you would like to create two tags and push them at once, just disable the push phase at L380 and then run a separate push. You do not need this change at all.",
+      "range": {
+        "startLine": 373,
+        "startChar": 7,
+        "endLine": 373,
+        "endChar": 17
+      },
+      "revId": "55ee2fa06da26bc593d395c1d94a47178f2dd0e4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

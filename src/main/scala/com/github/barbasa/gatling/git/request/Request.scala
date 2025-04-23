@@ -369,11 +369,18 @@ case class Tag(
         revWalk.close()
       }
 
-    git.tag().setName(tag).setObjectId(headCommit).call()
+    val refSpecs = tag
+      .split(",")
+      .map { tag =>
+        git.tag().setName(tag).setObjectId(headCommit).call()
+        new RefSpec(s"refs/tags/$tag")
+      }
+      .toList
+
     val pushResult: Iterable[PushResult] = git
       .push()
       .setRemote("origin")
-      .setRefSpecs(new RefSpec(s"refs/tags/${tag}"))
+      .setRefSpecs(refSpecs.asJava)
       .setAuthenticationMethod(url, cb)
       .setTimeout(conf.gitConfiguration.commandTimeout)
       .setProgressMonitor(progressMonitor)

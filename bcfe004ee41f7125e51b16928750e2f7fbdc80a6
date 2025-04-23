@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3785820d_c2fb2206",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-04-23T16:13:41Z",
+      "side": 1,
+      "message": "```suggestion\nFix ref-specs parsing upon push\n\nGit push supports multiple refspecs separated by spaces;\nhowever, the `Push` case class was assuming that the ref-spec\nwas only one and therefore added a single string to the JGit\u0027s\n`Push` command, causing a failure.\n\nExample:\ngit push origin HEAD:refs/heads/branch-1 HEAD:refs/heads/branch-2\n\nThe above push command translated into a request would have\nfailed, whilst it should have caused the addition of two ref-specs\nto push: HEAD:refs/heads/branch-1 and HEAD:refs/heads/branch-2\n```",
+      "revId": "bcfe004ee41f7125e51b16928750e2f7fbdc80a6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32a3ace1_5cba003b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-04-23T16:13:41Z",
+      "side": 1,
+      "message": "Can we add one test?",
+      "revId": "bcfe004ee41f7125e51b16928750e2f7fbdc80a6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aaf7604_1e0b4395",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-04-23T16:13:41Z",
+      "side": 1,
+      "message": "This could result into multiple empty strings if there are two consecutive blanks.\n\n```suggestion\n    val refSpecs \u003d refSpec.split(\" \").filter(_.nonEmpty).map(new RefSpec(_))\n```",
+      "range": {
+        "startLine": 311,
+        "startChar": 27,
+        "endLine": 311,
+        "endChar": 37
+      },
+      "revId": "bcfe004ee41f7125e51b16928750e2f7fbdc80a6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

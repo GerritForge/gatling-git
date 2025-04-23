@@ -34,6 +34,24 @@
       "parentUuid": "d9006b0c_98045fc4",
       "revId": "12e341d323d5cb26af2ca3524dc6c43adcdee652",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41b75c46_d9bc43a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2025-04-23T17:21:00Z",
+      "side": 1,
+      "message": "The way we\u0027re now suggesting of doing tags makes this whole command pointless tbh.\nI\u0027ll abandon the change but maybe we should remove this scenario entirely.",
+      "parentUuid": "cfb18baa_608aa6d2",
+      "revId": "12e341d323d5cb26af2ca3524dc6c43adcdee652",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

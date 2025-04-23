@@ -59,6 +59,7 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
       failOnDeleteErrors  <- request.failOnDeleteErrors(session)
       mirror              <- request.mirror(session)
       refsToClone         <- request.refsToClone(session)
+      fetchBeforeTagging  <- request.fetchBeforeTagging(session)
     } yield {
       val userId               = if (user == "") session.userId.toString else user
       val maybeRepoDirOverride = if (repoDirOverride == "") None else Some(repoDirOverride)
@@ -90,7 +91,8 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
             createNewPatchset = createNewPatchset,
             maybeResetTo = resetTo
           )
-        case "tag"          => Tag(url, userId, refSpec, tag, requestName, maybeRepoDirOverride)
+        case "tag" =>
+          Tag(url, userId, refSpec, tag, requestName, maybeRepoDirOverride, fetchBeforeTagging)
         case "cleanup-repo" => CleanupRepo(url, userId, requestName, maybeRepoDirOverride)
         case _              => InvalidRequest(url, userId, requestName)
       }

@@ -336,38 +336,26 @@ case class Tag(
     refSpec: String = HeadToMasterRefSpec.value,
     tag: String = EmptyTag.value,
     maybeRequestName: String = EmptyRequestName.value,
-    repoDirOverride: Option[String] = None
+    repoDirOverride: Option[String] = None,
+    fetchBeforeTagging: Boolean = true
 )(implicit
     val conf: GatlingGitConfiguration
 ) extends Request
     with LazyLogging {
+  import PimpedGitTransportCommand._
 
   val repoDir      = repositoryPath(repoDirOverride)
   val uniqueSuffix = s"$user - ${LocalDateTime.now}"
 
   override def send: GitCommandResponse = {
-    import PimpedGitTransportCommand._
     val git = Git.init().setDirectory(repoDir).call()
     git.remoteAdd().setName("origin").setUri(url).call()
 
-    val fetchResult = git
-      .fetch()
-      .setRemote("origin")
-      .setRefSpecs(refSpec)
-      .setAuthenticationMethod(url, cb)
-      .setTimeout(conf.gitConfiguration.commandTimeout)
-      .setProgressMonitor(progressMonitor)
-      .call()
-
-    val fetchHead = fetchResult.getAdvertisedRef(refSpec)
-
-    val revWalk = new RevWalk(git.getRepository)
-    val headCommit =
-      try {
-        revWalk.parseAny(fetchHead.getObjectId)
-      } finally {
-        revWalk.close()
-      }
+    val headCommit = if (fetchBeforeTagging) {
+      fetchAndFindHeadCommit(git)
+    } else {
+      git.log.call().asScala.head
+    }
 
     val refSpecs = tag
       .split(",")
@@ -388,6 +376,29 @@ case class Tag(
       .asScala
 
     Push.checkPushResults(pushResult)
+  }
+
+  private def fetchAndFindHeadCommit(git: Git) = {
+    val fetchResult = git
+      .fetch()
+      .setRemote("origin")
+      .setRefSpecs(refSpec)
+      .setAuthenticationMethod(url, cb)
+      .setTimeout(conf.gitConfiguration.commandTimeout)
+      .setProgressMonitor(progressMonitor)
+      .call()
+
+    val fetchHead = fetchResult.getAdvertisedRef(refSpec)
+
+    val revWalk = new RevWalk(git.getRepository)
+    val headCommit = {
+      try {
+        revWalk.parseAny(fetchHead.getObjectId)
+      } finally {
+        revWalk.close()
+      }
+    }
+    headCommit
   }
 }
 

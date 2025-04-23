@@ -35,7 +35,8 @@ case class GitRequestSession(
     deleteWorkdirOnExit: Expression[Boolean] = False,
     failOnDeleteErrors: Expression[Boolean] = True,
     mirror: Expression[Boolean] = False,
-    refsToClone: Expression[Set[String]] = Set.empty[String].expressionSuccess
+    refsToClone: Expression[Set[String]] = Set.empty[String].expressionSuccess,
+    fetchBeforeTagging: Expression[Boolean] = True
 )
 
 object GitRequestSession {

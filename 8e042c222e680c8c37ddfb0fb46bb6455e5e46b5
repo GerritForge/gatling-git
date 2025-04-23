@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ca39237_798a1ec9",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/request/PushSpec.scala",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-04-23T17:52:29Z",
+      "side": 1,
+      "message": "We should use a *double space*, so that it also verifies that the splitting discards the empty strings.",
+      "range": {
+        "startLine": 105,
+        "startChar": 45,
+        "endLine": 105,
+        "endChar": 46
+      },
+      "revId": "8e042c222e680c8c37ddfb0fb46bb6455e5e46b5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

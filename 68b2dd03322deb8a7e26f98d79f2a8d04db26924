@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44d06d45_71d158be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-05-05T08:14:03Z",
+      "side": 1,
+      "message": "It would be best to split the refactoring from the functionality change.",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "68b2dd03322deb8a7e26f98d79f2a8d04db26924",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef319c5f_03739fa6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-05-05T08:14:03Z",
+      "side": 1,
+      "message": "Makes sense, can you split this into separate changes?\nWhat if the `repoDirOverride` points to a local repo with a remote name that is called `test-origin`?",
+      "range": {
+        "startLine": 11,
+        "startChar": 42,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "68b2dd03322deb8a7e26f98d79f2a8d04db26924",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b15ab640_020529a6",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-05-05T08:14:03Z",
+      "side": 1,
+      "message": "Unrelated change",
+      "range": {
+        "startLine": 60,
+        "startChar": 41,
+        "endLine": 60,
+        "endChar": 72
+      },
+      "revId": "68b2dd03322deb8a7e26f98d79f2a8d04db26924",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73c52ee2_d59020fe",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-05-05T08:14:03Z",
+      "side": 1,
+      "message": "This should be `origin` as it was before",
+      "range": {
+        "startLine": 120,
+        "startChar": 24,
+        "endLine": 120,
+        "endChar": 35
+      },
+      "revId": "68b2dd03322deb8a7e26f98d79f2a8d04db26924",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

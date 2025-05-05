@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "281c33db_dab1e934",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2025-05-05T14:44:49Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "44d06d45_71d158be",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "68b2dd03322deb8a7e26f98d79f2a8d04db26924",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef319c5f_03739fa6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 9
@@ -37,6 +61,30 @@
       "writtenOn": "2025-05-05T08:14:03Z",
       "side": 1,
       "message": "Makes sense, can you split this into separate changes?\nWhat if the `repoDirOverride` points to a local repo with a remote name that is called `test-origin`?",
+      "range": {
+        "startLine": 11,
+        "startChar": 42,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "68b2dd03322deb8a7e26f98d79f2a8d04db26924",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d13cf0b3_0cb0f850",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2025-05-05T14:44:49Z",
+      "side": 1,
+      "message": "It might be worth leaving `origin` as default and make it configurable, WDYT?",
+      "parentUuid": "ef319c5f_03739fa6",
       "range": {
         "startLine": 11,
         "startChar": 42,
@@ -89,6 +137,97 @@
         "endLine": 120,
         "endChar": 35
       },
+      "revId": "68b2dd03322deb8a7e26f98d79f2a8d04db26924",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9afc6c79_605be50f",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 9
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2025-05-05T14:44:49Z",
+      "side": 1,
+      "message": "Why is this related to this change? 🤓",
+      "revId": "68b2dd03322deb8a7e26f98d79f2a8d04db26924",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9abff523_5e49eb8c",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 9
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2025-05-05T14:44:49Z",
+      "side": 1,
+      "message": "Are we missing a `setRemote` here?",
+      "revId": "68b2dd03322deb8a7e26f98d79f2a8d04db26924",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41c41371_612045c9",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 9
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2025-05-05T14:44:49Z",
+      "side": 1,
+      "message": "Is this the same as before?\nIn `repository` we also set the worktree:\n\n```\ndef repository(path: File): Repository \u003d builder.setWorkTree(path).build()\n```",
+      "range": {
+        "startLine": 232,
+        "startChar": 16,
+        "endLine": 232,
+        "endChar": 35
+      },
+      "revId": "68b2dd03322deb8a7e26f98d79f2a8d04db26924",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4890dcf_51f8f24c",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 9
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2025-05-05T14:44:49Z",
+      "side": 1,
+      "message": "Any reason why this cannot stay at line #303?",
+      "revId": "68b2dd03322deb8a7e26f98d79f2a8d04db26924",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee22edf0_4bf60ab0",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 9
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2025-05-05T14:44:49Z",
+      "side": 1,
+      "message": "Any reason why this need to be moved here and it cannot stay at line #351?",
       "revId": "68b2dd03322deb8a7e26f98d79f2a8d04db26924",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }

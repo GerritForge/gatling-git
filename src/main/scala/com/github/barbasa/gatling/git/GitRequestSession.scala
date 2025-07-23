@@ -35,7 +35,9 @@ case class GitRequestSession(
     deleteWorkdirOnExit: Expression[Boolean] = False,
     failOnDeleteErrors: Expression[Boolean] = True,
     mirror: Expression[Boolean] = False,
-    refsToClone: Expression[Set[String]] = Set.empty[String].expressionSuccess
+    refsToClone: Expression[Set[String]] = Set.empty[String].expressionSuccess,
+    minContentLength: Expression[Option[Int]] = EmptyInt,
+    maxContentLength: Expression[Option[Int]] = EmptyInt
 )
 
 object GitRequestSession {
@@ -47,6 +49,7 @@ object GitRequestSession {
   val EmptyResetTo        = StaticValueExpression("")
   val False               = false.expressionSuccess
   val True                = true.expressionSuccess
+  val EmptyInt            = StaticValueExpression(Option.empty[Int])
 
   def cmd(
       cmd: String,

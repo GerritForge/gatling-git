@@ -59,6 +59,8 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
       failOnDeleteErrors  <- request.failOnDeleteErrors(session)
       mirror              <- request.mirror(session)
       refsToClone         <- request.refsToClone(session)
+      minContentLength    <- request.minContentLength(session)
+      maxContentLength    <- request.maxContentLength(session)
     } yield {
       val userId               = if (user == "") session.userId.toString else user
       val maybeRepoDirOverride = if (repoDirOverride == "") None else Some(repoDirOverride)
@@ -83,6 +85,12 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
             userId,
             refSpec,
             force = force,
+            commitBuilder = {
+              val defBuilder = Push.defaultCommitBuilder
+              val builderMin =
+                minContentLength.fold(defBuilder)(min => defBuilder.copy(minContentLength = min))
+              maxContentLength.fold(builderMin)(max => builderMin.copy(maxContentLength = max))
+            },
             computeChangeId = computeChangeId,
             options = pushOptions.split(",").toList.filter(_.nonEmpty),
             maybeRequestName = requestName,

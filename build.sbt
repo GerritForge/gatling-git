@@ -31,7 +31,7 @@ val luca = Developer(
 )
 
 ThisBuild / publishTo := {
-  val nexus = "https://oss.sonatype.org/"
+  val nexus = "https://ossrh-staging-api.central.sonatype.com/"
   if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
   else Some("releases" at nexus + "service/local/staging/deploy/maven2")
 }

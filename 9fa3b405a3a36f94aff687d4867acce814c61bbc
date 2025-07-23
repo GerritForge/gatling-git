@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ca0acfc_7f33c9b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2025-07-23T12:59:10Z",
+      "side": 1,
+      "message": "...configured in commands.push.minContentLength and commands.push.maxContentLength.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "9fa3b405a3a36f94aff687d4867acce814c61bbc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cfe26b7_4d09edb3",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2025-07-23T12:59:10Z",
+      "side": 1,
+      "message": "What about having a min and max size similarly to the commands.push.*ContentLength configurations? So we can be consistent between configuration and parameters coming from the session.",
+      "range": {
+        "startLine": 63,
+        "startChar": 6,
+        "endLine": 63,
+        "endChar": 23
+      },
+      "revId": "9fa3b405a3a36f94aff687d4867acce814c61bbc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

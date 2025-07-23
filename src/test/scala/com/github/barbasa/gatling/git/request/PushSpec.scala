@@ -117,7 +117,7 @@ class PushSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTes
 
   "with ref-spec that contains multiple spaces" should "correctly ignore them" in {
     val (branch1, branch2) = ("test-1", "test2")
-    val refSpecs = s"HEAD:refs/heads/$branch1   HEAD:refs/heads/$branch2"
+    val refSpecs           = s"HEAD:refs/heads/$branch1   HEAD:refs/heads/$branch2"
     val push = Push(
       new URIish(s"file://$originRepoDirectory"),
       s"$testUser",
@@ -128,7 +128,7 @@ class PushSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTes
 
     val allBranches = testGitRepo.branchList.call.asScala.map(_.getName)
     allBranches.size should be(2)
-    allBranches should contain allOf(s"$R_HEADS$branch1", s"$R_HEADS$branch2")
+    allBranches should contain allOf (s"$R_HEADS$branch1", s"$R_HEADS$branch2")
   }
 
   "with a branch and computing a Change-Id" should "create a commit and a new patch-set ready for review" in {

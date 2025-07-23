@@ -26,7 +26,7 @@ import scala.jdk.CollectionConverters._
 import org.eclipse.jgit.lib.Constants.R_HEADS
 import org.eclipse.jgit.util.ChangeIdUtil
 
-class CommitBuilder(numFiles: Int, minContentLength: Int, maxContentLength: Int, prefix: String) {
+case class CommitBuilder(numFiles: Int, minContentLength: Int, maxContentLength: Int, prefix: String) {
 
   import CommitBuilder._
 

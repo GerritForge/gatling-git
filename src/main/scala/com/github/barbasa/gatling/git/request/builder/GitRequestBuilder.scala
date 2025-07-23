@@ -14,6 +14,7 @@
 
 package com.github.barbasa.gatling.git.request.builder
 
+import com.github.barbasa.gatling.git.GitRequestSession.UnspecifiedInt
 import com.github.barbasa.gatling.git.{GatlingGitConfiguration, GitRequestSession}
 import com.github.barbasa.gatling.git.action.GitRequestActionBuilder
 import com.github.barbasa.gatling.git.request._
@@ -59,6 +60,7 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
       failOnDeleteErrors  <- request.failOnDeleteErrors(session)
       mirror              <- request.mirror(session)
       refsToClone         <- request.refsToClone(session)
+      commitContentSize   <- request.commitContentSize(session)
     } yield {
       val userId               = if (user == "") session.userId.toString else user
       val maybeRepoDirOverride = if (repoDirOverride == "") None else Some(repoDirOverride)
@@ -83,6 +85,10 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
             userId,
             refSpec,
             force = force,
+            commitBuilder = commitContentSize match {
+              case UnspecifiedInt.value => Push.defaultCommitBuilder
+              case size => Push.defaultCommitBuilder.copy(minContentLength = size, maxContentLength = size)
+            },
             computeChangeId = computeChangeId,
             options = pushOptions.split(",").toList.filter(_.nonEmpty),
             maybeRequestName = requestName,

@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa70bac2_90f0dbfd",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/GitRequestSession.scala",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2025-07-23T14:47:46Z",
+      "side": 1,
+      "message": "if this is working for both `min` and `max` perhaps should be made obvious `exactCommitContentSize`.",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "9fa3b405a3a36f94aff687d4867acce814c61bbc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10e0ac2a_52be2339",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/GitRequestSession.scala",
         "patchSetId": 4

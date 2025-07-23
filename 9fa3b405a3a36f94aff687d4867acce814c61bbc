@@ -24,6 +24,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3989fe8b_6a758011",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-07-23T15:07:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ca0acfc_7f33c9b4",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "9fa3b405a3a36f94aff687d4867acce814c61bbc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa70bac2_90f0dbfd",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ecb9c29_06ac1271",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/GitRequestSession.scala",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-07-23T15:07:19Z",
+      "side": 1,
+      "message": "Or maybe we should allow overriding both?",
+      "parentUuid": "fa70bac2_90f0dbfd",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "9fa3b405a3a36f94aff687d4867acce814c61bbc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10e0ac2a_52be2339",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/GitRequestSession.scala",
         "patchSetId": 4
@@ -60,6 +108,30 @@
       "writtenOn": "2025-07-23T13:12:00Z",
       "side": 1,
       "message": "Why such a name? Why not `CommitContentSize` or something like that?",
+      "range": {
+        "startLine": 51,
+        "startChar": 6,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "9fa3b405a3a36f94aff687d4867acce814c61bbc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8345729d_5a6db865",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/GitRequestSession.scala",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-07-23T15:07:19Z",
+      "side": 1,
+      "message": "That\u0027s just a numeric value that represents an empty int value. Maybe `EmptyInt` would be better?",
+      "parentUuid": "10e0ac2a_52be2339",
       "range": {
         "startLine": 51,
         "startChar": 6,

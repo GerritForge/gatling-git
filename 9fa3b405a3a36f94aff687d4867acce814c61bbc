@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10e0ac2a_52be2339",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/GitRequestSession.scala",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2025-07-23T13:12:00Z",
+      "side": 1,
+      "message": "Why such a name? Why not `CommitContentSize` or something like that?",
+      "range": {
+        "startLine": 51,
+        "startChar": 6,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "9fa3b405a3a36f94aff687d4867acce814c61bbc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1cfe26b7_4d09edb3",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/request/builder/GitRequestBuilder.scala",
         "patchSetId": 4

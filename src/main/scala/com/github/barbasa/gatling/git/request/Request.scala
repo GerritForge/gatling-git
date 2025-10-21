@@ -223,7 +223,7 @@ case class Fetch(
     import PimpedGitTransportCommand._
     val fetchResult = new Git(repository(repoDir))
       .fetch()
-      .setRemote("origin")
+      .setRemote(url.toString)
       .setRefSpecs(refSpec)
       .setAuthenticationMethod(url, cb)
       .setTimeout(conf.gitConfiguration.commandTimeout)
@@ -353,7 +353,7 @@ case class Tag(
 
     val fetchResult = git
       .fetch()
-      .setRemote("origin")
+      .setRemote(url.toString)
       .setRefSpecs(refSpec)
       .setAuthenticationMethod(url, cb)
       .setTimeout(conf.gitConfiguration.commandTimeout)
@@ -373,7 +373,7 @@ case class Tag(
     git.tag().setName(tag).setObjectId(headCommit).call()
     val pushResult: Iterable[PushResult] = git
       .push()
-      .setRemote("origin")
+      .setRemote(url.toString)
       .setRefSpecs(new RefSpec(s"refs/tags/${tag}"))
       .setAuthenticationMethod(url, cb)
       .setTimeout(conf.gitConfiguration.commandTimeout)

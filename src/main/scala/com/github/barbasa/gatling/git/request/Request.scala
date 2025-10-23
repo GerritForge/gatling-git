@@ -51,6 +51,9 @@ sealed trait Request {
   def url: URIish
   def user: String
 
+  def httpUser: String     = ""
+  def httpPassword: String = ""
+
   val repoName = url.getPath.split("/").last
   def workTreeDirectory(suffix: Option[String] = None): File =
     new File(
@@ -96,8 +99,8 @@ sealed trait Request {
         case "http" | "https" =>
           c.setCredentialsProvider(
             new UsernamePasswordCredentialsProvider(
-              conf.httpConfiguration.userName,
-              conf.httpConfiguration.password
+              if (httpUser == "") conf.httpConfiguration.userName else httpUser,
+              if (httpPassword == "") conf.httpConfiguration.password else httpPassword
             )
           )
         case "file" =>
@@ -149,7 +152,9 @@ case class Clone(
     repoDirOverride: Option[String] = None,
     failOnDeleteErrors: Boolean = true,
     mirror: Boolean = false,
-    refsToClone: Set[String] = Set.empty
+    refsToClone: Set[String] = Set.empty,
+    override val httpUser: String,
+    override val httpPassword: String
 )(implicit
     val conf: GatlingGitConfiguration
 ) extends Request {
@@ -212,7 +217,9 @@ case class Fetch(
     user: String,
     refSpec: String = AllRefs,
     maybeRequestName: String = EmptyRequestName.value,
-    repoDirOverride: Option[String] = None
+    repoDirOverride: Option[String] = None,
+    override val httpUser: String,
+    override val httpPassword: String
 )(implicit
     val conf: GatlingGitConfiguration
 ) extends Request {
@@ -242,7 +249,9 @@ case class Pull(
     url: URIish,
     user: String,
     maybeRequestName: String = EmptyRequestName.value,
-    repoDirOverride: Option[String] = None
+    repoDirOverride: Option[String] = None,
+    override val httpUser: String,
+    override val httpPassword: String
 )(implicit
     val conf: GatlingGitConfiguration
 ) extends Request {
@@ -277,7 +286,9 @@ case class Push(
     maybeRequestName: String = EmptyRequestName.value,
     repoDirOverride: Option[String] = None,
     createNewPatchset: Boolean = false,
-    maybeResetTo: String = EmptyResetTo.value
+    maybeResetTo: String = EmptyResetTo.value,
+    override val httpUser: String,
+    override val httpPassword: String
 )(implicit
     val conf: GatlingGitConfiguration
 ) extends Request {
@@ -337,7 +348,9 @@ case class Tag(
     refSpec: String = HeadToMasterRefSpec.value,
     tag: String = EmptyTag.value,
     maybeRequestName: String = EmptyRequestName.value,
-    repoDirOverride: Option[String] = None
+    repoDirOverride: Option[String] = None,
+    override val httpUser: String,
+    override val httpPassword: String
 )(implicit
     val conf: GatlingGitConfiguration
 ) extends Request

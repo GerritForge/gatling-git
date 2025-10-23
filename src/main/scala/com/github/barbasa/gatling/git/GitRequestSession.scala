@@ -37,7 +37,9 @@ case class GitRequestSession(
     mirror: Expression[Boolean] = False,
     refsToClone: Expression[Set[String]] = Set.empty[String].expressionSuccess,
     minContentLength: Expression[Option[Int]] = EmptyInt,
-    maxContentLength: Expression[Option[Int]] = EmptyInt
+    maxContentLength: Expression[Option[Int]] = EmptyInt,
+    httpUser: Expression[Option[String]] = EmptyString,
+    httpPassword: Expression[Option[String]] = EmptyString
 )
 
 object GitRequestSession {
@@ -50,6 +52,7 @@ object GitRequestSession {
   val False               = false.expressionSuccess
   val True                = true.expressionSuccess
   val EmptyInt            = StaticValueExpression(Option.empty[Int])
+  val EmptyString         = StaticValueExpression(Option.empty[String])
 
   def cmd(
       cmd: String,

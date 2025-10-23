@@ -37,7 +37,9 @@ case class GitRequestSession(
     mirror: Expression[Boolean] = False,
     refsToClone: Expression[Set[String]] = Set.empty[String].expressionSuccess,
     minContentLength: Expression[Option[Int]] = EmptyInt,
-    maxContentLength: Expression[Option[Int]] = EmptyInt
+    maxContentLength: Expression[Option[Int]] = EmptyInt,
+    httpUser: Expression[String] = StaticValueExpression(""),
+    httpPassword: Expression[String] = StaticValueExpression("")
 )
 
 object GitRequestSession {

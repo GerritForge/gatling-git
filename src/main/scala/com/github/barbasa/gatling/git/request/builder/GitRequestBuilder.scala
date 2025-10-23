@@ -61,6 +61,8 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
       refsToClone         <- request.refsToClone(session)
       minContentLength    <- request.minContentLength(session)
       maxContentLength    <- request.maxContentLength(session)
+      httpUser            <- request.httpUser(session)
+      httpPassword        <- request.httpPassword(session)
     } yield {
       val userId               = if (user == "") session.userId.toString else user
       val maybeRepoDirOverride = if (repoDirOverride == "") None else Some(repoDirOverride)
@@ -75,10 +77,29 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
             repoDirOverride = maybeRepoDirOverride,
             failOnDeleteErrors = failOnDeleteErrors,
             mirror = mirror,
-            refsToClone = refsToClone
+            refsToClone = refsToClone,
+            httpUser = httpUser,
+            httpPassword = httpPassword
           )
-        case "fetch" => Fetch(url, userId, refSpec, requestName, maybeRepoDirOverride)
-        case "pull"  => Pull(url, userId, requestName, maybeRepoDirOverride)
+        case "fetch" =>
+          Fetch(
+            url,
+            userId,
+            refSpec,
+            requestName,
+            maybeRepoDirOverride,
+            httpUser = httpUser,
+            httpPassword = httpPassword
+          )
+        case "pull" =>
+          Pull(
+            url,
+            userId,
+            requestName,
+            maybeRepoDirOverride,
+            httpUser = httpUser,
+            httpPassword = httpPassword
+          )
         case "push" =>
           Push(
             url,
@@ -96,9 +117,21 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
             maybeRequestName = requestName,
             repoDirOverride = maybeRepoDirOverride,
             createNewPatchset = createNewPatchset,
-            maybeResetTo = resetTo
+            maybeResetTo = resetTo,
+            httpUser = httpUser,
+            httpPassword = httpPassword
           )
-        case "tag"          => Tag(url, userId, refSpec, tag, requestName, maybeRepoDirOverride)
+        case "tag" =>
+          Tag(
+            url,
+            userId,
+            refSpec,
+            tag,
+            requestName,
+            maybeRepoDirOverride,
+            httpUser = httpUser,
+            httpPassword = httpPassword
+          )
         case "cleanup-repo" => CleanupRepo(url, userId, requestName, maybeRepoDirOverride)
         case _              => InvalidRequest(url, userId, requestName)
       }

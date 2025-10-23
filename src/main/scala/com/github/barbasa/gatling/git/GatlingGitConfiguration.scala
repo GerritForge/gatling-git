@@ -52,6 +52,10 @@ case class CommandsConfiguration(pushConfig: PushConfiguration)
 object GatlingGitConfiguration {
   private val config = ConfigFactory.load()
 
+  def getStringOrDefaultFromConfig(value: String, valueFromConfig: String): String = {
+    if (value == "") valueFromConfig else value
+  }
+
   implicit class RichConfig(val config: Config) extends AnyVal {
     def optionalInt(path: String): Option[Int] =
       if (config.hasPath(path)) {

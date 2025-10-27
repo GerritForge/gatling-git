@@ -22,6 +22,30 @@
       },
       "revId": "e62c11fc1d7857c0acbdae93c0fa1d1b0e600533",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69bbe7b8_c48e05e8",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2025-10-27T11:32:15Z",
+      "side": 1,
+      "message": "I agree is not the ideal and it should be an `Option`, however we dealt in the same way other optional parameters, like `repoDirOverride`.\n\nAt the momement the pattern to handle `Option` is mimicking the optionality of the parameter with an empty string. I agree is not Scala idiomatic.\n\nThis is becuase the parameters come from a session in the caller, and we didn\u0027t find a way yet to properly handling `Option` in Gatling `Session`s.\n\nI am happy to further look into it to find a better solution. However, once we have the solution I think we should amend all the optional arguments, to have a consistent pattern in the code.",
+      "parentUuid": "eb529c54_23c4e9a0",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 87
+      },
+      "revId": "e62c11fc1d7857c0acbdae93c0fa1d1b0e600533",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

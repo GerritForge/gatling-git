@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb529c54_23c4e9a0",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-10-27T05:49:33Z",
+      "side": 1,
+      "message": "This looks like a code smell that `httpUser` and `httpPassword` should be `Option[String]` rather than `String`",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 87
+      },
+      "revId": "e62c11fc1d7857c0acbdae93c0fa1d1b0e600533",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

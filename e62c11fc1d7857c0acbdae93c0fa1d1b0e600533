@@ -46,6 +46,30 @@
       },
       "revId": "e62c11fc1d7857c0acbdae93c0fa1d1b0e600533",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "947c7a59_c7e1d597",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-11-05T08:54:50Z",
+      "side": 1,
+      "message": "Gotcha, we should at least DRY the if/then/else out? It risks to pollute the code moving forward and making it less readable.",
+      "parentUuid": "69bbe7b8_c48e05e8",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 87
+      },
+      "revId": "e62c11fc1d7857c0acbdae93c0fa1d1b0e600533",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

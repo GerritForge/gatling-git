@@ -17,9 +17,11 @@ level test scenarios using directly the Git verbs in your tests.
 
 * [Scala 2.13][scala]
 * [Gatling 3.9.0][gatling-3.9.0]
+* [Java 11][java-11]
 
 [gatling-3.9.0]: https://mvnrepository.com/artifact/io.gatling/gatling-core/3.9.0
 [scala]: https://www.scala-lang.org/download/
+[java-11]: https://www.oracle.com/uk/java/technologies/javase/jdk11-archive-downloads.html
 
 ### Using the Gatling Git test scenarios and protocol
 

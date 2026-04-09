@@ -42,7 +42,7 @@ ThisBuild / scalaVersion      := "2.13.10"
 ThisBuild / publishMavenStyle := true
 ThisBuild / scalafmtOnCompile := true
 
-val JGitVersion = "5.13.2-20221120.212658-7"
+val JGitVersion = "6.4.0.202211300538-r"
 
 ThisBuild / resolvers +=
   "Eclipse JGit Snapshots" at "https://repo.eclipse.org/content/groups/jgit"
@@ -74,7 +74,8 @@ lazy val root = (project in file("."))
         "org.eclipse.jgit"            % "org.eclipse.jgit"            % JGitVersion,
         "org.eclipse.jgit"            % "org.eclipse.jgit.ssh.apache" % JGitVersion,
         "org.scalatest"              %% "scalatest"                   % "3.2.15"       % Test
-      )
+      ),
+        javacOptions ++= Seq("-source", "11", "-target", "11")
   )
 
 credentials += Credentials(Path.userHome / ".sbt" / "sonatype_credentials")

@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "381058f1_abf35dd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-09T18:58:40Z",
+      "side": 1,
+      "message": "Publishing to Sonatype is ongoing, will fix it in a follow-up change.",
+      "revId": "14081a48e4574a98f2e3e24efab9423d6cdbbe31",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca5fa5e1_ada16f21",

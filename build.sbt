@@ -73,9 +73,14 @@ lazy val root = (project in file("."))
         "com.typesafe.scala-logging" %% "scala-logging"               % "3.9.5",
         "org.eclipse.jgit"            % "org.eclipse.jgit"            % JGitVersion,
         "org.eclipse.jgit"            % "org.eclipse.jgit.ssh.apache" % JGitVersion,
-        "org.scalatest"              %% "scalatest"                   % "3.2.15"       % Test
+        "org.scalatest"              %% "scalatest"                   % "3.2.15" % Test
       ),
-        javacOptions ++= Seq("-source", "11", "-target", "11")
+    javacOptions ++= Seq("-source", "11", "-target", "11"),
+    publishTo := {
+      val centralSnapshots = "https://central.sonatype.com/repository/maven-snapshots/"
+      if (isSnapshot.value) Some("central-snapshots" at centralSnapshots)
+      else localStaging.value
+    }
   )
 
 credentials += Credentials(Path.userHome / ".sbt" / "sonatype_credentials")

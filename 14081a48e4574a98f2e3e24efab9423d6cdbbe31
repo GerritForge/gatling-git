@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca5fa5e1_ada16f21",
+        "filename": "build.sbt",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-09T18:57:20Z",
+      "side": 1,
+      "message": "Formatting issues.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 5
+      },
+      "revId": "14081a48e4574a98f2e3e24efab9423d6cdbbe31",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

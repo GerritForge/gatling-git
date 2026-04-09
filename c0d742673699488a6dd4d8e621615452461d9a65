@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eb0074b_4c0a50c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-04-09T16:57:16Z",
+      "side": 1,
+      "message": "java 11 is good, the issue with going with jgit 7 is that it required java 21, which required changing the base image, which I can\u0027t find the definition of! \n\nGood one.",
+      "revId": "c0d742673699488a6dd4d8e621615452461d9a65",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

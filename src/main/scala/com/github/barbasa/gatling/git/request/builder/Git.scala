@@ -30,6 +30,13 @@ case object Git {
   def pull(url: Expression[String]): GitRequestBuilder =
     new GitRequestBuilder(GitRequestSession.cmd("pull", url))
 
+  def merge(
+      url: Expression[String],
+      sourceRef: Expression[String],
+      targetRef: Expression[String]
+  ): GitRequestBuilder =
+    new GitRequestBuilder(GitRequestSession.cmd("merge", url, sourceRef, targetRef = targetRef))
+
   def push(url: Expression[String]): GitRequestBuilder =
     new GitRequestBuilder(GitRequestSession.cmd("push", url))
 

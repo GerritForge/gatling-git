@@ -23,8 +23,9 @@ import io.gatling.commons.stats.{Status, KO => GatlingFail, OK => GatlingOK}
 import org.apache.commons.io.FileUtils
 import org.eclipse.jgit.api.ResetCommand.ResetType
 import org.eclipse.jgit.api._
-import org.eclipse.jgit.lib.Constants.MASTER
+import org.eclipse.jgit.lib.Constants.{DEFAULT_REMOTE_NAME, MASTER, R_HEADS, R_REMOTES}
 import org.eclipse.jgit.lib.{NullProgressMonitor, Repository, TextProgressMonitor}
+import org.eclipse.jgit.merge.MergeStrategy
 import org.eclipse.jgit.revwalk.RevWalk
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder
 import org.eclipse.jgit.transport._
@@ -33,6 +34,7 @@ import org.eclipse.jgit.transport.sshd.SshdSessionFactory
 import java.io.{File, IOException, PrintWriter}
 import java.nio.file.{Path, Paths}
 import java.time.LocalDateTime
+import java.util.UUID
 import java.util.{List => JavaList}
 import scala.jdk.CollectionConverters._
 import scala.reflect.io.Directory
@@ -274,6 +276,159 @@ case class Pull(
       GitCommandResponse(Fail, Some(pullResult.toString))
     }
   }
+}
+
+case class Merge(
+    url: URIish,
+    user: String,
+    sourceRef: String,
+    targetRef: String = MASTER,
+    maybeRequestName: String = EmptyRequestName.value,
+    repoDirOverride: Option[String] = None,
+    override val httpUser: String = "",
+    override val httpPassword: String = ""
+)(implicit
+    val conf: GatlingGitConfiguration
+) extends Request {
+  val repoDir = repositoryPath(repoDirOverride)
+
+  override def send: GitCommandResponse = {
+    import PimpedGitTransportCommand._
+
+    val git = {
+      if (!repoDir.exists()) addRemote(initRepo(repoDir), url): Unit
+      Git.open(repoDir)
+    }
+
+    val mergeSource = prepareMergeSource(git)
+    try {
+      prepareTargetBranch(git)
+
+      val mergeResult = git
+        .merge()
+        .include(mergeSource.ref)
+        .setStrategy(MergeStrategy.OURS)
+        .setFastForward(MergeCommand.FastForwardMode.NO_FF)
+        .call()
+
+      if (!mergeResult.getMergeStatus.isSuccessful) {
+        GitCommandResponse(Fail, Some(s"Merge failed: ${mergeResult.getMergeStatus}"))
+      } else {
+        val pushResponse = Push.checkPushResults(
+          git
+            .push()
+            .setRemote(url.toString)
+            .setRefSpecs(new RefSpec(s"${R_HEADS}${targetRef}:${R_HEADS}${targetRef}"))
+            .setAuthenticationMethod(url, cb)
+            .setTimeout(conf.gitConfiguration.commandTimeout)
+            .setProgressMonitor(progressMonitor)
+            .call()
+            .asScala
+        )
+        if (pushResponse.status == OK) {
+          // Keep origin/<target> aligned locally so the next reset doesn't use a stale tracking ref.
+          updateRemoteTrackingRef(git)
+        }
+        pushResponse
+      }
+    } finally {
+      mergeSource.temporaryBranch.foreach(deleteBranch(git, _))
+    }
+  }
+
+  private def deleteBranch(git: Git, branchName: String): Unit =
+    if (
+      Option(
+        git.getRepository.findRef(branchName)
+      ).nonEmpty && git.getRepository.getBranch != branchName
+    ) {
+      git.branchDelete().setForce(true).setBranchNames(branchName).call()
+      ()
+    }
+
+  private def prepareMergeSource(git: Git): MergeSource =
+    if (isSymbolicSourceRef(git)) {
+      // Preserve moving refs like HEAD across checkout; stable branch refs can be merged directly.
+      val tempBranchName = s"tmp-merge-${UUID.randomUUID().toString}"
+      git
+        .branchCreate()
+        .setName(tempBranchName)
+        .setStartPoint(resolveSourceObjectId(git).name)
+        .call()
+      MergeSource(findRef(git, tempBranchName), Some(tempBranchName))
+    } else {
+      MergeSource(findRef(git, sourceRef))
+    }
+
+  private def prepareTargetBranch(git: Git): Unit = {
+    import PimpedGitTransportCommand._
+
+    // Refresh origin/<target> so merges don't start from a stale tracking ref across runs.
+    git
+      .fetch()
+      .setRemote(url.toString)
+      .setRefSpecs(
+        new RefSpec(s"${R_HEADS}${targetRef}:${R_REMOTES}${DEFAULT_REMOTE_NAME}/$targetRef")
+      )
+      .setAuthenticationMethod(url, cb)
+      .setTimeout(conf.gitConfiguration.commandTimeout)
+      .setProgressMonitor(progressMonitor)
+      .call()
+
+    Option(git.getRepository.findRef(targetRef)) match {
+      case Some(_) =>
+        git.checkout().setName(targetRef).call()
+      case None =>
+        git
+          .checkout()
+          .setCreateBranch(true)
+          .setName(targetRef)
+          .setStartPoint(s"$DEFAULT_REMOTE_NAME/$targetRef")
+          .call()
+    }
+
+    Option(git.getRepository.findRef(s"$DEFAULT_REMOTE_NAME/$targetRef")).foreach {
+      remoteTargetBranch =>
+        // Normalize the local target branch before merging so we don't carry stale local history.
+        git
+          .reset()
+          .setMode(ResetType.HARD)
+          .setRef(remoteTargetBranch.getName)
+          .setProgressMonitor(progressMonitor)
+          .call()
+    }
+  }
+
+  private def isSymbolicSourceRef(git: Git): Boolean =
+    Option(git.getRepository.exactRef(sourceRef)).exists(_.isSymbolic)
+
+  private def findRef(git: Git, refName: String) =
+    Option(git.getRepository.findRef(refName)).getOrElse {
+      throw new NoSuchElementException(s"Unable to find merge source ref $refName")
+    }
+
+  private def resolveSourceObjectId(git: Git) =
+    Option(git.getRepository.resolve(sourceRef)).getOrElse {
+      throw new NoSuchElementException(
+        s"Unable to resolve source ref $sourceRef. All refs are: " + git.getRepository.getRefDatabase
+          .getRefs()
+          .asScala
+          .mkString("\n")
+      )
+    }
+
+  private def updateRemoteTrackingRef(git: Git): Unit =
+    Option(git.getRepository.findRef(targetRef)).foreach { targetBranch =>
+      val refUpdate = git.getRepository.updateRef(s"$R_REMOTES$DEFAULT_REMOTE_NAME/$targetRef")
+      refUpdate.setNewObjectId(targetBranch.getObjectId)
+      refUpdate.update()
+      ()
+    }
+
+  private case class MergeSource(
+      ref: org.eclipse.jgit.lib.Ref,
+      temporaryBranch: Option[String] = None
+  )
 }
 
 case class Push(

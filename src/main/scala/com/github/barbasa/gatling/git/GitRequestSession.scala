@@ -38,6 +38,7 @@ case class GitRequestSession(
     refsToClone: Expression[Set[String]] = Set.empty[String].expressionSuccess,
     minContentLength: Expression[Option[Int]] = EmptyInt,
     maxContentLength: Expression[Option[Int]] = EmptyInt,
+    targetRef: Expression[String] = StaticValueExpression(MASTER),
     httpUser: Expression[String] = StaticValueExpression(""),
     httpPassword: Expression[String] = StaticValueExpression("")
 )
@@ -57,7 +58,8 @@ object GitRequestSession {
       cmd: String,
       url: Expression[String],
       refSpec: Expression[String] = HeadToMasterRefSpec,
-      tag: Expression[String] = EmptyTag
+      tag: Expression[String] = EmptyTag,
+      targetRef: Expression[String] = StaticValueExpression(MASTER)
   ): GitRequestSession =
-    GitRequestSession(StaticValueExpression(cmd), url, refSpec, tag)
+    GitRequestSession(StaticValueExpression(cmd), url, refSpec, tag, targetRef = targetRef)
 }

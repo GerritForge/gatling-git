@@ -61,6 +61,7 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
       refsToClone         <- request.refsToClone(session)
       minContentLength    <- request.minContentLength(session)
       maxContentLength    <- request.maxContentLength(session)
+      targetRef           <- request.targetRef(session)
       httpUser            <- request.httpUser(session)
       httpPassword        <- request.httpPassword(session)
     } yield {
@@ -95,6 +96,17 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
           Pull(
             url,
             userId,
+            requestName,
+            maybeRepoDirOverride,
+            httpUser = httpUser,
+            httpPassword = httpPassword
+          )
+        case "merge" =>
+          Merge(
+            url,
+            userId,
+            refSpec,
+            targetRef,
             requestName,
             maybeRepoDirOverride,
             httpUser = httpUser,

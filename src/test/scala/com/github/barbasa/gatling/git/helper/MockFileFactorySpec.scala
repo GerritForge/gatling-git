@@ -14,7 +14,7 @@
 
 package com.github.barbasa.gatling.git.helper
 
-import com.github.barbasa.gatling.git.helper.MockFiles.AbstractMockFile
+import com.github.barbasa.gatling.git.helper.MockFiles.{AbstractMockFile, fileNamePool}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
@@ -26,7 +26,7 @@ class MockFileFactorySpec extends AnyFlatSpec with Matchers {
   behavior of "MockFileFactory"
 
   "file name" should "contain only digits and letters" in {
-    val fileNameWithExtension: String = new TestFile(10).save("anyWorkTree")
+    val fileNameWithExtension: String = new TestFile(10, fileNamePool(0)).save("anyWorkTree")
 
     val fileNameParts = fileNameWithExtension.split("\\.")
 
@@ -35,7 +35,7 @@ class MockFileFactorySpec extends AnyFlatSpec with Matchers {
 
   }
 
-  class TestFile(contentLength: Int) extends AbstractMockFile(contentLength) {
+  class TestFile(contentLength: Int, name: String) extends AbstractMockFile(contentLength, name) {
 
     override def generateContent(contentLength: Int): String = "fileContent"
     override def save(workTreeDirectory: String): String = {

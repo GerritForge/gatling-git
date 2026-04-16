@@ -16,6 +16,52 @@
       "message": "Missing documentation in `CONFIG.md`. Can be done as a followup",
       "revId": "bf8f538c25a220570683a37d76f4582c93f5a2b5",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fc3aa6d_e3243a57",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-04-16T17:26:36Z",
+      "side": 1,
+      "message": "nit: unrelated",
+      "range": {
+        "startLine": 42,
+        "startChar": 25,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "bf8f538c25a220570683a37d76f4582c93f5a2b5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07d0b072_120a8930",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-04-16T17:26:36Z",
+      "side": 1,
+      "message": "nit: unrelated",
+      "range": {
+        "startLine": 43,
+        "startChar": 57,
+        "endLine": 43,
+        "endChar": 60
+      },
+      "revId": "bf8f538c25a220570683a37d76f4582c93f5a2b5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

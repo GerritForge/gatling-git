@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a905a84_08a9667b",
+        "filename": "CONFIG.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-04-16T17:51:18Z",
+      "side": 1,
+      "message": "```suggestion\n| `commands.push.totalNumFiles`    | `TOTAL_NUM_FILES`          | The total number of files with different filenames used by the simulation.                                                                                                                                                                           | `commands.push.numFiles`   |\n```",
+      "range": {
+        "startLine": 25,
+        "startChar": 66,
+        "endLine": 25,
+        "endChar": 139
+      },
+      "revId": "1f94824e0a5a36000111c91a672b0ae7eed8acfb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63bf1133_70bebd0f",
+        "filename": "CONFIG.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-04-16T17:51:18Z",
+      "side": 1,
+      "message": "```suggestion\n| `commands.push.filenameExt`      | `COMMIT_FILENAME_EXT`      | Extension, including the `.`, of the generated file names in the commits.                                                                                                                                                             | `.java`                    |\n```",
+      "range": {
+        "startLine": 30,
+        "startChar": 96,
+        "endLine": 30,
+        "endChar": 152
+      },
+      "revId": "1f94824e0a5a36000111c91a672b0ae7eed8acfb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

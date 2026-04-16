@@ -33,10 +33,9 @@ object MockFiles {
 
   val loremIpsumTextLen = loremIpsumText.length
 
-  abstract class AbstractMockFile(contentLength: Int) extends MockFile {
+  abstract class AbstractMockFile(contentLength: Int, prefix: String = "test", ext: String = ".java", totalFiles: Int = 1024) extends MockFile {
     override def content = generateContent(contentLength)
-    override lazy val name =
-      Random.alphanumeric.take(10).mkString + System.nanoTime() + ".java"
+    override lazy val name = s"$prefix${System.nanoTime()%totalFiles}$ext"
 
     def generateRandomString(length: Int): String =
       (1 to length)

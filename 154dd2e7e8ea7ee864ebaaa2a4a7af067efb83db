@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb313f4e_38528de2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-16T19:29:38Z",
+      "side": 1,
+      "message": "Tests are now passing:\n\n```\n[info] PushSpec:\n[info] Push\n[info] with an non-ff rejection error\n[info] - should return Fail\n[info] with a forced-push\n[info] - should return OK\n[info] without any error\n[info] - should return OK\n[info] with a branch ref-spec\n[info] - should push to a new branch\n[info] with a branch ref-spec\n[info] - should push to an existing branch\n[info] with multiple ref-specs\n[info] - should push all specified refs\n[info] with ref-spec that contains multiple spaces\n[info] - should correctly ignore them\n[info] with a branch and computing a Change-Id\n[info] - should create a commit and a new patch-set ready for review\n[info] - should not fail if push options are added over local protocol\n[info] - should create commits as siblings when branch is reset\n[info] - should create commits in a chain when branch is not reset\n[info] Run completed in 2 seconds, 323 milliseconds.\n[info] Total number of tests run: 29\n[info] Suites: completed 8, aborted 0\n[info] Tests: succeeded 29, failed 0, canceled 0, ignored 0, pending 0\n[info] All tests passed.\n[success] Total time: 29 s, completed 16 Apr 2026, 20:26:42\n```",
+      "revId": "154dd2e7e8ea7ee864ebaaa2a4a7af067efb83db",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

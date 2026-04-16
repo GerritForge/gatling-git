@@ -54,6 +54,23 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bea8fad9_e8ce0623",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-16T19:25:38Z",
+      "side": 1,
+      "message": "This change broke the tests because of the missed adaptation of the extra parameters. Fixing them in https://review.gerrithub.io/c/GerritForge/gatling-git/+/1235804",
+      "revId": "bf8f538c25a220570683a37d76f4582c93f5a2b5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fc3aa6d_e3243a57",

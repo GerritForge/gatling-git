@@ -24,6 +24,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d03791e_b6ea0029",
+        "filename": "CONFIG.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-16T17:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a905a84_08a9667b",
+      "range": {
+        "startLine": 25,
+        "startChar": 66,
+        "endLine": 25,
+        "endChar": 139
+      },
+      "revId": "1f94824e0a5a36000111c91a672b0ae7eed8acfb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63bf1133_70bebd0f",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-04-16T17:51:18Z",
       "side": 1,
       "message": "```suggestion\n| `commands.push.filenameExt`      | `COMMIT_FILENAME_EXT`      | Extension, including the `.`, of the generated file names in the commits.                                                                                                                                                             | `.java`                    |\n```",
+      "range": {
+        "startLine": 30,
+        "startChar": 96,
+        "endLine": 30,
+        "endChar": 152
+      },
+      "revId": "1f94824e0a5a36000111c91a672b0ae7eed8acfb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35e658f4_1ad1b5bc",
+        "filename": "CONFIG.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-16T17:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63bf1133_70bebd0f",
       "range": {
         "startLine": 30,
         "startChar": 96,

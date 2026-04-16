@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2f1c3a0_d698e27d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2026-04-16T16:27:31Z",
+      "side": 1,
+      "message": "Can you explain the advantege of doing it ?",
+      "revId": "f577812b18827f300cc37282235d0a6c3506ac4a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "224f03d4_a8cbe431",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1

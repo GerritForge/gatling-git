@@ -28,15 +28,17 @@ object MockFiles {
     def save(workTreeDirectory: String): String
   }
 
+  val fileNamePoolSize = 100000
+  val fileNamePool: IndexedSeq[String] =
+    Vector.fill(fileNamePoolSize)(Random.alphanumeric.take(10).mkString + ".java")
+
   val loremIpsumText =
     "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
 
   val loremIpsumTextLen = loremIpsumText.length
 
-  abstract class AbstractMockFile(contentLength: Int) extends MockFile {
+  abstract class AbstractMockFile(contentLength: Int, override val name: String) extends MockFile {
     override def content = generateContent(contentLength)
-    override lazy val name =
-      Random.alphanumeric.take(10).mkString + System.nanoTime() + ".java"
 
     def generateRandomString(length: Int): String =
       (1 to length)
@@ -52,7 +54,7 @@ object MockFiles {
   sealed trait FileType
   case object TextFileType extends FileType
 
-  class TextFile(contentLength: Int) extends AbstractMockFile(contentLength) {
+  class TextFile(contentLength: Int, name: String) extends AbstractMockFile(contentLength, name) {
 
     override def generateContent(size: Int): String = {
       generateRandomString(size)
@@ -73,9 +75,9 @@ object MockFiles {
 object MockFileFactory {
   import MockFiles._
 
-  def create(fileType: FileType, contentLength: Int): MockFile = {
+  def create(fileType: FileType, contentLength: Int, name: String): MockFile = {
     fileType match {
-      case TextFileType => new TextFile(contentLength)
+      case TextFileType => new TextFile(contentLength, name)
     }
   }
 }

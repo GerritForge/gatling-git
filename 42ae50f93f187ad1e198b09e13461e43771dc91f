@@ -24,6 +24,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88f329ad_8d290f2a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-16T13:49:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfce9bb4_246ccd1e",
+      "range": {
+        "startLine": 11,
+        "startChar": 33,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "42ae50f93f187ad1e198b09e13461e43771dc91f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8da370ef_b31ddb71",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-04-16T12:46:49Z",
       "side": 1,
       "message": "`prefix`, `ext` and `totalFiles` should be added to `GatlingGitConfiguration()` and passed along to make the parameters configurable.",
+      "range": {
+        "startLine": 36,
+        "startChar": 54,
+        "endLine": 36,
+        "endChar": 125
+      },
+      "revId": "42ae50f93f187ad1e198b09e13461e43771dc91f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0179b4_11352667",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-16T13:49:07Z",
+      "side": 1,
+      "message": "Yep, planning to do that in a follow-up change.",
+      "parentUuid": "8da370ef_b31ddb71",
       "range": {
         "startLine": 36,
         "startChar": 54,

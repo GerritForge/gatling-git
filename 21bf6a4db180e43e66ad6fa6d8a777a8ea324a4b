@@ -18,6 +18,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e395ff2_bd103918",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-04-16T06:50:53Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "d1683fad_4010a521",
+      "revId": "21bf6a4db180e43e66ad6fa6d8a777a8ea324a4b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52042208_e2ac4f3e",
@@ -35,6 +53,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47767b46_11878890",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-04-16T06:50:53Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "52042208_e2ac4f3e",
+      "revId": "21bf6a4db180e43e66ad6fa6d8a777a8ea324a4b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "892421a8_31963e91",
@@ -48,6 +84,24 @@
       "writtenOn": "2026-04-16T05:30:14Z",
       "side": 1,
       "message": "```suggestion\nThis adds a dedicated `Merge` command and wires it through the request\n```",
+      "revId": "21bf6a4db180e43e66ad6fa6d8a777a8ea324a4b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91c0ff8d_5e7f053c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-04-16T06:50:53Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "892421a8_31963e91",
       "revId": "21bf6a4db180e43e66ad6fa6d8a777a8ea324a4b",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },

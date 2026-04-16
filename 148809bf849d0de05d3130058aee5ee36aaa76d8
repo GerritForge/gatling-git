@@ -24,6 +24,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5dda764_dcf3840d",
+        "filename": "CONFIG.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-16T17:54:27Z",
+      "side": 1,
+      "message": "Gosh, too much find\u0026replace.",
+      "parentUuid": "6f8d5a84_82fedf9c",
+      "range": {
+        "startLine": 3,
+        "startChar": 33,
+        "endLine": 3,
+        "endChar": 55
+      },
+      "revId": "148809bf849d0de05d3130058aee5ee36aaa76d8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8756970e_8b8d8ed4",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-04-16T17:52:16Z",
       "side": 1,
       "message": "nit: empty space",
+      "range": {
+        "startLine": 25,
+        "startChar": 339,
+        "endLine": 25,
+        "endChar": 340
+      },
+      "revId": "148809bf849d0de05d3130058aee5ee36aaa76d8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b7ed06e_5123ab7d",
+        "filename": "CONFIG.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-16T17:54:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8756970e_8b8d8ed4",
       "range": {
         "startLine": 25,
         "startChar": 339,
@@ -70,6 +118,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "699a0040_d45983f9",
+        "filename": "CONFIG.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-16T17:54:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bcea771_9657b3f3",
+      "range": {
+        "startLine": 28,
+        "startChar": 339,
+        "endLine": 28,
+        "endChar": 340
+      },
+      "revId": "148809bf849d0de05d3130058aee5ee36aaa76d8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfd5e731_99ef1ade",
@@ -83,6 +155,30 @@
       "writtenOn": "2026-04-16T17:52:16Z",
       "side": 1,
       "message": "unwanted change?",
+      "range": {
+        "startLine": 35,
+        "startChar": 17,
+        "endLine": 35,
+        "endChar": 40
+      },
+      "revId": "148809bf849d0de05d3130058aee5ee36aaa76d8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff336b0b_d0beaf20",
+        "filename": "CONFIG.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-16T17:54:27Z",
+      "side": 1,
+      "message": "The find\u0026replace strikes again.",
+      "parentUuid": "dfd5e731_99ef1ade",
       "range": {
         "startLine": 35,
         "startChar": 17,

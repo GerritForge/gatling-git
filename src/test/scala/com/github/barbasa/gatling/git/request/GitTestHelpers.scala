@@ -48,7 +48,10 @@ trait GitTestHelpers {
     PushConfiguration.DEFAULT_NUM_FILES,
     PushConfiguration.DEFAULT_MIN_CONTENT_LENGTH,
     PushConfiguration.DEFAULT_MAX_CONTENT_LENGTH,
-    PushConfiguration.DEFAULT_COMMIT_PREFIX
+    PushConfiguration.DEFAULT_COMMIT_PREFIX,
+    PushConfiguration.DEFAULT_FILENAME_PREFIX,
+    PushConfiguration.DEFAULT_FILENAME_EXT,
+    PushConfiguration.DEFAULT_NUM_FILES
   )
 
   implicit val gatlingConfig = GatlingGitConfiguration(
@@ -67,5 +70,8 @@ trait GitTestHelpers {
     val minContentLengthOfCommit = 5
     val maxContentLengthOfCommit = 10
     val defaultPrefixOfCommit    = ""
+    val filenamePrefix           = "testFile"
+    val filenameExt              = ".txt"
+    val totalNumFiles            = 2
   }
 }

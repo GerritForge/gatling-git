@@ -60,7 +60,10 @@ class CommitBuilderSpec extends AnyFlatSpec with BeforeAndAfter with Matchers wi
       fixtures.numberOfFilesPerCommit,
       fixtures.minContentLengthOfCommit,
       fixtures.maxContentLengthOfCommit,
-      fixtures.defaultPrefixOfCommit
+      fixtures.defaultPrefixOfCommit,
+      fixtures.filenamePrefix,
+      fixtures.filenameExt,
+      fixtures.totalNumFiles
     )
 
     commitBuilder.commitToRepository(testGitRepo.getRepository, computeChangeId = true)
@@ -84,7 +87,10 @@ class CommitBuilderSpec extends AnyFlatSpec with BeforeAndAfter with Matchers wi
       fixtures.numberOfFilesPerCommit,
       fixtures.minContentLengthOfCommit,
       fixtures.maxContentLengthOfCommit,
-      "testPrefix - "
+      "testPrefix - ",
+      fixtures.filenamePrefix,
+      fixtures.filenameExt,
+      fixtures.totalNumFiles
     )
     commitBuilder.commitToRepository(testGitRepo.getRepository)
     getHeadCommit.getFullMessage should startWith("testPrefix - Test commit header - ")

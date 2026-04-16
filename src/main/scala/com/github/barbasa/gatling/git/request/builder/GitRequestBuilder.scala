@@ -63,6 +63,9 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
       maxContentLength    <- request.maxContentLength(session)
       httpUser            <- request.httpUser(session)
       httpPassword        <- request.httpPassword(session)
+      totalNumFiles       <- request.totalNumFiles(session)
+      filenamePrefix      <- request.filenamePrefix(session)
+      filenameExt         <- request.filenameExt(session)
     } yield {
       val userId               = if (user == "") session.userId.toString else user
       val maybeRepoDirOverride = if (repoDirOverride == "") None else Some(repoDirOverride)
@@ -110,7 +113,13 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
               val defBuilder = Push.defaultCommitBuilder
               val builderMin =
                 minContentLength.fold(defBuilder)(min => defBuilder.copy(minContentLength = min))
-              maxContentLength.fold(builderMin)(max => builderMin.copy(maxContentLength = max))
+              val builderMax =
+                maxContentLength.fold(builderMin)(max => builderMin.copy(maxContentLength = max))
+              builderMax.copy(
+                totalNumFiles = totalNumFiles,
+                filenamePrefix = filenamePrefix,
+                filenameExt = filenameExt
+              )
             },
             computeChangeId = computeChangeId,
             options = pushOptions.split(",").toList.filter(_.nonEmpty),

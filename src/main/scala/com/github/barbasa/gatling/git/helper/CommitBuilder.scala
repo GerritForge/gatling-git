@@ -52,12 +52,17 @@ case class CommitBuilder(
     val existingBranch = branch.filter(existingBranches.contains)
     existingBranch.foreach(git.checkout.setName(_).call)
 
-    val fileNames = Vector.range(0, numFiles).map { _ =>
-      val contentLength: Int = minContentLength + random
-        .nextInt((maxContentLength - minContentLength) + 1)
-      val file: MockFile = MockFileFactory.create(TextFileType, contentLength)
+    val pickedFileNamesForCommit = {
+      val picked = scala.collection.mutable.HashSet.empty[Int]
+      while (picked.size < numFiles) picked += random.nextInt(fileNamePoolSize)
+      picked
+    }
+    val fileNames = pickedFileNamesForCommit.toVector.map { idx =>
+      val name          = fileNamePool(idx)
+      val contentLength = minContentLength + random.nextInt((maxContentLength - minContentLength) + 1)
+      val file: MockFile = MockFileFactory.create(TextFileType, contentLength, name)
       file.save(repository.getWorkTree.toString): Unit
-      file.name
+      name
     }
 
     val gitAdd = git.add()

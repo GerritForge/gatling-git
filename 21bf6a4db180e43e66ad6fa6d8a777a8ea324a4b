@@ -123,6 +123,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32f3d8ee_a2792d56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-04-16T06:58:16Z",
+      "side": 1,
+      "message": "Yes, I think you\u0027re right, but I don\u0027t think there is an API for _just_ pushing right now.\n\nSee my [comment](https://review.gerrithub.io/c/GerritForge/gatling-git/+/1235722/comment/d1aba2d3_eb6ad94f/)",
+      "parentUuid": "cf8cd23e_e1f76a0c",
+      "revId": "21bf6a4db180e43e66ad6fa6d8a777a8ea324a4b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "482bd994_e43db75f",
@@ -182,6 +200,30 @@
       "writtenOn": "2026-04-16T05:30:14Z",
       "side": 1,
       "message": "Why are we also pushing? Can\u0027t the caller just call the push instead?",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 9
+      },
+      "revId": "21bf6a4db180e43e66ad6fa6d8a777a8ea324a4b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c036249c_d5b64479",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-04-16T06:58:16Z",
+      "side": 1,
+      "message": "There is no API in gatling-git for just pushing.\nThe `Push` request always adds a new commit first.\n\nIt can be _implemented_ by the caller by using the `jgit` explicitly...or we can add a `push` that just pushes.\n\nLet\u0027s discuss.",
+      "parentUuid": "d1aba2d3_eb6ad94f",
       "range": {
         "startLine": 317,
         "startChar": 0,

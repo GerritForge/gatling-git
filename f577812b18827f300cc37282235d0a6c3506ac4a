@@ -18,6 +18,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52aeb467_c1ec3701",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-04-16T17:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2f1c3a0_d698e27d",
+      "revId": "f577812b18827f300cc37282235d0a6c3506ac4a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "224f03d4_a8cbe431",
@@ -31,6 +49,24 @@
       "writtenOn": "2026-04-16T16:26:51Z",
       "side": 1,
       "message": "We should validate the parameters (i.e.: totalNumFiles \u003e 0), however, we are not doing it for any parameter, so it is good for now.",
+      "revId": "f577812b18827f300cc37282235d0a6c3506ac4a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e44f0ec_7f1246f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-04-16T17:30:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "224f03d4_a8cbe431",
       "revId": "f577812b18827f300cc37282235d0a6c3506ac4a",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }

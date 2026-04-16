@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1683fad_4010a521",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-16T05:30:14Z",
+      "side": 1,
+      "message": "Git doesn\u0027t have the concept of _merge request_.\n\n\n\n```suggestion\nAdd Git merge support\n```",
+      "revId": "21bf6a4db180e43e66ad6fa6d8a777a8ea324a4b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52042208_e2ac4f3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-16T05:30:14Z",
+      "side": 1,
+      "message": "```suggestion\nIntroduce a new request that merges a source ref into a target\n```",
+      "revId": "21bf6a4db180e43e66ad6fa6d8a777a8ea324a4b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "892421a8_31963e91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-16T05:30:14Z",
+      "side": 1,
+      "message": "```suggestion\nThis adds a dedicated `Merge` command and wires it through the request\n```",
+      "revId": "21bf6a4db180e43e66ad6fa6d8a777a8ea324a4b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf8cd23e_e1f76a0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-16T05:30:14Z",
+      "side": 1,
+      "message": "I\u0027m not convinced this is the right granularity: why can\u0027t we just implement the merge?",
+      "revId": "21bf6a4db180e43e66ad6fa6d8a777a8ea324a4b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "482bd994_e43db75f",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-16T05:30:14Z",
+      "side": 1,
+      "message": "The merge strategy should come as a parameter.",
+      "range": {
+        "startLine": 310,
+        "startChar": 21,
+        "endLine": 310,
+        "endChar": 39
+      },
+      "revId": "21bf6a4db180e43e66ad6fa6d8a777a8ea324a4b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0fe7a2f_c5605804",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-16T05:30:14Z",
+      "side": 1,
+      "message": "The fast-forward mode should come as a parameter.",
+      "range": {
+        "startLine": 311,
+        "startChar": 24,
+        "endLine": 311,
+        "endChar": 58
+      },
+      "revId": "21bf6a4db180e43e66ad6fa6d8a777a8ea324a4b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1aba2d3_eb6ad94f",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/request/Request.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-16T05:30:14Z",
+      "side": 1,
+      "message": "Why are we also pushing? Can\u0027t the caller just call the push instead?",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 9
+      },
+      "revId": "21bf6a4db180e43e66ad6fa6d8a777a8ea324a4b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

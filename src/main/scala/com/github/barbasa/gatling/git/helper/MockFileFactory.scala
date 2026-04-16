@@ -46,9 +46,7 @@ object MockFiles {
       (1 to length)
         .grouped(120)
         .map(line =>
-          loremIpsumText
-            .drop(Random.nextInt(loremIpsumTextLen - line.length))
-            .take(line.length)
+          loremIpsumText.slice(Random.nextInt(loremIpsumTextLen - line.length), Random.nextInt(loremIpsumTextLen - line.length) + line.length)
         )
         .mkString("\n")
   }

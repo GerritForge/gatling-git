@@ -45,11 +45,10 @@ object MockFiles {
     def generateRandomString(length: Int): String =
       (1 to length)
         .grouped(120)
-        .map(line =>
-          loremIpsumText
-            .drop(Random.nextInt(loremIpsumTextLen - line.length))
-            .take(line.length)
-        )
+        .map { line =>
+          val from = Random.nextInt(loremIpsumTextLen - line.length)
+          loremIpsumText.slice(from, from + line.length)
+        }
         .mkString("\n")
   }
 

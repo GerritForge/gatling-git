@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6fec93f9_81bac4c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-16T17:47:07Z",
+      "side": 1,
+      "message": "Done with https://review.gerrithub.io/c/GerritForge/gatling-git/+/1235801",
+      "parentUuid": "df3e38b5_1ba06e0b",
+      "revId": "bf8f538c25a220570683a37d76f4582c93f5a2b5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4fc3aa6d_e3243a57",
         "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
         "patchSetId": 1

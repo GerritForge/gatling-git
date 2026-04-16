@@ -38,13 +38,18 @@ case class PushConfiguration(
     numFiles: Int,
     minContentLength: Int,
     maxContentLength: Int,
-    commitPrefix: String
+    commitPrefix: String,
+    filenamePrefix: String,
+    filenameExt: String,
+    totalNumFiles: Int
 )
 object PushConfiguration {
   val DEFAULT_NUM_FILES          = 4
   val DEFAULT_MIN_CONTENT_LENGTH = 100
   val DEFAULT_MAX_CONTENT_LENGTH = 10000
   val DEFAULT_COMMIT_PREFIX      = ""
+  val DEFAULT_FILENAME_PREFIX    = "testFile"
+  val DEFAULT_FILENAME_EXT       = ".java"
 }
 
 case class CommandsConfiguration(pushConfig: PushConfiguration)
@@ -105,6 +110,9 @@ object GatlingGitConfiguration {
     val numFiles = config
       .optionalInt("commands.push.numFiles")
       .getOrElse(PushConfiguration.DEFAULT_NUM_FILES)
+    val totalNumFiles = config
+      .optionalInt("commands.push.totalNumFiles")
+      .getOrElse(numFiles)
     val minContentLength = config
       .optionalInt("commands.push.minContentLength")
       .getOrElse(PushConfiguration.DEFAULT_MIN_CONTENT_LENGTH)
@@ -115,6 +123,12 @@ object GatlingGitConfiguration {
     val commitPrefix = config
       .optionalString("commands.push.commitPrefix")
       .getOrElse(PushConfiguration.DEFAULT_COMMIT_PREFIX)
+    val filenamePrefix = config
+      .optionalString("commands.push.filenamePrefix")
+      .getOrElse(PushConfiguration.DEFAULT_FILENAME_PREFIX)
+    val filenameExt = config
+      .optionalString("commands.push.filenameExt")
+      .getOrElse(PushConfiguration.DEFAULT_FILENAME_EXT)
 
     GatlingGitConfiguration(
       GitConfiguration(commandTimeout = gitCommandTimeout, showProgress = gitShowProgress),
@@ -122,7 +136,15 @@ object GatlingGitConfiguration {
       SshConfiguration(sshPrivateKeyPath),
       tmpBasePath,
       CommandsConfiguration(
-        PushConfiguration(numFiles, minContentLength, maxContentLength, commitPrefix)
+        PushConfiguration(
+          numFiles,
+          minContentLength,
+          maxContentLength,
+          commitPrefix,
+          filenamePrefix,
+          filenameExt,
+          totalNumFiles
+        )
       )
     )
   }

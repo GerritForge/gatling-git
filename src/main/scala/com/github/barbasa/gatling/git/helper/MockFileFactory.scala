@@ -33,9 +33,14 @@ object MockFiles {
 
   val loremIpsumTextLen = loremIpsumText.length
 
-  abstract class AbstractMockFile(contentLength: Int, prefix: String = "test", ext: String = ".java", totalFiles: Int = 1024) extends MockFile {
-    override def content = generateContent(contentLength)
-    override lazy val name = s"$prefix${System.nanoTime()%totalFiles}$ext"
+  abstract class AbstractMockFile(
+      contentLength: Int,
+      prefix: String = "test",
+      ext: String = ".java",
+      totalFiles: Int = 1024
+  ) extends MockFile {
+    override def content   = generateContent(contentLength)
+    override lazy val name = s"$prefix${System.nanoTime() % totalFiles}$ext"
 
     def generateRandomString(length: Int): String =
       (1 to length)
@@ -51,7 +56,12 @@ object MockFiles {
   sealed trait FileType
   case object TextFileType extends FileType
 
-  class TextFile(contentLength: Int) extends AbstractMockFile(contentLength) {
+  class TextFile(
+      contentLength: Int,
+      filenamePrefix: String,
+      filenameExt: String,
+      totalNumFiles: Int
+  ) extends AbstractMockFile(contentLength, filenamePrefix, filenameExt, totalNumFiles) {
 
     override def generateContent(size: Int): String = {
       generateRandomString(size)
@@ -72,9 +82,15 @@ object MockFiles {
 object MockFileFactory {
   import MockFiles._
 
-  def create(fileType: FileType, contentLength: Int): MockFile = {
+  def create(
+      fileType: FileType,
+      contentLength: Int,
+      filenamePrefix: String,
+      filenameExt: String,
+      totalNumFiles: Int
+  ): MockFile = {
     fileType match {
-      case TextFileType => new TextFile(contentLength)
+      case TextFileType => new TextFile(contentLength, filenamePrefix, filenameExt, totalNumFiles)
     }
   }
 }

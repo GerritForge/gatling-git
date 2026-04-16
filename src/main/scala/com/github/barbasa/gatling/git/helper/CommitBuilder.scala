@@ -30,7 +30,10 @@ case class CommitBuilder(
     numFiles: Int,
     minContentLength: Int,
     maxContentLength: Int,
-    prefix: String
+    prefix: String,
+    filenamePrefix: String,
+    filenameExt: String,
+    totalNumFiles: Int
 ) {
 
   import CommitBuilder._
@@ -55,7 +58,8 @@ case class CommitBuilder(
     val fileNames = Vector.range(0, numFiles).map { _ =>
       val contentLength: Int = minContentLength + random
         .nextInt((maxContentLength - minContentLength) + 1)
-      val file: MockFile = MockFileFactory.create(TextFileType, contentLength)
+      val file: MockFile = MockFileFactory
+        .create(TextFileType, contentLength, filenamePrefix, filenameExt, totalNumFiles)
       file.save(repository.getWorkTree.toString): Unit
       file.name
     }

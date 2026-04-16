@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df3e38b5_1ba06e0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2026-04-16T16:18:22Z",
+      "side": 1,
+      "message": "Missing documentation in `CONFIG.md`. Can be done as a followup",
+      "revId": "bf8f538c25a220570683a37d76f4582c93f5a2b5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

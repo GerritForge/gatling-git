@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bedf40c4_f0a8c0ea",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/MockFileFactory.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2026-04-16T16:29:55Z",
+      "side": 1,
+      "message": "This should go in a variable, otherwise `Random.nextInt` would return 2 different values",
+      "range": {
+        "startLine": 49,
+        "startChar": 80,
+        "endLine": 49,
+        "endChar": 127
+      },
+      "revId": "e337266ddba0c47729dd3815e468b39bc1391f48",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

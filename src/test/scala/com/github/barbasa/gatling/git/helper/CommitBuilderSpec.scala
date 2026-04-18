@@ -20,11 +20,14 @@ import org.eclipse.jgit.api.{Git => JGit}
 import org.eclipse.jgit.lib.Constants
 import org.eclipse.jgit.revwalk.RevCommit
 import org.eclipse.jgit.revwalk.RevWalk
-import scala.util.Try
+import org.eclipse.jgit.treewalk.TreeWalk
+
+import scala.util.{Try, Using}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
+import org.scalatest.TryValues._
 
-import scala.annotation.nowarn
+import scala.annotation.{nowarn, tailrec}
 
 @nowarn("msg=unused value")
 class CommitBuilderSpec
@@ -98,6 +101,61 @@ class CommitBuilderSpec
     commitBuilder.commitToRepository(testGitRepo.getRepository)
     getHeadCommit.getFullMessage should startWith("testPrefix - Test commit header - ")
   }
+
+  "with number of files parameter" should "create a commit with the requested number of files" in {
+    val numFilesPerCommit = 20
+    val commitBuilder = new CommitBuilder(
+      numFilesPerCommit,
+      fixtures.minContentLengthOfCommit,
+      fixtures.maxContentLengthOfCommit,
+      fixtures.defaultPrefixOfCommit,
+      fixtures.filenamePrefix,
+      fixtures.filenameExt,
+      fixtures.totalNumFiles
+    )
+
+    commitBuilder.commitToRepository(testGitRepo.getRepository)
+    val maybeCommitPaths = Using(new TreeWalk(testGitRepo.getRepository)) { t =>
+      t.addTree(getHeadCommit.getTree)
+      t.setRecursive(true)
+      extractPathFromTree(t)
+    }
+    maybeCommitPaths.success.value should have size numFilesPerCommit.toLong
+  }
+
+  it should "not exceed the limit of total number of generated files" in {
+    val numCommits    = 10
+    val totalNumFiles = (fixtures.numberOfFilesPerCommit * numCommits) / 2
+    val commitBuilder = new CommitBuilder(
+      fixtures.numberOfFilesPerCommit,
+      fixtures.minContentLengthOfCommit,
+      fixtures.maxContentLengthOfCommit,
+      fixtures.defaultPrefixOfCommit,
+      fixtures.filenamePrefix,
+      fixtures.filenameExt,
+      totalNumFiles
+    )
+
+    (1 to 10).foreach(_ => commitBuilder.commitToRepository(testGitRepo.getRepository))
+
+    val maybeCommitPaths = Using(new TreeWalk(testGitRepo.getRepository)) { t =>
+      t.addTree(getHeadCommit.getTree)
+      t.setRecursive(true)
+      extractPathFromTree(t)
+    }
+    maybeCommitPaths.success.value.size should be <= totalNumFiles
+  }
+
+  @tailrec
+  final def extractPathFromTree(
+      tree: TreeWalk,
+      paths: Seq[String] = Seq.empty[String]
+  ): Seq[String] =
+    if (tree.next()) {
+      extractPathFromTree(tree, paths :+ tree.getPathString)
+    } else {
+      paths
+    }
 
   override def commandName: String = "CommitBuilder"
 }

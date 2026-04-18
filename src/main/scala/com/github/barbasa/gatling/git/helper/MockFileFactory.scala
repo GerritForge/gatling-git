@@ -45,8 +45,8 @@ object MockFiles {
 
     @tailrec
     private def nextRandomName(offset: Int = 0): String = {
-      val nanoTimeWithOffset: Long = (System.nanoTime() + offset.toLong) % totalFiles.toLong
-      val candidateName            = s"$prefix$nanoTimeWithOffset$ext"
+      val randomIntWithOffset = Random.nextInt(totalFiles) + offset
+      val candidateName       = s"$prefix$randomIntWithOffset$ext"
       if (filenamesToAvoid.contains(candidateName)) {
         nextRandomName(offset + 1)
       } else {

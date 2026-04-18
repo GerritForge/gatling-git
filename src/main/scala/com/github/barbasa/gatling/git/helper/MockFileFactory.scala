@@ -15,7 +15,7 @@
 package com.github.barbasa.gatling.git.helper
 
 import java.io._
-
+import scala.annotation.tailrec
 import scala.util.Random
 
 object MockFiles {
@@ -37,10 +37,21 @@ object MockFiles {
       contentLength: Int,
       prefix: String = "test",
       ext: String = ".java",
-      totalFiles: Int = 1024
+      totalFiles: Int = 1024,
+      filenamesToAvoid: Set[String] = Set.empty[String]
   ) extends MockFile {
     override def content   = generateContent(contentLength)
-    override lazy val name = s"$prefix${System.nanoTime() % totalFiles}$ext"
+    override lazy val name: String = nextRandomName()
+
+    @tailrec
+    private def nextRandomName(offset: Int = 0): String = {
+      val candidateName = s"$prefix${(System.nanoTime() + offset) % totalFiles}$ext"
+      if(filenamesToAvoid.contains(candidateName)) {
+        nextRandomName(offset + 1)
+      } else {
+        candidateName
+      }
+    }
 
     def generateRandomString(length: Int): String =
       (1 to length)
@@ -59,8 +70,9 @@ object MockFiles {
       contentLength: Int,
       filenamePrefix: String,
       filenameExt: String,
-      totalNumFiles: Int
-  ) extends AbstractMockFile(contentLength, filenamePrefix, filenameExt, totalNumFiles) {
+      totalNumFiles: Int,
+        filenamesToAvoid: Set[String] = Set.empty[String]
+  ) extends AbstractMockFile(contentLength, filenamePrefix, filenameExt, totalNumFiles, filenamesToAvoid) {
 
     override def generateContent(size: Int): String = {
       generateRandomString(size)
@@ -86,10 +98,11 @@ object MockFileFactory {
       contentLength: Int,
       filenamePrefix: String,
       filenameExt: String,
-      totalNumFiles: Int
+      totalNumFiles: Int,
+      filenamesToAvoid: Set[String] = Set.empty[String]
   ): MockFile = {
     fileType match {
-      case TextFileType => new TextFile(contentLength, filenamePrefix, filenameExt, totalNumFiles)
+      case TextFileType => new TextFile(contentLength, filenamePrefix, filenameExt, totalNumFiles, filenamesToAvoid)
     }
   }
 }

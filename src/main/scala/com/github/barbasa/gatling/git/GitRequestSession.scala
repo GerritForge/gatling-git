@@ -17,11 +17,6 @@ package com.github.barbasa.gatling.git
 import io.gatling.core.session.{Expression, ExpressionSuccessWrapper, StaticValueExpression}
 import org.eclipse.jgit.lib.Constants.{HEAD, MASTER, R_HEADS}
 import GitRequestSession._
-import com.github.barbasa.gatling.git.PushConfiguration.{
-  DEFAULT_FILENAME_EXT,
-  DEFAULT_FILENAME_PREFIX,
-  DEFAULT_NUM_FILES
-}
 
 case class GitRequestSession(
     commandName: Expression[String],
@@ -45,9 +40,9 @@ case class GitRequestSession(
     maxContentLength: Expression[Option[Int]] = EmptyInt,
     httpUser: Expression[String] = StaticValueExpression(""),
     httpPassword: Expression[String] = StaticValueExpression(""),
-    totalNumFiles: Expression[Int] = StaticValueExpression(DEFAULT_NUM_FILES),
-    filenamePrefix: Expression[String] = StaticValueExpression(DEFAULT_FILENAME_PREFIX),
-    filenameExt: Expression[String] = StaticValueExpression(DEFAULT_FILENAME_EXT)
+    totalNumFiles: Expression[Option[Int]] = EmptyInt,
+    filenamePrefix: Expression[String] = EmptyString,
+    filenameExt: Expression[String] = EmptyString
 )
 
 object GitRequestSession {
@@ -60,6 +55,7 @@ object GitRequestSession {
   val False               = false.expressionSuccess
   val True                = true.expressionSuccess
   val EmptyInt            = StaticValueExpression(Option.empty[Int])
+  val EmptyString         = StaticValueExpression("")
 
   def cmd(
       cmd: String,

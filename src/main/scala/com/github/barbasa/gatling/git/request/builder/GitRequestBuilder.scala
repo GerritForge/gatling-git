@@ -16,6 +16,7 @@ package com.github.barbasa.gatling.git.request.builder
 
 import com.github.barbasa.gatling.git.{GatlingGitConfiguration, GitRequestSession}
 import com.github.barbasa.gatling.git.action.GitRequestActionBuilder
+import com.github.barbasa.gatling.git.helper.CommitBuilder
 import com.github.barbasa.gatling.git.request._
 import io.gatling.commons.validation.{Failure, Success, Validation}
 import io.gatling.core.session.Session
@@ -110,15 +111,19 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
             refSpec,
             force = force,
             commitBuilder = {
-              val defBuilder = Push.defaultCommitBuilder
-              val builderMin =
-                minContentLength.fold(defBuilder)(min => defBuilder.copy(minContentLength = min))
-              val builderMax =
-                maxContentLength.fold(builderMin)(max => builderMin.copy(maxContentLength = max))
-              builderMax.copy(
-                totalNumFiles = totalNumFiles,
-                filenamePrefix = filenamePrefix,
-                filenameExt = filenameExt
+              val builder1 = Push.defaultCommitBuilder
+              val builder2 = minContentLength
+                .fold(builder1)(min => builder1.copy(minContentLength = min))
+              val builder3 =
+                maxContentLength.fold(builder2)(max => builder2.copy(maxContentLength = max))
+              val builder4 =
+                totalNumFiles.fold(builder3)(num => builder3.copy(totalNumFiles = num))
+              val builder5: CommitBuilder =
+                emptyToOption(filenamePrefix).fold(builder4)((s: String) =>
+                  builder4.copy(filenamePrefix = s)
+                )
+              emptyToOption(filenameExt).fold(builder5)((s: String) =>
+                builder5.copy(filenameExt = s)
               )
             },
             computeChangeId = computeChangeId,
@@ -145,6 +150,11 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
         case _              => InvalidRequest(url, userId, requestName)
       }
     }
+  }
+
+  private val emptyToOption: PartialFunction[String, Option[String]] = {
+    case x: String if x.isEmpty => Option.empty[String]
+    case x: String              => Option(x)
   }
 
   private def validateUrl(stringUrl: String): Validation[URIish] = {

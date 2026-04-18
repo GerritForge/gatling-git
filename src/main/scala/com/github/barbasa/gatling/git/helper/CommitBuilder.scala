@@ -39,6 +39,7 @@ case class CommitBuilder(
   import CommitBuilder._
 
   val random = new Random()
+  val EmptySetOfStrings = Set.empty[String]
 
   def commitToRepository(
       repository: Repository,
@@ -55,13 +56,11 @@ case class CommitBuilder(
     val existingBranch = branch.filter(existingBranches.contains)
     existingBranch.foreach(git.checkout.setName(_).call)
 
-    val fileNames = Vector.range(0, numFiles).map { _ =>
-      val contentLength: Int = minContentLength + random
-        .nextInt((maxContentLength - minContentLength) + 1)
-      val file: MockFile = MockFileFactory
-        .create(TextFileType, contentLength, filenamePrefix, filenameExt, totalNumFiles)
-      file.save(repository.getWorkTree.toString): Unit
-      file.name
+    val contentLength: Int = minContentLength + random
+      .nextInt((maxContentLength - minContentLength) + 1)
+    val adjustedTotalNumFiles = math.max(numFiles, totalNumFiles)
+    val fileNames: Set[String] = (1 to numFiles).map(_ => EmptySetOfStrings).fold(EmptySetOfStrings) { (names, _) =>
+      addNewRandomFile(contentLength, adjustedTotalNumFiles, repository, names)
     }
 
     val gitAdd = git.add()
@@ -120,6 +119,13 @@ case class CommitBuilder(
     branch
       .filterNot(existingBranch.contains)
       .foreach(git.branchCreate.setName(_).call)
+  }
+
+  private def addNewRandomFile(contentLength: Int, totalNumFiles: Int, repository: Repository, filenamesToExclude: Set[String]): Set[String] = {
+    val file: MockFile = MockFileFactory
+      .create(TextFileType, contentLength, filenamePrefix, filenameExt, totalNumFiles, filenamesToExclude)
+    file.save(repository.getWorkTree.toString): Unit
+    (filenamesToExclude.toSeq :+ file.name).toSet[String]
   }
 }
 

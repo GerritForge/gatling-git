@@ -1,4 +1,28 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfe82c27_e35f8dd0",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/GitRequestSession.scala",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-18T22:22:36Z",
+      "side": 1,
+      "message": "With this we are basically ignoring altogether the settings in `application.conf` and just use the default ones.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 81
+      },
+      "revId": "88f4c238da9fcffb1590024aabd9694250d3731e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ],
   "submitRequirementResults": []
 }

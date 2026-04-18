@@ -13,11 +13,9 @@
 // limitations under the License.
 
 package com.github.barbasa.gatling.git.helper
-import java.io.File
-
 import com.github.barbasa.gatling.git.request.GitTestHelpers
 import org.apache.commons.io.FileUtils
-import org.scalatest.BeforeAndAfter
+import org.scalatest.BeforeAndAfterEach
 import org.eclipse.jgit.api.{Git => JGit}
 import org.eclipse.jgit.lib.Constants
 import org.eclipse.jgit.revwalk.RevCommit
@@ -29,15 +27,16 @@ import org.scalatest.matchers.should.Matchers
 import scala.annotation.nowarn
 
 @nowarn("msg=unused value")
-class CommitBuilderSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
-  before {
-    FileUtils.deleteDirectory(new File(s"$tempBase/$testUser"))
-    testGitRepo = JGit.init.setDirectory(workTreeDirectory()).call
+class CommitBuilderSpec extends AnyFlatSpec with BeforeAndAfterEach with Matchers with GitTestHelpers {
+  override def beforeEach(): Unit = {
+    val worktreeFile = workTreeDirectory()
+    FileUtils.deleteDirectory(worktreeFile)
+    testGitRepo = JGit.init.setDirectory(worktreeFile).call
   }
 
-  after {
+  override def afterEach(): Unit = {
     testGitRepo.getRepository.close()
-    FileUtils.deleteDirectory(new File(s"$tempBase/$testUser"))
+    FileUtils.deleteDirectory(workTreeDirectory())
   }
 
   def getHeadCommit: RevCommit = {

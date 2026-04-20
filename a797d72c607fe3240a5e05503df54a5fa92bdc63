@@ -69,6 +69,30 @@
       },
       "revId": "a797d72c607fe3240a5e05503df54a5fa92bdc63",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4888514d_1a594420",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-04-20T18:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0136c5f8_a5d5fb94",
+      "range": {
+        "startLine": 172,
+        "startChar": 41,
+        "endLine": 172,
+        "endChar": 48
+      },
+      "revId": "a797d72c607fe3240a5e05503df54a5fa92bdc63",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

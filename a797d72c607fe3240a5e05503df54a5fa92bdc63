@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce087830_aa0c5dc7",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2026-04-20T14:49:14Z",
+      "side": 1,
+      "message": "```suggestion\n    contentSizes.distinct.size should be \u003e 1\n```\n\nThis assertion should be more robust and help avoid test flakiness",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 58
+      },
+      "revId": "a797d72c607fe3240a5e05503df54a5fa92bdc63",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0136c5f8_a5d5fb94",
+        "filename": "src/test/scala/com/github/barbasa/gatling/git/helper/CommitBuilderSpec.scala",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2026-04-20T14:49:14Z",
+      "side": 1,
+      "message": "nit: Since only care about the file length, we could store it, avoiding carrying around the content.",
+      "range": {
+        "startLine": 172,
+        "startChar": 41,
+        "endLine": 172,
+        "endChar": 48
+      },
+      "revId": "a797d72c607fe3240a5e05503df54a5fa92bdc63",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

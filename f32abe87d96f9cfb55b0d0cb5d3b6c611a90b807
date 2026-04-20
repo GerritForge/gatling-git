@@ -1,4 +1,28 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1842965e_76c0eac6",
+        "filename": "src/main/scala/com/github/barbasa/gatling/git/helper/CommitBuilder.scala",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2026-04-20T07:33:19Z",
+      "side": 1,
+      "message": "`contentLength` is now the same for all the files.\nIs this change of behaviour intentional?",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 21
+      },
+      "revId": "f32abe87d96f9cfb55b0d0cb5d3b6c611a90b807",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ],
   "submitRequirementResults": []
 }

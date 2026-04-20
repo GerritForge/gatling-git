@@ -107,18 +107,24 @@ class CommitBuilderSpec
     val commitBuilder     = newCommitBuilder().copy(numFiles = numFilesPerCommit)
 
     commitBuilder.commitToRepository(testGitRepo.getRepository)
-    getCommitsTreePaths() should have size numFilesPerCommit.toLong
+    getCommitTreeContent should have size numFilesPerCommit.toLong
   }
 
   it should "create different set of files per commit" in {
     val commitBuilder = newCommitBuilder()
 
     commitBuilder.commitToRepository(testGitRepo.getRepository)
-    val firstCommitPaths = getCommitsTreePaths()
+    val firstCommitPaths = getCommitTreeContent
     commitBuilder.commitToRepository(testGitRepo.getRepository)
-    val secondCommitPaths = getCommitsTreePaths()
+    val secondCommitPaths = getCommitTreeContent
 
     firstCommitPaths should not contain allElementsOf(secondCommitPaths)
+  }
+
+  it should "create files with different content length" in {
+    newCommitBuilder().commitToRepository(testGitRepo.getRepository)
+    val contentSizes = getCommitTreeContent.map(_.content.length)
+    contentSizes.distinct.size should be > 1
   }
 
   it should "not exceed the limit of total number of generated files" in {
@@ -128,8 +134,8 @@ class CommitBuilderSpec
 
     (1 to 10).foreach(_ => commitBuilder.commitToRepository(testGitRepo.getRepository))
 
-    getCommitsTreePaths().size should be > fixtures.numberOfFilesPerCommit
-    getCommitsTreePaths().size should be <= totalNumFiles
+    getCommitTreeContent.size should be > fixtures.numberOfFilesPerCommit
+    getCommitTreeContent.size should be <= totalNumFiles
   }
 
   def newCommitBuilder() = new CommitBuilder(
@@ -142,23 +148,34 @@ class CommitBuilderSpec
     fixtures.totalNumFiles
   )
 
-  private def getCommitsTreePaths(): Seq[String] = Using(new TreeWalk(testGitRepo.getRepository)) {
-    t =>
+  private def getCommitTreeContent: Seq[FileContent] =
+    Using(new TreeWalk(testGitRepo.getRepository)) { t =>
       t.addTree(getHeadCommit.getTree)
       t.setRecursive(true)
       extractPathFromTree(t)
-  }.success.value
+    }.success.value
 
   @tailrec
   final def extractPathFromTree(
       tree: TreeWalk,
-      paths: Seq[String] = Seq.empty[String]
-  ): Seq[String] =
+      files: Seq[FileContent] = Seq.empty[FileContent]
+  ): Seq[FileContent] =
     if (tree.next()) {
-      extractPathFromTree(tree, paths :+ tree.getPathString)
+      extractPathFromTree(tree, files :+ FileContent.readFromTree(tree))
     } else {
-      paths
+      files
     }
 
   override def commandName: String = "CommitBuilder"
+}
+
+case class FileContent(filename: String, content: Array[Byte])
+
+object FileContent {
+
+  def readFromTree(tree: TreeWalk): FileContent = {
+    val objectId = tree.getObjectId(0)
+    val loader   = tree.getObjectReader.open(objectId)
+    FileContent(tree.getPathString, loader.getBytes())
+  }
 }

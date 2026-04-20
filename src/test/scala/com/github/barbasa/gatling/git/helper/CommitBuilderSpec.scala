@@ -110,7 +110,7 @@ class CommitBuilderSpec
     getCommitsTreePaths() should have size numFilesPerCommit.toLong
   }
 
-  it should "create dfferent set of files per commit" in {
+  it should "create different set of files per commit" in {
     val commitBuilder = newCommitBuilder()
 
     commitBuilder.commitToRepository(testGitRepo.getRepository)

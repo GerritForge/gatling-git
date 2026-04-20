@@ -56,7 +56,7 @@ case class CommitBuilder(
     val existingBranch = branch.filter(existingBranches.contains)
     existingBranch.foreach(git.checkout.setName(_).call)
 
-    val contentLength: Int = minContentLength + random
+    def contentLength: Int = minContentLength + random
       .nextInt((maxContentLength - minContentLength) + 1)
     val adjustedTotalNumFiles = math.max(numFiles * 2, totalNumFiles)
     val fileNames: Set[String] =

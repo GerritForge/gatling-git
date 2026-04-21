@@ -46,11 +46,26 @@ object MockFiles {
     @tailrec
     private def nextRandomName(offset: Int = 0): String = {
       val randomIntWithOffset = Random.nextInt(totalFiles) + offset
-      val candidateName       = s"$prefix$randomIntWithOffset$ext"
+      val randomName          = s"$prefix$randomIntWithOffset$ext"
+      val prefixPath          = getPrefixes(randomIntWithOffset).mkString("/")
+      val candidateName       = s"$prefixPath/$randomName"
       if (filenamesToAvoid.contains(candidateName)) {
         nextRandomName(offset + 1)
       } else {
         candidateName
+      }
+    }
+
+    @tailrec
+    private def getPrefixes(seed: Int, appendToSeq: Seq[Char] = Seq.empty[Char]): Seq[Char] = {
+      val seedMod  = seed & ((1 << 4) - 1)
+      val pathChar = ('a'.toInt + seedMod).toChar
+      val nextSeed = seed >> 4
+      val newSeq   = pathChar +: appendToSeq
+      if (nextSeed == 0) {
+        newSeq
+      } else {
+        getPrefixes(nextSeed, newSeq)
       }
     }
 
@@ -88,7 +103,8 @@ object MockFiles {
     override def save(workTreeDirectory: String): String = {
       val filePath = "%s/%s".format(workTreeDirectory, name)
       val file     = new File(filePath)
-      val writer   = new BufferedWriter(new FileWriter(file))
+      file.getParentFile.mkdirs()
+      val writer = new BufferedWriter(new FileWriter(file))
       writer.write(content)
       writer.close()
 

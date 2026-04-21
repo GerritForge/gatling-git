@@ -25,17 +25,23 @@ class MockFileFactorySpec extends AnyFlatSpec with Matchers {
 
   behavior of "MockFileFactory"
 
-  "file name" should "contain only digits and letters" in {
+  "file name" should "contain only digits and letters and slashes" in {
     val fileNameWithExtension: String = new TestFile(10).save("anyWorkTree")
 
     val fileNameParts = fileNameWithExtension.split("\\.")
 
-    fileNameParts(0).filterNot(_.isLetterOrDigit) should be("")
+    fileNameParts(0).filterNot(_.isLetterOrDigit).filterNot(_ == '/') should be("")
     fileNameParts(1) should be("java")
-
   }
 
-  class TestFile(contentLength: Int) extends AbstractMockFile(contentLength) {
+  it should "organise file in paths" in {
+    val fileNameWithPath: String = new TestFile(totalFiles = 512).save("anyWorkTree")
+    val fileNameParts            = fileNameWithPath.split('/')
+    fileNameParts.length should be > 1
+  }
+
+  class TestFile(contentLength: Int = 10, totalFiles: Int = 1024)
+      extends AbstractMockFile(contentLength, totalFiles = totalFiles) {
 
     override def generateContent(contentLength: Int): String = "fileContent"
     override def save(workTreeDirectory: String): String = {

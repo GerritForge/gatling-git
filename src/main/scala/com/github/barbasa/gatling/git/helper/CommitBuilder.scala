@@ -33,12 +33,13 @@ case class CommitBuilder(
     prefix: String,
     filenamePrefix: String,
     filenameExt: String,
-    totalNumFiles: Int
+    totalNumFiles: Int,
+    modifyExisting: Boolean = false
 ) {
 
   import CommitBuilder._
 
-  val random = new Random()
+  val random            = new Random()
   val EmptySetOfStrings = Set.empty[String]
 
   def commitToRepository(
@@ -59,9 +60,11 @@ case class CommitBuilder(
     val contentLength: Int = minContentLength + random
       .nextInt((maxContentLength - minContentLength) + 1)
     val adjustedTotalNumFiles = math.max(numFiles, totalNumFiles)
-    val fileNames: Set[String] = (1 to numFiles).map(_ => EmptySetOfStrings).fold(EmptySetOfStrings) { (names, _) =>
-      addNewRandomFile(contentLength, adjustedTotalNumFiles, repository, names)
-    }
+    val fileNames: Set[String] =
+      (1 to numFiles).map(_ => EmptySetOfStrings).fold(EmptySetOfStrings) { (names, _) =>
+        if (modifyExisting) modifyExistingFile(repository, names)
+        else addNewRandomFile(contentLength, adjustedTotalNumFiles, repository, names)
+      }
 
     val gitAdd = git.add()
     fileNames.foreach(fileName => gitAdd.addFilepattern(fileName))
@@ -121,9 +124,79 @@ case class CommitBuilder(
       .foreach(git.branchCreate.setName(_).call)
   }
 
-  private def addNewRandomFile(contentLength: Int, totalNumFiles: Int, repository: Repository, filenamesToExclude: Set[String]): Set[String] = {
+  private def modifyExistingFile(
+      repository: Repository,
+      filenamesToExclude: Set[String]
+  ): Set[String] = {
+    val workTree = repository.getWorkTree
+    val candidates = getCandidates(workTree)
+      .filterNot(f => filenamesToExclude.contains(workTree.toPath.relativize(f.toPath).toString))
+
+    if (candidates.isEmpty) {
+      addNewRandomFile(
+        minContentLength,
+        math.max(numFiles, totalNumFiles),
+        repository,
+        filenamesToExclude
+      )
+    } else {
+      val file   = candidates(random.nextInt(candidates.length))
+      val source = scala.io.Source.fromFile(file)
+      val lines =
+        try source.getLines().toIndexedSeq
+        finally source.close()
+
+      if (lines.isEmpty) {
+        addNewRandomFile(
+          minContentLength,
+          math.max(numFiles, totalNumFiles),
+          repository,
+          filenamesToExclude
+        )
+      } else {
+        val buf         = scala.collection.mutable.ArrayBuffer(lines: _*)
+        val numToChange = math.max(1, lines.length / 20)
+        (0 until numToChange).foreach { _ =>
+          val i = random.nextInt(buf.length)
+          buf(i) = MockFiles.generateRandomString(lines(i).length)
+        }
+        val writer = new java.io.BufferedWriter(new java.io.FileWriter(file))
+        try writer.write(buf.mkString("\n"))
+        finally writer.close()
+
+        filenamesToExclude + workTree.toPath.relativize(file.toPath).toString
+      }
+    }
+  }
+
+  private def getCandidates(workTree: java.io.File): IndexedSeq[java.io.File] =
+    CommitBuilder.fileCache.getOrElseUpdate(workTree.getAbsolutePath, listTextFiles(workTree))
+
+  private def listTextFiles(dir: java.io.File): IndexedSeq[java.io.File] =
+    dir.listFiles().toIndexedSeq.flatMap {
+      case d if d.isDirectory && d.getName != ".git" => listTextFiles(d)
+      case f if f.isFile && isTextFile(f)            => IndexedSeq(f)
+      case _                                         => IndexedSeq.empty
+    }
+
+  private def isTextFile(file: java.io.File): Boolean =
+    CommitBuilder.textExtensions.exists(file.getName.endsWith)
+
+  private def addNewRandomFile(
+      contentLength: Int,
+      totalNumFiles: Int,
+      repository: Repository,
+      filenamesToExclude: Set[String]
+  ): Set[String] = {
     val file: MockFile = MockFileFactory
-      .create(TextFileType, contentLength, filenamePrefix, filenameExt, totalNumFiles, filenamesToExclude)
+      .create(
+        TextFileType,
+        contentLength,
+        filenamePrefix,
+        filenameExt,
+        totalNumFiles,
+        filenamesToExclude
+      )
     file.save(repository.getWorkTree.toString): Unit
     (filenamesToExclude.toSeq :+ file.name).toSet[String]
   }
@@ -131,4 +204,30 @@ case class CommitBuilder(
 
 object CommitBuilder {
   val ChangeIdFooterKey = new FooterKey("Change-Id")
+
+  private[helper] val fileCache =
+    scala.collection.concurrent.TrieMap.empty[String, IndexedSeq[java.io.File]]
+
+  private[helper] val textExtensions = Set(
+    ".java",
+    ".scala",
+    ".kt",
+    ".py",
+    ".js",
+    ".ts",
+    ".go",
+    ".rb",
+    ".c",
+    ".cpp",
+    ".h",
+    ".txt",
+    ".md",
+    ".xml",
+    ".json",
+    ".yaml",
+    ".yml",
+    ".properties",
+    ".conf",
+    ".sh"
+  )
 }

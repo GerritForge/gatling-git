@@ -33,6 +33,15 @@ object MockFiles {
 
   val loremIpsumTextLen = loremIpsumText.length
 
+  def generateRandomString(length: Int): String =
+    (1 to math.max(length, 1))
+      .grouped(120)
+      .map { line =>
+        val from = Random.nextInt(loremIpsumTextLen - line.length)
+        loremIpsumText.slice(from, from + line.length)
+      }
+      .mkString("\n")
+
   abstract class AbstractMockFile(
       contentLength: Int,
       prefix: String = "test",
@@ -53,14 +62,7 @@ object MockFiles {
       }
     }
 
-    def generateRandomString(length: Int): String =
-      (1 to length)
-        .grouped(120)
-        .map { line =>
-          val from = Random.nextInt(loremIpsumTextLen - line.length)
-          loremIpsumText.slice(from, from + line.length)
-        }
-        .mkString("\n")
+    def generateRandomString(length: Int): String = MockFiles.generateRandomString(length)
   }
 
   sealed trait FileType

@@ -408,7 +408,8 @@ object Push {
     conf.commands.pushConfig.commitPrefix,
     conf.commands.pushConfig.filenamePrefix,
     conf.commands.pushConfig.filenameExt,
-    conf.commands.pushConfig.totalNumFiles
+    conf.commands.pushConfig.totalNumFiles,
+    conf.commands.pushConfig.modifyExisting
   )
 
   def checkPushResults(results: Iterable[PushResult]): GitCommandResponse = {

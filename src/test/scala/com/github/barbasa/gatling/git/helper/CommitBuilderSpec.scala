@@ -30,7 +30,11 @@ import org.scalatest.TryValues._
 import scala.annotation.{nowarn, tailrec}
 
 @nowarn("msg=unused value")
-class CommitBuilderSpec extends AnyFlatSpec with BeforeAndAfterEach with Matchers with GitTestHelpers {
+class CommitBuilderSpec
+    extends AnyFlatSpec
+    with BeforeAndAfterEach
+    with Matchers
+    with GitTestHelpers {
   override def beforeEach(): Unit = {
     val worktreeFile = workTreeDirectory()
     FileUtils.deleteDirectory(worktreeFile)
@@ -120,7 +124,10 @@ class CommitBuilderSpec extends AnyFlatSpec with BeforeAndAfterEach with Matcher
   }
 
   @tailrec
-  final def extractPathFromTree(tree: TreeWalk, paths: Seq[String] = Seq.empty[String]): Seq[String] =
+  final def extractPathFromTree(
+      tree: TreeWalk,
+      paths: Seq[String] = Seq.empty[String]
+  ): Seq[String] =
     if (tree.next()) {
       extractPathFromTree(tree, paths :+ tree.getPathString)
     } else {

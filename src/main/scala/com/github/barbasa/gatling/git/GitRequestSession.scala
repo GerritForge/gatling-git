@@ -47,7 +47,8 @@ case class GitRequestSession(
     httpPassword: Expression[String] = StaticValueExpression(""),
     totalNumFiles: Expression[Int] = StaticValueExpression(DEFAULT_NUM_FILES),
     filenamePrefix: Expression[String] = StaticValueExpression(DEFAULT_FILENAME_PREFIX),
-    filenameExt: Expression[String] = StaticValueExpression(DEFAULT_FILENAME_EXT)
+    filenameExt: Expression[String] = StaticValueExpression(DEFAULT_FILENAME_EXT),
+    modifyExisting: Expression[Boolean] = False
 )
 
 object GitRequestSession {

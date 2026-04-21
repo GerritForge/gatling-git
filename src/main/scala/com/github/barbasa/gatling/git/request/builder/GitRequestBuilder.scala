@@ -66,6 +66,7 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
       totalNumFiles       <- request.totalNumFiles(session)
       filenamePrefix      <- request.filenamePrefix(session)
       filenameExt         <- request.filenameExt(session)
+      modifyExisting      <- request.modifyExisting(session)
     } yield {
       val userId               = if (user == "") session.userId.toString else user
       val maybeRepoDirOverride = if (repoDirOverride == "") None else Some(repoDirOverride)
@@ -118,7 +119,8 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
               builderMax.copy(
                 totalNumFiles = totalNumFiles,
                 filenamePrefix = filenamePrefix,
-                filenameExt = filenameExt
+                filenameExt = filenameExt,
+                modifyExisting = modifyExisting
               )
             },
             computeChangeId = computeChangeId,

@@ -41,7 +41,8 @@ case class PushConfiguration(
     commitPrefix: String,
     filenamePrefix: String,
     filenameExt: String,
-    totalNumFiles: Int
+    totalNumFiles: Int,
+    modifyExisting: Boolean
 )
 object PushConfiguration {
   val DEFAULT_NUM_FILES          = 4
@@ -50,6 +51,7 @@ object PushConfiguration {
   val DEFAULT_COMMIT_PREFIX      = ""
   val DEFAULT_FILENAME_PREFIX    = "testFile"
   val DEFAULT_FILENAME_EXT       = ".java"
+  val DEFAULT_MODIFY_EXISTING    = false
 }
 
 case class CommandsConfiguration(pushConfig: PushConfiguration)
@@ -129,6 +131,9 @@ object GatlingGitConfiguration {
     val filenameExt = config
       .optionalString("commands.push.filenameExt")
       .getOrElse(PushConfiguration.DEFAULT_FILENAME_EXT)
+    val modifyExisting = config
+      .optionalBoolean("commands.push.modifyExisting")
+      .getOrElse(PushConfiguration.DEFAULT_MODIFY_EXISTING)
 
     GatlingGitConfiguration(
       GitConfiguration(commandTimeout = gitCommandTimeout, showProgress = gitShowProgress),
@@ -143,7 +148,8 @@ object GatlingGitConfiguration {
           commitPrefix,
           filenamePrefix,
           filenameExt,
-          totalNumFiles
+          totalNumFiles,
+          modifyExisting
         )
       )
     )

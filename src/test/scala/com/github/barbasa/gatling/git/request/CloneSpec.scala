@@ -31,10 +31,16 @@ import java.nio.file.Files
 
 @nowarn("msg=unused value")
 class CloneSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTestHelpers {
+  private val CHECKED_IN_FILE_NAME = "README.txt"
 
   before {
     FileUtils.deleteDirectory(originRepoDirectory.getParentFile)
     testGitRepo = initRepo(originRepoDirectory)
+
+    val trackedFile = originRepoDirectory.toPath.resolve(CHECKED_IN_FILE_NAME)
+    Files.writeString(trackedFile, "content")
+    testGitRepo.add().addFilepattern(CHECKED_IN_FILE_NAME).call()
+
     testGitRepo.commit().setMessage("Initial Commit").call()
     testGitRepo.branchCreate().setName(testBranchName).call()
     testGitRepo.branchCreate().setName(secondTestBranchName).call()
@@ -96,6 +102,48 @@ class CloneSpec extends AnyFlatSpec with BeforeAndAfter with Matchers with GitTe
 
     val gitWorkDir = JGit.open(workDir.toFile)
     gitWorkDir.status().call().isClean shouldBe true
+  }
+
+  "with noCheckout" should "not checkout any file" in {
+    val workDirNoCheckout = Files.createTempDirectory("noCheckout")
+    val firstClone = Clone(
+      new URIish(s"file://${originRepoDirectory}"),
+      s"$testUser",
+      s"$testBranchName",
+      repoDirOverride = Some(workDirNoCheckout.toString),
+      noCheckout = true
+    ).send
+    firstClone.status shouldBe OK
+
+    val topLevelEntries = Files.list(workDirNoCheckout).iterator().asScala
+      .map(_.getFileName.toString)
+      .toSet
+
+    topLevelEntries shouldBe Set(".git")
+
+    val git = JGit.open(workDirNoCheckout.toFile)
+    git.getRepository.readDirCache().getEntryCount shouldBe 0
+  }
+
+  "with checkout" should "populate files in the working tree by default" in {
+    val workDirNoCheckout = Files.createTempDirectory("noCheckout")
+    val firstClone = Clone(
+      new URIish(s"file://${originRepoDirectory}"),
+      s"$testUser",
+      s"$testBranchName",
+      repoDirOverride = Some(workDirNoCheckout.toString)
+    ).send
+    firstClone.status shouldBe OK
+
+    val topLevelEntries = Files.list(workDirNoCheckout).iterator().asScala
+      .map(_.getFileName.toString)
+      .toSet
+
+    topLevelEntries should contain (".git")
+    topLevelEntries.size should be > 1
+
+    val git = JGit.open(workDirNoCheckout.toFile)
+    git.getRepository.readDirCache().getEntryCount should be > 0
   }
 
   "clone mirror" should "clone all the references from the origin" in {

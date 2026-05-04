@@ -35,6 +35,7 @@ case class GitRequestSession(
     deleteWorkdirOnExit: Expression[Boolean] = False,
     failOnDeleteErrors: Expression[Boolean] = True,
     mirror: Expression[Boolean] = False,
+    noCheckout: Expression[Boolean] = False,
     refsToClone: Expression[Set[String]] = Set.empty[String].expressionSuccess,
     minContentLength: Expression[Option[Int]] = EmptyInt,
     maxContentLength: Expression[Option[Int]] = EmptyInt,

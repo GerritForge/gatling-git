@@ -153,6 +153,7 @@ case class Clone(
     repoDirOverride: Option[String] = None,
     failOnDeleteErrors: Boolean = true,
     mirror: Boolean = false,
+    noCheckout: Boolean = false,
     refsToClone: Set[String] = Set.empty,
     override val httpUser: String = "",
     override val httpPassword: String = ""
@@ -174,6 +175,7 @@ case class Clone(
       .setProgressMonitor(progressMonitor)
       .setTimeout(conf.gitConfiguration.commandTimeout)
       .setMirror(mirror)
+      .setNoCheckout(noCheckout)
       .call()
 
     if (deleteWorkdirOnExit) {

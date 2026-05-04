@@ -59,6 +59,7 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
       deleteWorkdirOnExit <- request.deleteWorkdirOnExit(session)
       failOnDeleteErrors  <- request.failOnDeleteErrors(session)
       mirror              <- request.mirror(session)
+      noCheckout          <- request.noCheckout(session)
       refsToClone         <- request.refsToClone(session)
       minContentLength    <- request.minContentLength(session)
       maxContentLength    <- request.maxContentLength(session)
@@ -81,6 +82,7 @@ case class GitRequestBuilder(request: GitRequestSession)(implicit
             repoDirOverride = maybeRepoDirOverride,
             failOnDeleteErrors = failOnDeleteErrors,
             mirror = mirror,
+            noCheckout = noCheckout,
             refsToClone = refsToClone,
             httpUser = httpUser,
             httpPassword = httpPassword
